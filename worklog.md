@@ -67,3 +67,34 @@ Stage Summary:
 - Images auto-rotate in a living mosaic pattern (2-3 cells change every 4 seconds)
 - Smooth crossfade transitions between image sets
 - Removed all debug labels and cleaned up footer styling
+---
+Task ID: 3
+Agent: Main
+Task: Add events calendar to homepage + rebuild all sub-subpages with full Artemis content
+
+Work Log:
+- Added Upcoming Events Calendar section to Homepage between numbered items and crimson subscription bar
+  - 5 Artemis-themed events (Open Day, Symposium, Hackathon, Exhibition, Commencement)
+  - Date block with weekday/day/month, event tag, title, description, chevron arrow
+  - Section divider, red line accent, "Full Events Calendar" CTA
+- Rebuilt GenericAboutSubpage.tsx from placeholder to full smart template
+  - 5 original pages (access, world, visit, jobs, contact) with rich content
+  - Added 7 new page data entries (governance, policies, strategic, improvement, equality, sustainability, gazette, catalog)
+  - Extended content switch to route new ids to appropriate content components
+- Rebuilt GenericUniversitySubpage.tsx from placeholder to full smart template
+  - 4 pages: Facts & Figures (8 stats, demographics, financials), Glossary (16 Artemis terms), Our Estate (6 hub cards, digital estate), Brand (color palette, typography, guidelines)
+- Rebuilt TheUniversity.tsx — replaced all Oxford content with Artemis lore
+  - Micro-Colleges section, Role of Colleges/Network, 7 Schools, University Press, Lifelong Learning
+- Rebuilt HowWeAreRun.tsx — replaced Oxford references with Artemis governance
+  - Governance model, 7 schools, University Press, Lifelong Learning, teaser cards
+- Rebuilt OurPeople.tsx from minimal to full page
+  - Leadership profiles (4 leaders), Faculty Spotlight parallax, Stats, Working at Artemis CTA
+- Added 9 new routes to ArtemisApp.tsx for sub-subpages (governance-finance, policies, strategic-plan, improvement, equality, sustainability, gazette, nodes, visiting)
+- Verified dev server compiles and serves correctly
+
+Stage Summary:
+- Homepage now has events calendar with 5 upcoming events
+- All sub-subpages rebuilt with full Artemis content (no more "under construction" placeholders)
+- TheUniversity, HowWeAreRun, OurPeople all fully rewritten with Artemis lore
+- 9 new routes registered for previously dead links
+- No Oxford/ASU content remaining anywhere in the site

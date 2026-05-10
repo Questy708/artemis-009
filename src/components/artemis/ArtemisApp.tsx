@@ -104,7 +104,27 @@ export default function ArtemisApp() {
         return <GenericUniversitySubpage goToPage={goToPage} title="Our estate" parentTitle="The University" parentId="the-university" />;
       case 'brand':
         return <GenericUniversitySubpage goToPage={goToPage} title="Brand" parentTitle="The University" parentId="the-university" />;
-      
+
+      // How We Are Run Subsections
+      case 'governance-finance':
+        return <GenericAboutSubpage goToPage={goToPage} id="governance" title="Governance & Finance" description="How the internal systems of the university maintain operational excellence and financial sustainability." />;
+      case 'policies':
+        return <GenericAboutSubpage goToPage={goToPage} id="policies" title="Policies and Statements" description="Official university policies, regulatory statements, and institutional commitments." />;
+      case 'strategic-plan':
+        return <GenericAboutSubpage goToPage={goToPage} id="strategic" title="Strategic Plan" description="The Artemis 2025-2030 strategic plan for global expansion and academic excellence." />;
+      case 'improvement':
+        return <GenericAboutSubpage goToPage={goToPage} id="improvement" title="Change and Continuous Improvement" description="How Artemis embeds continuous improvement into every layer of the institution." />;
+      case 'equality':
+        return <GenericAboutSubpage goToPage={goToPage} id="equality" title="Equality and Diversity" description="Our commitment to building a diverse, equitable, and inclusive global community." />;
+      case 'sustainability':
+        return <GenericAboutSubpage goToPage={goToPage} id="sustainability" title="Sustainability" description="Artemis's commitment to environmental stewardship and carbon-negative operations." />;
+      case 'gazette':
+        return <GenericAboutSubpage goToPage={goToPage} id="gazette" title="The Gazette" description="The official publication of the University of Artemis — news, appointments, and notices." />;
+      case 'nodes':
+        return <GenericAboutSubpage goToPage={goToPage} id="world" title="Institutional Nodes" description="Artemis Collegium academic hubs and specialized research nodes across the globe." />;
+      case 'visiting':
+        return <GenericAboutSubpage goToPage={goToPage} id="visit" title="Visiting the Colleges" description="Information on opening times and admission protocols for our physical colleges." />;
+
       default:
         return <Home goToPage={goToPage} />;
     }

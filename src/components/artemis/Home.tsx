@@ -361,6 +361,118 @@ export default function Home({ goToPage }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
+          UPCOMING EVENTS CALENDAR
+          ═══════════════════════════════════════════ */}
+      <section className="py-20 px-6 lg:px-16">
+        <div className="max-w-[1000px] mx-auto">
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Upcoming Events</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            {/* Left — Heading + CTA */}
+            <div className="md:col-span-5">
+              <div className="mb-6 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Calendar</span>
+              </div>
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                What's happening<br />at Artemis
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-8">
+                From public lectures and research symposia to cultural festivals and open days, the Artemis network is always alive with events that bring our global community together.
+              </p>
+              <button
+                onClick={() => goToPage('campus')}
+                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+              >
+                <span>Full Events Calendar</span>
+                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+
+            {/* Right — Event cards */}
+            <div className="md:col-span-7 space-y-0">
+              {[
+                {
+                  date: 'May 18',
+                  weekday: 'Sun',
+                  title: 'Open Day: Malta Central Node',
+                  desc: 'Tour the Valletta campus, meet faculty from all seven schools, and experience a live co-design session with current students.',
+                  tag: 'Open Day',
+                  page: 'campus',
+                },
+                {
+                  date: 'May 25',
+                  weekday: 'Sun',
+                  title: 'The Synthetic Humanity Symposium',
+                  desc: 'Leading researchers from the Center for Synthetic Intelligence present findings from the first year of the Symbiotic Cognition Initiative.',
+                  tag: 'Symposium',
+                  page: 'research',
+                },
+                {
+                  date: 'Jun 2',
+                  weekday: 'Mon',
+                  title: 'Artemis Global Hackathon',
+                  desc: 'A 72-hour cross-node challenge where students from all 20 micro-colleges collaborate to prototype solutions to real-world problems.',
+                  tag: 'Competition',
+                  page: 'innovation',
+                },
+                {
+                  date: 'Jun 14',
+                  weekday: 'Sat',
+                  title: 'Bio-Regenerative Arts Exhibition',
+                  desc: 'An immersive showcase of living tissue sculptures, self-healing architecture models, and bio-engineered materials from our Berlin hub.',
+                  tag: 'Exhibition',
+                  page: 'research',
+                },
+                {
+                  date: 'Jun 28',
+                  weekday: 'Sat',
+                  title: 'Commencement Ceremony 2026',
+                  desc: 'The Artemis Class of 2026 presents their capstone contributions and receives degrees at the annual global commencement, streamed live from Malta.',
+                  tag: 'Ceremony',
+                  page: 'education',
+                },
+              ].map((event, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToPage(event.page)}
+                  className="group w-full flex items-start gap-6 py-5 border-b border-gray-200 hover:border-[#8A0000] transition-colors text-left"
+                >
+                  {/* Date block */}
+                  <div className="shrink-0 w-[60px] text-center pt-1">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-1">{event.weekday}</div>
+                    <div className="text-[22px] font-black text-[#141414] leading-none tabular-nums">{event.date.split(' ')[1]}</div>
+                    <div className="text-[11px] font-bold text-gray-400 uppercase">{event.date.split(' ')[0]}</div>
+                  </div>
+
+                  {/* Event details */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">{event.tag}</span>
+                    </div>
+                    <h4 className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight mb-1">
+                      {event.title}
+                    </h4>
+                    <p className="text-[13px] text-gray-500 leading-relaxed line-clamp-2">
+                      {event.desc}
+                    </p>
+                  </div>
+
+                  {/* Arrow */}
+                  <svg className="shrink-0 w-4 h-4 text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all mt-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           CRIMSON SUBSCRIPTION BAR
           ═══════════════════════════════════════════ */}
       <div className="bg-[#8A0000] text-white p-10 flex flex-col md:flex-row justify-between items-center">

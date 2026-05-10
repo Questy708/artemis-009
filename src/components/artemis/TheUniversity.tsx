@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 
@@ -8,20 +8,84 @@ interface Props {
   goToPage: (page: string) => void;
 }
 
+/* ─── Hook: animate on scroll ─── */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+/* ─── Data ─── */
+const sectionLinks = [
+  { title: 'Our history', link: 'history' },
+  { title: 'Facts and figures', link: 'facts' },
+  { title: 'Artemis Glossary', link: 'glossary' },
+  { title: 'Our estate', link: 'estate' },
+  { title: 'Brand', link: 'brand' },
+];
+
+const schools = [
+  {
+    name: 'School of Natural Sciences',
+    desc: 'Encompassing physics, chemistry, biology, mathematics, and environmental science. The School of Natural Sciences drives fundamental research into the laws governing the universe, from quantum mechanics to ecosystem dynamics, equipping students with rigorous analytical frameworks and hands-on laboratory experience.',
+  },
+  {
+    name: 'School of Engineering & Technology',
+    desc: 'Spanning computer science, electrical engineering, mechanical engineering, and materials science. This school pushes the frontier of what can be built — from sustainable infrastructure to artificial intelligence systems — blending theoretical foundations with the practical imperative to solve real-world problems.',
+  },
+  {
+    name: 'School of Arts & Humanities',
+    desc: 'Covering literature, philosophy, history, linguistics, and the fine arts. The School of Arts & Humanities preserves and advances the traditions of critical inquiry, creative expression, and cultural understanding that form the intellectual bedrock of any great university.',
+  },
+  {
+    name: 'School of Social Sciences',
+    desc: 'Bringing together economics, political science, sociology, anthropology, and psychology. The School of Social Sciences examines the structures, behaviors, and institutions that shape human societies — producing research that informs public policy, governance, and social innovation.',
+  },
+  {
+    name: 'School of Health & Medicine',
+    desc: 'Integrating biomedical science, clinical practice, public health, and bioethics. This school trains the next generation of physicians, researchers, and health-system leaders, advancing discoveries from the molecular level to population-wide health interventions.',
+  },
+  {
+    name: 'School of Education & Human Development',
+    desc: 'Focusing on pedagogy, cognitive science, educational leadership, and human development across the lifespan. The school studies how people learn and grow, preparing educators and policymakers to build more effective, equitable learning systems worldwide.',
+  },
+  {
+    name: 'School of Business',
+    desc: 'Encompassing finance, strategy, entrepreneurship, and organizational leadership. The School of Business cultivates principled, innovative leaders who can navigate complexity and drive value creation in an era of rapid technological and social change.',
+  },
+];
+
+/* ─── Component ─── */
 export default function TheUniversity({ goToPage }: Props) {
-  const sections = [
-    { title: "Our history", link: "history" },
-    { title: "Facts and figures", link: "facts" },
-    { title: "Artemis Glossary", link: "glossary" },
-    { title: "Our estate", link: "estate" },
-    { title: "Brand", link: "brand" }
-  ];
+  const microCollegesAnim = useInView();
+  const roleAnim = useInView();
+  const schoolsAnim = useInView();
+  const pressAnim = useInView();
+  const lifelongAnim = useInView();
 
   return (
     <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* Breadcrumb Header */}
+      {/* ── Breadcrumb Header ── */}
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('about')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
+        <button
+          onClick={() => goToPage('about')}
+          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4"
+        >
           About
         </button>
         <div className="text-gray-300 mr-4">/</div>
@@ -30,165 +94,392 @@ export default function TheUniversity({ goToPage }: Props) {
         </h2>
       </div>
 
-      {/* Hero Section */}
-      <div className="bg-white pt-16 pb-12">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-8">
-              <h1 className="text-[44px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight text-gray-900 mb-0 uppercase">
-                The University
-              </h1>
+      {/* ── Hero Section ── */}
+      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800"
+          className="absolute inset-0 w-full h-full object-cover grayscale"
+          alt="The University of Artemis"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              About Artemis
+            </span>
+          </div>
+          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+            The University
+          </h1>
+          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
+            The University of Artemis is a federated network of autonomous micro-colleges — a
+            decentralized, global institution founded in 2024 by Abraham Kyeyune, reimagining the
+            ancient guild model of the universitas for the digital age.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Pages in This Section ── */}
+      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+        <div className="relative flex items-center mb-12">
+          <div className="flex-grow border-t border-gray-200"></div>
+          <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            Pages in this section
+          </span>
+          <div className="flex-grow border-t border-gray-200"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-2">
+          {sectionLinks.map((item) => (
+            <button
+              key={item.title}
+              onClick={() => goToPage(item.link)}
+              className="group flex justify-between items-center py-4 border-b border-gray-100 hover:border-[#8A0000] transition-colors w-full text-left"
+            >
+              <span className="text-[15px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+                {item.title}
+              </span>
+              <ChevronRight
+                size={18}
+                className="text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all"
+              />
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ── The Micro-Colleges ── */}
+      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+        <div
+          ref={microCollegesAnim.ref}
+          className={`transition-all duration-700 ${microCollegesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Academic Structure
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-5">
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                The Micro-Colleges
+              </h2>
             </div>
-            <div className="lg:col-span-4">
-              <p className="text-[14px] text-gray-600 leading-relaxed font-medium">
-                Oxford is an independent and self-governing institution consisting of the University, its divisions, departments and faculties, and the colleges.
+            <div className="md:col-span-7">
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                At the heart of Artemis lie its <strong className="text-[#141414]">twenty micro-colleges</strong> —
+                autonomous academic units bound together within a single institution. Each micro-college
+                is self-governing, with its own identity, faculty, and traditions, yet all share a
+                unified curriculum and digital infrastructure that binds the network into one coherent
+                academic body.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                Unlike the monolithic departments of traditional universities, Artemis micro-colleges
+                are intimate scholarly communities — small enough that every student is known by name,
+                yet large enough in collective ambition to rival any institution on Earth. They are the
+                living embodiment of the ancient collegial ideal: a guild of scholars living and
+                learning together.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-8">
+                Each micro-college selects and admits its own students, provides housing and communal
+                life, and delivers the close personal tutorial mentorship that defines the Artemis
+                educational experience. Together, they form the human backbone of the University.
+              </p>
+
+              <div className="aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
+                <img
+                  src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1200"
+                  className="w-full h-full object-cover grayscale brightness-90 hover:brightness-100 hover:grayscale-0 transition-all duration-500"
+                  alt="Artemis Micro-Colleges"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Role of Micro-Colleges and the Network ── */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+          <div
+            ref={roleAnim.ref}
+            className={`transition-all duration-700 ${roleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <div className="relative flex items-center mb-16">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+                Governance & Roles
+              </span>
+              <div className="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+              Role of Micro-Colleges<br />and the Network
+            </h2>
+            <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-16">
+              The Artemis model separates the personal from the institutional. Micro-colleges are
+              responsible for the human dimensions of education — community, mentorship, and
+              belonging — while the Artemis Network handles the structural and academic
+              infrastructure that ensures rigor and coherence across the federation.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Left — What the Micro-Colleges do */}
+              <div className="bg-white p-8 md:p-10 shadow-sm">
+                <div className="mb-8 flex items-center space-x-3">
+                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                    Micro-Colleges
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#141414] mb-8">
+                  What the Micro-Colleges do
+                </h3>
+                <ul className="space-y-6">
+                  {[
+                    'Select and admit students, building a diverse and intentional community of scholars within each college',
+                    'Provide housing, dining, common rooms, and communal spaces that foster belonging and intellectual fellowship',
+                    'Deliver tutorials, personal mentorship, and pastoral care — ensuring no student is anonymous',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <div className="flex-shrink-0 w-1 h-full min-h-[48px] bg-[#8A0000] mr-4 rounded-full" />
+                      <span className="text-[15px] text-gray-600 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Right — What the Artemis Network does */}
+              <div className="bg-white p-8 md:p-10 shadow-sm">
+                <div className="mb-8 flex items-center space-x-3">
+                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                    The Network
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-[#141414] mb-8">
+                  What the Artemis Network does
+                </h3>
+                <ul className="space-y-6">
+                  {[
+                    'Determine curriculum and academic standards, ensuring coherence and rigor across all micro-colleges',
+                    'Organize lectures, seminars, and symposia — drawing on faculty and visiting scholars from across the global network',
+                    'Provide research facilities, laboratories, libraries, and digital infrastructure accessible to every member',
+                    'Set and administer examinations, maintaining the integrity of Artemis degrees worldwide',
+                    'Award degrees and academic distinctions on behalf of the entire University',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <div className="flex-shrink-0 w-1 h-full min-h-[48px] bg-[#8A0000] mr-4 rounded-full" />
+                      <span className="text-[15px] text-gray-600 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Schools and Research Divisions ── */}
+      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
+        <div
+          ref={schoolsAnim.ref}
+          className={`transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Academic Divisions
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-16">
+            <div className="md:col-span-7">
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                Schools and<br />Research Divisions
+              </h2>
+            </div>
+            <div className="md:col-span-5">
+              <p className="text-[16px] text-gray-600 leading-relaxed">
+                Across its seven schools, Artemis organizes the full scope of human knowledge into
+                collaborative research divisions. Each school sets research priorities, manages
+                laboratory and digital infrastructure, and coordinates cross-college academic
+                programming — ensuring that the intellectual output of the network exceeds the sum
+                of its parts.
               </p>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Hero Image */}
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-16 -mt-8 relative z-10 mb-16">
-        <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
-          <img 
-            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1600" 
-            className="w-full h-full object-cover grayscale brightness-90" 
-            alt="The University of Oxford" 
-          />
-        </div>
-      </div>
-
-      <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-16">
-        {/* Pages in this section */}
-        <section className="mb-24">
-          <h2 className="text-2xl font-bold text-gray-900 mb-10 border-b border-gray-100 pb-4">Pages in this section</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-2">
-            {sections.map((item) => (
-              <button 
-                key={item.title}
-                onClick={() => goToPage(item.link)}
-                className="group flex justify-between items-center py-4 border-b border-gray-100 hover:border-[#8A0000] transition-colors w-full text-left"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {schools.map((school, i) => (
+              <div
+                key={i}
+                className="group p-6 md:p-8 bg-white border border-gray-100 hover:border-[#8A0000] transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
               >
-                <span className="text-[15px] font-bold text-gray-700 group-hover:text-black animated-underline animated-underline--off group-hover:animated-underline--on">
-                  {item.title}
-                </span>
-                <ChevronRight size={18} className="text-gray-300 group-hover:text-[#8A0000]" />
-              </button>
+                <div>
+                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-4 uppercase">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h4 className="font-bold text-[#141414] mb-4 text-[17px] leading-tight">
+                    {school.name}
+                  </h4>
+                  <p className="text-[13px] text-gray-500 leading-relaxed mb-6">
+                    {school.desc}
+                  </p>
+                </div>
+                <ArrowRight
+                  size={16}
+                  className="text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all"
+                />
+              </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Content Section: Colleges and Halls */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24 py-16 border-t border-gray-100">
-          <div className="lg:col-span-4">
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">The colleges and halls</h2>
+      {/* ── Artemis University Press ── */}
+      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+        <div
+          ref={pressAnim.ref}
+          className={`transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Publishing
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
           </div>
-          <div className="lg:col-span-8 space-y-6">
-            <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed text-[15px]">
-              <p>The 36 colleges and three societies are a core element of the University, to which they are related via a federal system.</p>
-              <p>Each college is independent and self-governing, having a charter approved by the Privy Council, under which it is governed by a Head of House, elected and appointed by the governing body directly. The governing body comprises a number of Fellows, most of whom also hold University posts.</p>
-              <p>The <strong>three societies</strong> – Kellogg College, Reuben College and St Cross College – operate very much like the other colleges but are considered departments of the University rather than independent colleges because, unlike the others, they do not have a royal charter. One of the main differences is that the governing body recommends a president, who is then appointed by Council.</p>
-              <p>There are also <strong>four permanent private halls</strong>, which were founded by different Christian denominations, and still retain their religious character today.</p>
-              <p>Undergraduates are admitted to 32 of the colleges and permanent private halls. All colleges accept applications from mature students, while Harris Manchester College is solely for mature students.</p>
-            </div>
-            <div className="aspect-[16/9] rounded-lg overflow-hidden bg-gray-50 my-10">
-               <img src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-90" alt="Oxford Colleges" />
-            </div>
-            <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed text-[15px] space-y-6">
-              <p>Campion Hall and Green Templeton, Kellogg, Linacre, Nuffield, Reuben, St Antony&apos;s, St Cross and Wolfson Colleges admit only postgraduate students. All Souls is unique among Oxford colleges because it has no student members; all are Fellows, except the Warden.</p>
-              <p>University, Balliol, and Merton Colleges are the oldest and were established by the 13th century.</p>
-              <p>Green Templeton, which came into existence in 2008 following the merger of Green and Templeton Colleges, is the University&apos;s newest college, and Reuben College, which was founded by the University in 2019, is the newest society.</p>
-              <p>If you are interested in undergraduate study at Oxford, please consult our <span className="text-[#8A0000] font-bold cursor-pointer border-b border-[#8A0000]">information on colleges for prospective undergraduates</span>.</p>
-            </div>
-          </div>
-        </section>
 
-        {/* Content Section: Role of colleges, halls and the University */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24 py-16 border-t border-gray-100">
-          <div className="lg:col-span-4">
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Role of colleges, halls and the University</h2>
-          </div>
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-2">Colleges, societies and halls:</h3>
-              <ul className="space-y-4 text-gray-600 text-[14px]">
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> select and admit undergraduate students, and select postgraduate students after they are admitted by the University</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> provide accommodation, meals, common rooms, libraries, sports and social facilities, and pastoral care for their students</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> are responsible for students&apos; undergraduate tutorial teaching and welfare</li>
-              </ul>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-7">
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                Artemis<br />University Press
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                The Artemis University Press is the publishing arm of the University, dedicated to
+                disseminating scholarship and knowledge that advances the frontiers of human
+                understanding. Operating across both print and digital formats, the Press publishes
+                peer-reviewed monographs, academic journals, textbooks, and open-access resources
+                that serve the global scholarly community.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-8">
+                True to Artemis&apos;s founding ethos of accessibility, the Press prioritizes
+                open-access distribution wherever possible, ensuring that the knowledge produced
+                within the network reaches researchers, educators, and learners regardless of
+                geography or economic circumstance. It currently publishes hundreds of new titles
+                annually across every discipline represented in the seven schools.
+              </p>
+              <button
+                onClick={() => goToPage('about')}
+                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
+              >
+                <span>Explore the Press</span>
+                <svg
+                  className="group-hover:translate-x-2 transition-transform"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-2">The University:</h3>
-              <ul className="space-y-4 text-gray-600 text-[14px]">
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> determines the content of the courses within which college teaching takes place</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> organises lectures and seminars</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> provides a wide range of resources for teaching and learning in the form of libraries, laboratories, museums, computing facilities, etc</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> admits and supervises postgraduate students</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> examines theses</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> sets and marks examinations</li>
-                <li className="flex items-start"><span className="text-[#8A0000] mr-2">•</span> awards degrees</li>
-              </ul>
+            <div className="md:col-span-5">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+                <img
+                  src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800"
+                  className="w-full h-full object-cover grayscale brightness-90 hover:brightness-100 hover:grayscale-0 transition-all duration-500"
+                  alt="Artemis University Press"
+                />
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Content Section: Divisions, departments and GLAM */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24 py-16 border-t border-gray-100">
-          <div className="lg:col-span-4">
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Divisions, departments and GLAM</h2>
-          </div>
-          <div className="lg:col-span-8 flex flex-col space-y-10">
-            <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed text-[15px]">
-              <p>Oxford University is divided into four academic divisions. Within these divisions are numerous departments, faculties and schools. Oxford&apos;s museums, libraries and collections provide an outstanding resource for the University and work closely with divisions to deliver teaching.</p>
-              <p>Oxford University Press, one of the largest and most successful university print presses in the world, is also a department of the University, while the Department for Continuing Education exists to enable Oxford to reach students beyond the full-time student body.</p>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Academic Divisions</h3>
-              <p>There are four academic divisions within Oxford University. All have a full-time divisional head and an elected divisional board:</p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-               {[
-                 { n: "The Humanities Division", d: "Brings together nine faculties plus the Rothermere American Institute, the Ruskin School of Art and the Voltaire Foundation." },
-                 { n: "Mathematical, Physical and Life Sciences", d: "The nine academic departments span the full spectrum of mathematical, computational and life sciences." },
-                 { n: "The Medical Sciences Division", d: "Internationally recognised as a centre of excellence for biomedical and clinical research." },
-                 { n: "The Social Sciences Division", d: "Committed to tackling some of the major challenges facing humanity today." }
-               ].map(div => (
-                 <div key={div.n} className="p-8 bg-gray-50 rounded-lg flex flex-col justify-between group hover:bg-white hover:border-[#8A0000] border border-transparent transition-all shadow-sm">
-                   <h4 className="font-bold text-gray-900 mb-4 text-[17px]">{div.n}</h4>
-                   <p className="text-[13px] text-gray-500 mb-6 leading-relaxed">{div.d}</p>
-                   <ArrowRight size={16} className="text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" />
-                 </div>
-               ))}
+      {/* ── Artemis Lifelong Learning ── */}
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+          <div
+            ref={lifelongAnim.ref}
+            className={`transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Continuing Education
+              </span>
             </div>
 
-            <div className="mt-16 pt-16 border-t border-gray-100">
-               <h3 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-tight">GLAM</h3>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-                  <div className="text-gray-600 text-[15px] leading-relaxed">
-                    <p className="mb-6">Gardens, Libraries And Museums of Oxford University are collectively known by the acronym GLAM, and form one of the greatest concentrations of university collections in the world.</p>
-                    <p>Comprising over 21 million objects, specimens and printed items, they constitute one of the largest and most important research repositories, enabling GLAM to work closely with academic departments to deliver teaching and provide students access to important material for their study, as well as drawing scholars from all over the world.</p>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+              <div className="md:col-span-7">
+                <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                  Artemis<br />Lifelong Learning
+                </h2>
+                <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                  Artemis Lifelong Learning extends the University&apos;s reach beyond the full-time
+                  student body, offering continuing education to professionals, returning learners,
+                  and curious minds at every stage of life. Through a blend of in-person intensives
+                  at micro-college campuses and flexible online programs, it delivers the rigor of
+                  an Artemis education in formats that meet learners where they are.
+                </p>
+                <p className="text-[16px] text-gray-600 leading-relaxed mb-8">
+                  Each year, Artemis Lifelong Learning enrolls thousands of students from across the
+                  globe in short courses, certificate programs, executive education, and graduate-level
+                  qualifications — from diplomas to doctoral degrees. Whether refining a professional
+                  skill or pursuing a long-deferred intellectual passion, lifelong learners find a
+                  home within the Artemis network.
+                </p>
+                <button
+                  onClick={() => goToPage('education')}
+                  className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
+                >
+                  <span>Explore Programs</span>
+                  <svg
+                    className="group-hover:translate-x-2 transition-transform"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+              <div className="md:col-span-5 space-y-6">
+                {/* Stats with left border accent */}
+                {[
+                  { value: '10,000+', label: 'Lifelong learners enrolled annually' },
+                  { value: '200+', label: 'Short courses and certificate programs' },
+                  { value: '45+', label: 'Countries represented in each cohort' },
+                  { value: '7', label: 'Schools contributing curricula' },
+                ].map((stat, i) => (
+                  <div key={i} className="border-l-2 border-[#8A0000] pl-6">
+                    <div className="text-[28px] font-black text-[#141414] leading-none mb-1 tabular-nums">
+                      {stat.value}
+                    </div>
+                    <div className="text-[13px] text-gray-500 leading-snug">{stat.label}</div>
                   </div>
-                  <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1590012314607-cda9d9b6a2a1?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale brightness-90" alt="GLAM Collections" />
-                  </div>
-               </div>
-            </div>
-
-            <div className="mt-16 pt-16 border-t border-gray-100">
-               <h3 className="text-2xl font-bold text-gray-900 mb-6">Oxford University Press</h3>
-               <p className="text-gray-600 text-[15px] leading-relaxed max-w-3xl">Oxford University Press (OUP) is one of the largest university press publishers in the world. It has become familiar to millions through a diverse publishing programme that includes scholarly works in all academic disciplines, bibles, sheet music, school and college textbooks, children&apos;s books, materials for teaching English as a foreign language, dictionaries and academic journals.</p>
-               <p className="text-gray-600 text-[15px] leading-relaxed mt-4 max-w-3xl">OUP is a department of the University, and shares the mission to further excellence in research, scholarship and education by publishing worldwide. It currently publishes thousands of new titles a year across the globe.</p>
-            </div>
-
-            <div className="mt-16 pt-16 border-t border-gray-100 pb-20">
-               <h3 className="text-2xl font-bold text-gray-900 mb-6">Oxford Lifelong Learning</h3>
-               <p className="text-gray-600 text-[15px] leading-relaxed max-w-3xl">Oxford Lifelong Learning is one of the largest providers of continuing adult education for lifelong learning in the UK.</p>
-               <p className="text-gray-600 text-[15px] leading-relaxed mt-4 max-w-3xl">It enrols more than 15,000 students from all over the world on hundreds of part-time programmes each year, including undergraduate and postgraduate qualifications, from certificates and diplomas to masters&apos; and doctoral degrees, online courses, short courses, day schools, lectures and weekend events, continuing professional development courses, and summer programmes.</p>
+                ))}
+              </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       <SubPageFooter goToPage={goToPage} />
     </div>
