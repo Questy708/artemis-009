@@ -1,100 +1,17 @@
 ---
 Task ID: 1
 Agent: Main Agent
-Task: Import and enhance Artemis UNi site with cover images, highlighted descriptions, and detailed 4-Year Journey pages
+Task: Rebuild Colleges page and SchoolDetail page with Artemis design language
 
 Work Log:
-- Cloned repository https://github.com/Questy708/Artemis-site from GitHub
-- Explored project structure: React + Vite + TypeScript + Tailwind CSS
-- Created /src/data/schools.ts with cover images and highlighted descriptions for all 7 schools and 60+ programs
-- Created /src/pages/FourYearJourney.tsx with detailed pages for each year including overview, key courses, milestones, skills, and opportunities
-- Enhanced /src/pages/SchoolDetail.tsx with hero cover images, highlighted descriptions, and program cards with cover images
-- Enhanced /src/pages/Colleges.tsx with grid layout and cover images for each school
-- Enhanced /src/pages/ProgramDetail.tsx with cover image hero and highlighted description banner
-- Enhanced /src/pages/UndergraduateStudy.tsx with cover images on 4-Year Journey cards and link to detailed page
-- Updated /src/pages/App.tsx with new FourYearJourney route
-- Successfully built the project with Vite (no errors)
+- Read all existing project files to understand routing, data structures, and design patterns
+- Identified that Colleges.tsx and SchoolDetail.tsx were the most outdated pages, lacking the Artemis design language
+- Rebuilt Colleges.tsx with: full hero section, sticky sub-header with nav anchors, section dividers, scroll-triggered animations, school cards with images/stats/highlights/tags, card-and-image parallax section, explore links with chevrons, crimson CTA bar
+- Rebuilt SchoolDetail.tsx with: breadcrumb sub-header, hero with school image, about section with dean quote and stats grid, highlights cards on gray-50 background, programs of study grid with hover effects, research focus areas grid, card-and-image parallax, crimson CTA bar with dual buttons, comprehensive school data (long descriptions, dean quotes, research areas, highlights, stats) for all 7 schools
+- Fixed string escaping issues (apostrophes in single-quoted strings, mismatched quote types)
+- Verified dev server starts and returns HTTP 200
 
 Stage Summary:
-- All programs across all 7 schools now have cover images and highlighted descriptions
-- The 4-Year Journey has a full dedicated page with rich detail for each year
-- The Colleges page now shows school cards with cover images instead of plain lists
-- ProgramDetail pages show cover image heroes with tagline and highlighted description
-- Build succeeds and site runs correctly
----
-Task ID: 1
-Agent: Main
-Task: Sweep through all subpages to match the new Research page design quality
-
-Work Log:
-- Read all 6 existing subpages (Home, Education, Innovation, Admissions, CampusLife, About)
-- Analyzed the Artemis design language established in the Research page rewrite
-- Launched 6 parallel subagents to rewrite all pages simultaneously
-- Each subagent was given strict Artemis design language rules to follow
-- Verified all pages compile with zero TypeScript errors
-- Confirmed dev server is still running and serving correctly
-
-Stage Summary:
-- All 6 pages rewritten to match Research page design quality
-- Unified Artemis design language across entire site: crimson #8A0000 accent, grayscale hover images, section dividers, red line accents, numbered labels, underline CTAs, scroll animations, card-and-image parallax sections, stats rows with left borders
-- No ASU branding remnants (no gold, no ASU patterns)
-- Home page: Enhanced hero to full-bleed with gradient overlay, added grayscale hover on article images, added card-and-image parallax before map, elevated stats section
-- Education page: Full rewrite with hero, program grid, global learning parallax, stats, academic calendar crimson bar
-- Innovation page: Full rewrite with hero, gallery carousel, 3 venture hub expand cards, stats, tech transfer parallax, resource links, CTA bar
-- Admissions page: Full rewrite with hero, 3-path cards, stats, financial aid parallax, application CTA, info link grid
-- CampusLife page: Full rewrite with hero, 4 commons cards, traditions parallax, stats, student life links, visit CTA
-- About page: Full rewrite with hero, story section with stats, page links grid, 4 teaser cards, people parallax, CTA bar
----
-Task ID: 2
-Agent: Main
-Task: Fix footer collage — remove gaps and add auto-rotating images
-
-Work Log:
-- Read current SubPageFooter.tsx — had gap-2 between images, debug labels (a, b, c...), static images
-- Referenced Research.tsx "Our Approach" gallery for auto-cycling pattern (setInterval + useState)
-- Rewrote SubPageFooter with:
-  - Removed all gaps between images (gapless grid)
-  - Removed debug letter labels
-  - Added 3 image sets (A, B, C) with 9 images each for rotation
-  - Implemented staggered auto-rotation: 2-3 cells cycle every 4 seconds with 200ms stagger
-  - Crossfade transition: opacity-0 → swap image → opacity-100 (500ms duration)
-  - Crimson fallback background (#6B0000) behind images during transition
-  - Added subtle section label "Campus Life at Artemis" above mosaic
-  - Cleaned up footer link hover states with crimson accent
-
-Stage Summary:
-- Footer collage is now gapless/seamless with no visible spaces between images
-- Images auto-rotate in a living mosaic pattern (2-3 cells change every 4 seconds)
-- Smooth crossfade transitions between image sets
-- Removed all debug labels and cleaned up footer styling
----
-Task ID: 3
-Agent: Main
-Task: Add events calendar to homepage + rebuild all sub-subpages with full Artemis content
-
-Work Log:
-- Added Upcoming Events Calendar section to Homepage between numbered items and crimson subscription bar
-  - 5 Artemis-themed events (Open Day, Symposium, Hackathon, Exhibition, Commencement)
-  - Date block with weekday/day/month, event tag, title, description, chevron arrow
-  - Section divider, red line accent, "Full Events Calendar" CTA
-- Rebuilt GenericAboutSubpage.tsx from placeholder to full smart template
-  - 5 original pages (access, world, visit, jobs, contact) with rich content
-  - Added 7 new page data entries (governance, policies, strategic, improvement, equality, sustainability, gazette, catalog)
-  - Extended content switch to route new ids to appropriate content components
-- Rebuilt GenericUniversitySubpage.tsx from placeholder to full smart template
-  - 4 pages: Facts & Figures (8 stats, demographics, financials), Glossary (16 Artemis terms), Our Estate (6 hub cards, digital estate), Brand (color palette, typography, guidelines)
-- Rebuilt TheUniversity.tsx — replaced all Oxford content with Artemis lore
-  - Micro-Colleges section, Role of Colleges/Network, 7 Schools, University Press, Lifelong Learning
-- Rebuilt HowWeAreRun.tsx — replaced Oxford references with Artemis governance
-  - Governance model, 7 schools, University Press, Lifelong Learning, teaser cards
-- Rebuilt OurPeople.tsx from minimal to full page
-  - Leadership profiles (4 leaders), Faculty Spotlight parallax, Stats, Working at Artemis CTA
-- Added 9 new routes to ArtemisApp.tsx for sub-subpages (governance-finance, policies, strategic-plan, improvement, equality, sustainability, gazette, nodes, visiting)
-- Verified dev server compiles and serves correctly
-
-Stage Summary:
-- Homepage now has events calendar with 5 upcoming events
-- All sub-subpages rebuilt with full Artemis content (no more "under construction" placeholders)
-- TheUniversity, HowWeAreRun, OurPeople all fully rewritten with Artemis lore
-- 9 new routes registered for previously dead links
-- No Oxford/ASU content remaining anywhere in the site
+- Colleges page fully rebuilt with Artemis design language (hero, section dividers, scroll animations, school grid cards, parallax, CTA)
+- SchoolDetail page fully rebuilt with rich data for all 7 schools (descriptions, dean quotes, stats, highlights, research areas, programs)
+- Dev server confirmed working at localhost:3000
