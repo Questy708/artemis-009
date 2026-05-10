@@ -28,6 +28,7 @@ import ProgramsOfStudy from '@/components/artemis/ProgramsOfStudy';
 import ProgramDetail from '@/components/artemis/ProgramDetail';
 import Apply from '@/components/artemis/Apply';
 import SchoolDetail from '@/components/artemis/SchoolDetail';
+import AdmissionsSubpage from '@/components/artemis/AdmissionsSubpage';
 
 export default function ArtemisApp() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -62,6 +63,20 @@ export default function ArtemisApp() {
         return <SchoolDetail goToPage={goToPage} schoolName={currentProgram} />;
       case 'apply':
         return <Apply goToPage={goToPage} />;
+
+      // Admissions & Aid Subpages
+      case 'tuition-expenses':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="tuition-expenses" />;
+      case 'international-students':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="international-students" />;
+      case 'transfer-students':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="transfer-students" />;
+      case 'application-deadlines':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="application-deadlines" />;
+      case 'visit-campus':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="visit-campus" />;
+      case 'graduate-coming-soon':
+        return <AdmissionsSubpage goToPage={goToPage} pageId="graduate-coming-soon" />;
       case 'innovation':
         return <Innovation goToPage={goToPage} />;
       case 'admissions':
