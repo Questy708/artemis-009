@@ -44,3 +44,26 @@ Stage Summary:
 - Admissions page: Full rewrite with hero, 3-path cards, stats, financial aid parallax, application CTA, info link grid
 - CampusLife page: Full rewrite with hero, 4 commons cards, traditions parallax, stats, student life links, visit CTA
 - About page: Full rewrite with hero, story section with stats, page links grid, 4 teaser cards, people parallax, CTA bar
+---
+Task ID: 2
+Agent: Main
+Task: Fix footer collage — remove gaps and add auto-rotating images
+
+Work Log:
+- Read current SubPageFooter.tsx — had gap-2 between images, debug labels (a, b, c...), static images
+- Referenced Research.tsx "Our Approach" gallery for auto-cycling pattern (setInterval + useState)
+- Rewrote SubPageFooter with:
+  - Removed all gaps between images (gapless grid)
+  - Removed debug letter labels
+  - Added 3 image sets (A, B, C) with 9 images each for rotation
+  - Implemented staggered auto-rotation: 2-3 cells cycle every 4 seconds with 200ms stagger
+  - Crossfade transition: opacity-0 → swap image → opacity-100 (500ms duration)
+  - Crimson fallback background (#6B0000) behind images during transition
+  - Added subtle section label "Campus Life at Artemis" above mosaic
+  - Cleaned up footer link hover states with crimson accent
+
+Stage Summary:
+- Footer collage is now gapless/seamless with no visible spaces between images
+- Images auto-rotate in a living mosaic pattern (2-3 cells change every 4 seconds)
+- Smooth crossfade transitions between image sets
+- Removed all debug labels and cleaned up footer styling
