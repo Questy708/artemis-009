@@ -19,11 +19,12 @@ const pathCards = [
   },
   {
     title: 'Graduate',
-    desc: 'Advanced research and professional study across multi-disciplinary hubs — for scholars ready to push past the edge of known knowledge.',
+    desc: 'Advanced research and professional programmes are under development. Graduate study at Artemis will push past the edge of known knowledge — stay tuned.',
     image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
     tag: '02 — GRADUATE',
-    cta: 'Explore Hubs',
-    page: 'research',
+    cta: 'Coming Soon',
+    page: 'graduate-coming-soon',
+    comingSoon: true,
   },
   {
     title: 'Financial Aid',
@@ -31,7 +32,7 @@ const pathCards = [
     image: 'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&q=80&w=800',
     tag: '03 — FINANCIAL AID',
     cta: 'Calculate Aid',
-    page: 'contact-us',
+    page: 'tuition-expenses',
   },
 ];
 
@@ -42,13 +43,52 @@ const admissionsStats = [
   { value: '20', label: 'Micro-College options', detail: 'Interdisciplinary academic communities' },
 ];
 
+/* ─── Application Cycles (Minerva-inspired) ─── */
+const applicationCycles = [
+  {
+    name: 'Early Action',
+    deadline: '1 November 2026',
+    aidDeadline: '8 November 2026',
+    decisionBy: '19 December 2026',
+    description: 'Apply early to maximise your financial aid prospects and receive your decision before the end of the calendar year. Early Action is non-binding — you are free to consider other offers.',
+    highlight: true,
+    tag: 'RECOMMENDED',
+  },
+  {
+    name: 'Regular Decision I',
+    deadline: '13 January 2027',
+    aidDeadline: '20 January 2027',
+    decisionBy: '5 March 2027',
+    description: 'The first regular cycle offers a balanced timeline for applicants who need additional time to prepare their portfolio while still receiving a decision well in advance of enrolment deadlines.',
+    highlight: false,
+    tag: null,
+  },
+  {
+    name: 'Regular Decision II',
+    deadline: '24 February 2027',
+    aidDeadline: '3 March 2027',
+    decisionBy: '10 April 2027',
+    description: 'A second regular cycle for those who need more time to finalise their application materials. Financial aid is still available, though funds are more limited at this stage.',
+    highlight: false,
+    tag: null,
+  },
+  {
+    name: 'Extended Decision',
+    deadline: '7 April 2027',
+    aidDeadline: 'Not available',
+    decisionBy: 'Rolling',
+    description: 'The final cycle for late applicants. Please note that financial aid is not available in the Extended Decision cycle. Applicants who require aid should apply in an earlier cycle.',
+    highlight: false,
+    tag: 'NO AID',
+  },
+];
+
 const infoLinks = [
-  { label: 'Tuition and Expenses', page: 'apply' },
-  { label: 'Veterans Benefits', page: 'apply' },
-  { label: 'International Students', page: 'apply' },
-  { label: 'Transfer Students', page: 'apply' },
-  { label: 'Application Deadlines', page: 'apply' },
-  { label: 'Visit Campus', page: 'campus' },
+  { label: 'Tuition and Expenses', page: 'tuition-expenses' },
+  { label: 'International Students', page: 'international-students' },
+  { label: 'Transfer Students', page: 'transfer-students' },
+  { label: 'Application Deadlines', page: 'application-deadlines' },
+  { label: 'Visit Campus', page: 'visit-campus', comingSoon: true },
 ];
 
 /* ─── Hook: animate on scroll ─── */
@@ -69,6 +109,7 @@ function useInView(threshold = 0.15) {
 export default function Admissions({ goToPage }: AdmissionsProps) {
   const pathsAnim = useInView();
   const statsAnim = useInView();
+  const cyclesAnim = useInView();
   const aidAnim = useInView();
   const applyAnim = useInView();
   const infoAnim = useInView();
@@ -82,6 +123,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
         </h2>
         <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
           <a href="#paths" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Paths</a>
+          <a href="#cycles" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Cycles</a>
           <a href="#aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Aid</a>
           <a href="#apply" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Apply</a>
           <a href="#info" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Info</a>
@@ -126,22 +168,33 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pathCards.map((card, i) => (
               <div key={i} className="group cursor-pointer">
-                <div className="aspect-[3/2] bg-gray-100 overflow-hidden mb-6">
+                <div className="aspect-[3/2] bg-gray-100 overflow-hidden mb-6 relative">
                   <img
                     src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                   />
+                  {card.comingSoon && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                      <span className="text-white text-[14px] font-bold uppercase tracking-[0.3em] border-2 border-white px-6 py-2">Coming Soon</span>
+                    </div>
+                  )}
                 </div>
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">{card.tag}</div>
                 <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">{card.title}</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-4">{card.desc}</p>
                 <button
                   onClick={() => goToPage(card.page)}
-                  className="flex items-center space-x-3 text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors group/btn"
+                  className={`flex items-center space-x-3 text-[11px] font-bold uppercase tracking-widest border-b-2 pb-1 transition-colors group/btn ${
+                    card.comingSoon 
+                      ? 'border-gray-400 text-gray-400 cursor-default' 
+                      : 'border-[#8A0000] text-[#8A0000] hover:text-black hover:border-black'
+                  }`}
                 >
                   <span>{card.cta}</span>
-                  <svg className="group-hover/btn:translate-x-2 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  {!card.comingSoon && (
+                    <svg className="group-hover/btn:translate-x-2 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  )}
                 </button>
               </div>
             ))}
@@ -164,7 +217,6 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             Admissions by<br />the numbers
           </h2>
 
-          {/* Stats row with left borders */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {admissionsStats.map((stat, i) => (
               <div key={i} className="relative pl-6 border-l-2 border-[#8A0000]">
@@ -177,8 +229,88 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
         </div>
       </section>
 
-      {/* ── 4. FINANCIAL AID — card-and-image parallax ── */}
-      <section id="aid" className="scroll-mt-24 py-20 bg-gray-50">
+      {/* ── 4. APPLICATION CYCLES (Minerva-style) ── */}
+      <section id="cycles" className="scroll-mt-24 py-20 bg-gray-50">
+        <div
+          ref={cyclesAnim.ref}
+          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Application Cycles</span>
+          </div>
+
+          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+            Choose your cycle
+          </h2>
+          <p className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-12">
+            Artemis offers four admissions cycles per academic year. You may apply in only one cycle per year. We strongly recommend applying in Early Action to maximise your financial aid prospects, as funds become more limited in later cycles. There is no application fee for any cycle.
+          </p>
+
+          {/* Cycle cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {applicationCycles.map((cycle, i) => (
+              <div 
+                key={i} 
+                className={`bg-white p-8 border ${cycle.highlight ? 'border-[#8A0000]' : 'border-gray-100'} relative`}
+              >
+                {cycle.tag && (
+                  <div className={`absolute top-0 right-0 px-3 py-1 text-[9px] font-bold uppercase tracking-widest ${
+                    cycle.tag === 'RECOMMENDED' ? 'bg-[#8A0000] text-white' : 'bg-gray-200 text-gray-600'
+                  }`}>
+                    {cycle.tag}
+                  </div>
+                )}
+                <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-2 uppercase">
+                  {String(i + 1).padStart(2, '0')} — {cycle.name.toUpperCase()}
+                </div>
+                <h3 className="text-[20px] font-bold text-[#141414] mb-4 leading-tight">{cycle.name}</h3>
+                <div className="space-y-3 mb-5">
+                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <span className="text-[12px] font-bold uppercase tracking-widest text-gray-500">Application Deadline</span>
+                    <span className="text-[14px] font-bold text-[#141414]">{cycle.deadline}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <span className="text-[12px] font-bold uppercase tracking-widest text-gray-500">Aid Deadline</span>
+                    <span className={`text-[14px] font-bold ${cycle.aidDeadline === 'Not available' ? 'text-gray-400' : 'text-[#141414]'}`}>{cycle.aidDeadline}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <span className="text-[12px] font-bold uppercase tracking-widest text-gray-500">Decision By</span>
+                    <span className="text-[14px] font-bold text-[#141414]">{cycle.decisionBy}</span>
+                  </div>
+                </div>
+                <p className="text-[14px] text-gray-600 leading-relaxed">{cycle.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Key notes */}
+          <div className="bg-white border border-gray-100 p-8">
+            <h4 className="text-[14px] font-bold text-[#141414] mb-4 uppercase tracking-wide">Important notes</h4>
+            <ul className="space-y-3 text-[14px] text-gray-600 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
+                <span>Financial aid applications are due one week after the admissions cycle deadline — no exceptions or extensions are granted.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
+                <span>Applicants denied in one cycle may not reapply in a subsequent cycle within the same academic year.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
+                <span>There is no application fee for any admissions cycle at Artemis.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
+                <span>Artemis is need-aware: financial need is considered when making final admissions recommendations. Applying early maximises your aid prospects.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. FINANCIAL AID ── */}
+      <section id="aid" className="scroll-mt-24 py-20">
         <div
           ref={aidAnim.ref}
           className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${aidAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -193,15 +325,15 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
               <div className="bg-white max-w-sm p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Our Commitment</div>
-                <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">Need-blind admissions</h3>
+                <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">Need-aware admissions</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
-                  Artemis is proudly need-blind in its admissions process and meets 100% of demonstrated financial need for every admitted student. We believe that your potential — not your background — should determine your future.
+                  Artemis meets 100% of demonstrated financial need for every admitted student through a combination of need-based scholarships, work-study, and low-interest loans. Aid is funded entirely through private philanthropy — not government programmes — ensuring equitable access regardless of nationality.
                 </p>
                 <button
-                  onClick={() => goToPage('contact-us')}
+                  onClick={() => goToPage('tuition-expenses')}
                   className="flex items-center space-x-3 text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors group"
                 >
-                  <span>Calculate Your Aid</span>
+                  <span>Tuition & Expenses</span>
                   <svg className="group-hover:translate-x-2 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
               </div>
@@ -210,7 +342,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
         </div>
       </section>
 
-      {/* ── 5. START YOUR APPLICATION ── */}
+      {/* ── 6. START YOUR APPLICATION ── */}
       <section id="apply" className="scroll-mt-24 bg-[#8A0000] py-20">
         <div
           ref={applyAnim.ref}
@@ -221,7 +353,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
               Ready to join the vanguard?
             </h2>
             <p className="text-[16px] text-white/70 max-w-lg leading-relaxed mb-10">
-              Applications for the Class of 2030 are now open. Start your digital portfolio today and take the first step toward an education without boundaries.
+              Applications for the Class of 2031 are now open. Start your digital portfolio today and take the first step toward an education without boundaries. No application fee.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -231,17 +363,17 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
                 Start Application
               </button>
               <button
-                onClick={() => goToPage('contact-us')}
+                onClick={() => goToPage('application-deadlines')}
                 className="px-10 py-3 border-2 border-white text-white font-bold uppercase text-[12px] tracking-widest hover:bg-white hover:text-[#8A0000] transition-colors"
               >
-                Request Info
+                View Deadlines
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 6. MORE INFORMATION — link grid ── */}
+      {/* ── 7. MORE INFORMATION — link grid ── */}
       <section id="info" className="scroll-mt-24 bg-gray-50 py-20">
         <div
           ref={infoAnim.ref}
@@ -263,8 +395,13 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
                 onClick={() => goToPage(link.page)}
                 className="group flex justify-between items-center py-4 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
               >
-                <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
-                  {link.label}
+                <span className="flex items-center gap-3">
+                  <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+                    {link.label}
+                  </span>
+                  {link.comingSoon && (
+                    <span className="text-[9px] font-bold uppercase tracking-widest bg-gray-200 text-gray-500 px-2 py-0.5">Coming Soon</span>
+                  )}
                 </span>
                 <svg className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </button>
