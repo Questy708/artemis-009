@@ -27,7 +27,7 @@ const galleryImages = [
   {
     src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
     alt: 'Venture demonstration',
-    caption: 'Student entrepreneurs pitch at the Forge Demo Day, where Artemis spin-offs have collectively raised over $200M in venture funding since the program\'s inception.',
+    caption: 'Student entrepreneurs pitch at the Forge Demo Day, where Artemis spin-offs have collectively raised founding ventures through the Forge incubator since the program\'s inception.',
   },
   {
     src: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
@@ -48,7 +48,7 @@ const joinLinks = [
 const featuredProjects = [
   {
     title: 'The Synthetic Humanity Project',
-    desc: 'A multi-year, cross-college initiative exploring the ethical and biological integration of AI into human cognition. Over 80 faculty from four centers contribute to a research agenda that will define what it means to think alongside machines.',
+    desc: 'A multi-year, cross-college initiative exploring the ethical and biological integration of AI into human cognition. Over 12 faculty from across the centers contribute to a research agenda that will define what it means to think alongside machines.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1400',
     tag: '01 — SYNTHETIC INTELLIGENCE',
   },
@@ -67,17 +67,17 @@ const featuredProjects = [
 ];
 
 const researchStats = [
-  { value: '$847M', label: 'Research expenditure', detail: 'Annual spend across all centers' },
+  { value: '$12M', label: 'Research expenditure', detail: 'Annual spend across all centers' },
   { value: '20', label: 'Micro-Colleges', detail: 'Active research nodes worldwide' },
   { value: '#1', label: 'Transdisciplinary output', detail: 'Cross-field publications globally' },
-  { value: '120+', label: 'Spin-offs launched', detail: 'In the past five years alone' },
+  { value: '0', label: 'Spin-offs launched', detail: 'In development from foundational research' },
 ];
 
 const highlightCards = [
   {
     tag: '01 — INFRASTRUCTURE',
     title: 'Space to innovate',
-    desc: 'Over 400,000 sq ft of dedicated research space across three continents — from wet labs to quantum computing cleanrooms — designed to let ideas breathe and grow without constraint. Every Artemis researcher, regardless of rank or department, has access.',
+    desc: 'Over 25,000 sq ft of dedicated research space across three continents — from wet labs to quantum computing cleanrooms — designed to let ideas breathe and grow without constraint. Every Artemis researcher, regardless of rank or department, has access.',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
   },
   {
@@ -89,7 +89,7 @@ const highlightCards = [
   {
     tag: '03 — VENTURE',
     title: 'Empowering entrepreneurs',
-    desc: 'With 120+ spin-offs launched in the past five years, Artemis translates discovery into impact faster than any peer institution. The Forge incubator and Nexus digital ecosystem connect developers, designers, and domain experts to build what comes next.',
+    desc: 'With ventures in incubation, building toward impact, Artemis translates discovery into impact faster than any peer institution. The Forge incubator and Nexus digital ecosystem connect developers, designers, and domain experts to build what comes next.',
     image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
   },
 ];

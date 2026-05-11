@@ -34,7 +34,7 @@ const teasers = [
   },
   {
     title: 'Facts and Figures',
-    desc: 'There are more than 26,000 scholars at Artemis, including 12,470 undergraduates and 13,920 postgraduates linked through our network.',
+    desc: 'There are more than 350 founding scholars at Artemis, building the inaugural cohort of a new kind of university.',
     img: 'https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=800',
     link: 'facts',
   },
@@ -47,8 +47,8 @@ const teasers = [
 ];
 
 const keyStats = [
-  { value: '26,000+', label: 'Scholars', detail: 'Undergraduate and postgraduate students across the global network' },
-  { value: '20', label: 'Micro-Colleges', detail: 'Active academic hubs spanning six continents' },
+  { value: '350+', label: 'Scholars', detail: 'Undergraduate and postgraduate students across the global network' },
+  { value: '5', label: 'Micro-Colleges', detail: 'Founding micro-colleges across four continents' },
   { value: '2024', label: 'Founding Year', detail: 'A new chapter in decentralized global education' },
 ];
 

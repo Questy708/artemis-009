@@ -45,7 +45,7 @@ const pageData: Record<string, {
     heroLabel: 'Equity & Inclusion',
     stats: [
       { value: '100%', label: 'Need Met', detail: 'Full financial need met for every admitted student across the Artemis network' },
-      { value: '140+', label: 'Countries', detail: 'Scholars represented from over 140 nations, creating a truly global community' },
+      { value: '28+', label: 'Countries', detail: 'Scholars represented from over 28 nations, creating a truly global community' },
       { value: '45+', label: 'Languages Supported', detail: 'Multilingual support services and adaptive learning resources' },
       { value: '24/7', label: 'Accessibility Support', detail: 'Round-the-clock assistive technology and accommodation services' },
     ],
@@ -64,7 +64,7 @@ const pageData: Record<string, {
       { value: '6', label: 'Continents', detail: 'Active academic presence spanning six continents' },
       { value: '20', label: 'Nodes', detail: 'Micro-Colleges and specialized research hubs worldwide' },
       { value: '80+', label: 'Partner Institutions', detail: 'Collaborative agreements with leading universities and research centers' },
-      { value: '140+', label: 'Countries Represented', detail: 'Scholars from every inhabited continent and cultural tradition' },
+      { value: '28+', label: 'Countries Represented', detail: 'Scholars from every inhabited continent and cultural tradition' },
     ],
     links: [
       { title: 'International partnerships', page: 'research' },
@@ -93,7 +93,7 @@ const pageData: Record<string, {
     heroImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Build the Future',
     stats: [
-      { value: '3,500+', label: 'Staff', detail: 'Faculty, researchers, and professional staff across all nodes' },
+      { value: '120+', label: 'Staff', detail: 'Faculty, researchers, and professional staff across all nodes' },
       { value: '20', label: 'Global Locations', detail: 'Career opportunities spanning our worldwide network' },
       { value: '85%', label: 'Staff Satisfaction', detail: 'Consistently high marks in our annual workplace survey' },
       { value: 'Competitive', label: 'Benefits', detail: 'Comprehensive packages including relocation and research support' },
@@ -124,7 +124,7 @@ const pageData: Record<string, {
     heroImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Governance & Finance',
     stats: [
-      { value: '£312M', label: 'Annual Revenue', detail: 'From tuition, research grants, endowment returns, and partnerships' },
+      { value: '£18M', label: 'Annual Revenue', detail: 'From tuition, research grants, endowment returns, and partnerships' },
       { value: '60%', label: 'Lower Overhead', detail: 'Decentralized model reduces operational drag by nearly 60%' },
       { value: '90%', label: 'Capital to Academics', detail: 'Of capital directed to academic and research programmes' },
     ],
@@ -156,7 +156,7 @@ const pageData: Record<string, {
     stats: [
       { value: '5', label: 'Strategic Pillars', detail: 'Access, Excellence, Impact, Resilience, Innovation' },
       { value: '40', label: 'Target Nodes', detail: 'Expanding from 20 to 40 micro-colleges by 2030' },
-      { value: '£1B', label: 'Revenue Target', detail: 'Projected annual revenue by end of strategic period' },
+      { value: '£80M', label: 'Revenue Target', detail: 'Projected annual revenue by end of strategic period' },
     ],
     links: [
       { title: 'Download strategic plan', page: 'about' },
@@ -183,7 +183,7 @@ const pageData: Record<string, {
     heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Equality & Diversity',
     stats: [
-      { value: '140+', label: 'Countries', detail: 'Scholars from every inhabited continent and cultural tradition' },
+      { value: '28+', label: 'Countries', detail: 'Scholars from every inhabited continent and cultural tradition' },
       { value: '50/50', label: 'Gender Balance', detail: 'Committed to gender parity in faculty and leadership' },
       { value: '100%', label: 'Inclusive Access', detail: 'Need-blind admissions with full financial need met' },
     ],
@@ -225,7 +225,7 @@ const pageData: Record<string, {
     heroImage: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Academic Catalog',
     stats: [
-      { value: '120+', label: 'Programs', detail: 'Spanning the liberal arts, sciences, and engineering' },
+      { value: '61', label: 'Programs', detail: 'Spanning the liberal arts, sciences, and engineering' },
       { value: '7', label: 'Schools', detail: 'Each with distinct expertise and identity' },
       { value: 'ECTS', label: 'Credits', detail: 'Globally transferable qualifications' },
     ],

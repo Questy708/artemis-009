@@ -15,7 +15,7 @@ const schools = [
     fullDesc: 'Encompassing physics, chemistry, biology, mathematics, and environmental science, the School of Natural Sciences drives fundamental research into the laws governing the universe — from quantum mechanics to ecosystem dynamics. Students develop rigorous analytical frameworks and hands-on laboratory experience that prepare them for careers in research, medicine, and technology.',
     image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
     tag: '01 — NATURAL SCIENCES',
-    stats: { faculty: '180+', programs: '10', research: '$120M' },
+    stats: { faculty: '12', programs: '10', research: '$2M' },
     highlights: ['Quantum Computing Lab', 'Biodiversity Mapping Initiative', 'Planetary Science Observatory'],
   },
   {
@@ -24,7 +24,7 @@ const schools = [
     fullDesc: 'Spanning computer science, electrical engineering, mechanical engineering, and materials science, this school pushes the frontier of what can be built — from sustainable infrastructure to artificial intelligence systems. The curriculum blends theoretical foundations with the practical imperative to solve real-world problems, and every student completes a capstone build project before graduation.',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
     tag: '02 — ENGINEERING & TECHNOLOGY',
-    stats: { faculty: '220+', programs: '11', research: '$185M' },
+    stats: { faculty: '15', programs: '11', research: '$3M' },
     highlights: ['Autonomous Systems Programme', 'Sustainable Materials Hub', 'Forge Prototyping Lab'],
   },
   {
@@ -33,7 +33,7 @@ const schools = [
     fullDesc: 'Covering literature, philosophy, history, linguistics, and the fine arts, the School of Arts & Humanities preserves and advances the traditions of critical inquiry, creative expression, and cultural understanding that form the intellectual bedrock of any great university. Scholars here engage with the deepest questions of human existence while producing work that resonates far beyond the academy.',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800',
     tag: '03 — ARTS & HUMANITIES',
-    stats: { faculty: '160+', programs: '14', research: '$48M' },
+    stats: { faculty: '10', programs: '14', research: '$1M' },
     highlights: ['Comparative Civilization Centre', 'Digital Humanities Studio', 'Creative Writing Fellowship'],
   },
   {
@@ -42,7 +42,7 @@ const schools = [
     fullDesc: 'Bringing together economics, political science, sociology, anthropology, and psychology, the School of Social Sciences examines the structures, behaviors, and institutions that shape human societies — producing research that informs public policy, governance, and social innovation. Scholars here work at the intersection of theory and practice, often embedded in real communities grappling with real challenges.',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800',
     tag: '04 — SOCIAL SCIENCES',
-    stats: { faculty: '140+', programs: '6', research: '$62M' },
+    stats: { faculty: '9', programs: '6', research: '$1M' },
     highlights: ['Urban Futures Initiative', 'Governance Innovation Lab', 'Global Inequality Research Cluster'],
   },
   {
@@ -51,7 +51,7 @@ const schools = [
     fullDesc: 'Integrating biomedical science, clinical practice, public health, and bioethics, this school trains the next generation of physicians, researchers, and health-system leaders. From molecular biology to population-wide health interventions, scholars advance discoveries that improve lives across the globe — always guided by a deep commitment to ethical practice and equitable access.',
     image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800',
     tag: '05 — HEALTH & MEDICINE',
-    stats: { faculty: '190+', programs: '8', research: '$145M' },
+    stats: { faculty: '11', programs: '8', research: '$2M' },
     highlights: ['Precision Medicine Programme', 'Global Health Equity Centre', 'Bio-Regenerative Tissue Lab'],
   },
   {
@@ -60,7 +60,7 @@ const schools = [
     fullDesc: 'Focusing on pedagogy, cognitive science, educational leadership, and human development across the lifespan, the school studies how people learn and grow — preparing educators and policymakers to build more effective, equitable learning systems worldwide. Artemis itself serves as a living laboratory for educational innovation, making this school uniquely positioned to test and refine new models in real time.',
     image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
     tag: '06 — EDUCATION & HUMAN DEVELOPMENT',
-    stats: { faculty: '95+', programs: '6', research: '$35M' },
+    stats: { faculty: '7', programs: '6', research: '$0.5M' },
     highlights: ['Meta-Learning Research Unit', 'Cognitive Development Lab', 'Global Teacher Leadership Programme'],
   },
   {
@@ -69,16 +69,16 @@ const schools = [
     fullDesc: 'Encompassing finance, strategy, entrepreneurship, and organizational leadership, the School of Business cultivates principled, innovative leaders who can navigate complexity and drive value creation in an era of rapid technological and social change. The curriculum is anchored in ethical reasoning and global perspective, ensuring that Artemis business graduates lead with both competence and conscience.',
     image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
     tag: '07 — BUSINESS',
-    stats: { faculty: '110+', programs: '6', research: '$55M' },
+    stats: { faculty: '8', programs: '6', research: '$1M' },
     highlights: ['Venture Studio Incubator', 'Sustainable Finance Initiative', 'Global Supply Chain Observatory'],
   },
 ];
 
 const collegesStats = [
   { value: '7', label: 'Academic Schools', detail: 'Spanning every major discipline' },
-  { value: '1,095+', label: 'Faculty', detail: 'Distinguished scholars & researchers' },
+  { value: '72', label: 'Faculty', detail: 'Distinguished scholars & researchers' },
   { value: '61', label: 'Programs of Study', detail: 'Undergraduate & graduate pathways' },
-  { value: '$650M+', label: 'Research Expenditure', detail: 'Annual investment across all schools' },
+  { value: '$10.5M', label: 'Research Expenditure', detail: 'Annual investment across all schools' },
 ];
 
 const exploreLinks = [

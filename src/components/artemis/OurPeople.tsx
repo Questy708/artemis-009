@@ -40,9 +40,9 @@ const leadershipRoles = [
 ];
 
 const peopleStats = [
-  { value: '3,500+', label: 'Staff', detail: 'Across all global nodes' },
-  { value: '1,200+', label: 'Faculty', detail: 'Distinguished scholars & researchers' },
-  { value: '140+', label: 'Countries', detail: 'Represented in our community' },
+  { value: '120+', label: 'Staff', detail: 'Across all global nodes' },
+  { value: '72', label: 'Faculty', detail: 'Distinguished scholars & researchers' },
+  { value: '28+', label: 'Countries', detail: 'Represented in our community' },
   { value: '85%', label: 'Satisfaction', detail: 'Annual employee survey' },
 ];
 

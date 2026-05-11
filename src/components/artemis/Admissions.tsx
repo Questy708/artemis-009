@@ -39,7 +39,7 @@ const pathCards = [
 const admissionsStats = [
   { value: '6%', label: 'Acceptance rate', detail: 'One of the most selective universities in the world' },
   { value: '100%', label: 'Need met', detail: 'Demonstrated financial need fully covered' },
-  { value: '140+', label: 'Countries represented', detail: 'A truly global student body' },
+  { value: '28+', label: 'Countries represented', detail: 'A truly global student body' },
   { value: '20', label: 'Micro-College options', detail: 'Interdisciplinary academic communities' },
 ];
 

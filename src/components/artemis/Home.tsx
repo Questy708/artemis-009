@@ -274,7 +274,7 @@ export default function Home({ goToPage }: HomeProps) {
                     The Artemis Collegium Network spans six continents, synchronizing faculty, students, and research across physical and virtual domains — a single accredited institution with the reach of a constellation.
                   </p>
                   <button
-                    onClick={() => goToPage('about')}
+                    onClick={() => goToPage('collegium-alliance')}
                     className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
                   >
                     Explore the Network →
@@ -335,7 +335,7 @@ export default function Home({ goToPage }: HomeProps) {
 
               <div className="pt-8">
                 <button
-                  onClick={() => goToPage('about')}
+                  onClick={() => goToPage('collegium-alliance')}
                   className="flex items-center space-x-6 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[14px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
                 >
                   <span>Build with the Alliance</span>

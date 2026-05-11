@@ -12,7 +12,7 @@ const galleryImages = [
   {
     src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
     alt: 'Venture demonstration',
-    caption: 'Student entrepreneurs pitch at the Forge Demo Day, where Artemis spin-offs have collectively raised over $200M in venture funding since the program\'s inception.',
+    caption: 'Student entrepreneurs pitch at the Forge Demo Day, raising through the Forge Demo Day since the program\'s founding.',
   },
   {
     src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
@@ -22,7 +22,7 @@ const galleryImages = [
   {
     src: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
     alt: 'Digital ecosystem',
-    caption: 'The Nexus connects over 2,000 developers, designers, and domain experts across Artemis campuses, fostering cross-disciplinary software solutions that bridge research and real-world deployment.',
+    caption: 'The Nexus connects over 50 developers, designers, and domain experts across Artemis campuses, fostering cross-disciplinary software solutions that bridge research and real-world deployment.',
   },
   {
     src: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
@@ -34,28 +34,28 @@ const galleryImages = [
 const ventureHubs = [
   {
     title: 'Artemis Forge',
-    desc: 'A physical and digital space for rapid prototyping and hardware innovation. Equipped with state-of-the-art labs, CNC machining, additive manufacturing, and expert technicians — the Forge transforms concepts into working prototypes in days, not months. Over 60 hardware spin-offs have emerged from its workshops.',
+    desc: 'A physical and digital space for rapid prototyping and hardware innovation. Equipped with state-of-the-art labs, CNC machining, additive manufacturing, and expert technicians — the Forge transforms concepts into working prototypes in days, not months, spinning up hardware prototypes for future ventures.',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400',
     tag: '01 — FORGE',
   },
   {
     title: 'The Nexus',
-    desc: 'Our digital ecosystem connecting developers, designers, and domain experts to build the next generation of software solutions. The Nexus provides cloud infrastructure, AI tooling, design systems, and a curated mentorship network that has launched 45+ software ventures valued at over $1B collectively.',
+    desc: 'Our digital ecosystem connecting developers, designers, and domain experts to build the next generation of software solutions. The Nexus provides cloud infrastructure, AI tooling, design systems, and a curated mentorship network — software ventures in development, targeting launch within the first three years.',
     image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1400',
     tag: '02 — NEXUS',
   },
   {
     title: 'SkyBridge',
-    desc: 'Artemis\'s technology transfer engine — bridging academic discovery and industry application through licensing, spin-off formation, and corporate partnerships. SkyBridge manages a portfolio of 800+ active patents and has facilitated $200M+ in venture funding for Artemis-affiliated startups.',
+    desc: 'Artemis\'s technology transfer engine — bridging academic discovery and industry application through licensing, spin-off formation, and corporate partnerships. SkyBridge is building a portfolio of intellectual property and facilitating pathways from lab to market.',
     image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1400',
     tag: '03 — SKYBRIDGE',
   },
 ];
 
 const innovationStats = [
-  { value: '120+', label: 'Spin-offs', detail: 'Launched in the past five years' },
-  { value: '$200M+', label: 'Venture funding', detail: 'Raised by Artemis startups' },
-  { value: '40+', label: 'Industry partners', detail: 'Across technology and science' },
+  { value: '0', label: 'Spin-offs', detail: 'In development from foundational research' },
+  { value: '$0', label: 'Venture funding', detail: 'First ventures in incubation' },
+  { value: '8+', label: 'Industry partners', detail: 'Founding industry partnerships' },
   { value: '3', label: 'Continents', detail: 'Global innovation footprint' },
 ];
 
@@ -265,7 +265,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
                 Innovation at<br />scale
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed max-w-xl">
-                With 120+ spin-offs launched, $200M+ in venture funding secured, and partnerships spanning 40+ industry leaders across three continents, Artemis translates discovery into impact faster than any peer institution.
+                With ventures in incubation, foundational industry partnerships spanning 8+ organizations across three continents, Artemis translates discovery into impact faster than any peer institution.
               </p>
             </div>
             {/* Sidebar — 4 cols */}
@@ -322,7 +322,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Tech Transfer</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">From lab to market</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
-                  SkyBridge, Artemis&apos;s technology transfer engine, bridges academic discovery and industry application through licensing, spin-off formation, and corporate partnerships — managing a portfolio of 800+ active patents and facilitating $200M+ in venture funding.
+                  SkyBridge, Artemis&apos;s technology transfer engine, bridges academic discovery and industry application through licensing, spin-off formation, and corporate partnerships — building a portfolio of intellectual property and facilitating pathways from lab to market.
                 </p>
                 <button
                   onClick={() => goToPage('research')}

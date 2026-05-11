@@ -19,6 +19,7 @@ import OurHistory from '@/components/artemis/OurHistory';
 import FundraisingCampaign from '@/components/artemis/FundraisingCampaign';
 import GenericAboutSubpage from '@/components/artemis/GenericAboutSubpage';
 import GenericUniversitySubpage from '@/components/artemis/GenericUniversitySubpage';
+import CollegiumAlliance from '@/components/artemis/CollegiumAlliance';
 
 import UndergraduateStudy from '@/components/artemis/UndergraduateStudy';
 import UndergraduateCurriculum from '@/components/artemis/UndergraduateCurriculum';
@@ -91,6 +92,8 @@ export default function ArtemisApp() {
         return <CampusLife goToPage={goToPage} />;
       case 'colleges':
         return <Colleges goToPage={goToPage} />;
+      case 'collegium-alliance':
+        return <CollegiumAlliance goToPage={goToPage} />;
       case 'about':
         return <About goToPage={goToPage} />;
       case 'the-university':

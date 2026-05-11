@@ -465,7 +465,7 @@ export default function TheUniversity({ goToPage }: Props) {
                 {[
                   { value: '10,000+', label: 'Lifelong learners enrolled annually' },
                   { value: '200+', label: 'Short courses and certificate programs' },
-                  { value: '45+', label: 'Countries represented in each cohort' },
+                  { value: '25+', label: 'Countries represented in each cohort' },
                   { value: '7', label: 'Schools contributing curricula' },
                 ].map((stat, i) => (
                   <div key={i} className="border-l-2 border-[#8A0000] pl-6">

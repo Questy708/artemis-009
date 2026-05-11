@@ -109,14 +109,14 @@ function RevealSection({ children, className = '' }: { children: React.ReactNode
    ═══════════════════════════════════════════════════════ */
 function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
   const mainStats = [
-    { number: '26,000+', label: 'Scholars', detail: 'Across all programmes and micro-colleges' },
+    { number: '350+', label: 'Scholars', detail: 'Across all programmes and micro-colleges' },
     { number: '20', label: 'Micro-Colleges', detail: 'Autonomous learning communities worldwide' },
     { number: '6', label: 'Continents', detail: 'Physical presence spanning the globe' },
-    { number: '$847M', label: 'Research Expenditure', detail: 'Annual investment in discovery' },
-    { number: '120+', label: 'Spin-Offs', detail: 'Ventures launched from Artemis research' },
-    { number: '3,500+', label: 'Staff', detail: 'Faculty, researchers, and professionals' },
-    { number: '140+', label: 'Countries', detail: 'Represented in our scholar body' },
-    { number: '100+', label: 'Departments', detail: 'Spanning every discipline' },
+    { number: '$12M', label: 'Research Expenditure', detail: 'Annual investment in discovery' },
+    { number: '0', label: 'Spin-Offs', detail: 'Building from foundational research' },
+    { number: '120+', label: 'Staff', detail: 'Faculty, researchers, and professionals' },
+    { number: '28+', label: 'Countries', detail: 'Represented in our scholar body' },
+    { number: '15', label: 'Departments', detail: 'Spanning every discipline' },
   ];
 
   const demographics = [
@@ -128,11 +128,9 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
   ];
 
   const researchGrowth = [
-    { year: '2020', value: '$412M' },
-    { year: '2021', value: '$498M' },
-    { year: '2022', value: '$580M' },
-    { year: '2023', value: '$710M' },
-    { year: '2024', value: '$847M' },
+    { year: '2026', value: '$12M' },
+    { year: '2028', value: '$35M' },
+    { year: '2030', value: '$80M' },
   ];
 
   return (
@@ -176,7 +174,7 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
             <div className="lg:col-span-4">
               <h2 className="text-[28px] font-bold text-[#141414] tracking-tight mb-4">A Global Scholar Body</h2>
               <p className="text-[14px] text-gray-500 leading-relaxed">
-                Artemis scholars represent 140+ nationalities, creating one of the most diverse learning communities in higher education. Our decentralized model ensures representation from every corner of the world.
+                Artemis scholars represent 28+ nationalities, creating one of the most diverse learning communities in higher education. Our decentralized model ensures representation from every corner of the world.
               </p>
             </div>
             <div className="lg:col-span-8 space-y-5">
@@ -218,13 +216,13 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
             <div className="lg:col-span-4">
               <h2 className="text-[28px] font-bold text-[#141414] tracking-tight mb-4">Trajectory of Discovery</h2>
               <p className="text-[14px] text-gray-500 leading-relaxed">
-                Research expenditure has more than doubled in five years, fueled by cross-continental collaboration and the Artemis Commons digital infrastructure.
+                Research expenditure has projected to grow sevenfold by 2030, fueled by cross-continental collaboration and the Artemis Commons digital infrastructure.
               </p>
             </div>
             <div className="lg:col-span-8">
               <div className="flex items-end gap-4 h-48">
                 {researchGrowth.map((r, i) => {
-                  const heights = [45, 55, 65, 82, 100];
+                  const heights = [15, 45, 100];
                   return (
                     <div key={r.year} className="flex-1 flex flex-col items-center gap-2">
                       <span className="text-[13px] font-bold text-[#141414]">{r.value}</span>
@@ -246,9 +244,9 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
 
         <RevealSection>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <StatBlock number="$2.1B" label="Total Revenue" detail="From tuition, grants, partnerships, and endowment returns" />
-            <StatBlock number="$1.8B" label="Total Expenditure" detail="Across research, teaching, infrastructure, and digital estate" />
-            <StatBlock number="$4.3B" label="Endowment" detail="Managed across the Artemis Collegium Network trust structure" />
+            <StatBlock number="$18M" label="Total Revenue" detail="From tuition, grants, partnerships, and endowment returns" />
+            <StatBlock number="$15M" label="Total Expenditure" detail="Across research, teaching, infrastructure, and digital estate" />
+            <StatBlock number="$48M" label="Endowment" detail="Founding gifts and early endowment" />
           </div>
         </RevealSection>
 
@@ -408,7 +406,7 @@ function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
         <SectionDivider label="At a Glance" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
-          <StatBlock number="400K+" label="Sq Ft Research Space" detail="Across all physical hubs" />
+          <StatBlock number="25,000" label="Sq Ft Research Space" detail="Across all physical hubs" />
           <StatBlock number="12" label="Residential Commons" detail="Purpose-built living-learning communities" />
           <StatBlock number="8" label="Global Hubs" detail="Physical presence on every major continent" />
           <StatBlock number="99.9%" label="Uptime" detail="Digital platform availability, 2024" />
@@ -477,7 +475,7 @@ function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
                 <div className="text-[12px] text-gray-500 mt-1">All campus operations</div>
               </div>
               <div className="border-l-2 border-[#8A0000] pl-4">
-                <div className="text-[24px] font-extrabold text-[#141414]">3,200</div>
+                <div className="text-[24px] font-extrabold text-[#141414]">1,200</div>
                 <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#8A0000]">Trees Planted</div>
                 <div className="text-[12px] text-gray-500 mt-1">Via the Artemis Reforestation Trust</div>
               </div>

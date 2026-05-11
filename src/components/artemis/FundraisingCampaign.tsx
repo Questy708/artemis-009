@@ -107,10 +107,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             <h2 className="text-[32px] font-extrabold text-gray-900 tracking-tight mb-16 uppercase">Tangible Outcomes</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
-                    { stat: "10,000+", desc: "Digital degrees conferred across our network." },
-                    { stat: "45", desc: "Autonomous research nodes established globally." },
-                    { stat: "200", desc: "Full scholarships awarded to diverse global scholars." },
-                    { stat: "£312M", desc: "Capital invested in our digital and physical estate." },
+                    { stat: "0", desc: "Inaugural cohort enrolling 2026." },
+                    { stat: "5", desc: "Founding research nodes being established globally." },
+                    { stat: "25", desc: "Founding scholarships for the inaugural cohort." },
+                    { stat: "£28M", desc: "Capital invested in our digital and physical estate." },
                 ].map((item, idx) => (
                     <div key={idx} className="p-8 border border-gray-100 rounded-2xl bg-white shadow-sm">
                         <div className="text-4xl font-extrabold text-[#8A0000] mb-3">{item.stat}</div>
@@ -176,22 +176,22 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                     <h3 className="text-4xl font-bold mb-6 flex items-center gap-4"><Award className="text-[#8A0000]" /> Recognized Impact</h3>
                     <p className="text-gray-300 leading-relaxed mb-8">Artemis honors the visionaries who make this institution possible. Our donor societies are designed to reflect the breadth and depth of your commitment.</p>
                     <ul className="space-y-4 text-gray-300">
-                        <li><strong>Chancellor&apos;s Circle:</strong> £10M+ – Founding benefactors shaping university strategy.</li>
-                        <li><strong>Founder&apos;s Society:</strong> £1M – £10M – Direct support for chairs and building projects.</li>
-                        <li><strong>Guild Partners:</strong> £100k – £1M – Sustained impact across research and scholarships.</li>
+                        <li><strong>Chancellor&apos;s Circle:</strong> £2M+ – Founding benefactors shaping university strategy.</li>
+                        <li><strong>Founder&apos;s Society:</strong> £200K – £2M – Direct support for chairs and building projects.</li>
+                        <li><strong>Guild Partners:</strong> £25K – £200K – Sustained impact across research and scholarships.</li>
                     </ul>
                 </div>
                 {/* Progress Tracker */}
                 <div className="lg:w-1/2 w-full p-10 bg-gray-800 rounded-xl">
-                    <h4 className="text-xl font-bold mb-6">Founding Goal: £500M</h4>
+                    <h4 className="text-xl font-bold mb-6">Founding Goal: £80M</h4>
                     <div className="flex items-baseline gap-2 mb-8">
-                        <span className="text-5xl font-extrabold text-[#8A0000]">£312M</span>
+                        <span className="text-5xl font-extrabold text-[#8A0000]">£28M</span>
                         <span className="text-xl text-gray-400">raised to date</span>
                     </div>
                     <div className="h-4 bg-gray-700 rounded-full w-full overflow-hidden">
                         <motion.div 
                             initial={{ width: 0 }}
-                            animate={{ width: "62.4%" }}
+                            animate={{ width: "35%" }}
                             transition={{ duration: 2, ease: "easeOut" }}
                             className="h-full bg-[#8A0000]"
                         />

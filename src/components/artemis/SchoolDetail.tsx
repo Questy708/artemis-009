@@ -28,7 +28,7 @@ const schoolData: Record<string, {
     deanQuote: "The universe does not reveal its secrets to the comfortable — only to those willing to look harder, think deeper, and accept that yesterday's certainties may be tomorrow's footnotes.",
     deanName: 'Prof. Elena Marchetti',
     deanTitle: 'Dean, School of Natural Sciences',
-    stats: { faculty: '180+', programs: '10', research: '$120M', students: '2,400' },
+    stats: { faculty: '12', programs: '10', research: '$2M', students: '45' },
     highlights: [
       { title: 'Quantum Computing Lab', desc: "Home to one of the world's most advanced quantum annealing platforms, the QCL explores computational paradigms that could transform cryptography, drug discovery, and materials science within a decade." },
       { title: 'Biodiversity Mapping Initiative', desc: "A cross-continental effort to catalogue and model the planet's remaining biodiversity hotspots, combining satellite imagery, field genetics, and predictive AI to inform conservation policy in real time." },
@@ -48,7 +48,7 @@ const schoolData: Record<string, {
     deanQuote: "Engineering is not applied science — it is the discipline of making possible what was previously impossible. Our students learn to build the future, not just describe it.",
     deanName: 'Prof. Julian Sarkis',
     deanTitle: 'Dean, School of Engineering & Technology',
-    stats: { faculty: '220+', programs: '11', research: '$185M', students: '3,100' },
+    stats: { faculty: '15', programs: '11', research: '$3M', students: '55' },
     highlights: [
       { title: 'Autonomous Systems Programme', desc: 'Developing self-governing robotic platforms for extreme environments — from deep-sea exploration to extraterrestrial construction — in partnership with the School of Natural Sciences.' },
       { title: 'Sustainable Materials Hub', desc: 'A dedicated facility for designing, testing, and scaling next-generation materials: bio-concrete, self-healing polymers, and carbon-negative composites for a decarbonizing world.' },
@@ -69,7 +69,7 @@ const schoolData: Record<string, {
     deanQuote: "A university without a vibrant humanities school is a factory, not an institution. We preserve the questions that make the answers worth seeking.",
     deanName: 'Prof. Amara Osei',
     deanTitle: 'Dean, School of Arts & Humanities',
-    stats: { faculty: '160+', programs: '14', research: '$48M', students: '1,800' },
+    stats: { faculty: '10', programs: '14', research: '$1M', students: '30' },
     highlights: [
       { title: 'Comparative Civilization Centre', desc: "A research unit dedicated to tracing the threads that connect — and separate — the world's great intellectual traditions, from classical antiquity to contemporary global culture." },
       { title: 'Digital Humanities Studio', desc: 'Where computational tools meet cultural artifacts. Scholars use AI-assisted text analysis, 3D reconstruction, and network mapping to unlock insights hidden in vast archives.' },
@@ -90,7 +90,7 @@ const schoolData: Record<string, {
     deanQuote: "The social sciences do not merely describe the world as it is — they illuminate the world as it could be, and provide the evidence base for building it.",
     deanName: 'Prof. Kwame Asante',
     deanTitle: 'Dean, School of Social Sciences',
-    stats: { faculty: '140+', programs: '6', research: '$62M', students: '1,600' },
+    stats: { faculty: '9', programs: '6', research: '$1M', students: '25' },
     highlights: [
       { title: 'Urban Futures Initiative', desc: 'A cross-continental research programme studying how cities can adapt to climate migration, technological disruption, and demographic change — with pilot interventions in Valletta, Kigali, and Vancouver.' },
       { title: 'Governance Innovation Lab', desc: 'Designing and testing new models of democratic participation, digital governance, and institutional accountability for the twenty-first century.' },
@@ -109,7 +109,7 @@ const schoolData: Record<string, {
     deanQuote: "Medicine without ethics is technology. Ethics without medicine is philosophy. We train practitioners who embody both — and who understand that health equity is the measure of a civilization.",
     deanName: 'Dr. Fatima Al-Rashid',
     deanTitle: 'Dean, School of Health & Medicine',
-    stats: { faculty: '190+', programs: '8', research: '$145M', students: '2,200' },
+    stats: { faculty: '11', programs: '8', research: '$2M', students: '35' },
     highlights: [
       { title: 'Precision Medicine Programme', desc: 'Leveraging genomic data, AI diagnostics, and personalized treatment protocols to move beyond one-size-fits-all medicine toward care tailored to the individual.' },
       { title: 'Global Health Equity Centre', desc: 'Researching and advocating for health systems that serve all populations — regardless of geography, income, or social status — with active programmes in twelve countries.' },
@@ -129,7 +129,7 @@ const schoolData: Record<string, {
     deanQuote: "If we cannot reinvent how we learn, we cannot reinvent anything else. Education is the meta-discipline — the one that shapes the capacity for all the others.",
     deanName: 'Prof. Lena Johansson',
     deanTitle: 'Dean, School of Education & Human Development',
-    stats: { faculty: '95+', programs: '6', research: '$35M', students: '900' },
+    stats: { faculty: '7', programs: '6', research: '$0.5M', students: '18' },
     highlights: [
       { title: 'Meta-Learning Research Unit', desc: 'Studying the science of learning how to learn — developing frameworks, tools, and assessments that help students become more effective, autonomous learners.' },
       { title: 'Cognitive Development Lab', desc: 'Investigating how the brain constructs knowledge across the lifespan, with implications for early childhood intervention, adult reskilling, and neurodivergent education.' },
@@ -148,7 +148,7 @@ const schoolData: Record<string, {
     deanQuote: "The purpose of business education is not to produce maximizers of profit, but cultivators of value — leaders who understand that markets serve society, not the reverse.",
     deanName: 'Prof. David Chen',
     deanTitle: 'Dean, School of Business',
-    stats: { faculty: '110+', programs: '6', research: '$55M', students: '1,400' },
+    stats: { faculty: '8', programs: '6', research: '$1M', students: '22' },
     highlights: [
       { title: 'Venture Studio Incubator', desc: 'A structured programme that transforms student and faculty ideas into investable ventures, providing seed funding, mentorship, and access to the Artemis network of 40+ industry partners.' },
       { title: 'Sustainable Finance Initiative', desc: 'Researching and promoting financial instruments, ESG frameworks, and investment strategies that align capital allocation with long-term ecological and social outcomes.' },
