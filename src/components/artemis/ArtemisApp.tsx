@@ -29,6 +29,8 @@ import ProgramDetail from '@/components/artemis/ProgramDetail';
 import Apply from '@/components/artemis/Apply';
 import SchoolDetail from '@/components/artemis/SchoolDetail';
 import AdmissionsSubpage from '@/components/artemis/AdmissionsSubpage';
+import CentersOfInquiry from '@/components/artemis/CentersOfInquiry';
+import CenterDetail from '@/components/artemis/CenterDetail';
 
 export default function ArtemisApp() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -49,6 +51,10 @@ export default function ArtemisApp() {
         return <Home goToPage={goToPage} />;
       case 'research':
         return <Research goToPage={goToPage} />;
+      case 'centers-of-inquiry':
+        return <CentersOfInquiry goToPage={goToPage} />;
+      case 'center-detail':
+        return <CenterDetail goToPage={goToPage} centerSlug={currentProgram} />;
       case 'education':
         return <Education goToPage={goToPage} />;
       case 'undergraduate':

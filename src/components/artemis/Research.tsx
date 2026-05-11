@@ -99,21 +99,25 @@ const centers = [
     name: 'Center for Synthetic Intelligence',
     desc: 'Advancing the frontiers of machine cognition, autonomous reasoning, and human-AI symbiosis — with deep commitments to safety, transparency, and social benefit.',
     img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600',
+    slug: 'synthetic-intelligence',
   },
   {
     name: 'Center for Bio-Regenerative Arts',
     desc: 'Fusing biology, design, and engineering to create living systems that repair, adapt, and evolve — from tissue scaffolds to self-healing architectures.',
     img: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=600',
+    slug: 'bio-regenerative-arts',
   },
   {
     name: 'Center for Cosmological Humanities',
     desc: 'Bridging astrophysics, philosophy, and narrative to explore humanity\'s place in the cosmos — because the deepest questions deserve more than one discipline.',
     img: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=600',
+    slug: 'cosmological-humanities',
   },
   {
     name: 'Center for Neo-Economics',
     desc: 'Rethinking economic systems for an age of automation and abundance — designing models that are equitable, sustainable, and resilient to systemic shock.',
     img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=600',
+    slug: 'neo-economics',
   },
 ];
 
@@ -514,9 +518,36 @@ export default function Research({ goToPage }: ResearchProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
+          <div className="mb-12">
+            <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Replacing Departments</span>
+            </div>
+            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              Centers of Inquiry
+            </h2>
+            <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-4">
+              Our Centers of Inquiry stand as the epicenters of transformative research. These centers are structured to seamlessly blend curiosity-driven exploration with goal-oriented research, focusing on unraveling significant challenges. Inspired by the pursuit of knowledge as a cohesive whole, these centers are the cornerstone of our academic landscape.
+            </p>
+            <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-8">
+              Each center is a powerhouse of interdisciplinary collaboration, bringing together researchers from diverse disciplines to tackle complex challenges. They replace traditional academic departments, creating an intellectual environment where reality is seen as interconnected and holistic — fostering a philosophical habit of mind that encourages learners to perceive knowledge as unified.
+            </p>
+            <button
+              onClick={() => goToPage('centers-of-inquiry')}
+              className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+            >
+              <span>Explore All Centers</span>
+              <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {centers.map((center, i) => (
-              <div key={i} className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden">
+              <div
+                key={i}
+                onClick={() => goToPage('center-detail', center.slug)}
+                className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden"
+              >
                 <div className="aspect-[16/9] bg-gray-100 overflow-hidden">
                   <img src={center.img} alt={center.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
                 </div>
