@@ -52,7 +52,7 @@ export default function OurHistory({ goToPage }: Props) {
           About
         </button>
         <div className="text-gray-300 mr-4">/</div>
-        <button onClick={() => goToPage('the-university')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4 uppercase">
+        <button onClick={() => goToPage('the-university')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
           The University
         </button>
         <div className="text-gray-300 mr-4">/</div>
@@ -63,7 +63,7 @@ export default function OurHistory({ goToPage }: Props) {
 
       {/* Hero Section */}
       <div className="bg-white pt-16 pb-8">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-16">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
             <div className="max-w-2xl">
               <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-gray-900 uppercase">
@@ -79,7 +79,7 @@ export default function OurHistory({ goToPage }: Props) {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-16 -mt-4 relative z-10 mb-20">
+      <div className="max-w-[1000px] mx-auto px-6 lg:px-16 -mt-4 relative z-10 mb-20">
         <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
           <img 
             src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=1600" 
@@ -90,7 +90,7 @@ export default function OurHistory({ goToPage }: Props) {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-16" ref={containerRef}>
+      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16" ref={containerRef}>
         <div className="relative pt-6 pb-20">
           {/* Animated Background Line */}
           <div className="absolute top-[50px] lg:top-[80px] bottom-0 left-[5px] md:left-[21px] lg:left-[calc(33.333333%+1.5rem)] w-[2px] bg-gray-100 transform -translate-x-1/2 z-0" />

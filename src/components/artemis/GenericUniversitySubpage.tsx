@@ -753,7 +753,7 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
         <div className="text-gray-300 mr-4">/</div>
         <button
           onClick={() => goToPage(parentId)}
-          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4 uppercase"
+          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4"
         >
           {parentTitle}
         </button>

@@ -446,9 +446,8 @@ export default function Education({ goToPage }: EducationProps) {
       </section>
 
       {/* ── 7. ACADEMIC CALENDAR CALLOUT ── */}
-      <section className="w-full">
-        <div className="bg-[#8A0000] py-14 px-6 lg:px-16">
-          <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="w-full bg-[#8A0000] py-14 px-6 lg:px-16">
+        <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="text-[28px] md:text-[32px] font-extrabold text-white leading-tight tracking-tight mb-2">
                 Academic Calendars
@@ -465,7 +464,6 @@ export default function Education({ goToPage }: EducationProps) {
               Browse Calendars
             </button>
           </div>
-        </div>
       </section>
 
       {/* ── 8. FOOTER ── */}

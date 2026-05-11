@@ -28,7 +28,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-16 pt-16">
+      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           
           {/* Main Content Area */}

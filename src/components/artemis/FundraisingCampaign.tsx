@@ -18,7 +18,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           About
         </button>
         <div className="text-gray-300 mr-4">/</div>
-        <button onClick={() => goToPage('how-we-are-run')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4 uppercase">
+        <button onClick={() => goToPage('how-we-are-run')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
           How we are run
         </button>
         <div className="text-gray-300 mr-4">/</div>
@@ -29,7 +29,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
       {/* Hero Section */}
       <div className="bg-[#141414] text-white pt-24 pb-24">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-16">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-[56px] lg:text-[84px] font-extrabold leading-[0.9] tracking-tighter uppercase mb-8">
               Building the <br className="hidden lg:block"/> Future of Knowledge
@@ -49,7 +49,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-16 py-24">
+      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
         
         {/* Case for Support */}
         <section className="mb-24">
