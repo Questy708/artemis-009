@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 
 interface ResearchProps {
-  goToPage: (page: string) => void;
+  goToPage: (page: string, centerSlug?: string) => void;
 }
 
 /* ─── Data ─── */
@@ -96,28 +96,94 @@ const highlightCards = [
 
 const centers = [
   {
-    name: 'Center for Synthetic Intelligence',
-    desc: 'Advancing the frontiers of machine cognition, autonomous reasoning, and human-AI symbiosis — with deep commitments to safety, transparency, and social benefit.',
+    name: 'Frontiers of Artemis Research',
+    desc: 'The coordinating hub that defines and stewards Artemis\'s research identity — setting cross-cutting priorities, seeding bold interdisciplinary inquiries, and ensuring that every center contributes to a coherent, mission-driven knowledge enterprise.',
+    img: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600',
+    slug: 'frontiers-of-artemis-research',
+  },
+  {
+    name: 'Civilization Architecture',
+    desc: 'Designing the governance systems, legal frameworks, and social contracts that underpin resilient, just, and adaptable civilizations — from city-states to planetary polities.',
+    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=600',
+    slug: 'civilization-architecture',
+  },
+  {
+    name: 'Planetary Systems',
+    desc: 'Understanding Earth as an integrated system of atmosphere, hydrosphere, lithosphere, and biosphere — and extending that understanding to other worlds, from Mars to exoplanets.',
+    img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600',
+    slug: 'planetary-systems',
+  },
+  {
+    name: 'Space & Frontier Science',
+    desc: 'Pushing the boundaries of human presence and scientific inquiry beyond Earth — from orbital habitats and lunar bases to deep-space propulsion and the ethics of cosmic expansion.',
+    img: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=600',
+    slug: 'space-frontier-science',
+  },
+  {
+    name: 'Emerging Technologies',
+    desc: 'Tracking, evaluating, and shaping the technologies that will define the next half-century — quantum computing, synthetic biology, neurotechnology, and the convergence of fields that creates entirely new capabilities.',
     img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600',
-    slug: 'synthetic-intelligence',
+    slug: 'emerging-technologies',
   },
   {
-    name: 'Center for Bio-Regenerative Arts',
-    desc: 'Fusing biology, design, and engineering to create living systems that repair, adapt, and evolve — from tissue scaffolds to self-healing architectures.',
+    name: 'Next-Gen Education',
+    desc: 'Reimagining how humans learn, teach, and create knowledge in an era of AI tutors, immersive environments, and lifelong learning continua — because the future of education is not a bigger classroom, it is a fundamentally different one.',
+    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600',
+    slug: 'next-gen-education',
+  },
+  {
+    name: 'Materials, Matter & Manufacturing Futures',
+    desc: 'From metamaterials and programmable matter to additive manufacturing at scale — designing the substances and processes that will build the infrastructure of the future.',
+    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
+    slug: 'materials-matter-manufacturing',
+  },
+  {
+    name: 'Agriculture, Food Systems',
+    desc: 'Securing humanity\'s food future through precision agriculture, cellular agriculture, closed-loop ecosystems, and equitable distribution — from urban vertical farms to planetary-scale food networks.',
+    img: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&q=80&w=600',
+    slug: 'agriculture-food-systems',
+  },
+  {
+    name: 'Robotics, Mechatronics & Physical Autonomy',
+    desc: 'Building machines that move, sense, decide, and collaborate in the physical world — from surgical micro-robots to autonomous construction crews and swarm logistics systems.',
+    img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600',
+    slug: 'robotics-mechatronics-autonomy',
+  },
+  {
+    name: 'Gaming & Worldbuilding',
+    desc: 'Harnessing the power of play, simulation, and narrative worldbuilding as tools for research, education, and civic imagination — because the futures we can imagine are the futures we can build.',
+    img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600',
+    slug: 'gaming-worldbuilding',
+  },
+  {
+    name: 'Energy Systems',
+    desc: 'Engineering the energy infrastructure of a post-carbon civilization — from next-generation fusion and orbital solar to distributed microgrids and the politics of energy sovereignty.',
+    img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=600',
+    slug: 'energy-systems',
+  },
+  {
+    name: 'Health & Bioethics',
+    desc: 'Advancing human health while rigorously examining the moral dimensions of biomedical innovation — because curing disease is not enough; we must ensure that the cures are just, accessible, and humane.',
+    img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=600',
+    slug: 'health-bioethics',
+  },
+  {
+    name: 'Urban Futures',
+    desc: 'Designing cities that are resilient, equitable, and alive — integrating architecture, ecology, computation, and governance to create urban systems that adapt to their inhabitants rather than the reverse.',
+    img: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&q=80&w=600',
+    slug: 'urban-futures',
+  },
+  {
+    name: 'Biotech & Life Sciences',
+    desc: 'From gene editing and synthetic organisms to ecosystem engineering and de-extinction — pushing the boundaries of what life can do, with deep commitment to the ethics of reshaping the living world.',
     img: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=600',
-    slug: 'bio-regenerative-arts',
+    slug: 'biotech-life-sciences',
   },
   {
-    name: 'Center for Cosmological Humanities',
-    desc: 'Bridging astrophysics, philosophy, and narrative to explore humanity\'s place in the cosmos — because the deepest questions deserve more than one discipline.',
-    img: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=600',
-    slug: 'cosmological-humanities',
-  },
-  {
-    name: 'Center for Neo-Economics',
-    desc: 'Rethinking economic systems for an age of automation and abundance — designing models that are equitable, sustainable, and resilient to systemic shock.',
+    name: 'Fintech, DeFi & Economics',
+    desc: 'Rethinking money, markets, and economic governance for a decentralized, automated, and globally interconnected world — designing financial systems that serve people, not the other way around.',
     img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=600',
-    slug: 'neo-economics',
+    slug: 'fintech-defi-economics',
   },
 ];
 
@@ -553,7 +619,7 @@ export default function Research({ goToPage }: ResearchProps) {
                 </div>
                 <div className="p-8">
                   <div className="flex items-center mb-4">
-                    <span className="text-[10px] font-bold text-[#8A0000] mr-4">0{i + 1}</span>
+                    <span className="text-[10px] font-bold text-[#8A0000] mr-4">{String(i + 1).padStart(2, '0')}</span>
                     <h4 className="text-xl font-bold group-hover:text-[#8A0000] transition-colors leading-tight">{center.name}</h4>
                   </div>
                   <p className="text-gray-500 text-sm leading-relaxed mb-4">{center.desc}</p>
