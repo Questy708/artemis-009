@@ -45,20 +45,17 @@ export default function OurHistory({ goToPage }: Props) {
   });
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* Breadcrumb Header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('about')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
-          About
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <button onClick={() => goToPage('the-university')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
-          The University
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <h2 className="text-[14px] font-bold tracking-tight text-black whitespace-nowrap">
-          Our history
+    <div className="flex flex-col bg-white">
+      {/* Sub-header */}
+      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+          Our History
         </h2>
+        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+          <a href="#timeline" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Timeline</a>
+          <a href="#founding" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Founding</a>
+          <a href="#milestones" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Milestones</a>
+        </div>
       </div>
 
       {/* Hero Section */}
@@ -90,7 +87,7 @@ export default function OurHistory({ goToPage }: Props) {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16" ref={containerRef}>
+      <div id="timeline" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16" ref={containerRef}>
         <div className="relative pt-6 pb-20">
           {/* Animated Background Line */}
           <div className="absolute top-[50px] lg:top-[80px] bottom-0 left-[5px] md:left-[21px] lg:left-[calc(33.333333%+1.5rem)] w-[2px] bg-gray-100 transform -translate-x-1/2 z-0" />
@@ -129,6 +126,7 @@ export default function OurHistory({ goToPage }: Props) {
             </TimelineSection>
 
             <TimelineSection period="2020" title="The Genesis Drafts">
+              <div id="founding" />
               <figure className="my-2 sm:w-[45%] float-left mr-8 mb-6">
                  <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80&w=1000" className="w-full object-cover rounded-lg grayscale brightness-95 shadow-sm" alt="Drafting concepts" />
                  <figcaption className="text-[13px] mt-3 px-4 border-l-2 border-[#8A0000] text-gray-500 italic">Early structural outlines for the Artemis network.</figcaption>
@@ -143,6 +141,7 @@ export default function OurHistory({ goToPage }: Props) {
             </TimelineSection>
 
             <TimelineSection period="Today" title="A Global Network" isLast>
+              <div id="milestones" />
               <p>What began as a conceptual draft by Abraham Kyeyune has rapidly evolved into a prestige network. Today, Artemis operates as a federation of colleges, research divisions, and academic societies spread across international boundaries.</p>
               <figure className="my-8">
                  <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-[21/9] object-cover rounded-lg grayscale brightness-95 shadow-sm" alt="Global network" />

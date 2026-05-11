@@ -11,20 +11,17 @@ interface Props {
 
 export default function FundraisingCampaign({ goToPage }: Props) {
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* Breadcrumb Header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('about')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
-          About
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <button onClick={() => goToPage('how-we-are-run')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
-          How we are run
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <h2 className="text-[14px] font-bold tracking-tight text-black whitespace-nowrap">
-          Founding Campaign
+    <div className="flex flex-col bg-white">
+      {/* Sub-header */}
+      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+          Support Artemis
         </h2>
+        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+          <a href="#campaign" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Campaign</a>
+          <a href="#giving" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Giving</a>
+          <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
+        </div>
       </div>
 
       {/* Hero Section */}
@@ -52,7 +49,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
         
         {/* Case for Support */}
-        <section className="mb-24">
+        <section id="campaign" className="mb-24">
             <h2 className="text-[14px] font-bold text-[#8A0000] tracking-widest uppercase mb-4">Our Commitment</h2>
             <h3 className="text-[40px] font-extrabold tracking-tight text-gray-900 mb-8">Why Artemis? Why Now?</h3>
             <div className="prose prose-lg text-gray-600 max-w-3xl leading-relaxed">
@@ -103,7 +100,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </section>
 
         {/* Outcomes */}
-        <section className="mb-24 py-16 border-t border-gray-100">
+        <section id="impact" className="mb-24 py-16 border-t border-gray-100">
             <h2 className="text-[32px] font-extrabold text-gray-900 tracking-tight mb-16 uppercase">Tangible Outcomes</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
@@ -170,7 +167,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </section>
 
         {/* Giving Societies */}
-        <section className="bg-gray-900 rounded-2xl p-16 text-white mb-24">
+        <section id="giving" className="bg-gray-900 rounded-2xl p-16 text-white mb-24">
             <div className="flex flex-col lg:flex-row items-center gap-12">
                 <div className="lg:w-1/2">
                     <h3 className="text-4xl font-bold mb-6 flex items-center gap-4"><Award className="text-[#8A0000]" /> Recognized Impact</h3>

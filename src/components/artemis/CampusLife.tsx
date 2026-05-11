@@ -75,7 +75,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
   const studentLifeAnim = useInView();
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
+    <div className="flex flex-col bg-white">
       {/* ── 1. Sticky Sub-header ── */}
       <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
         <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">

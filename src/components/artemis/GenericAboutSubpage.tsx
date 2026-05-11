@@ -955,16 +955,15 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* Breadcrumb Header */}
+    <div className="flex flex-col bg-white">
+      {/* Sub-header */}
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('about')} className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4">
-          About
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <h2 className="text-[14px] font-bold tracking-tight text-black whitespace-nowrap">
-          {title}
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('about')}>
+          About Artemis
         </h2>
+        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+        </div>
       </div>
 
       {/* Hero Section */}

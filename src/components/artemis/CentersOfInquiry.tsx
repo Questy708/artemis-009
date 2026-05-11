@@ -269,13 +269,17 @@ export default function CentersOfInquiry({ goToPage }: Props) {
   const cyclesAnim = useInView();
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
+    <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('research')} className="text-[12px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#8A0000] transition-colors mr-6">
-          &larr; Research
-        </button>
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] whitespace-nowrap">Centers of Inquiry</h2>
+      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+          Research at Artemis
+        </h2>
+        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+          <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
+          <a href="#projects" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Projects</a>
+          <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
+        </div>
       </div>
 
       {/* Hero */}
@@ -334,7 +338,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* All Centers Grid */}
-      <section className="py-20">
+      <section id="centers" className="py-20">
         <div ref={centersAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -367,7 +371,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Guilds Section */}
-      <section className="bg-gray-50 py-20">
+      <section id="projects" className="bg-gray-50 py-20">
         <div ref={guildAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -425,7 +429,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Cycles of Activity */}
-      <section className="py-20">
+      <section id="impact" className="py-20">
         <div ref={cyclesAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>

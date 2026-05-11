@@ -91,7 +91,7 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
+    <div className="flex flex-col bg-white">
       {/* Catalog Header */}
       <div className="bg-[#8A0000] text-white pt-8 pb-4 px-6 lg:px-16 flex justify-between items-end">
          <h1 className="text-3xl lg:text-4xl font-serif font-bold">Artemis College Programs of Study 2026–2027</h1>

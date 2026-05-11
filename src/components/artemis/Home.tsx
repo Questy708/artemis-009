@@ -42,7 +42,7 @@ export default function Home({ goToPage }: HomeProps) {
   const numberedAnim = useInView(0.1);
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
+    <div className="flex-1 flex flex-col bg-white">
       {/* ── Inline keyframes for scroll-triggered animations ── */}
       <style>{`
         .artemis-out {

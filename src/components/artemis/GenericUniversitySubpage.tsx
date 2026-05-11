@@ -135,27 +135,6 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      {/* Hero */}
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 pb-8">
-        <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-[#141414] uppercase mb-6">
-          Facts &amp; Figures
-        </h1>
-        <p className="text-[18px] font-light text-gray-500 leading-relaxed max-w-2xl mb-12">
-          Artemis by the numbers — a snapshot of the scale, scope, and ambition that defines the University of Artemis as a global knowledge network.
-        </p>
-      </div>
-
-      {/* Hero Image */}
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-16 mb-16">
-        <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1800"
-            className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-            alt="Artemis by the numbers"
-          />
-        </div>
-      </div>
-
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
         {/* Key Statistics */}
         <SectionDivider label="Key Statistics" />
@@ -290,27 +269,6 @@ function ArtemisGlossary() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 pb-8">
-        <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-[#141414] uppercase mb-6">
-          Artemis Glossary
-        </h1>
-        <p className="text-[18px] font-light text-gray-500 leading-relaxed max-w-2xl mb-12">
-          Key terms and definitions that shape the language of the University of Artemis — from institutional structures to philosophical foundations.
-        </p>
-      </div>
-
-      {/* Hero Image */}
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-16 mb-16">
-        <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1800"
-            className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-            alt="Artemis Glossary"
-          />
-        </div>
-      </div>
-
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
         <SectionDivider label="Core Terms" />
 
@@ -380,27 +338,6 @@ function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      {/* Hero */}
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 pb-8">
-        <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-[#141414] uppercase mb-6">
-          Our Estate
-        </h1>
-        <p className="text-[18px] font-light text-gray-500 leading-relaxed max-w-2xl mb-12">
-          A distributed campus spanning six continents — physical hubs for human connection and a digital estate for boundless collaboration.
-        </p>
-      </div>
-
-      {/* Hero Image */}
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-16 mb-16">
-        <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1800"
-            className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-            alt="Artemis Estate"
-          />
-        </div>
-      </div>
-
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
         {/* Estate at a Glance */}
         <SectionDivider label="At a Glance" />
@@ -561,27 +498,6 @@ function Brand({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      {/* Hero */}
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 pb-8">
-        <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-[#141414] uppercase mb-6">
-          Brand
-        </h1>
-        <p className="text-[18px] font-light text-gray-500 leading-relaxed max-w-2xl mb-12">
-          The visual and verbal identity of the University of Artemis — built on clarity, confidence, and the conviction that knowledge should be accessible to all.
-        </p>
-      </div>
-
-      {/* Hero Image */}
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-16 mb-16">
-        <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=1800"
-            className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-            alt="Artemis Brand"
-          />
-        </div>
-      </div>
-
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
         {/* Brand Philosophy */}
         <SectionDivider label="Brand Philosophy" />
@@ -740,26 +656,40 @@ function Brand({ goToPage }: { goToPage: (page: string) => void }) {
    MAIN COMPONENT
    ═══════════════════════════════════════════════════════ */
 export default function GenericUniversitySubpage({ goToPage, title, parentTitle, parentId }: Props) {
+  const heroImages: Record<string, { image: string; label: string }> = {
+    'Facts and figures': { image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1800', label: 'By the Numbers' },
+    'Artemis Glossary': { image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1800', label: 'Definitions' },
+    'Our estate': { image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1800', label: 'Infrastructure' },
+    'Brand': { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=1800', label: 'Visual Identity' },
+  };
+  const heroConfig = heroImages[title];
+
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* Breadcrumb Header */}
+    <div className="flex flex-col bg-white">
+      {/* Sub-header */}
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button
-          onClick={() => goToPage('about')}
-          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4"
-        >
-          About
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <button
-          onClick={() => goToPage(parentId)}
-          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4"
-        >
-          {parentTitle}
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <h2 className="text-[14px] font-bold tracking-tight text-black whitespace-nowrap">{title}</h2>
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('the-university')}>
+          The University
+        </h2>
+        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+        </div>
       </div>
+
+      {/* Hero Image */}
+      {heroConfig && (
+        <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+          <img src={heroConfig.image} className="absolute inset-0 w-full h-full object-cover grayscale" alt={title} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+            <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{heroConfig.label}</span>
+            </div>
+            <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">{title}</h1>
+          </div>
+        </section>
+      )}
 
       {/* Page Content — switched by title */}
       {title === 'Facts and figures' && <FactsAndFigures goToPage={goToPage} />}

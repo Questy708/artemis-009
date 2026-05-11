@@ -118,32 +118,20 @@ export default function Apply({ goToPage }: Props) {
   const selectClass = "w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[#8A0000] transition-colors bg-white text-[14px]";
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
+    <div className="flex flex-col bg-white">
       {/* Sticky sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button onClick={() => goToPage('admissions')} className="text-[12px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#8A0000] transition-colors mr-4">
-          &larr; Back
-        </button>
+      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
         <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Application for Admission
+          Admissions + Aid
         </h2>
-        {/* Step indicator */}
-        <div className="hidden md:flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest">
-          {[1, 2, 3, 4].map(step => (
-            <button
-              key={step}
-              onClick={() => setCurrentStep(step)}
-              className={`px-3 py-1 rounded-sm transition-colors ${
-                currentStep === step ? 'bg-[#8A0000] text-white' : 'text-gray-400 hover:text-[#8A0000]'
-              }`}
-            >
-              {step === 1 ? 'Personal' : step === 2 ? 'Academic' : step === 3 ? 'Portfolio' : 'Aid & Submit'}
-            </button>
-          ))}
+        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+          <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
+          <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
+          <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
         </div>
       </div>
 
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 mb-24">
+      <div id="application" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 mb-24">
         <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-4 uppercase">
           Application for Admission
         </h1>
@@ -174,7 +162,7 @@ export default function Apply({ goToPage }: Props) {
 
             {/* ═══ PART 1: PERSONAL INFORMATION ═══ */}
             {currentStep === 1 && (
-              <div className="space-y-8">
+              <div id="deadlines" className="space-y-8">
                 <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
                   <div className="mb-8 flex items-center space-x-3">
                     <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -507,7 +495,7 @@ export default function Apply({ goToPage }: Props) {
 
             {/* ═══ PART 4: FINANCIAL AID & AGREEMENTS ═══ */}
             {currentStep === 4 && (
-              <div className="space-y-8">
+              <div id="financial-aid" className="space-y-8">
                 <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
                   <div className="mb-8 flex items-center space-x-3">
                     <span className="w-8 h-[1px] bg-[#8A0000]"></span>

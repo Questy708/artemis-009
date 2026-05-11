@@ -79,19 +79,18 @@ export default function TheUniversity({ goToPage }: Props) {
   const lifelongAnim = useInView();
 
   return (
-    <div className="flex-1 flex flex-col bg-white overflow-y-auto">
-      {/* ── Breadcrumb Header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <button
-          onClick={() => goToPage('about')}
-          className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] hover:text-black mr-4"
-        >
-          About
-        </button>
-        <div className="text-gray-300 mr-4">/</div>
-        <h2 className="text-[14px] font-bold tracking-tight text-black whitespace-nowrap">
+    <div className="flex flex-col bg-white">
+      {/* ── Sub-header ── */}
+      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
+        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
           The University
         </h2>
+        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+          <a href="#micro-colleges" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Micro-Colleges</a>
+          <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
+          <a href="#press" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Press</a>
+          <a href="#lifelong-learning" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Lifelong Learning</a>
+        </div>
       </div>
 
       {/* ── Hero Section ── */}
@@ -149,7 +148,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── The Micro-Colleges ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+      <section id="micro-colleges" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
         <div
           ref={microCollegesAnim.ref}
           className={`transition-all duration-700 ${microCollegesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -283,7 +282,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Schools and Research Divisions ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
+      <section id="schools" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
         <div
           ref={schoolsAnim.ref}
           className={`transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -340,7 +339,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis University Press ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+      <section id="press" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
         <div
           ref={pressAnim.ref}
           className={`transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -407,7 +406,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis Lifelong Learning ── */}
-      <section className="bg-gray-50 py-24">
+      <section id="lifelong-learning" className="bg-gray-50 py-24">
         <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
           <div
             ref={lifelongAnim.ref}
