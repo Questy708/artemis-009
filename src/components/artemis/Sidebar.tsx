@@ -9,9 +9,11 @@ interface SidebarProps {
   onClose?: () => void;
   goHome: () => void;
   goToPage: (page: string) => void;
+  /** When true, hide the desktop sidebar column (subpages); mobile drawer still works */
+  hideDesktopSidebar?: boolean;
 }
 
-export default function Sidebar({ isOpen, onClose, goHome, goToPage }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, goHome, goToPage, hideDesktopSidebar }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
 
@@ -114,12 +116,14 @@ export default function Sidebar({ isOpen, onClose, goHome, goToPage }: SidebarPr
 
   return (
     <>
-      {/* Desktop Sidebar */}
-      <aside className="w-[330px] hidden lg:flex flex-col border-r border-gray-100 sticky top-[50px] h-[calc(100vh-50px)] shrink-0 overflow-hidden bg-white">
-        {sidebarContent}
-      </aside>
+      {/* Desktop Sidebar — only on homepage (when desktopOnly is not set) */}
+      {!hideDesktopSidebar && (
+        <aside className="w-[330px] hidden lg:flex flex-col border-r border-gray-100 sticky top-[50px] h-[calc(100vh-50px)] shrink-0 overflow-hidden bg-white">
+          {sidebarContent}
+        </aside>
+      )}
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer — available on all pages */}
       <AnimatePresence>
         {isOpen && (
           <>

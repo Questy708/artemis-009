@@ -154,6 +154,8 @@ export default function ArtemisApp() {
     }
   };
 
+  const isHome = currentPage === 'home';
+
   return (
     <div className="w-full min-h-screen bg-white flex flex-col font-sans text-[#141414]">
       {/* Fixed Header */}
@@ -164,19 +166,35 @@ export default function ArtemisApp() {
       />
       
       <div className="flex flex-1 justify-center relative">
-        <div className="flex w-full max-w-[1440px]">
-          
-          <Sidebar 
-            isOpen={isSidebarOpen}
-            onClose={() => setSidebarOpen(false)}
-            goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
-            goToPage={goToPage}
-          />
-          
-          <main className="flex-1 flex flex-col min-w-0">
-            {renderPage()}
-          </main>
-        </div>
+        {isHome ? (
+          /* Homepage: sidebar + content side-by-side */
+          <div className="flex w-full max-w-[1440px]">
+            <Sidebar 
+              isOpen={isSidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+              goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+              goToPage={goToPage}
+            />
+            <main className="flex-1 flex flex-col min-w-0">
+              {renderPage()}
+            </main>
+          </div>
+        ) : (
+          /* Subpages: full-width content, no sidebar column */
+          <div className="w-full">
+            {/* Mobile drawer still available on subpages */}
+            <Sidebar 
+              isOpen={isSidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+              goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+              goToPage={goToPage}
+              hideDesktopSidebar={true}
+            />
+            <main className="flex flex-col">
+              {renderPage()}
+            </main>
+          </div>
+        )}
       </div>
     </div>
   );
