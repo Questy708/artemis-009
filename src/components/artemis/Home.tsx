@@ -118,7 +118,13 @@ export default function Home({ goToPage }: HomeProps) {
                 <article
                   key={article.id}
                   className="cursor-pointer group"
-                  onClick={() => goToPage('research')}
+                  onClick={() => goToPage(
+                    article.category === 'Education' ? 'education' :
+                    article.category === 'Research' ? 'centers-of-inquiry' :
+                    article.category === 'Innovation' ? 'innovation' :
+                    article.category === 'Philosophy' ? 'about' :
+                    'collegium-alliance'
+                  )}
                 >
                   <div className="w-full mb-6 overflow-hidden bg-gray-100 shadow-sm aspect-[16/10]">
                     <img

@@ -43,12 +43,12 @@ const campusStats = [
 ];
 
 const studentLifeLinks = [
-  { label: 'Housing', page: 'campus' },
+  { label: 'Housing', page: 'visit-us' },
   { label: 'Dining', page: 'campus' },
   { label: 'Athletics', page: 'campus' },
-  { label: 'Wellness', page: 'campus' },
-  { label: 'Arts & Culture', page: 'campus' },
-  { label: 'Student Government', page: 'campus' },
+  { label: 'Wellness', page: 'access-at-artemis' },
+  { label: 'Arts & Culture', page: 'research' },
+  { label: 'Student Government', page: 'how-we-are-run' },
 ];
 
 /* ─── Hook: animate on scroll ─── */

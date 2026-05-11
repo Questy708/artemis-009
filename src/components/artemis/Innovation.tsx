@@ -234,7 +234,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
                       {hub.desc}
                     </p>
                     <button
-                      onClick={(e) => { e.stopPropagation(); goToPage('innovation'); }}
+                      onClick={(e) => { e.stopPropagation(); goToPage('research'); }}
                       className="text-[11px] font-bold uppercase tracking-widest border border-white text-white px-5 py-2 hover:bg-white hover:text-[#8A0000] transition-colors"
                     >
                       Explore Hub →
@@ -357,7 +357,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
                   {col.links.map((link, j) => (
                     <button
                       key={j}
-                      onClick={() => goToPage('innovation')}
+                      onClick={() => goToPage('fundraising')}
                       className="group flex justify-between items-center py-3 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
                     >
                       <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">

@@ -441,7 +441,7 @@ export default function Research({ goToPage }: ResearchProps) {
                       {project.desc}
                     </p>
                     <button
-                      onClick={(e) => { e.stopPropagation(); goToPage('innovation'); }}
+                      onClick={(e) => { e.stopPropagation(); goToPage('centers-of-inquiry'); }}
                       className="text-[11px] font-bold uppercase tracking-widest border border-white text-white px-5 py-2 hover:bg-white hover:text-[#8A0000] transition-colors"
                     >
                       Read More →

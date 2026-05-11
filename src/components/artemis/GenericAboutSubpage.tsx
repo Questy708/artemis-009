@@ -51,10 +51,10 @@ const pageData: Record<string, {
     ],
     links: [
       { title: 'Admissions process', page: 'admissions' },
-      { title: 'Financial aid', page: 'admissions' },
-      { title: 'Disability services', page: 'access-at-artemis' },
-      { title: 'Digital accessibility', page: 'access-at-artemis' },
-      { title: 'Student support', page: 'campus' },
+      { title: 'Financial aid', page: 'tuition-expenses' },
+      { title: 'Disability services', page: 'campus' },
+      { title: 'Digital accessibility', page: 'campus' },
+      { title: 'Student support', page: 'undergraduate' },
     ],
   },
   world: {
@@ -82,11 +82,11 @@ const pageData: Record<string, {
       { value: '10,000+', label: 'Annual Visitors', detail: 'Scholars, families, and curious minds welcomed each year' },
     ],
     links: [
-      { title: 'Book a tour', page: 'visit-us' },
-      { title: 'Open day schedule', page: 'visit-us' },
-      { title: 'Travel & accommodation', page: 'visit-us' },
-      { title: 'Virtual tour', page: 'visit-us' },
-      { title: 'Group visits', page: 'visit-us' },
+      { title: 'Book a tour', page: 'campus' },
+      { title: 'Open day schedule', page: 'admissions' },
+      { title: 'Travel & accommodation', page: 'estate' },
+      { title: 'Virtual tour', page: 'campus' },
+      { title: 'Group visits', page: 'contact-us' },
     ],
   },
   jobs: {
@@ -99,10 +99,10 @@ const pageData: Record<string, {
       { value: 'Competitive', label: 'Benefits', detail: 'Comprehensive packages including relocation and research support' },
     ],
     links: [
-      { title: 'Current openings', page: 'jobs' },
-      { title: 'Faculty careers', page: 'jobs' },
-      { title: 'Research positions', page: 'jobs' },
-      { title: 'Benefits & perks', page: 'jobs' },
+      { title: 'Current openings', page: 'our-people' },
+      { title: 'Faculty careers', page: 'research' },
+      { title: 'Research positions', page: 'research' },
+      { title: 'Benefits & perks', page: 'about' },
     ],
   },
   contact: {
@@ -114,10 +114,10 @@ const pageData: Record<string, {
       { value: 'Global', label: 'Reach', detail: 'Connect with any node across the Artemis network' },
     ],
     links: [
-      { title: 'Request information', page: 'contact-us' },
-      { title: 'Report an issue', page: 'contact-us' },
-      { title: 'Feedback form', page: 'contact-us' },
-      { title: 'Directory', page: 'contact-us' },
+      { title: 'Request information', page: 'admissions' },
+      { title: 'Report an issue', page: 'about' },
+      { title: 'Feedback form', page: 'about' },
+      { title: 'Directory', page: 'our-people' },
     ],
   },
   governance: {

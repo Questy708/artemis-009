@@ -21,42 +21,42 @@ const academicPrograms = [
     description: 'Our advanced degree programs are close-knit communities with access to vast resources, designed for those who seek to push the boundaries of their discipline.',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Graduate Programs',
-    linkTarget: 'education',
+    linkTarget: 'graduate-coming-soon',
   },
   {
     title: 'Departments & Programs',
     description: 'Artemis has well over 100 departments and programs spanning the humanities, sciences, social sciences, and emerging interdisciplinary fields.',
     image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600',
     linkText: 'Browse Departments',
-    linkTarget: 'education',
+    linkTarget: 'programs',
   },
   {
     title: 'Global Education',
     description: 'People come from afar to study here, and our students learn and grow through international travel, study abroad, and cross-cultural research partnerships.',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Global Programs',
-    linkTarget: 'education',
+    linkTarget: 'collegium-alliance',
   },
   {
     title: 'Summer Session',
     description: 'Artemis provides educational opportunities year-round. Our summer offerings allow students to accelerate their studies or explore entirely new fields.',
     image: 'https://images.unsplash.com/photo-1606761568499-6d2451b08c66?auto=format&fit=crop&q=80&w=600',
     linkText: 'View Summer Offerings',
-    linkTarget: 'education',
+    linkTarget: 'undergraduate',
   },
   {
     title: 'Non-Degree Offerings',
     description: 'Explore the diverse programs available for non-matriculating students — from professional certificates to community learning initiatives.',
     image: 'https://images.unsplash.com/photo-1510511459019-54bc7603c4fc?auto=format&fit=crop&q=80&w=600',
     linkText: 'Discover Non-Degree Options',
-    linkTarget: 'education',
+    linkTarget: 'admissions',
   },
   {
     title: 'Online Learning',
     description: 'Step inside a virtual Artemis classroom and learn from some of our most renowned faculty members — accessible from anywhere in the world.',
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600',
     linkText: 'Start Learning Online',
-    linkTarget: 'education',
+    linkTarget: 'programs',
   },
 ];
 
@@ -68,12 +68,12 @@ const educationStats = [
 ];
 
 const curriculumLinks = [
-  { label: 'Course catalog & registration', page: 'education' },
-  { label: 'Interdisciplinary degree programs', page: 'education' },
-  { label: 'Skill-based certifications', page: 'education' },
-  { label: 'Academic advising & support', page: 'education' },
-  { label: 'Honors & distinction pathways', page: 'education' },
-  { label: 'Study abroad opportunities', page: 'education' },
+  { label: 'Course catalog & registration', page: 'programs' },
+  { label: 'Interdisciplinary degree programs', page: 'colleges' },
+  { label: 'Skill-based certifications', page: 'undergraduate_curriculum' },
+  { label: 'Academic advising & support', page: 'undergraduate' },
+  { label: 'Honors & distinction pathways', page: 'undergraduate' },
+  { label: 'Study abroad opportunities', page: 'collegium-alliance' },
 ];
 
 /* ─── Hook: animate on scroll ─── */
@@ -317,7 +317,7 @@ export default function Education({ goToPage }: EducationProps) {
                 knowledgeable, but capable.
               </p>
               <button
-                onClick={() => goToPage('education')}
+                onClick={() => goToPage('programs')}
                 className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
               >
                 <span>View Course Catalog</span>
@@ -404,7 +404,7 @@ export default function Education({ goToPage }: EducationProps) {
                   spanning six continents.
                 </p>
                 <button
-                  onClick={() => goToPage('education')}
+                  onClick={() => goToPage('collegium-alliance')}
                   className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
                 >
                   Explore Global Programs &rarr;
@@ -459,7 +459,7 @@ export default function Education({ goToPage }: EducationProps) {
               </p>
             </div>
             <button
-              onClick={() => goToPage('education')}
+              onClick={() => goToPage('application-deadlines')}
               className="shrink-0 bg-white text-[#8A0000] px-8 py-3.5 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
             >
               Browse Calendars
