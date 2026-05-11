@@ -10,40 +10,33 @@ interface Props {
 /* ─── Data ─── */
 const exploreLinks = [
   { label: 'University Officers', page: 'about' },
-  { label: 'Famous Artemisians', page: 'about' },
-  { label: 'Women making history', page: 'about' },
-  { label: 'Professor of Poetry', page: 'about' },
+  { label: 'Academic Leadership', page: 'about' },
+  { label: 'Research Leadership', page: 'research' },
+  { label: 'View Open Positions', page: 'jobs' },
 ];
 
-const leaders = [
-  {
-    name: 'Abraham Kyeyune',
-    title: 'Chancellor',
-    role: 'Founder',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600',
-    bio: 'Visionary founder of the Artemis network, Kyeyune reshaped the concept of the university for the digital age — returning the institution to its decentralized guild origins.',
-  },
-  {
-    name: 'Dr. Elara Vance',
-    title: 'Provost',
-    role: 'Academic Affairs',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600',
-    bio: 'Architect of Artemis\'s digital humanities framework, Dr. Vance ensures that classical pedagogical models translate flawlessly into the distributed learning environment.',
-  },
-  {
-    name: 'Prof. Julian Sarkis',
-    title: 'Dean',
-    role: 'School of Engineering',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600',
-    bio: 'A systems engineer who developed the federated governance models still used today, allowing individual nodes to operate autonomously while contributing to the Artemis Trust.',
-  },
-  {
-    name: 'Dr. Amara Osei',
-    title: 'Guild Chair',
-    role: 'Research Guild',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600',
-    bio: 'Leading the Research Guild, Dr. Osei coordinates cross-college inquiry and ensures that every Artemisian — regardless of rank or node — has equitable access to resources and opportunity.',
-  },
+/* ─── Role-based leadership data (anonymous — new university) ─── */
+const leadershipRoles = [
+  { title: 'Chancellor', dept: 'Office of the Chancellor', abbr: 'CH', desc: 'Chief ceremonial and strategic head of the university; presides over Convocation and sets the long-term vision for the Artemis mission.' },
+  { title: 'Vice-Chancellor', dept: 'Office of the Chancellor', abbr: 'VC', desc: 'Deputises for the Chancellor and oversees day-to-day institutional strategy, external partnerships, and global node expansion.' },
+  { title: 'Provost & Chief Academic Officer', dept: 'Academic Affairs', abbr: 'PA', desc: 'The senior academic officer responsible for curriculum integrity, faculty appointments, and the academic standards of every Artemis programme worldwide.' },
+  { title: 'Vice-Provost for Education', dept: 'Academic Affairs', abbr: 'VE', desc: 'Leads the design and delivery of the undergraduate and graduate curriculum, including the Infinite Learning Continuum and Adaptive Paced Learning systems.' },
+  { title: 'Vice-Provost for Research', dept: 'Research Enterprise', abbr: 'VR', desc: 'Oversees all Centers of Inquiry, the Guild system, and the Knowledge Core — ensuring that Artemis research is both curiosity-driven and civically impactful.' },
+  { title: 'Vice-Provost for Students', dept: 'Student Affairs', abbr: 'VS', desc: 'Champions the student experience across all nodes — from wellbeing and belonging to co-curricular life and the junior fellows programme.' },
+  { title: 'Chief Operating Officer', dept: 'Operations', abbr: 'CO', desc: 'Manages the operational backbone of a distributed university — technology infrastructure, global facilities, and institutional resilience across six continents.' },
+  { title: 'Chief Financial Officer', dept: 'Finance & Treasury', abbr: 'CF', desc: 'Stewards the Artemis endowment, annual budget, and financial sustainability — ensuring the university remains independent and mission-driven for generations to come.' },
+  { title: 'Dean of Faculty', dept: 'Academic Affairs', abbr: 'DF', desc: 'Responsible for faculty recruitment, development, and evaluation across all colleges and Centers of Inquiry — ensuring excellence and diversity in every appointment.' },
+  { title: 'Dean of Admissions & Aid', dept: 'Enrolment', abbr: 'DA', desc: 'Leads the global admissions operation, ensuring that every applicant is evaluated holistically and that financial barriers never prevent talent from accessing an Artemis education.' },
+  { title: 'Dean of the Graduate School', dept: 'Graduate Studies', abbr: 'DG', desc: 'Oversees all graduate programmes, research degrees, and postdoctoral fellowships — building the next generation of scholars and practitioners.' },
+  { title: 'Director of Global Operations', dept: 'Operations', abbr: 'GO', desc: 'Coordinates the 20 micro-college nodes worldwide — ensuring seamless academic synchronisation, regulatory compliance, and cultural integration across jurisdictions.' },
+  { title: 'Director of Innovation & Partnerships', dept: 'Innovation', abbr: 'IP', desc: 'Bridges Artemis research and the wider world — managing corporate partnerships, technology transfer, spin-off incubation, and the Forge entrepreneurship ecosystem.' },
+  { title: 'Director of Digital Learning', dept: 'Academic Technology', abbr: 'DL', desc: 'Architects the digital learning infrastructure — from AI-augmented tutoring and immersive environments to the synchronous classroom technology that connects every node in real time.' },
+  { title: 'Director of Equity & Inclusion', dept: 'Institutional Culture', abbr: 'EI', desc: 'Ensures that equity, diversity, and inclusion are not aspirational add-ons but structural features embedded in every policy, programme, and appointment at Artemis.' },
+  { title: 'Director of Sustainability', dept: 'Campus & Planet', abbr: 'SU', desc: 'Leads Artemis\'s commitment to carbon-negative operations, sustainable construction across all nodes, and the integration of planetary stewardship into the curriculum.' },
+  { title: 'University Registrar', dept: 'Academic Administration', abbr: 'UR', desc: 'Maintains academic records, degree conferral, credit transfer, and the ECTS-equivalent framework that enables seamless mobility across the Artemis network.' },
+  { title: 'University Librarian & Knowledge Core Director', dept: 'Knowledge Core', abbr: 'KL', desc: 'Stewards the Knowledge Core — Artemis\'s living, open-access repository of all research outputs, curricular materials, and institutional memory across the global network.' },
+  { title: 'Director of Communications', dept: 'Public Affairs', abbr: 'CM', desc: 'Shapes the public narrative of Artemis — managing media relations, brand identity, digital presence, and the stories that convey the university\'s mission to the world.' },
+  { title: 'General Counsel & Secretary', dept: 'Legal & Governance', abbr: 'GC', desc: 'Advises on legal and regulatory matters across all jurisdictions, serves as Secretary to the Board of Trustees, and ensures institutional compliance with international law.' },
 ];
 
 const peopleStats = [
@@ -176,49 +169,43 @@ export default function OurPeople({ goToPage }: Props) {
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              Leadership
+              Leadership & Governance
             </span>
           </div>
 
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Guiding the guild
+            Roles, not resumes
           </h2>
-          <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-16">
-            From the Chancellor who envisioned a borderless university to the Guild Chairs who steward its research mission, Artemis is led by those who believe the future of knowledge is collective.
+          <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-4">
+            As a new university, Artemis is building its leadership team from first principles. The positions below represent the governance architecture we are assembling — each one essential to the mission of re-engineering higher education for a connected age. We do not yet have faces for these roles; we have the conviction that the right people will find them.
+          </p>
+          <p className="text-[14px] text-gray-500 leading-relaxed max-w-2xl mb-12">
+            Positions marked with an open indicator are currently accepting expressions of interest.
           </p>
 
-          {/* Leadership grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {leaders.map((leader, i) => (
+          {/* Role cards — 4 per row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {leadershipRoles.map((role, i) => (
               <div
                 key={i}
-                className="group border border-gray-200 hover:border-[#8A0000] bg-white shadow-sm hover:shadow-lg transition-all cursor-pointer overflow-hidden"
+                className="group border border-gray-200 hover:border-[#8A0000] bg-white p-5 transition-all cursor-default hover:shadow-sm flex flex-col"
               >
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                  />
+                {/* Abbreviation badge */}
+                <div className="w-10 h-10 bg-[#8A0000]/[0.07] border border-[#8A0000]/20 flex items-center justify-center mb-4 group-hover:bg-[#8A0000]/[0.14] transition-colors">
+                  <span className="text-[11px] font-black text-[#8A0000] tracking-wider">{role.abbr}</span>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <h3 className="text-[18px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight">
-                      {leader.name}
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[10px] font-bold text-[#8A0000] uppercase tracking-widest">
-                      {leader.title}
-                    </span>
-                    <span className="text-gray-300">·</span>
-                    <span className="text-[11px] font-medium text-gray-500 uppercase tracking-wide">
-                      {leader.role}
-                    </span>
-                  </div>
-                  <p className="text-[14px] text-gray-600 leading-relaxed">
-                    {leader.bio}
-                  </p>
+                <h3 className="text-[13px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-snug mb-2 min-h-[36px]">
+                  {role.title}
+                </h3>
+                <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                  {role.dept}
+                </div>
+                <p className="text-[12px] text-gray-500 leading-relaxed flex-1">
+                  {role.desc}
+                </p>
+                <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8A0000] animate-pulse"></span>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#8A0000]">Open</span>
                 </div>
               </div>
             ))}
