@@ -76,6 +76,23 @@ const curriculumLinks = [
   { label: 'Study abroad opportunities', page: 'collegium-alliance' },
 ];
 
+const gridLinks = [
+  { label: 'Browse course catalog', page: 'programs' },
+  { label: 'Explore interdisciplinary degrees', page: 'colleges' },
+  { label: 'Skill-based certifications', page: 'undergraduate_curriculum' },
+  { label: 'Academic advising & support', page: 'undergraduate' },
+  { label: 'Honors & distinction pathways', page: 'undergraduate' },
+  { label: 'Study abroad opportunities', page: 'collegium-alliance' },
+];
+
+const sidebarLinks = [
+  { label: 'Undergraduate programs', page: 'undergraduate' },
+  { label: 'Graduate programs', page: 'graduate-coming-soon' },
+  { label: 'Departments & programs', page: 'programs' },
+  { label: 'Global education', page: 'collegium-alliance' },
+  { label: 'Academic calendar', page: 'application-deadlines' },
+];
+
 /* ─── Hook: animate on scroll ─── */
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -105,42 +122,46 @@ export default function Education({ goToPage }: EducationProps) {
   const globalAnim = useInView();
   const statsAnim = useInView();
 
-  return (
-    <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Education at Artemis
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#programs" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">
-            Programs
-          </a>
-          <a href="#curriculum" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">
-            Curriculum
-          </a>
-          <a href="#global" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">
-            Global Learning
-          </a>
-        </div>
-      </div>
+  /* Active section tracker for "On This Page" nav */
+  const [activeSection, setActiveSection] = useState('approach');
+  useEffect(() => {
+    const sectionIds = ['approach', 'programs', 'curriculum', 'global', 'by-the-numbers'];
+    const handleScroll = () => {
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 160 && rect.bottom > 160) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-      {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+  return (
+    <div className="flex flex-col bg-white w-full">
+      {/* ═══════════════════════════════════════════
+          1. HERO — full-width, centered text
+          ═══════════════════════════════════════════ */}
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Education at Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1200px] mx-auto w-full px-8 lg:px-16 pb-16">
+          <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               Homo Eruditus
             </span>
           </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+          <h1 className="text-[48px] md:text-[64px] font-extrabold leading-[1.05] tracking-tighter text-white mb-5">
             Education at<br />Artemis
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -150,216 +171,161 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
       </section>
 
-      {/* ── 2. OUR APPROACH ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
-        <div
-          ref={approachAnim.ref}
-          className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
-              Our Approach
+      {/* ═══════════════════════════════════════════
+          ON THIS PAGE — sticky section navigation (ASU pattern)
+          ═══════════════════════════════════════════ */}
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <span className="text-[13px] font-bold text-[#8A0000] whitespace-nowrap shrink-0">
+              On This Page:
             </span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            {/* Left — Text */}
-            <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                Learning without<br />boundaries
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                Education at Artemis is designed around the concept of &lsquo;Homo Eruditus&rsquo;&mdash;the lifelong
-                learner. We encourage our students to explore the academic landscape, venturing into
-                unfamiliar fields of knowledge and, perhaps, discovering new passions that will take
-                them in a different direction altogether.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
-                Along the way, faculty members help guide them, and fellow students offer diverse
-                perspectives that can shed new light on the path. We also encourage our students to
-                travel literally, by going abroad for study, research, or work. By nurturing this
-                spirit of inquiry, Artemis aims to prepare global citizens who are instilled with a
-                lifelong love of learning.
-              </p>
-              <button
-                onClick={() => goToPage('undergraduate')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+            {[
+              { id: 'approach', label: 'Our Approach' },
+              { id: 'programs', label: 'Programs' },
+              { id: 'curriculum', label: 'Curriculum' },
+              { id: 'global', label: 'Global Learning' },
+              { id: 'by-the-numbers', label: 'By the Numbers' },
+            ].map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className={`text-[13px] font-semibold whitespace-nowrap shrink-0 transition-colors border-b-2 pb-1 ${
+                  activeSection === s.id
+                    ? 'text-[#8A0000] border-[#8A0000]'
+                    : 'text-gray-500 border-transparent hover:text-[#8A0000] hover:border-[#8A0000]'
+                }`}
               >
-                <span>Explore Our Model</span>
-                <svg
-                  className="group-hover:translate-x-2 transition-transform"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-
-            {/* Right — Key visual / stat */}
-            <div>
-              <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
-                <img
-                  src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
-                  alt="Students collaborating"
-                  className="w-full h-full object-cover grayscale"
-                />
-              </div>
-              <div className="border-l-4 border-[#8A0000] pl-6 py-2">
-                <p className="text-[24px] font-bold text-[#141414] leading-tight mb-2">
-                  &ldquo;The mind is not a vessel to be filled, but a fire to be kindled.&rdquo;
-                </p>
-                <p className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000]">
-                  Artemis Founding Principle
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. PROGRAMS OF STUDY ── */}
-      <section id="programs" className="scroll-mt-24 py-20 bg-gray-50">
-        <div
-          ref={programsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
-              Programs of Study
-            </span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-              Seven paths to<br />mastery
-            </h2>
-            <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl">
-              Whether you are beginning your academic journey or seeking to deepen your expertise,
-              Artemis offers a program tailored to your ambitions. Each path is designed to be
-              interdisciplinary, flexible, and globally relevant.
-            </p>
-          </div>
-
-          {/* Program cards grid — top row 3, bottom row 4 centered */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {academicPrograms.map((program, i) => (
-              <div
-                key={i}
-                className="group bg-white border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer shadow-sm hover:shadow-lg overflow-hidden"
-                onClick={() => goToPage(program.linkTarget)}
-              >
-                <div className="aspect-[3/2] bg-gray-100 overflow-hidden">
-                  <img
-                    src={program.image}
-                    alt={program.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
-                    0{i + 1} &mdash; {program.title.toUpperCase().replace('&', '&')}
-                  </div>
-                  <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
-                    {program.title}
-                  </h3>
-                  <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
-                    {program.description}
-                  </p>
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-[#141414] border-b-2 border-[#8A0000] text-[#8A0000] pb-0.5 group-hover:text-black group-hover:border-black transition-all inline-flex items-center space-x-2">
-                    <span>{program.linkText}</span>
-                    <span>&rarr;</span>
-                  </span>
-                </div>
-              </div>
+                {s.label}
+              </a>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 4. CURRICULUM ── */}
-      <section id="curriculum" className="scroll-mt-24 py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            {/* Left */}
-            <div>
-              <div className="mb-8 flex items-center space-x-3">
-                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                  Curriculum
-                </span>
-              </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
-                Dynamic skill-based<br />certifications
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                Artemis has reimagined the traditional curriculum. Rather than fixed degree tracks
-                alone, we offer dynamic, skill-based certifications that adapt to the evolving needs
-                of the world — and of each student.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
-                Our interdisciplinary degrees cross traditional boundaries, allowing students to
-                combine fields in ways that reflect the complexity of real-world challenges. Every
-                program integrates theory with practice, ensuring that graduates are not just
-                knowledgeable, but capable.
-              </p>
-              <button
-                onClick={() => goToPage('programs')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
-              >
-                <span>View Course Catalog</span>
-                <svg
-                  className="group-hover:translate-x-2 transition-transform"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
+      {/* ═══════════════════════════════════════════
+          2. OUR APPROACH — 6-6 two-column (ASU pattern)
+          White background, text left, image right
+          ═══════════════════════════════════════════ */}
+      <section id="approach" className="scroll-mt-[110px] w-full bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+          <div
+            ref={approachAnim.ref}
+            className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            {/* Section divider */}
+            <div className="relative flex items-center mb-12">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                Our Approach
+              </span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
-            {/* Right — Link rows */}
-            <div className="space-y-0">
-              {curriculumLinks.map((link, i) => (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Left — Text */}
+              <div>
+                <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                  Learning without<br />boundaries
+                </h2>
+                <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+                  Education at Artemis is designed around the concept of &lsquo;Homo Eruditus&rsquo;&mdash;the lifelong
+                  learner. We encourage our students to explore the academic landscape, venturing into
+                  unfamiliar fields of knowledge and, perhaps, discovering new passions that will take
+                  them in a different direction altogether.
+                </p>
+                <p className="text-[16px] text-gray-600 leading-[1.7] mb-6">
+                  Along the way, faculty members help guide them, and fellow students offer diverse
+                  perspectives that can shed new light on the path. We also encourage our students to
+                  travel literally, by going abroad for study, research, or work. By nurturing this
+                  spirit of inquiry, Artemis aims to prepare global citizens who are instilled with a
+                  lifelong love of learning.
+                </p>
                 <button
-                  key={i}
-                  onClick={() => goToPage(link.page)}
-                  className="group flex justify-between items-center py-4 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
+                  onClick={() => goToPage('undergraduate')}
+                  className="flex items-center gap-3 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
                 >
-                  <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
-                    {link.label}
-                  </span>
+                  <span>Explore Our Model</span>
                   <svg
-                    className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all"
-                    fill="none"
+                    className="group-hover:translate-x-2 transition-transform"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
+                    fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <polyline points="9 18 15 12 9 6"></polyline>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
+                </button>
+              </div>
+
+              {/* Right — Image + Quote */}
+              <div>
+                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
+                    alt="Students collaborating"
+                    className="w-full h-full object-cover grayscale"
+                  />
+                </div>
+                <div className="border-l-4 border-[#8A0000] pl-6 py-2">
+                  <p className="text-[22px] font-bold text-[#141414] leading-tight mb-2">
+                    &ldquo;The mind is not a vessel to be filled, but a fire to be kindled.&rdquo;
+                  </p>
+                  <p className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000]">
+                    Artemis Founding Principle
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          3. JOIN US — 6-6 grid links (ASU pattern)
+          Light gray background, text left, icon grid right
+          ═══════════════════════════════════════════ */}
+      <section className="w-full bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left — Text */}
+            <div>
+              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                Be a part of<br />Artemis education
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-[1.7]">
+                We invite students, faculty, staff, alumni, businesses and community members to
+                join us in advancing discovery and learning. Whether you are beginning your academic
+                journey, seeking to deepen your expertise, or looking to contribute to a global
+                community of scholars, Artemis has a path for you.
+              </p>
+            </div>
+
+            {/* Right — 2-column grid links */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+              {gridLinks.map((link, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToPage(link.page)}
+                  className="flex items-start gap-3 text-left group"
+                >
+                  <span className="mt-1 w-5 h-5 rounded-full bg-[#8A0000]/10 flex items-center justify-center shrink-0 group-hover:bg-[#8A0000]/20 transition-colors">
+                    <svg className="w-3 h-3 text-[#8A0000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </span>
+                  <span className="text-[14px] font-semibold text-gray-700 group-hover:text-[#8A0000] transition-colors leading-snug">
+                    {link.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -367,106 +333,269 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
       </section>
 
-      {/* ── 5. GLOBAL LEARNING ── */}
-      <section id="global" className="scroll-mt-24 bg-gray-50 py-20">
-        <div
-          ref={globalAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${globalAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
-              Global Learning
-            </span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+      {/* ═══════════════════════════════════════════
+          4. PROGRAMS OF STUDY — full-width gray bg, centered cards
+          ═══════════════════════════════════════════ */}
+      <section id="programs" className="scroll-mt-[110px] w-full bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+          <div
+            ref={programsAnim.ref}
+            className={`transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            {/* Section divider */}
+            <div className="relative flex items-center mb-12">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                Programs of Study
+              </span>
+              <div className="flex-grow border-t border-gray-200"></div>
+            </div>
 
-          {/* Full-width card-and-image parallax */}
-          <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1400"
-              alt="Global Learning at Artemis"
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
-                <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
-                  Global Initiative
-                </div>
-                <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">
-                  The world is your campus
-                </h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
-                  People come from afar to study at Artemis, and our students learn and grow through
-                  international travel, research partnerships, and cross-cultural exchange programs
-                  spanning six continents.
-                </p>
-                <button
-                  onClick={() => goToPage('collegium-alliance')}
-                  className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
+            <div className="mb-12">
+              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+                Seven paths to<br />mastery
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-[1.7] max-w-2xl">
+                Whether you are beginning your academic journey or seeking to deepen your expertise,
+                Artemis offers a program tailored to your ambitions. Each path is designed to be
+                interdisciplinary, flexible, and globally relevant.
+              </p>
+            </div>
+
+            {/* Program cards grid — 3 columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {academicPrograms.map((program, i) => (
+                <div
+                  key={i}
+                  className="group bg-white border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer shadow-sm hover:shadow-lg overflow-hidden"
+                  onClick={() => goToPage(program.linkTarget)}
                 >
-                  Explore Global Programs &rarr;
-                </button>
+                  <div className="aspect-[3/2] bg-gray-100 overflow-hidden">
+                    <img
+                      src={program.image}
+                      alt={program.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
+                      0{i + 1} &mdash; {program.title.toUpperCase().replace('&', '&')}
+                    </div>
+                    <h3 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {program.title}
+                    </h3>
+                    <p className="text-[14px] text-gray-600 leading-[1.6] mb-4">
+                      {program.description}
+                    </p>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] border-b-2 border-[#8A0000] pb-0.5 group-hover:text-black group-hover:border-black transition-all inline-flex items-center gap-2">
+                      <span>{program.linkText}</span>
+                      <span>&rarr;</span>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. CURRICULUM — 8-4 layout (ASU pattern)
+          Main content left (8 cols), sidebar links right (4 cols)
+          ═══════════════════════════════════════════ */}
+      <section id="curriculum" className="scroll-mt-[110px] w-full bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left — Main content (8 cols) */}
+            <div className="lg:col-span-8">
+              <div className="mb-8 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                  Curriculum
+                </span>
+              </div>
+              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                Dynamic skill-based<br />certifications
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+                Artemis has reimagined the traditional curriculum. Rather than fixed degree tracks
+                alone, we offer dynamic, skill-based certifications that adapt to the evolving needs
+                of the world — and of each student.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+                Our interdisciplinary degrees cross traditional boundaries, allowing students to
+                combine fields in ways that reflect the complexity of real-world challenges. Every
+                program integrates theory with practice, ensuring that graduates are not just
+                knowledgeable, but capable.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-[1.7] mb-6">
+                From the first year, students engage with capstone projects embedded in our Centers
+                of Inquiry, and every program culminates in a portfolio-based assessment that
+                demonstrates real competency — not just seat time.
+              </p>
+
+              {/* Link rows */}
+              <div className="space-y-0 border-t border-gray-200">
+                {curriculumLinks.map((link, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goToPage(link.page)}
+                    className="group flex justify-between items-center py-4 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
+                  >
+                    <span className="text-[15px] font-semibold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+                      {link.label}
+                    </span>
+                    <svg
+                      className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — Sidebar navigation (4 cols) */}
+            <div className="lg:col-span-4">
+              <div className="bg-white border border-gray-200 p-6 sticky top-[170px]">
+                <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
+                  Related Links
+                </h3>
+                <nav className="space-y-0">
+                  {sidebarLinks.map((link, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goToPage(link.page)}
+                      className="block w-full text-left py-3 border-b border-gray-100 text-[14px] font-medium text-gray-700 hover:text-[#8A0000] hover:pl-2 transition-all"
+                    >
+                      {link.label}
+                    </button>
+                  ))}
+                </nav>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 6. STATS ROW ── */}
-      <section className="py-20">
+      {/* ═══════════════════════════════════════════
+          6. GLOBAL LEARNING — full-width image with overlay card (ASU pattern)
+          ═══════════════════════════════════════════ */}
+      <section id="global" className="scroll-mt-[110px] w-full bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+          <div
+            ref={globalAnim.ref}
+            className={`transition-all duration-700 ${globalAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            {/* Section divider */}
+            <div className="relative flex items-center mb-12">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                Global Learning
+              </span>
+              <div className="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            {/* Full-width image with overlay card */}
+            <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1400"
+                alt="Global Learning at Artemis"
+                className="absolute inset-0 w-full h-full object-cover grayscale"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
+                <div className="bg-white max-w-sm p-8 shadow-xl">
+                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
+                    Global Initiative
+                  </div>
+                  <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">
+                    The world is your campus
+                  </h3>
+                  <p className="text-[14px] text-gray-600 leading-[1.7] mb-5">
+                    People come from afar to study at Artemis, and our students learn and grow through
+                    international travel, research partnerships, and cross-cultural exchange programs
+                    spanning six continents.
+                  </p>
+                  <button
+                    onClick={() => goToPage('collegium-alliance')}
+                    className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
+                  >
+                    Explore Global Programs &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          7. STATS — 4 equal columns on gray (ASU pattern)
+          ═══════════════════════════════════════════ */}
+      <section id="by-the-numbers" className="scroll-mt-[110px] w-full bg-gray-50">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
+          <div className="mb-10 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               By the Numbers
             </span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {educationStats.map((stat, i) => (
               <div key={i} className="relative">
-                <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
-                <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">
+                <div className="text-[40px] lg:text-[48px] font-black text-[#141414] leading-none mb-2 tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-2">
                   {stat.label}
                 </div>
-                <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
+                <div className="text-[13px] text-gray-500 leading-snug">{stat.detail}</div>
+                {i < educationStats.length - 1 && (
+                  <div className="hidden lg:block absolute -right-6 top-0 bottom-0 w-px bg-gray-200"></div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 7. ACADEMIC CALENDAR CALLOUT ── */}
-      <section className="w-full bg-[#8A0000] py-14 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h3 className="text-[28px] md:text-[32px] font-extrabold text-white leading-tight tracking-tight mb-2">
-                Academic Calendars
-              </h3>
-              <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">
-                View key dates for Artemis College and the graduate and professional schools.
-                Plan your academic year with confidence.
-              </p>
-            </div>
-            <button
-              onClick={() => goToPage('application-deadlines')}
-              className="shrink-0 bg-white text-[#8A0000] px-8 py-3.5 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Browse Calendars
-            </button>
+      {/* ═══════════════════════════════════════════
+          8. ACADEMIC CALENDAR CTA — full-width crimson band
+          ═══════════════════════════════════════════ */}
+      <section className="w-full bg-[#8A0000] py-14 px-8 lg:px-16">
+        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <h3 className="text-[28px] md:text-[32px] font-extrabold text-white leading-tight tracking-tight mb-2">
+              Academic Calendars
+            </h3>
+            <p className="text-[16px] text-white/70 leading-[1.7] max-w-lg">
+              View key dates for Artemis College and the graduate and professional schools.
+              Plan your academic year with confidence.
+            </p>
           </div>
+          <button
+            onClick={() => goToPage('application-deadlines')}
+            className="shrink-0 bg-white text-[#8A0000] px-8 py-3.5 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
+          >
+            Browse Calendars
+          </button>
+        </div>
       </section>
 
-      {/* ── 8. FOOTER ── */}
+      {/* ═══════════════════════════════════════════
+          9. FOOTER
+          ═══════════════════════════════════════════ */}
       <SubPageFooter goToPage={goToPage} />
     </div>
   );
