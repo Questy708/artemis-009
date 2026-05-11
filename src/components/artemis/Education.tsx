@@ -115,6 +115,20 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
+/*
+ * LAYOUT SYSTEM — matching ASU blueprint
+ *
+ * ASU uses a layered approach:
+ *   1. Full-viewport-width backgrounds (bg-white, bg-gray-50, bg-[#8A0000])
+ *   2. Centered content container inside each section (max-w-[1400px])
+ *   3. The hero image is FULL-BLEED — no max-width at all
+ *   4. Global learning image is also FULL-BLEED
+ *   5. Two-column grids fill the full container width
+ *
+ * Key: Section backgrounds go edge-to-edge.
+ *      Only TEXT content is constrained and centered.
+ */
+
 /* ─── Component ─── */
 export default function Education({ goToPage }: EducationProps) {
   const approachAnim = useInView();
@@ -144,17 +158,21 @@ export default function Education({ goToPage }: EducationProps) {
 
   return (
     <div className="flex flex-col bg-white w-full">
+
       {/* ═══════════════════════════════════════════
-          1. HERO — full-width, centered text
+          1. HERO — FULL-BLEED image, NO max-width container
+          The image spans 100% of the viewport.
+          Only the text overlay is positioned inside a centered container.
           ═══════════════════════════════════════════ */}
       <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=2560"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Education at Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1200px] mx-auto w-full px-8 lg:px-16 pb-16">
+        {/* Text overlay — centered container, but image is full-bleed */}
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
@@ -172,10 +190,11 @@ export default function Education({ goToPage }: EducationProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          ON THIS PAGE — sticky section navigation (ASU pattern)
+          ON THIS PAGE — sticky section navigation
+          Background spans full width, content centered.
           ═══════════════════════════════════════════ */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16">
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <span className="text-[13px] font-bold text-[#8A0000] whitespace-nowrap shrink-0">
               On This Page:
@@ -209,16 +228,18 @@ export default function Education({ goToPage }: EducationProps) {
 
       {/* ═══════════════════════════════════════════
           2. OUR APPROACH — 6-6 two-column (ASU pattern)
-          White background, text left, image right
+          Background: full-width white
+          Content: centered in max-w-[1400px]
+          Grid: 2 equal columns filling the full container width
           ═══════════════════════════════════════════ */}
       <section id="approach" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={approachAnim.ref}
             className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Section divider */}
-            <div className="relative flex items-center mb-12">
+            <div className="relative flex items-center mb-14">
               <div className="flex-grow border-t border-gray-200"></div>
               <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Our Approach
@@ -226,19 +247,19 @@ export default function Education({ goToPage }: EducationProps) {
               <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               {/* Left — Text */}
               <div>
-                <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                   Learning without<br />boundaries
                 </h2>
-                <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+                <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
                   Education at Artemis is designed around the concept of &lsquo;Homo Eruditus&rsquo;&mdash;the lifelong
                   learner. We encourage our students to explore the academic landscape, venturing into
                   unfamiliar fields of knowledge and, perhaps, discovering new passions that will take
                   them in a different direction altogether.
                 </p>
-                <p className="text-[16px] text-gray-600 leading-[1.7] mb-6">
+                <p className="text-[17px] text-gray-600 leading-[1.75] mb-8">
                   Along the way, faculty members help guide them, and fellow students offer diverse
                   perspectives that can shed new light on the path. We also encourage our students to
                   travel literally, by going abroad for study, research, or work. By nurturing this
@@ -269,7 +290,7 @@ export default function Education({ goToPage }: EducationProps) {
 
               {/* Right — Image + Quote */}
               <div>
-                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
+                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-8">
                   <img
                     src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
                     alt="Students collaborating"
@@ -292,17 +313,18 @@ export default function Education({ goToPage }: EducationProps) {
 
       {/* ═══════════════════════════════════════════
           3. JOIN US — 6-6 grid links (ASU pattern)
-          Light gray background, text left, icon grid right
+          Background: full-width gray-50
+          Content: centered in max-w-[1400px]
           ═══════════════════════════════════════════ */}
       <section className="w-full bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
-              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Be a part of<br />Artemis education
               </h2>
-              <p className="text-[16px] text-gray-600 leading-[1.7]">
+              <p className="text-[17px] text-gray-600 leading-[1.75]">
                 We invite students, faculty, staff, alumni, businesses and community members to
                 join us in advancing discovery and learning. Whether you are beginning your academic
                 journey, seeking to deepen your expertise, or looking to contribute to a global
@@ -311,19 +333,19 @@ export default function Education({ goToPage }: EducationProps) {
             </div>
 
             {/* Right — 2-column grid links */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6">
               {gridLinks.map((link, i) => (
                 <button
                   key={i}
                   onClick={() => goToPage(link.page)}
                   className="flex items-start gap-3 text-left group"
                 >
-                  <span className="mt-1 w-5 h-5 rounded-full bg-[#8A0000]/10 flex items-center justify-center shrink-0 group-hover:bg-[#8A0000]/20 transition-colors">
+                  <span className="mt-1 w-6 h-6 rounded-full bg-[#8A0000]/10 flex items-center justify-center shrink-0 group-hover:bg-[#8A0000]/20 transition-colors">
                     <svg className="w-3 h-3 text-[#8A0000]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </span>
-                  <span className="text-[14px] font-semibold text-gray-700 group-hover:text-[#8A0000] transition-colors leading-snug">
+                  <span className="text-[15px] font-semibold text-gray-700 group-hover:text-[#8A0000] transition-colors leading-snug">
                     {link.label}
                   </span>
                 </button>
@@ -334,16 +356,19 @@ export default function Education({ goToPage }: EducationProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          4. PROGRAMS OF STUDY — full-width gray bg, centered cards
+          4. PROGRAMS OF STUDY
+          Background: full-width white
+          Content: centered in max-w-[1400px]
+          Cards: 3-column grid filling the full container width
           ═══════════════════════════════════════════ */}
       <section id="programs" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={programsAnim.ref}
             className={`transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Section divider */}
-            <div className="relative flex items-center mb-12">
+            <div className="relative flex items-center mb-14">
               <div className="flex-grow border-t border-gray-200"></div>
               <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Programs of Study
@@ -351,11 +376,11 @@ export default function Education({ goToPage }: EducationProps) {
               <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
-            <div className="mb-12">
-              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            <div className="mb-14">
+              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
                 Seven paths to<br />mastery
               </h2>
-              <p className="text-[16px] text-gray-600 leading-[1.7] max-w-2xl">
+              <p className="text-[17px] text-gray-600 leading-[1.75] max-w-2xl">
                 Whether you are beginning your academic journey or seeking to deepen your expertise,
                 Artemis offers a program tailored to your ambitions. Each path is designed to be
                 interdisciplinary, flexible, and globally relevant.
@@ -401,10 +426,12 @@ export default function Education({ goToPage }: EducationProps) {
 
       {/* ═══════════════════════════════════════════
           5. CURRICULUM — 8-4 layout (ASU pattern)
-          Main content left (8 cols), sidebar links right (4 cols)
+          Background: full-width gray-50
+          Content: centered in max-w-[1400px]
+          Grid: 8-col main + 4-col sidebar
           ═══════════════════════════════════════════ */}
       <section id="curriculum" className="scroll-mt-[110px] w-full bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left — Main content (8 cols) */}
             <div className="lg:col-span-8">
@@ -414,21 +441,21 @@ export default function Education({ goToPage }: EducationProps) {
                   Curriculum
                 </span>
               </div>
-              <h2 className="text-[36px] lg:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Dynamic skill-based<br />certifications
               </h2>
-              <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+              <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
                 Artemis has reimagined the traditional curriculum. Rather than fixed degree tracks
                 alone, we offer dynamic, skill-based certifications that adapt to the evolving needs
                 of the world — and of each student.
               </p>
-              <p className="text-[16px] text-gray-600 leading-[1.7] mb-4">
+              <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
                 Our interdisciplinary degrees cross traditional boundaries, allowing students to
                 combine fields in ways that reflect the complexity of real-world challenges. Every
                 program integrates theory with practice, ensuring that graduates are not just
                 knowledgeable, but capable.
               </p>
-              <p className="text-[16px] text-gray-600 leading-[1.7] mb-6">
+              <p className="text-[17px] text-gray-600 leading-[1.75] mb-8">
                 From the first year, students engage with capstone projects embedded in our Centers
                 of Inquiry, and every program culminates in a portfolio-based assessment that
                 demonstrates real competency — not just seat time.
@@ -485,84 +512,88 @@ export default function Education({ goToPage }: EducationProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          6. GLOBAL LEARNING — full-width image with overlay card (ASU pattern)
+          6. GLOBAL LEARNING — FULL-BLEED image with overlay card
+          The image spans 100% viewport width (like the hero).
+          Only the overlay card and section divider are inside the container.
           ═══════════════════════════════════════════ */}
       <section id="global" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={globalAnim.ref}
             className={`transition-all duration-700 ${globalAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Section divider */}
-            <div className="relative flex items-center mb-12">
+            <div className="relative flex items-center mb-14">
               <div className="flex-grow border-t border-gray-200"></div>
               <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Global Learning
               </span>
               <div className="flex-grow border-t border-gray-200"></div>
             </div>
+          </div>
+        </div>
 
-            {/* Full-width image with overlay card */}
-            <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1400"
-                alt="Global Learning at Artemis"
-                className="absolute inset-0 w-full h-full object-cover grayscale"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-                <div className="bg-white max-w-sm p-8 shadow-xl">
-                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
-                    Global Initiative
-                  </div>
-                  <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">
-                    The world is your campus
-                  </h3>
-                  <p className="text-[14px] text-gray-600 leading-[1.7] mb-5">
-                    People come from afar to study at Artemis, and our students learn and grow through
-                    international travel, research partnerships, and cross-cultural exchange programs
-                    spanning six continents.
-                  </p>
-                  <button
-                    onClick={() => goToPage('collegium-alliance')}
-                    className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
-                  >
-                    Explore Global Programs &rarr;
-                  </button>
-                </div>
+        {/* Full-bleed image — breaks OUT of the content container */}
+        <div className="relative w-full min-h-[420px] md:min-h-[500px] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2560"
+            alt="Global Learning at Artemis"
+            className="absolute inset-0 w-full h-full object-cover grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+          <div className="relative z-10 max-w-[1400px] mx-auto px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
+            <div className="bg-white max-w-md p-8 md:p-10 shadow-xl">
+              <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
+                Global Initiative
               </div>
+              <h3 className="text-[26px] font-bold text-[#141414] mb-3 leading-tight">
+                The world is your campus
+              </h3>
+              <p className="text-[15px] text-gray-600 leading-[1.7] mb-6">
+                People come from afar to study at Artemis, and our students learn and grow through
+                international travel, research partnerships, and cross-cultural exchange programs
+                spanning six continents.
+              </p>
+              <button
+                onClick={() => goToPage('collegium-alliance')}
+                className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
+              >
+                Explore Global Programs &rarr;
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════
-          7. STATS — 4 equal columns on gray (ASU pattern)
+          7. STATS — 4 equal columns on gray
+          Background: full-width gray-50
+          Content: centered in max-w-[1400px]
           ═══════════════════════════════════════════ */}
       <section id="by-the-numbers" className="scroll-mt-[110px] w-full bg-gray-50">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1200px] mx-auto px-8 lg:px-16 py-16 lg:py-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-10 flex items-center space-x-3">
+          <div className="mb-12 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               By the Numbers
             </span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {educationStats.map((stat, i) => (
               <div key={i} className="relative">
-                <div className="text-[40px] lg:text-[48px] font-black text-[#141414] leading-none mb-2 tabular-nums">
+                <div className="text-[44px] lg:text-[56px] font-black text-[#141414] leading-none mb-3 tabular-nums">
                   {stat.value}
                 </div>
                 <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-2">
                   {stat.label}
                 </div>
-                <div className="text-[13px] text-gray-500 leading-snug">{stat.detail}</div>
+                <div className="text-[14px] text-gray-500 leading-snug">{stat.detail}</div>
                 {i < educationStats.length - 1 && (
-                  <div className="hidden lg:block absolute -right-6 top-0 bottom-0 w-px bg-gray-200"></div>
+                  <div className="hidden lg:block absolute -right-8 top-0 bottom-0 w-px bg-gray-200"></div>
                 )}
               </div>
             ))}
@@ -572,21 +603,23 @@ export default function Education({ goToPage }: EducationProps) {
 
       {/* ═══════════════════════════════════════════
           8. ACADEMIC CALENDAR CTA — full-width crimson band
+          Background: full-width crimson
+          Content: centered in max-w-[1400px]
           ═══════════════════════════════════════════ */}
-      <section className="w-full bg-[#8A0000] py-14 px-8 lg:px-16">
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="w-full bg-[#8A0000] py-16 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="text-[28px] md:text-[32px] font-extrabold text-white leading-tight tracking-tight mb-2">
+            <h3 className="text-[28px] md:text-[36px] font-extrabold text-white leading-tight tracking-tight mb-2">
               Academic Calendars
             </h3>
-            <p className="text-[16px] text-white/70 leading-[1.7] max-w-lg">
+            <p className="text-[17px] text-white/70 leading-[1.75] max-w-lg">
               View key dates for Artemis College and the graduate and professional schools.
               Plan your academic year with confidence.
             </p>
           </div>
           <button
             onClick={() => goToPage('application-deadlines')}
-            className="shrink-0 bg-white text-[#8A0000] px-8 py-3.5 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
+            className="shrink-0 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
           >
             Browse Calendars
           </button>
