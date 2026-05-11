@@ -55,3 +55,19 @@ Stage Summary:
 - Component structure maintained: sub-header → hero → stats → overview → focus areas → four pillars → projects → other centers → footer
 - Design language consistently applied: crimson accent, grayscale images, section dividers, numbered labels
 - Dev server confirmed running without compilation errors
+---
+Task ID: 1
+Agent: main
+Task: Fix layout misalignment and standardize subpage headers after sidebar removal
+
+Work Log:
+- Removed `overflow-y-auto` and `flex-1` from the outermost div of all 25 page components (Education, Research, Innovation, About, Admissions, CampusLife, Colleges, TheUniversity, HowWeAreRun, OurPeople, OurHistory, CenterDetail, GenericAboutSubpage, GenericUniversitySubpage, CollegiumAlliance, FundraisingCampaign, Apply, AdmissionsSubpage, CentersOfInquiry, SchoolDetail, UndergraduateStudy, UndergraduateCurriculum, ProgramsOfStudy, ProgramDetail, Home)
+- Confirmed all subpage headers were already converted from breadcrumb-style to standard sub-header pattern with crimson section title + uppercase navigation links
+- Confirmed GenericAboutSubpage and GenericUniversitySubpage both have full-bleed hero images already implemented
+- Verified build passes with no errors
+
+Stage Summary:
+- All page components now use `<div className="flex flex-col bg-white">` instead of `<div className="flex-1 flex flex-col bg-white overflow-y-auto">`
+- This fixes the sticky sub-header alignment issue where headers weren't sticking correctly due to separate scroll contexts
+- All headers follow consistent patterns: Standard sub-header (Education, Research, etc.) or Child-page sub-header (UndergraduateStudy, CenterDetail, etc.)
+- Build successful, committed and pushed to GitHub
