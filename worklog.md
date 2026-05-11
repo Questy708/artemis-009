@@ -71,3 +71,36 @@ Stage Summary:
 - This fixes the sticky sub-header alignment issue where headers weren't sticking correctly due to separate scroll contexts
 - All headers follow consistent patterns: Standard sub-header (Education, Research, etc.) or Child-page sub-header (UndergraduateStudy, CenterDetail, etc.)
 - Build successful, committed and pushed to GitHub
+
+---
+Task ID: 1
+Agent: main
+Task: Redesign Education page layout to match ASU blueprint after sidebar removal
+
+Work Log:
+- Analyzed ASU research page HTML structure, CSS patterns, and layout system
+- Measured ASU screenshot pixel positions to determine exact container widths
+- Discovered ASU uses layered approach: full-width backgrounds + centered content containers
+- Found ASU hero is full-bleed (layout__full-width), content sections use Bootstrap container
+- Identified that my original implementation had hero constrained inside max-w-[1200px] — wrong
+- Rebuilt Education page with ASU blueprint patterns:
+  1. Full-bleed hero image (no max-width constraint on section)
+  2. "On This Page" sticky navigation with active section tracking
+  3. 6-6 two-column sections (text + image, text + grid links)
+  4. 8-4 layout for Curriculum (main + sidebar)
+  5. Full-bleed Global Learning image
+  6. 4-column stats section
+- First version: max-w-[1200px] containers — too narrow per user feedback
+- Second version: max-w-[1400px] containers, full-bleed hero and global images
+- Increased padding to px-8 lg:px-20, section spacing to py-16 lg:py-24
+- Verified hero and global images span full viewport width
+- Build passes, committed and pushed to GitHub
+
+Stage Summary:
+- Education page redesigned with ASU layout patterns
+- Hero image: full-bleed (100% viewport width)
+- Content containers: max-w-[1400px] centered
+- Full-bleed images break out of content container
+- All section backgrounds span full viewport width
+- Sticky "On This Page" navigation with scroll tracking
+- Git: 2 commits pushed (9aca40b, 2811fb1)
