@@ -216,6 +216,9 @@ function useInView(threshold = 0.15) {
 export default function Research({ goToPage }: ResearchProps) {
   const [activeGallery, setActiveGallery] = useState(0);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [centerScrollIndex, setCenterScrollIndex] = useState(0);
+  const centersTrackRef = useRef<HTMLDivElement>(null);
+  const centerCounterRef = useRef<HTMLSpanElement>(null);
   const heroAnim = useInView();
   const joinAnim = useInView();
   const statsAnim = useInView();
@@ -228,6 +231,34 @@ export default function Research({ goToPage }: ResearchProps) {
     const timer = setInterval(() => setActiveGallery(i => (i + 1) % galleryImages.length), 5000);
     return () => clearInterval(timer);
   }, []);
+
+  // Centers carousel helpers
+  const centersPerView = () => {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
+
+  const CARD_WIDTH_PLUS_GAP = 324; // 300px card + 24px gap
+
+  const scrollCenters = (direction: 'left' | 'right') => {
+    const track = centersTrackRef.current;
+    if (!track) return;
+    const perView = centersPerView();
+    const scrollAmount = CARD_WIDTH_PLUS_GAP * perView;
+    const newScroll = direction === 'right'
+      ? track.scrollLeft + scrollAmount
+      : track.scrollLeft - scrollAmount;
+    track.scrollTo({ left: newScroll, behavior: 'smooth' });
+  };
+
+  const handleCentersScroll = () => {
+    const track = centersTrackRef.current;
+    if (!track) return;
+    const idx = Math.round(track.scrollLeft / CARD_WIDTH_PLUS_GAP);
+    setCenterScrollIndex(Math.min(idx, centers.length - centersPerView()));
+  };
 
   return (
     <div className="flex-1 flex flex-col bg-white overflow-y-auto">
@@ -577,6 +608,7 @@ export default function Research({ goToPage }: ResearchProps) {
 
       {/* ── 8. CENTERS OF INQUIRY ── */}
       <section id="centers" className="scroll-mt-24 py-20">
+        {/* Intro — constrained width */}
         <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -598,37 +630,79 @@ export default function Research({ goToPage }: ResearchProps) {
             <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-8">
               Each center is a powerhouse of interdisciplinary collaboration, bringing together researchers from diverse disciplines to tackle complex challenges. They replace traditional academic departments, creating an intellectual environment where reality is seen as interconnected and holistic — fostering a philosophical habit of mind that encourages learners to perceive knowledge as unified.
             </p>
+          </div>
+        </div>
+
+        {/* Carousel — full bleed */}
+        <div className="relative">
+          {/* Nav header row */}
+          <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 mb-6 flex items-center justify-between">
             <button
               onClick={() => goToPage('centers-of-inquiry')}
-              className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+              className="flex items-center space-x-3 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
             >
               <span>Explore All Centers</span>
-              <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <svg className="group-hover:translate-x-2 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
+            <div className="flex items-center gap-3">
+              <span ref={centerCounterRef} className="text-[12px] font-bold text-gray-400 tracking-wider tabular-nums">
+                {centerScrollIndex + 1}–{Math.min(centerScrollIndex + centersPerView(), centers.length)} / {centers.length}
+              </span>
+              <button
+                onClick={() => scrollCenters('left')}
+                className="w-10 h-10 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
+                aria-label="Previous centers"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button
+                onClick={() => scrollCenters('right')}
+                className="w-10 h-10 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
+                aria-label="Next centers"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Scroll track */}
+          <div
+            ref={centersTrackRef}
+            onScroll={handleCentersScroll}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 lg:px-[calc((100vw-1000px)/2+24px)] pb-4 hide-scrollbar"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {centers.map((center, i) => (
               <div
                 key={i}
                 onClick={() => goToPage('center-detail', center.slug)}
-                className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden"
+                className="group snap-start shrink-0 w-[280px] md:w-[300px] border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden"
               >
-                <div className="aspect-[16/9] bg-gray-100 overflow-hidden">
+                <div className="aspect-[16/10] bg-gray-100 overflow-hidden relative">
                   <img src={center.img} alt={center.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center mb-4">
-                    <span className="text-[10px] font-bold text-[#8A0000] mr-4">{String(i + 1).padStart(2, '0')}</span>
-                    <h4 className="text-xl font-bold group-hover:text-[#8A0000] transition-colors leading-tight">{center.name}</h4>
+                  <div className="absolute top-3 left-3 bg-white/90 px-2 py-1 text-[10px] font-bold text-[#8A0000] tracking-widest">
+                    {String(i + 1).padStart(2, '0')}
                   </div>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{center.desc}</p>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#141414] border-b border-black w-fit group-hover:text-[#8A0000] group-hover:border-[#8A0000] transition-all">
-                    Explore Center
+                </div>
+                <div className="p-5">
+                  <h4 className="text-[15px] font-bold group-hover:text-[#8A0000] transition-colors leading-snug mb-2 min-h-[40px]">{center.name}</h4>
+                  <p className="text-gray-500 text-[13px] leading-relaxed mb-3 line-clamp-3">{center.desc}</p>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#141414] border-b border-black w-fit group-hover:text-[#8A0000] group-hover:border-[#8A0000] transition-all">
+                    Explore →
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Progress bar */}
+          <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 mt-4">
+            <div className="h-[2px] bg-gray-100 w-full relative overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full bg-[#8A0000] transition-all duration-300"
+                style={{ width: `${((centerScrollIndex + centersPerView()) / centers.length) * 100}%` }}
+              />
+            </div>
           </div>
         </div>
       </section>
