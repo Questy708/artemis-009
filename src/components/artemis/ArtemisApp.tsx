@@ -158,44 +158,42 @@ export default function ArtemisApp() {
 
   return (
     <div className="w-full min-h-screen bg-white flex flex-col font-sans text-[#141414]">
-      {/* Fixed Header */}
+      {/* Fixed Header — always full-width */}
       <Header 
         onMenuClick={() => setSidebarOpen(true)}
         goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }} 
         goToPage={goToPage} 
       />
-      
-      <div className="flex flex-1 justify-center relative">
-        {isHome ? (
-          /* Homepage: sidebar + content side-by-side */
-          <div className="flex w-full max-w-[1440px]">
-            <Sidebar 
-              isOpen={isSidebarOpen}
-              onClose={() => setSidebarOpen(false)}
-              goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
-              goToPage={goToPage}
-            />
-            <main className="flex-1 flex flex-col min-w-0">
-              {renderPage()}
-            </main>
-          </div>
-        ) : (
-          /* Subpages: full-width content, no sidebar column */
-          <div className="w-full">
-            {/* Mobile drawer still available on subpages */}
-            <Sidebar 
-              isOpen={isSidebarOpen}
-              onClose={() => setSidebarOpen(false)}
-              goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
-              goToPage={goToPage}
-              hideDesktopSidebar={true}
-            />
-            <main className="flex flex-col">
-              {renderPage()}
-            </main>
-          </div>
-        )}
-      </div>
+
+      {isHome ? (
+        /* ─── Homepage: sidebar + content side-by-side ─── */
+        <div className="flex flex-1">
+          <Sidebar 
+            isOpen={isSidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+            goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+            goToPage={goToPage}
+          />
+          <main className="flex-1 flex flex-col min-w-0">
+            {renderPage()}
+          </main>
+        </div>
+      ) : (
+        /* ─── Subpages: full-viewport-width content, no sidebar in flow ─── */
+        <>
+          {/* Mobile drawer only — uses fixed positioning, zero layout impact */}
+          <Sidebar 
+            isOpen={isSidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+            goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+            goToPage={goToPage}
+            hideDesktopSidebar={true}
+          />
+          <main className="flex-1 flex flex-col w-full">
+            {renderPage()}
+          </main>
+        </>
+      )}
     </div>
   );
 }
