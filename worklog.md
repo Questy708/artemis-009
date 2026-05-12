@@ -89,3 +89,28 @@ Stage Summary:
 - CampusLife redesigned with student life vibes (color photos, photo strip, reordered sections)
 - Research centers carousel now auto-slides every 4 seconds
 - K-12 and P-TECH pathways already present in Education.tsx
+
+---
+Task ID: 3
+Agent: Main Agent
+Task: Build AI-powered chatbot assistant component for the Artemis College website
+
+Work Log:
+- Created `/src/app/api/chat/route.ts` — POST API route that accepts `{ messages }` and uses `z-ai-web-dev-sdk` to call the AI with a comprehensive system prompt about Artemis College (admissions, programs, research centers, Collegium Alliance, $100M campaign, campus life, innovation, governance). Returns `{ message: string }`.
+- Created `/src/components/artemis/ArtemisChatBot.tsx` — Floating chatbot widget with:
+  - Crimson (#8A0000) floating circle button at bottom-right (bottom-6 right-6) with MessageCircle/X icon toggle
+  - Chat panel: 380px wide, 520px tall, white bg, rounded corners, shadow-2xl, subtle border
+  - Header bar: crimson bg with Bot icon, "Artemis Assistant" title, subtitle, close button
+  - Scrollable message area with conversation history, Bot/User avatars, crimson user bubbles, gray assistant bubbles
+  - Input area with rounded-full text input and crimson Send button
+  - Framer Motion animations for panel open/close, message appearance, button icon rotation
+  - Loading state with spinning Loader2 icon
+  - Auto-scroll to latest message, auto-focus input on open
+  - Enter key to send, disabled state while loading
+- Integrated `<ArtemisChatBot />` into `ArtemisApp.tsx` — imported and rendered just before closing `</div>` so it appears on ALL pages
+- Build compiles successfully with `npx next build` — `/api/chat` route confirmed in output
+
+Stage Summary:
+- AI chatbot widget fully functional with floating toggle, animated panel, message history, and AI backend
+- API route uses z-ai-web-dev-sdk with comprehensive Artemis College system prompt
+- Component appears on all pages via ArtemisApp.tsx integration

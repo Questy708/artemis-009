@@ -34,6 +34,7 @@ import CentersOfInquiry from '@/components/artemis/CentersOfInquiry';
 import CenterDetail from '@/components/artemis/CenterDetail';
 import Blog from '@/components/artemis/Blog';
 import BlogArticlePage from '@/components/artemis/BlogArticlePage';
+import ArtemisChatBot from '@/components/artemis/ArtemisChatBot';
 
 export default function ArtemisApp() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -202,6 +203,8 @@ export default function ArtemisApp() {
           </main>
         </>
       )}
+
+      <ArtemisChatBot />
     </div>
   );
 }
