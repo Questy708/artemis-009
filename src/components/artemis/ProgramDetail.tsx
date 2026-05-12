@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { programsData, generateProgramData } from '@/lib/programs-data';
 
 interface ProgramDetailProps {
@@ -31,6 +32,8 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
     if (tab.id === 'certificates' && !data.certificateText) return false;
     return true;
   }), [data]);
+
+  const activeSection = useActiveSection(tabs.map(t => t.id));
 
   const [facultyBios, setFacultyBios] = useState<{name: string, title: string, bio: string, image: string}[]>([]);
   const [isLoadingBios, setIsLoadingBios] = useState(true);
@@ -142,6 +145,11 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
         <span>/</span>
         <span className="text-black uppercase tracking-wider font-bold text-xs">{data.title}</span>
       </div>
+
+      <OnThisPageNav
+        sections={tabs.map(t => ({ id: t.id, label: t.label }))}
+        activeSection={activeSection}
+      />
 
       <div className="flex flex-col md:flex-row max-w-[1400px] w-full mx-auto pb-24 border-l border-r border-gray-200 relative">
         {/* Catalog Navigation Sidebar */}
