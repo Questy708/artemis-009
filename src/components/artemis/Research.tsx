@@ -262,10 +262,13 @@ export default function Research({ goToPage }: ResearchProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Approach</span>
-            </div>
+      {/* ── 1. OUR APPROACH / FEATURED PROJECTS ── */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Approach</span>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div className="mb-8 flex items-center space-x-3">
@@ -273,42 +276,43 @@ export default function Research({ goToPage }: ResearchProps) {
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Featured Projects</span>
             </div>
 
-          <div className="flex flex-col md:flex-row gap-4">
-            {featuredProjects.map((project, i) => (
-              <div
-                key={i}
-                className="relative flex-1 min-h-[280px] md:min-h-[380px] overflow-hidden cursor-pointer group"
-                onMouseEnter={() => setExpandedProject(i)}
-                onMouseLeave={() => setExpandedProject(null)}
-              >
+            <div className="flex flex-col md:flex-row gap-4">
+              {featuredProjects.map((project, i) => (
                 <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url(${project.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/75 transition-colors duration-500" />
-                <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
-                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-2 uppercase">{project.tag}</div>
-                  <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-2 leading-tight">
-                    {project.title}
-                  </h3>
-                  <div className={`overflow-hidden transition-all duration-500 ${expandedProject === i ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-[14px] text-white/80 leading-relaxed mb-5">
-                      {project.desc}
-                    </p>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); goToPage('centers-of-inquiry'); }}
-                      className="text-[11px] font-bold uppercase tracking-widest border border-white text-white px-5 py-2 hover:bg-white hover:text-[#8A0000] transition-colors"
-                    >
-                      Read More →
-                    </button>
+                  key={i}
+                  className="relative flex-1 min-h-[280px] md:min-h-[380px] overflow-hidden cursor-pointer group"
+                  onMouseEnter={() => setExpandedProject(i)}
+                  onMouseLeave={() => setExpandedProject(null)}
+                >
+                  <div
+                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                    style={{
+                      backgroundImage: `url(${project.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/75 transition-colors duration-500" />
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
+                    <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-2 uppercase">{project.tag}</div>
+                    <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-2 leading-tight">
+                      {project.title}
+                    </h3>
+                    <div className={`overflow-hidden transition-all duration-500 ${expandedProject === i ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <p className="text-[14px] text-white/80 leading-relaxed mb-5">
+                        {project.desc}
+                      </p>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); goToPage('centers-of-inquiry'); }}
+                        className="text-[11px] font-bold uppercase tracking-widest border border-white text-white px-5 py-2 hover:bg-white hover:text-[#8A0000] transition-colors"
+                      >
+                        Read More →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

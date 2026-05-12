@@ -159,7 +159,11 @@ export default function Education({ goToPage }: EducationProps) {
   return (
     <div className="flex flex-col bg-white w-full">
 
-      <div className="mb-8 flex items-center space-x-3">
+      {/* ═══════════════════════════════════════════
+          1. APPROACH / PROGRAMS / GLOBAL — combined top section
+          ═══════════════════════════════════════════ */}
+      <section className="w-full">
+        <div className="mb-8 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Approach</span>
             </div>

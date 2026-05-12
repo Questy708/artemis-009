@@ -123,21 +123,17 @@ export default function Apply({ goToPage }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Admissions + Aid
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
-                <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
-                <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
-              </div>
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+              Admissions + Aid
+            </h2>
+            <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+              <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
+              <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
+              <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
+            </div>
+          </div>
+        </div>
       </div>
-          </div>
-        </div>
-          </div>
-        </div>
 
       <div id="application" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24">
         <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-4 uppercase">

@@ -79,10 +79,15 @@ export default function OurPeople({ goToPage }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Explore</span>
-            </div>
+      <section id="explore" className="py-16 lg:py-24">
+        <div
+          ref={exploreAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Explore</span>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {exploreLinks.map((link, i) => (

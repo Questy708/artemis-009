@@ -104,3 +104,26 @@ Stage Summary:
 - All section backgrounds span full viewport width
 - Sticky "On This Page" navigation with scroll tracking
 - Git: 2 commits pushed (9aca40b, 2811fb1)
+
+---
+Task ID: 6
+Agent: Main Agent
+Task: Fix all broken JSX across 7 files causing site 500 error
+
+Work Log:
+- Diagnosed 500 error: 5 files had orphaned JSX elements (missing section wrappers) and 2 files had duplicate nested sub-header divs
+- Fixed Education.tsx: Added missing <section> wrapper for orphaned content at top of return
+- Fixed Research.tsx: Added missing <section> wrapper for "Our Approach" / "Featured Projects" content
+- Fixed Innovation.tsx: Added missing <section> wrapper for "Our Approach" / "Venture Hubs" content
+- Fixed OurPeople.tsx: Added missing <section> wrapper with exploreAnim ref for "Explore" section
+- Fixed SchoolDetail.tsx: Added missing <section> wrapper for "Programs of Study" content
+- Fixed Apply.tsx: Removed duplicate nested <div> elements in sticky sub-header
+- Fixed CentersOfInquiry.tsx: Removed duplicate nested <div> elements in sticky sub-header
+- Verified: tsc --noEmit passes with zero errors in all Artemis components
+- Verified: Dev server returns HTTP 200, site is accessible
+
+Stage Summary:
+- All 7 JSX nesting errors fixed across Education, Research, Innovation, OurPeople, SchoolDetail, Apply, and CentersOfInquiry
+- Site was returning 500 error because broken JSX in any imported component crashes the entire app
+- Dev server confirmed working at localhost:3000 with HTTP 200
+- CentersOfInquiry page has full content after Five Pillars: Centers Grid (15 centers), Guilds section, Cycles of Activity - the "empty" appearance was likely due to the rendering crash from the broken sub-header
