@@ -80,6 +80,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Campus Life
               </h2>
@@ -88,10 +90,12 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                 <a href="#traditions" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Traditions</a>
                 <a href="#community" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Community</a>
                 <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-          </div>
+              </div>
+      </div>
           </div>
         </div>
-      </div>
+          </div>
+        </div>
 
       {/* ── 2. Hero ── */}
       <section className="relative w-full overflow-hidden">
