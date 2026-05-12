@@ -172,7 +172,7 @@ export default function Apply({ goToPage }: Props) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
               <div className="mb-6 flex items-center space-x-3">
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Join Artemis</span>
@@ -191,7 +191,7 @@ export default function Apply({ goToPage }: Props) {
 
       {/* Process Overview — Minerva-inspired 3-step visual */}
       <section className="bg-[#F9F8F6] border-b border-gray-200">
-        <div className="max-w-[1000px] mx-auto w-full px-8 lg:px-20 py-10">
+        <div className="max-w-[1000px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-10">
           <div className="grid grid-cols-3 gap-6">
             {[
               { step: '01', label: 'Start Your Application', desc: 'Complete your personal, academic, and portfolio information', active: true },

@@ -93,14 +93,14 @@ export default function TheUniversity({ goToPage }: Props) {
           alt="The University of Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               About Artemis
             </span>
           </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
             The University
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -124,7 +124,7 @@ export default function TheUniversity({ goToPage }: Props) {
       />
 
       {/* ── Pages in This Section ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
         <div className="mb-6 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
@@ -151,7 +151,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── The Micro-Colleges ── */}
-      <section id="micro-colleges" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-24">
+      <section id="micro-colleges" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-24">
         <div
           ref={microCollegesAnim.ref}
           className={`transition-all duration-700 ${microCollegesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -165,7 +165,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-5">
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 The Micro-Colleges
               </h2>
             </div>
@@ -204,7 +204,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
       {/* ── Role of Micro-Colleges and the Network ── */}
       <section className="bg-gray-50 py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div
             ref={roleAnim.ref}
             className={`transition-all duration-700 ${roleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -217,7 +217,7 @@ export default function TheUniversity({ goToPage }: Props) {
               <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
-            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
               Role of Micro-Colleges<br />and the Network
             </h2>
             <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-16">
@@ -285,7 +285,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Schools and Research Divisions ── */}
-      <section id="schools" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-24">
+      <section id="schools" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-24">
         <div
           ref={schoolsAnim.ref}
           className={`transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -299,7 +299,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
             <div className="md:col-span-7">
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Schools and<br />Research Divisions
               </h2>
             </div>
@@ -342,7 +342,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis University Press ── */}
-      <section id="press" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-24">
+      <section id="press" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-24">
         <div
           ref={pressAnim.ref}
           className={`transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -357,7 +357,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-7">
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Artemis<br />University Press
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
@@ -410,7 +410,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
       {/* ── Artemis Lifelong Learning ── */}
       <section id="lifelong-learning" className="scroll-mt-[110px] bg-gray-50 py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div
             ref={lifelongAnim.ref}
             className={`transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -424,7 +424,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <div className="md:col-span-7">
-                <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                   Artemis<br />Lifelong Learning
                 </h2>
                 <p className="text-[16px] text-gray-600 leading-relaxed mb-4">

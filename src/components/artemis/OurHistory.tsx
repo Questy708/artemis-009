@@ -53,7 +53,7 @@ export default function OurHistory({ goToPage }: Props) {
 
       {/* Hero Section */}
       <div className="bg-white pt-16 pb-8">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
             <div className="max-w-2xl">
               <h1 className="text-[48px] lg:text-[64px] font-extrabold leading-[1] tracking-tighter text-gray-900 uppercase">
@@ -69,7 +69,7 @@ export default function OurHistory({ goToPage }: Props) {
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-20 -mt-4 relative z-10 mb-20">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 -mt-4 relative z-10 mb-20">
         <div className="aspect-[21/9] rounded-lg overflow-hidden shadow-sm bg-gray-100">
           <img 
             src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=1600" 
@@ -89,7 +89,7 @@ export default function OurHistory({ goToPage }: Props) {
       />
 
       {/* Content Section */}
-      <div id="timeline" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 scroll-mt-[110px]" ref={containerRef}>
+      <div id="timeline" className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 scroll-mt-[110px]" ref={containerRef}>
         <div className="relative pt-6 pb-20">
           {/* Animated Background Line */}
           <div className="absolute top-[50px] lg:top-[80px] bottom-0 left-[5px] md:left-[21px] lg:left-[calc(33.333333%+1.5rem)] w-[2px] bg-gray-100 transform -translate-x-1/2 z-0" />

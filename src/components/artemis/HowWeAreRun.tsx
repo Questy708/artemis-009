@@ -144,12 +144,12 @@ export default function HowWeAreRun({ goToPage }: Props) {
           alt="How Artemis is run"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Governance</span>
           </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
             How we<br />are run
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -173,7 +173,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section className="py-16 lg:py-24">
         <div
           ref={linksAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-6 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -203,7 +203,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section id="governance" className="py-16 lg:py-24 bg-gray-50 scroll-mt-[110px]">
         <div
           ref={governanceAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${governanceAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${governanceAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -212,7 +212,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
             <div className="lg:col-span-5">
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 The Governance<br />Model
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed">
@@ -253,7 +253,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section className="py-16 lg:py-24">
         <div
           ref={schoolsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -262,7 +262,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
               The Seven Schools
             </h2>
             <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl">
@@ -309,7 +309,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section id="finance" className="py-16 lg:py-24 bg-gray-50 scroll-mt-[110px]">
         <div
           ref={pressAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -317,7 +317,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Publishing</span>
               </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Artemis University Press
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
@@ -348,7 +348,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section id="policies" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={lifelongAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 aspect-[4/3] bg-gray-200 overflow-hidden">
@@ -363,7 +363,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Continuing Education</span>
               </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Lifelong Learning
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
@@ -387,7 +387,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={teaserAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${teaserAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${teaserAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>

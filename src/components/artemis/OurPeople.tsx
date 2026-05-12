@@ -93,14 +93,14 @@ export default function OurPeople({ goToPage }: Props) {
           alt="The people of Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               The Artemis Community
             </span>
           </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
             Our People
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -121,7 +121,7 @@ export default function OurPeople({ goToPage }: Props) {
       />
 
       {/* ── 2. EXPLORE ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={exploreAnim.ref}
           className={`transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -165,7 +165,7 @@ export default function OurPeople({ goToPage }: Props) {
       <section id="leadership" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={leadershipAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${leadershipAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${leadershipAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Red line accent */}
           <div className="mb-8 flex items-center space-x-3">
@@ -175,7 +175,7 @@ export default function OurPeople({ goToPage }: Props) {
             </span>
           </div>
 
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
             Roles, not resumes
           </h2>
           <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-4">
@@ -219,7 +219,7 @@ export default function OurPeople({ goToPage }: Props) {
       <section id="faculty" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={spotlightAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -266,7 +266,7 @@ export default function OurPeople({ goToPage }: Props) {
       <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -275,7 +275,7 @@ export default function OurPeople({ goToPage }: Props) {
             </span>
           </div>
 
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
             A global workforce
           </h2>
           <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-16">
@@ -306,7 +306,7 @@ export default function OurPeople({ goToPage }: Props) {
       <section id="staff" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={workingAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -319,7 +319,7 @@ export default function OurPeople({ goToPage }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Working at Artemis
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">

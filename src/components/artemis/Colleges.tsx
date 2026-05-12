@@ -133,12 +133,12 @@ export default function Colleges({ goToPage }: CollegesProps) {
           alt="Our Colleges"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Academic Structure</span>
           </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
             Specialized<br />Excellence
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -159,7 +159,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       />
 
       {/* ── 2. OVERVIEW ── */}
-      <section id="overview" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="overview" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={introAnim.ref}
           className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -175,7 +175,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Seven schools,<br />one mission
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
@@ -222,7 +222,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -245,7 +245,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       <section id="schools" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={schoolsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -255,7 +255,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
               Seven pillars of<br />knowledge
             </h2>
             <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl">
@@ -334,7 +334,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
 
       {/* ── 5. CARD-AND-IMAGE PARALLAX ── */}
       <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
@@ -367,7 +367,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       <section id="explore" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={exploreAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -376,7 +376,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-12">
             <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Discover your<br />path at Artemis
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed">
@@ -404,7 +404,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 7. CRIMSON CTA BAR ── */}
-      <section className="bg-[#8A0000] py-16 px-8 lg:px-20">
+      <section className="bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">

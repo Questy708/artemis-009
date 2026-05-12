@@ -279,7 +279,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800" alt="Centers of Inquiry" className="absolute inset-0 w-full h-full object-cover grayscale" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Frontiers of Research</span>
@@ -302,7 +302,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       />
 
       {/* Introduction */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
         <div ref={introAnim.ref} className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -310,7 +310,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
                 Our Approach
               </span>
             </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">Replacing departments with purpose</h2>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">Replacing departments with purpose</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">Our Centers of Inquiry stand as the epicenters of transformative research. These centers are structured to seamlessly blend curiosity-driven exploration with goal-oriented research, focusing on unraveling significant challenges. Inspired by the pursuit of knowledge as a cohesive whole, these centers are the cornerstone of our academic landscape.</p>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">Each center is a powerhouse of interdisciplinary collaboration, bringing together researchers from diverse disciplines to tackle complex challenges. Modeled on the principles of curiosity-driven research and a commitment to truth, these centers aim not only to unravel mysteries but to address grand challenges that transcend disciplinary boundaries. The goal is to foster an environment rooted in scientific curiosity, a commitment to truth, and interdisciplinary collaboration — a collective effort to solve complex problems facing society.</p>
           <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl">They replace traditional academic departments, creating an intellectual environment where reality is seen as interconnected and holistic, preventing distortions and imbalances that might arise from an exclusive focus on specific disciplines. This approach aligns with the vision of fostering a "philosophical habit of mind," encouraging learners to perceive knowledge as unified.</p>
@@ -319,12 +319,12 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
       {/* Pillar Tabs */}
       <section id="pillars" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
-        <div ref={pillarsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pillarsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div ref={pillarsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${pillarsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Five Pillars</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-10">How the Centers operate</h2>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-10">How the Centers operate</h2>
 
           {/* Tab buttons */}
           <div className="flex flex-wrap gap-2 mb-10">
@@ -345,7 +345,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
       {/* All Centers Grid */}
       <section id="centers" className="py-16 lg:py-24 scroll-mt-[110px]">
-        <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Centers</span>
@@ -378,12 +378,12 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
       {/* Guilds Section */}
       <section id="guilds" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
-        <div ref={guildAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div ref={guildAnim.ref} className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Applied Engine</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Guilds as the Applied Engine of Planetary Inquiry</h2>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Guilds as the Applied Engine of Planetary Inquiry</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">In the University of Artemis&apos;s vision for a reimagined higher education ecosystem, research is not a siloed pursuit but a dynamic force for planetary renewal. The Guilds represent the operational evolution of the foundational Centers of Inquiry (CoI) and the expansive Knowledge Core, transforming curiosity-driven exploration into actionable, civic-embedded intelligence.</p>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-12 max-w-2xl">This architecture positions Guilds as the &ldquo;frontier layer&rdquo; atop the CoI&apos;s epistemic depth: where Centers generate unified knowledge, Guilds propel it into real-world systems through cyclical activities, co-stewardship, and student-integrated missions. Aligned with Artemis&apos;s governance ethos of adaptive, participatory structures, Guilds ensure research serves the Commons — fostering ethical, resilient innovations for a just global future.</p>
 
@@ -436,13 +436,13 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
       {/* Cycles of Activity */}
       <section id="cycles" className="py-16 lg:py-24 scroll-mt-[110px]">
-        <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Cycles of Activity</span>
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Three interlocking rhythms</h2>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Three interlocking rhythms</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-12 max-w-2xl">Guilds pulse through three interlocking cycles, synchronized with Artemis&apos;s global calendar. These rhythms operationalize CoI&apos;s static hubs into fluid engines, ensuring capstones evolve from ideation to deployment.</p>
 
           <div className="space-y-12">

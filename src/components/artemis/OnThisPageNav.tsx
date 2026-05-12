@@ -41,8 +41,8 @@ interface OnThisPageNavProps {
 export default function OnThisPageNav({ sections, activeSection }: OnThisPageNavProps) {
   return (
     <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-        <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20">
+        <div className="flex items-center h-[52px] gap-4 sm:gap-8 overflow-x-auto hide-scrollbar">
           <span className="text-[13px] font-bold text-[#8A0000] whitespace-nowrap shrink-0">
             On This Page:
           </span>

@@ -249,16 +249,16 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-10 sm:pb-16">
               <div ref={heroAnim.ref} className={`transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="mb-8 flex items-center space-x-3">
                   <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                   <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Founding Campaign</span>
                 </div>
-                <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">
+                <h1 className="text-[30px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">
                   Igniting the Light
                 </h1>
-                <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light mb-8">
+                <p className="text-[15px] sm:text-[18px] text-white/70 max-w-xl leading-relaxed font-light mb-6 sm:mb-8">
                   The Founders Campaign for the University of Artemis. Help us build a borderless university that will endure for centuries.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -281,12 +281,12 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           ANIMATED GOAL BAR — Live Campaign Pulse
           ══════════════════════════════════════════ */}
       <section className="bg-white py-20 lg:py-28 border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
             {/* LEFT — Animated circular progress */}
             <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-[220px] h-[220px] md:w-[260px] md:h-[260px]">
+              <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px]">
                 {/* Outer pulsing ring */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-2 border-[#8A0000]/10"
@@ -315,7 +315,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
                 {/* Center content — animated counter */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <AnimatedCounter value={pct} suffix="%" className="text-[48px] md:text-[56px] font-black text-[#8A0000] leading-none" />
+                  <AnimatedCounter value={pct} suffix="%" className="text-[36px] sm:text-[48px] md:text-[56px] font-black text-[#8A0000] leading-none" />
                   <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400 mt-2">funded</span>
                 </div>
 
@@ -338,12 +338,12 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
             {/* RIGHT — Stats + shimmer bar */}
             <div className="lg:col-span-8">
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Campaign Progress</span>
-                <h3 className="text-[32px] md:text-[40px] font-black tracking-tighter text-[#141414] leading-none mb-2">
-                  <AnimatedCounter value={CAMPAIGN.raised} prefix={sym} className="text-[32px] md:text-[40px] font-black tracking-tighter text-[#141414]" />
-                  <span className="text-[16px] font-normal text-gray-400 tracking-normal ml-2">raised of {sym}{fmtShort(CAMPAIGN.goal)}</span>
-                </h3>
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <AnimatedCounter value={CAMPAIGN.raised} prefix={sym} className="text-[26px] sm:text-[32px] md:text-[40px] font-black tracking-tighter text-[#141414]" />
+                  <span className="text-[14px] sm:text-[16px] font-normal text-gray-400 tracking-normal">raised of {sym}{fmtShort(CAMPAIGN.goal)}</span>
+                </div>
               </div>
 
               {/* Shimmer progress bar */}
@@ -388,7 +388,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               </div>
 
               {/* Live stats row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                 {[
                   { label: 'Donors', value: CAMPAIGN.donors, animate: true, icon: Users },
                   { label: 'Avg. Gift', value: Math.round(CAMPAIGN.raised / CAMPAIGN.donors), prefix: sym, animate: true, icon: CreditCard },
@@ -446,11 +446,11 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           2. THE CASE — Asymmetric Editorial Layout
           ══════════════════════════════════════════ */}
       <section id="case" className="scroll-mt-[110px] py-24 lg:py-36">
-        <div ref={caseAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={caseAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* LEFT — Big editorial headline + body */}
             <div className="lg:col-span-7">
-              <motion.h2 {...slideLeft(caseAnim.visible)} className="text-[44px] md:text-[60px] lg:text-[72px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-12">
+              <motion.h2 {...slideLeft(caseAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[60px] lg:text-[72px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-8 sm:mb-12">
                 Why Artemis?<br />
                 <span className="text-[#8A0000]">Why now?</span>
               </motion.h2>
@@ -475,7 +475,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                   { value: 'Guard', label: 'Freedom', desc: 'Thought, inquiry, and expression \u2014 non-negotiable.' },
                 ].map((item, i) => (
                   <div key={i}>
-                    <div className="text-[80px] lg:text-[96px] font-black text-[#8A0000] leading-none tracking-tighter">{item.value}</div>
+                    <div className="text-[48px] sm:text-[64px] lg:text-[96px] font-black text-[#8A0000] leading-none tracking-tighter">{item.value}</div>
                     <div className="flex items-baseline gap-3 mt-1">
                       <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#141414]">{item.label}</span>
                       <span className="text-[13px] text-gray-400">&mdash;</span>
@@ -488,23 +488,23 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </div>
 
           {/* Strategic initiatives — Full-width horizontal band (4 initiatives) */}
-          <motion.div {...fadeUp(caseAnim.visible, 0.3)} className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-20 border-t border-gray-200">
-            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
+          <motion.div {...fadeUp(caseAnim.visible, 0.3)} className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-12 sm:mt-20 border-t border-gray-200">
+            <div className="border-l-4 border-[#8A0000] p-5 sm:p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Endowment for Autonomous Research</h4>
               <p className="text-[14px] text-gray-600 leading-relaxed">A permanent endowment supporting interdisciplinary research hubs that operate independently of state or commercial agendas &mdash; each with a 20-year operational runway that frees researchers from the grant cycle and protects the independence that real discovery demands.</p>
             </div>
-            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
+            <div className="border-l-4 border-[#8A0000] p-5 sm:p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">The Global Scholars Fund</h4>
               <p className="text-[14px] text-gray-600 leading-relaxed">Full-ride scholarships, virtual residencies, and travel grants for scholars from every corner of the world &mdash; ensuring that admission to Artemis is determined by the quality of your mind, never by the limits of your means.</p>
             </div>
-            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
+            <div className="border-l-4 border-[#8A0000] p-5 sm:p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Residential Colleges &amp; Global Hubs</h4>
               <p className="text-[14px] text-gray-600 leading-relaxed">Living-learning environments across continents where the Artemis community takes physical form &mdash; residential colleges with communal dining, seminar rooms, maker spaces, and the daily intellectual collision that only shared space can create.</p>
             </div>
-            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
+            <div className="border-l-4 border-[#8A0000] p-5 sm:p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Senior &amp; Junior Fellows Programme</h4>
               <p className="text-[14px] text-gray-600 leading-relaxed">Endowed fellowships for distinguished senior scholars and the most promising early-career researchers &mdash; building the intellectual core of Artemis by attracting minds that refuse to be constrained by borders, fixed-term contracts, or the grant cycle.</p>
@@ -517,11 +517,11 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           3. WHERE YOUR GIFT GOES — Financial Goals + Pull Quote
           ══════════════════════════════════════════ */}
       <section id="goals" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
-        <div ref={goalsAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={goalsAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* LEFT — Campaign summary as a clean table */}
             <div className="lg:col-span-5">
-              <motion.h2 {...slideLeft(goalsAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
+              <motion.h2 {...slideLeft(goalsAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
                 Where your<br />gift goes
               </motion.h2>
               <motion.p {...fadeUp(goalsAnim.visible, 0.15)} className="text-[16px] text-gray-600 max-w-md leading-relaxed mb-12">Every pound donated is a strategic investment in the future of knowledge. Here is how the {sym}{fmtShort(CAMPAIGN.goal)} founding goal is allocated.</motion.p>
@@ -573,9 +573,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
           {/* Pull Quote — Breaking out of container slightly */}
           <motion.div {...scaleIn(goalsAnim.visible, 0.4)} className="mt-24 lg:mt-32 relative">
-            <div className="border-l-4 border-[#8A0000] pl-8 lg:pl-12 lg:-ml-8 max-w-[900px]">
+            <div className="border-l-4 border-[#8A0000] pl-5 sm:pl-8 lg:pl-12 lg:-ml-8 max-w-[900px]">
               <svg className="w-8 h-8 text-[#8A0000] opacity-20 mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-              <blockquote className="text-[22px] md:text-[28px] font-light text-[#141414] leading-[1.5] mb-6 italic">
+              <blockquote className="text-[18px] sm:text-[22px] md:text-[28px] font-light text-[#141414] leading-[1.5] mb-6 italic">
                 The function of the university is not simply to teach bread-winning, or to furnish teachers for the public schools, or to be a centre of polite society; it is, above all, to be the organ of that fine adjustment between real life and the growing knowledge of life, an adjustment which forms the secret of civilisation.
               </blockquote>
               <div className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">W.E.B. Du Bois</div>
@@ -589,18 +589,18 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           4. THREE PHASES TO LAUNCH — Vertical Timeline
           ══════════════════════════════════════════ */}
       <section id="phases" className="scroll-mt-[110px] py-24 lg:py-36">
-        <div ref={phasesAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={phasesAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Phase indicator */}
           <motion.div {...clipReveal(phasesAnim.visible)} className="mb-16">
             <div className="flex items-center gap-4 mb-8">
               {['I', 'II', 'III', 'IV', 'V'].map((num, i) => (
                 <React.Fragment key={i}>
-                  <span className="text-[48px] md:text-[64px] font-black text-[#8A0000] leading-none">{num}</span>
-                  {i < 4 && <ArrowRight size={24} className="text-gray-300" />}
+                  <span className="text-[28px] sm:text-[48px] md:text-[64px] font-black text-[#8A0000] leading-none">{num}</span>
+                  {i < 4 && <ArrowRight size={16} className="text-gray-300 hidden sm:block" />}
                 </React.Fragment>
               ))}
             </div>
-            <h2 className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
+            <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
               Five milestones<br />to launch
             </h2>
             <p className="text-[16px] text-gray-600 max-w-xl leading-relaxed">Each phase has concrete deliverables. Not aspirations &mdash; commitments. Track our progress as we climb from foundation to global scale.</p>
@@ -678,9 +678,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           5. FOUNDING OPPORTUNITIES — Table + Constellation Strip
           ══════════════════════════════════════════ */}
       <section id="opportunities" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
-        <div ref={opportunitiesAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={opportunitiesAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Intro — opens with just text, no red line label */}
-          <motion.h2 {...clipReveal(opportunitiesAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
+          <motion.h2 {...clipReveal(opportunitiesAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Founding<br />opportunities
           </motion.h2>
           <motion.p {...fadeUp(opportunitiesAnim.visible, 0.15)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-4">We are building the first borderless, network-native university in history. We are looking for donors and partners who share our vision and are excited about this legacy-building opportunity.</motion.p>
@@ -733,7 +733,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
             <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
               {/* Circular constellation universe */}
-              <div className="relative w-[340px] h-[340px] md:w-[420px] md:h-[420px] shrink-0 mx-auto lg:mx-0">
+              <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] shrink-0 mx-auto lg:mx-0">
                 {/* Outer rotating ring — slow drift */}
                 <motion.div
                   className="absolute inset-0 rounded-full border border-gray-200"
@@ -835,7 +835,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.35 }}
-                        className="bg-white border-2 border-[#8A0000]/20 p-8 lg:p-10"
+                        className="bg-white border-2 border-[#8A0000]/20 p-5 sm:p-8 lg:p-10"
                       >
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-10 h-10 rounded-full bg-[#8A0000] flex items-center justify-center">
@@ -868,7 +868,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="bg-white border border-gray-200 p-8 lg:p-10 flex flex-col items-center justify-center text-center min-h-[240px]"
+                      className="bg-white border border-gray-200 p-5 sm:p-8 flex flex-col items-center justify-center text-center min-h-[240px]"
                     >
                       <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-4">
                         <Orbit size={24} className="text-gray-300" />
@@ -887,8 +887,8 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           6. WAYS TO GIVE — Icon Grid
           ══════════════════════════════════════════ */}
       <section id="ways" className="scroll-mt-[110px] py-24 lg:py-36">
-        <div ref={waysAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <motion.h2 {...clipReveal(waysAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-12">
+        <div ref={waysAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <motion.h2 {...clipReveal(waysAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-8 sm:mb-12">
             Ways to give
           </motion.h2>
 
@@ -899,7 +899,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                 <motion.div
                   key={i}
                   {...fadeUp(waysAnim.visible, i * 0.06)}
-                  className={`p-8 lg:p-10 hover:bg-gray-50 transition-colors group ${i % 2 === 1 ? 'border-l border-gray-200' : ''} ${i < WAYS_TO_GIVE.length - 2 ? 'border-b border-gray-200' : ''} ${i >= WAYS_TO_GIVE.length - 2 && i % 2 === 1 ? 'border-l border-gray-200' : ''}`}
+                  className={`p-5 sm:p-8 lg:p-10 hover:bg-gray-50 transition-colors group ${i % 2 === 1 ? 'border-l border-gray-200' : ''} ${i < WAYS_TO_GIVE.length - 2 ? 'border-b border-gray-200' : ''} ${i >= WAYS_TO_GIVE.length - 2 && i % 2 === 1 ? 'border-l border-gray-200' : ''}`}
                 >
                   <div className="flex items-start gap-6">
                     <div className="w-12 h-12 flex items-center justify-center bg-[#8A0000]/10 shrink-0">
@@ -933,14 +933,14 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           7. GIVE NOW — The Donation Form
           ══════════════════════════════════════════ */}
       <section id="give" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
-        <div ref={giveAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <motion.h2 {...clipReveal(giveAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
+        <div ref={giveAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <motion.h2 {...clipReveal(giveAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Give now
           </motion.h2>
           <motion.p {...fadeUp(giveAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-12">Choose your amount, select your payment method, and join the founding. For major gifts and naming opportunities, contact <a href="mailto:donate@artemis.edu" className="text-[#8A0000] font-bold hover:underline">donate@artemis.edu</a>.</motion.p>
 
           {/* AMOUNT section — Full-width */}
-          <motion.div {...fadeUp(giveAnim.visible, 0.15)} className="bg-white border border-gray-200 p-8 lg:p-10 mb-6">
+          <motion.div {...fadeUp(giveAnim.visible, 0.15)} className="bg-white border border-gray-200 p-5 sm:p-8 lg:p-10 mb-6">
             <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-900 mb-5">Select your amount</h3>
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-5">
               {PRESETS.map(amt => (
@@ -995,7 +995,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           {/* SPLIT: Donor details LEFT, Payment + summary RIGHT */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* LEFT — Donor info */}
-            <motion.div {...slideLeft(giveAnim.visible, 0.2)} className="bg-white border border-gray-200 p-8 lg:p-10 space-y-5">
+            <motion.div {...slideLeft(giveAnim.visible, 0.2)} className="bg-white border border-gray-200 p-5 sm:p-8 lg:p-10 space-y-5">
               <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-900 mb-2">Your Details</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -1020,7 +1020,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             </motion.div>
 
             {/* RIGHT — Payment method */}
-            <motion.div {...slideRight(giveAnim.visible, 0.2)} className="bg-white border border-gray-200 p-8 lg:p-10">
+            <motion.div {...slideRight(giveAnim.visible, 0.2)} className="bg-white border border-gray-200 p-5 sm:p-8 lg:p-10">
               <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-900 mb-5">Payment method</h3>
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
@@ -1072,12 +1072,12 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </div>
 
           {/* Summary at bottom */}
-          <motion.div {...fadeUp(giveAnim.visible, 0.35)} className="bg-white border-2 border-gray-200 p-8 lg:p-10 mt-6 shadow-sm">
+          <motion.div {...fadeUp(giveAnim.visible, 0.35)} className="bg-white border-2 border-gray-200 p-5 sm:p-8 lg:p-10 mt-6 shadow-sm">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
               <div className="flex items-center gap-6">
                 <div className="w-14 h-14 flex items-center justify-center bg-[#8A0000]/10"><Heart size={24} className="text-[#8A0000]" /></div>
                 <div>
-                  <div className="text-[36px] font-black text-[#141414] leading-none">{sym}{fmtShort(effectiveAmount || 0)}</div>
+                  <div className="text-[28px] sm:text-[36px] font-black text-[#141414] leading-none">{sym}{fmtShort(effectiveAmount || 0)}</div>
                   {isRecurring && <div className="text-[12px] text-[#8A0000] font-bold mt-1">{recurringFreq} &middot; {sym}{fmtShort(effectiveAmount * (recurringFreq === 'monthly' ? 12 : recurringFreq === 'quarterly' ? 4 : 1))}/yr</div>}
                 </div>
               </div>
@@ -1105,10 +1105,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           8. THE FOUNDERS — Donor Wall + Events
           ══════════════════════════════════════════ */}
       <section id="founders" className="scroll-mt-[110px] py-24 lg:py-36">
-        <div ref={foundersAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={foundersAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Tier legend horizontal bar */}
           <motion.div {...clipReveal(foundersAnim.visible)} className="mb-16">
-            <h2 className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-8">The founders</h2>
+            <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-6 sm:mb-8">The founders</h2>
             <div className="flex flex-wrap gap-6 lg:gap-12 pb-8 border-b border-gray-200">
               {[
                 { name: "Chancellor's Circle", range: '\u00a3500K+', icon: Crown, color: '#8A0000' },
@@ -1155,7 +1155,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
             {/* RIGHT — Upcoming events */}
             <div className="lg:col-span-4">
-              <div className="sticky top-[180px]">
+              <div className="lg:sticky lg:top-[180px]">
                 <h3 className="text-[18px] font-bold text-[#141414] mb-6">Upcoming Events</h3>
                 <div className="space-y-0">
                   {EVENTS.map((ev, i) => {
@@ -1203,9 +1203,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           9. BEYOND THE FOUNDING + CONTACT
           ══════════════════════════════════════════ */}
       <section id="beyond" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
-        <div ref={beyondAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+        <div ref={beyondAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Four phase cards with images */}
-          <motion.h2 {...clipReveal(beyondAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
+          <motion.h2 {...clipReveal(beyondAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Beyond the founding
           </motion.h2>
           <motion.p {...fadeUp(beyondAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues &mdash; not as an ending, but as a beginning. Four phases to build a university that spans the world.</motion.p>
@@ -1223,18 +1223,18 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                   <div className="relative h-[200px] overflow-hidden">
                     <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                    <div className="absolute bottom-4 left-6 right-6 flex items-end justify-between">
+                    <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-6 sm:right-6 flex items-end justify-between">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-1">{p.phase}</span>
-                        <h4 className="text-[22px] font-bold text-white">{p.title}</h4>
+                        <h4 className="text-[18px] sm:text-[22px] font-bold text-white">{p.title}</h4>
                       </div>
                       <div className="text-right">
-                        <div className="text-[20px] font-black text-white leading-none">{p.goal}</div>
+                        <div className="text-[16px] sm:text-[20px] font-black text-white leading-none">{p.goal}</div>
                         <div className="text-[9px] font-bold uppercase tracking-widest text-white/50">{p.period}</div>
                       </div>
                     </div>
                   </div>
-                  <div className="p-6 lg:p-8">
+                  <div className="p-4 sm:p-6 lg:p-8">
                     <Icon size={22} className="text-[#8A0000] mb-3" />
                     <p className="text-[14px] text-gray-600 leading-relaxed">{p.desc}</p>
                   </div>
@@ -1247,8 +1247,8 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           <motion.div {...scaleIn(beyondAnim.visible, 0.3)} className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-24">
             <img src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1400" alt="The Future of Artemis" className="absolute inset-0 w-full h-full object-cover grayscale" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-lg p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+              <div className="bg-white max-w-sm sm:max-w-lg p-5 sm:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">By the Numbers</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-6 leading-tight">A university built to span the world</h3>
                 <div className="grid grid-cols-2 gap-6">
@@ -1311,7 +1311,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               </div>
 
               <div className="lg:col-span-7">
-                <div className="bg-white border border-gray-200 p-8">
+                <div className="bg-white border border-gray-200 p-5 sm:p-8">
                   <h4 className="text-[14px] font-bold text-[#141414] mb-5">Send us a message</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -1355,9 +1355,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           Final CTA — Crimson Bar
           ══════════════════════════════════════════ */}
       <section className="bg-[#8A0000] py-16">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
           <div>
-            <h2 className="text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
+            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Every great university began<br />with someone who believed.
             </h2>
             <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">This is your moment to place a star in a constellation that will guide scholars for centuries. The next chapter starts with you.</p>

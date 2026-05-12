@@ -58,7 +58,7 @@ export default function Home({ goToPage }: HomeProps) {
       {/* ═══════════════════════════════════════════
           1. HERO — Full-bleed with gradient overlay
           ═══════════════════════════════════════════ */}
-      <section className="relative w-full h-[65vh] min-h-[480px] overflow-hidden">
+      <section className="relative w-full h-[55vh] sm:h-[65vh] min-h-[400px] sm:min-h-[480px] overflow-hidden">
         <img
           src={heroContent.image}
           alt="Artemis Expedition"
@@ -76,10 +76,10 @@ export default function Home({ goToPage }: HomeProps) {
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Artemis Project</span>
             </div>
 
-            <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
+            <h1 className="text-[36px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
               A new kind of university —<br />one degree, every horizon.
             </h1>
-            <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light mb-8">
+            <p className="text-[15px] sm:text-[18px] text-white/70 max-w-xl leading-relaxed font-light mb-8">
               Inspired by centuries of collegiate tradition and built for a connected age, the University of Artemis unites diverse colleges — each with distinct expertise and identity — as integral academic units within one accredited institution.
             </p>
             <div className="flex items-center space-x-5 text-[11px] font-bold text-white/50 uppercase tracking-widest">
@@ -174,7 +174,7 @@ export default function Home({ goToPage }: HomeProps) {
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Consortium Infrastructure</span>
               </div>
 
-              <h2 className="text-[42px] md:text-[54px] font-bold text-[#141414] leading-[1] mb-12 tracking-tighter">
+              <h2 className="text-[34px] sm:text-[42px] md:text-[54px] font-bold text-[#141414] leading-[1] mb-12 tracking-tighter">
                 A federated alliance of autonomous colleges co-creating{' '}
                 <span className="text-[#8A0000]">shared academic scaffolds.</span>
               </h2>
@@ -185,7 +185,7 @@ export default function Home({ goToPage }: HomeProps) {
                 </p>
                 <div className="grid grid-cols-2 gap-8 pt-2">
                   <div className="relative">
-                    <div className="text-[36px] font-black text-[#141414] leading-none mb-3 tabular-nums">
+                    <div className="text-[28px] sm:text-[36px] font-black text-[#141414] leading-none mb-3 tabular-nums">
                       20
                     </div>
                     <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight">
@@ -196,7 +196,7 @@ export default function Home({ goToPage }: HomeProps) {
                     <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
                   </div>
                   <div className="relative">
-                    <div className="text-[36px] font-black text-[#141414] leading-none mb-3 tabular-nums">
+                    <div className="text-[28px] sm:text-[36px] font-black text-[#141414] leading-none mb-3 tabular-nums">
                       ECTS
                     </div>
                     <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight">
@@ -228,25 +228,25 @@ export default function Home({ goToPage }: HomeProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="relative">
                 <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                <div className="text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">20</div>
+                <div className="text-[32px] sm:text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">20</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">Founding Micro-Colleges</div>
                 <div className="text-[12px] text-gray-500 leading-snug">Active nodes worldwide</div>
               </div>
               <div className="relative">
                 <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                <div className="text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">ECTS</div>
+                <div className="text-[32px] sm:text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">ECTS</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">Unified Credit Mapping</div>
                 <div className="text-[12px] text-gray-500 leading-snug">Fully transferable across nodes</div>
               </div>
               <div className="relative">
                 <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                <div className="text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">6</div>
+                <div className="text-[32px] sm:text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">6</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">Continents</div>
                 <div className="text-[12px] text-gray-500 leading-snug">Spanning every time zone</div>
               </div>
               <div className="relative">
                 <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                <div className="text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">1</div>
+                <div className="text-[32px] sm:text-[42px] font-black text-[#141414] leading-none mb-3 tabular-nums">1</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">Accredited Degree</div>
                 <div className="text-[12px] text-gray-500 leading-snug">Recognised globally</div>
               </div>
@@ -386,7 +386,7 @@ export default function Home({ goToPage }: HomeProps) {
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Calendar</span>
               </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[30px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 What's happening<br />at Artemis
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-8">

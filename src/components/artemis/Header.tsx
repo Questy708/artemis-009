@@ -25,7 +25,7 @@ export default function Header({ onMenuClick, goHome, goToPage }: HeaderProps) {
           </div>
         </div>
       </div>
-      <div className="hidden xl:flex space-x-5 text-[13px] font-bold">
+      <div className="hidden lg:flex space-x-5 text-[13px] font-bold">
         <button onClick={() => goToPage('education')} className="hover:underline transition-opacity cursor-pointer">education</button>
         <button onClick={() => goToPage('research')} className="hover:underline transition-opacity cursor-pointer">research</button>
         <button onClick={() => goToPage('innovation')} className="hover:underline transition-opacity cursor-pointer">innovation</button>

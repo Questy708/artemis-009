@@ -108,14 +108,14 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
               alt="Undergraduate Study at Artemis"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
               <div className="mb-6 flex items-center space-x-3">
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
                   Homo Eruditus
                 </span>
               </div>
-              <h1 className="text-[48px] md:text-[64px] font-extrabold leading-[1.05] tracking-tighter text-white mb-5">
+              <h1 className="text-[32px] sm:text-[48px] md:text-[64px] font-extrabold leading-[1.05] tracking-tighter text-white mb-5">
                 Undergraduate<br />Study
               </h1>
               <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -146,7 +146,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           2. OUR APPROACH — two-column layout
           ═══════════════════════════════════════════ */}
       <section id="approach" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={approachAnim.ref}
             className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -162,7 +162,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               {/* Left — Text */}
               <div>
-                <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                   Learning without<br />boundaries
                 </h2>
                 <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
@@ -226,7 +226,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           3. THE 4-YEAR JOURNEY — Timeline layout
           ═══════════════════════════════════════════ */}
       <section id="journey" className="scroll-mt-[110px] w-full bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={journeyAnim.ref}
             className={`transition-all duration-700 ${journeyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -238,7 +238,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
               </span>
             </div>
 
-            <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
               The 4-year journey
             </h2>
             <p className="text-[17px] text-gray-600 leading-[1.75] max-w-2xl mb-16">
@@ -289,7 +289,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           className={`transition-all duration-700 ${competenciesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
-          <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
             <div className="relative flex items-center mb-14">
               <div className="flex-grow border-t border-gray-200"></div>
               <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
@@ -299,7 +299,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
             </div>
 
             <div className="mb-14">
-              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
                 Six pillars of<br />meta-learning
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75] max-w-2xl">
@@ -319,7 +319,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-              <div className="relative z-10 max-w-[1400px] mx-auto px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
+              <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
                 <div className="bg-white max-w-md p-8 md:p-10 shadow-xl">
                   <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
                     Core Curriculum
@@ -343,7 +343,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           </div>
 
           {/* Competency cards grid */}
-          <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {metaCompetencies.map((comp, idx) => (
                 <div
@@ -374,7 +374,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
       <section id="by-the-numbers" className="scroll-mt-[110px] w-full bg-gray-50">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-12 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -406,7 +406,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           6. EXPLORE MORE — Link grid (8-4 layout)
           ═══════════════════════════════════════════ */}
       <section id="explore" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left — Main content (8 cols) */}
             <div className="lg:col-span-8">
@@ -416,7 +416,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
                   Explore
                 </span>
               </div>
-              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Discover your<br />path at Artemis
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75] mb-8 max-w-2xl">
@@ -487,7 +487,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
       {/* ═══════════════════════════════════════════
           7. APPLY CTA — crimson band
           ═══════════════════════════════════════════ */}
-      <section className="w-full bg-[#8A0000] py-16 px-8 lg:px-20">
+      <section className="w-full bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-[28px] md:text-[36px] font-extrabold text-white leading-tight tracking-tight mb-2">

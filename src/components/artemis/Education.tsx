@@ -158,14 +158,14 @@ export default function Education({ goToPage }: EducationProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         {/* Text overlay — centered container, but image is full-bleed */}
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               Homo Eruditus
             </span>
           </div>
-          <h1 className="text-[48px] md:text-[64px] font-extrabold leading-[1.05] tracking-tighter text-white mb-5">
+          <h1 className="text-[32px] sm:text-[48px] md:text-[64px] font-extrabold leading-[1.05] tracking-tighter text-white mb-5">
             Education at<br />Artemis
           </h1>
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
@@ -195,7 +195,7 @@ export default function Education({ goToPage }: EducationProps) {
           Grid: 2 equal columns filling the full container width
           ═══════════════════════════════════════════ */}
       <section id="approach" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={approachAnim.ref}
             className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -211,7 +211,7 @@ export default function Education({ goToPage }: EducationProps) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               {/* Left — Text */}
               <div>
-                <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+                <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                   Learning without<br />boundaries
                 </h2>
                 <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
@@ -278,11 +278,11 @@ export default function Education({ goToPage }: EducationProps) {
           Content: centered in max-w-[1400px]
           ═══════════════════════════════════════════ */}
       <section className="w-full bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
-              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Be a part of<br />Artemis education
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75]">
@@ -323,7 +323,7 @@ export default function Education({ goToPage }: EducationProps) {
           Cards: 3-column grid filling the full container width
           ═══════════════════════════════════════════ */}
       <section id="programs" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={programsAnim.ref}
             className={`transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -338,7 +338,7 @@ export default function Education({ goToPage }: EducationProps) {
             </div>
 
             <div className="mb-14">
-              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
                 Seven paths to<br />mastery
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75] max-w-2xl">
@@ -392,7 +392,7 @@ export default function Education({ goToPage }: EducationProps) {
           Grid: 8-col main + 4-col sidebar
           ═══════════════════════════════════════════ */}
       <section id="curriculum" className="scroll-mt-[110px] w-full bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left — Main content (8 cols) */}
             <div className="lg:col-span-8">
@@ -402,7 +402,7 @@ export default function Education({ goToPage }: EducationProps) {
                   Curriculum
                 </span>
               </div>
-              <h2 className="text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Dynamic skill-based<br />certifications
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75] mb-4">
@@ -478,7 +478,7 @@ export default function Education({ goToPage }: EducationProps) {
           Only the overlay card and section divider are inside the container.
           ═══════════════════════════════════════════ */}
       <section id="global" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
           <div
             ref={globalAnim.ref}
             className={`transition-all duration-700 ${globalAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -503,7 +503,7 @@ export default function Education({ goToPage }: EducationProps) {
             className="absolute inset-0 w-full h-full object-cover grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-          <div className="relative z-10 max-w-[1400px] mx-auto px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
             <div className="bg-white max-w-md p-8 md:p-10 shadow-xl">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
                 Global Initiative
@@ -536,7 +536,7 @@ export default function Education({ goToPage }: EducationProps) {
       <section id="by-the-numbers" className="scroll-mt-[110px] w-full bg-gray-50">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-12 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -569,7 +569,7 @@ export default function Education({ goToPage }: EducationProps) {
           Background: full-width crimson
           Content: centered in max-w-[1400px]
           ═══════════════════════════════════════════ */}
-      <section className="w-full bg-[#8A0000] py-16 px-8 lg:px-20">
+      <section className="w-full bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-[28px] md:text-[36px] font-extrabold text-white leading-tight tracking-tight mb-2">
