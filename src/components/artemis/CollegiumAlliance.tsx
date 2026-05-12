@@ -68,6 +68,41 @@ const foundingMembers = [
     desc: 'The Pacific research node, bringing together expertise in robotics, mechatronics, and advanced manufacturing with Japan\'s engineering tradition.',
     image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=600',
   },
+  {
+    name: 'São Paulo College',
+    city: 'Brazil',
+    focus: ['Environmental Systems', 'Biodiversity', 'Latin American Studies'],
+    desc: 'The gateway to South America, embedded in one of the world\'s most biodiverse regions. São Paulo drives research in tropical ecology, environmental policy, and the vibrant cultural production of Latin America.',
+    image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    name: 'Dubai College',
+    city: 'United Arab Emirates',
+    focus: ['Energy Systems', 'Geopolitics', 'Trade & Finance'],
+    desc: 'Strategically positioned at the crossroads of three continents, Dubai College focuses on energy transition, global logistics, and the geopolitical dynamics shaping the Middle East and beyond.',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    name: 'Oxford College',
+    city: 'United Kingdom',
+    focus: ['Humanities', 'Classical Traditions', 'Legal Philosophy'],
+    desc: 'Rooted in the oldest academic tradition in the English-speaking world, Oxford College anchors Artemis\'s commitment to the humanities, jurisprudence, and the centuries-long conversation between reason and tradition.',
+    image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    name: 'Singapore College',
+    city: 'Singapore',
+    focus: ['Quantum Computing', 'Biomedical Sciences', 'Urban Systems'],
+    desc: 'Asia\'s innovation crucible. Singapore College leverages the city-state\'s world-class research infrastructure and strategic position to advance quantum technologies, precision medicine, and smart urban design.',
+    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    name: 'Nairobi College',
+    city: 'Kenya',
+    focus: ['Public Health', 'Conservation', 'Digital Economies'],
+    desc: 'East Africa\'s academic anchor. Nairobi College leads Artemis\'s work in global health equity, wildlife conservation science, and the digital economies transforming the continent from mobile money to AI-driven agriculture.',
+    image: 'https://images.unsplash.com/photo-1611348524140-53c9a25263d6?auto=format&fit=crop&q=80&w=600',
+  },
 ];
 
 const howItWorks = [
@@ -89,8 +124,8 @@ const howItWorks = [
 ];
 
 const stats = [
-  { value: '5', label: 'Founding Colleges', detail: 'Active nodes across the globe' },
-  { value: '4', label: 'Continents', detail: 'Spanning every major region' },
+  { value: '10', label: 'Founding Colleges', detail: 'Active nodes across the globe' },
+  { value: '6', label: 'Continents', detail: 'Spanning every major region' },
   { value: 'ECTS', label: 'Unified Credit Mapping', detail: 'Fully transferable across nodes' },
   { value: '1', label: 'Accredited Degree', detail: 'Recognised globally' },
 ];
@@ -202,12 +237,12 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             </div>
 
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-16">
-              The founding five
+              The founding ten
             </h2>
 
-            {/* First row: 3 cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {foundingMembers.slice(0, 3).map((member, i) => (
+            {/* Row 1: cards 1-3 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+              {foundingMembers.slice(0, 3).map((member) => (
                 <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                   <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                     <img
@@ -242,9 +277,83 @@ export default function CollegiumAlliance({ goToPage }: Props) {
               ))}
             </div>
 
-            {/* Second row: 2 cards centered */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-[680px] mx-auto">
-              {foundingMembers.slice(3, 5).map((member) => (
+            {/* Row 2: cards 4-6 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+              {foundingMembers.slice(3, 6).map((member) => (
+                <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={14} className="text-[#8A0000]" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">{member.city}</span>
+                    </div>
+                    <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {member.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.focus.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-gray-100 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">
+                      {member.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3: cards 7-9 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+              {foundingMembers.slice(6, 9).map((member) => (
+                <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={14} className="text-[#8A0000]" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">{member.city}</span>
+                    </div>
+                    <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {member.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.focus.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-gray-100 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">
+                      {member.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 4: card 10 centered */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[440px] mx-auto">
+              {foundingMembers.slice(9, 10).map((member) => (
                 <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                   <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                     <img
