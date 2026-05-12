@@ -114,8 +114,8 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
   return (
     <div className="w-full shrink-0">
       {/* ── Photo Mosaic on Crimson ── */}
-      <section className="bg-[#8A0000] py-12 px-6 lg:px-16 overflow-hidden">
-        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+      <section className="py-12 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 bg-[#8A0000] py-8 sm:py-10">
           {/* Section label */}
           <div className="flex items-center space-x-3 mb-6">
             <span className="w-6 h-[1px] bg-white/40"></span>
