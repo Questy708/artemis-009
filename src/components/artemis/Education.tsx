@@ -59,6 +59,20 @@ const academicPrograms = [
     linkText: 'Start Learning Online',
     linkTarget: 'programs',
   },
+  {
+    title: 'K-12 Education',
+    description: 'Artemis extends its educational philosophy to younger students through innovative K-12 programs that foster early intellectual development, cultivating curiosity and critical thinking from the earliest years of formal education.',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=600',
+    linkText: 'Explore K-12 Programs',
+    linkTarget: 'admissions',
+  },
+  {
+    title: 'Dual-Degree Pathway (P-TECH)',
+    description: "Earn a university degree while still in high school. Modeled after the P-TECH initiative and inspired by Avenues: The World School, this pathway combines secondary and tertiary education into a seamless six-year program that awards both a high school diploma and an associate or bachelor's degree.",
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600',
+    linkText: 'Explore Dual-Degree',
+    linkTarget: 'admissions',
+  },
 ];
 
 const educationStats = [
@@ -136,6 +150,36 @@ export default function Education({ goToPage }: EducationProps) {
   const programsAnim = useInView();
   const globalAnim = useInView();
   const statsAnim = useInView();
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isPausedRef = useRef(false);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    let animId: number;
+    let lastTime = 0;
+    const pixelsPerSecond = 50;
+
+    const animate = (time: number) => {
+      if (lastTime) {
+        const delta = time - lastTime;
+        if (!isPausedRef.current) {
+          el.scrollLeft += (pixelsPerSecond * delta) / 1000;
+          const halfWidth = el.scrollWidth / 2;
+          if (el.scrollLeft >= halfWidth) {
+            el.scrollLeft -= halfWidth;
+          }
+        }
+      }
+      lastTime = time;
+      animId = requestAnimationFrame(animate);
+    };
+
+    animId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animId);
+  }, []);
 
   const sectionIds = ['approach', 'programs', 'curriculum', 'global', 'by-the-numbers'];
   const activeSection = useActiveSection(sectionIds);
@@ -323,7 +367,7 @@ export default function Education({ goToPage }: EducationProps) {
           Cards: 3-column grid filling the full container width
           ═══════════════════════════════════════════ */}
       <section id="programs" className="scroll-mt-[110px] w-full bg-white">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-20 pt-16 lg:pt-24">
           <div
             ref={programsAnim.ref}
             className={`transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -339,7 +383,7 @@ export default function Education({ goToPage }: EducationProps) {
 
             <div className="mb-14">
               <h2 className="text-[28px] sm:text-[38px] lg:text-[46px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-                Seven paths to<br />mastery
+                Nine paths to<br />mastery
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.75] max-w-2xl">
                 Whether you are beginning your academic journey or seeking to deepen your expertise,
@@ -347,13 +391,26 @@ export default function Education({ goToPage }: EducationProps) {
                 interdisciplinary, flexible, and globally relevant.
               </p>
             </div>
+          </div>
+        </div>
 
-            {/* Program cards grid — 3 columns */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {academicPrograms.map((program, i) => (
+        {/* Auto-scrolling horizontal carousel — duplicated items for seamless loop */}
+        <div className="max-w-[1600px] mx-auto pb-16 lg:pb-24">
+          <style>{`.programs-carousel::-webkit-scrollbar { display: none; }`}</style>
+          <div
+            ref={carouselRef}
+            className="programs-carousel overflow-x-auto"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            onMouseEnter={() => { isPausedRef.current = true; }}
+            onMouseLeave={() => { isPausedRef.current = false; }}
+            onTouchStart={() => { isPausedRef.current = true; }}
+            onTouchEnd={() => { setTimeout(() => { isPausedRef.current = false; }, 2000); }}
+          >
+            <div className="flex gap-6 px-5 sm:px-8 lg:px-20" style={{ width: 'fit-content' }}>
+              {[...academicPrograms, ...academicPrograms].map((program, i) => (
                 <div
                   key={i}
-                  className="group bg-white border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer shadow-sm hover:shadow-lg overflow-hidden"
+                  className="flex-shrink-0 w-[280px] sm:w-[380px] lg:w-[500px] group bg-white border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer shadow-sm hover:shadow-lg overflow-hidden"
                   onClick={() => goToPage(program.linkTarget)}
                 >
                   <div className="aspect-[3/2] bg-gray-100 overflow-hidden">
@@ -365,7 +422,7 @@ export default function Education({ goToPage }: EducationProps) {
                   </div>
                   <div className="p-6">
                     <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
-                      0{i + 1} &mdash; {program.title.toUpperCase().replace('&', '&')}
+                      {String((i % academicPrograms.length) + 1).padStart(2, '0')} &mdash; {program.title.toUpperCase().replace('&', '&')}
                     </div>
                     <h3 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors leading-tight">
                       {program.title}

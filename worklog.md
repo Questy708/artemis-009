@@ -172,3 +172,51 @@ Stage Summary:
 - Added UATX-inspired: quote, financial goals, founding opportunities, ways to give, contact form
 - All sections consistent with site's light/crimson design language
 - Build passes with no errors
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: CenterDetail - fix overview alignment + add People section
+
+Work Log:
+- Read worklog.md and CenterDetail.tsx render section (lines 475-663)
+- Change 1: Fixed overview section alignment — removed max-w-[1400px] mx-auto from the section element itself, added inner div with site-standard `max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20` container pattern. This ensures the overview section background spans full-width while text is properly constrained and aligned.
+- Change 2: Added People section between Overview and Research Focus sections:
+  - Heading "People" with crimson label and h2 title
+  - Two-column grid with "Core Investigators" and "Junior Fellows" sub-sections
+  - Each sub-section in a white card with border on gray-50 background
+  - Uses center.coreInvestigators and center.juniorFellows data already in the center objects
+  - Anchor id="people" for OnThisPageNav
+  - Added anim6 useInView hook for scroll-triggered animation
+- Added `{ id: 'people', label: 'People' }` to centerNavSections array (between Overview and Research Focus)
+- Build verified successfully (npx next build passes)
+- Committed and pushed: "feat: CenterDetail - alignment fix + People section"
+
+Stage Summary:
+- Overview section now uses site-standard inner container pattern (max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20)
+- New People section added with Core Investigators and Junior Fellows sub-sections
+- OnThisPageNav updated to include People link
+- Build passes, changes pushed to GitHub
+---
+Task ID: 3
+Agent: Main
+Task: Add On This Page navigation bar to ProgramDetail.tsx
+
+Work Log:
+- Read existing ProgramDetail.tsx to understand current structure (catalog header + breadcrumb + sidebar + content with sticky tab navigation)
+- Read OnThisPageNav.tsx to understand the component API (sections array with id/label, activeSection prop, useActiveSection hook)
+- Reviewed how other pages (Education.tsx, FundraisingCampaign.tsx, etc.) integrate OnThisPageNav
+- Added import of OnThisPageNav and useActiveSection from @/components/artemis/OnThisPageNav
+- Added useActiveSection hook call using tabs.map(t => t.id) as section IDs (dynamically filtered to exclude certificates when not applicable)
+- Added OnThisPageNav component right after the catalog breadcrumb header, before the main content area
+- Used tabs.map(t => ({ id: t.id, label: t.label })) as sections prop, and activeSection from the hook
+- Kept the existing sticky tab navigation inside the content area (provides different UX as specified)
+- Sections already had matching id attributes (overview, requirements, firstyear, certificates, faculty, bios, roadmap, courses)
+- Build verified successfully
+- Committed and pushed: feat: ProgramDetail - add On This Page navigation bar
+
+Stage Summary:
+- ProgramDetail.tsx now has the standard "On This Page" navigation bar consistent with other pages across the site
+- OnThisPageNav placed after the breadcrumb header, before the sidebar+content layout
+- useActiveSection tracks which section is in view based on the existing tab IDs
+- Existing sticky tab navigation preserved inside the content area for in-page UX
