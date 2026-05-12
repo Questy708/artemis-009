@@ -455,9 +455,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                 <span className="text-[#8A0000]">Why now?</span>
               </motion.h2>
               <motion.div {...fadeUp(caseAnim.visible, 0.2)} className="space-y-5 text-[16px] text-gray-600 leading-[1.75]">
-                <p>The traditional university model is at an inflection point. Decades of bureaucratic growth, physical limitations, and closed systems have severely constrained the potential of the modern scholar. Artemis was founded to transcend these limitations &mdash; not by merely digitizing existing structures, but by reimagining the very nature of an academic community from the ground up.</p>
-                <p>We are building a <em className="text-gray-800">universitas</em> optimized for our era: borderless, data-driven, and intrinsically collaborative. Our core operating philosophy is one of <strong className="text-gray-900">Foundational Efficiency</strong> &mdash; true innovation thrives when resources are concentrated on the intellectual work, not on massive administrative overhead. Every pound donated goes directly toward faculty excellence, student access, and research breakthroughs.</p>
-                <p>The Founding Campaign provides the strategic capital to construct our fundamental digital estate, endow our first residential colleges, and launch interdisciplinary research hubs that operate at the speed of modern discovery instead of the pace of administrative committees.</p>
+                <p>Across the world, brilliant minds are locked out of the institutions that shape knowledge &mdash; not by a lack of talent, but by geography, cost, and the closed architecture of legacy universities. The model that served the nineteenth century cannot serve the twenty-first. Artemis exists to change this.</p>
+                <p>We believe that <em className="text-gray-800">access to world-class education should not depend on where you were born</em>. That <strong className="text-gray-900">academic excellence and global inclusion are not competing values &mdash; they are the same value</strong>. And that a university dedicated to <strong className="text-gray-900">freedom of thought, freedom of inquiry, and freedom of expression</strong> is not merely desirable &mdash; it is necessary for the progress of civilisation itself.</p>
+                <p>Artemis is a borderless, network-native university built on three pillars: <strong className="text-gray-900">Broadening Access</strong> &mdash; bridging the gap between talent and opportunity regardless of geography or means; <strong className="text-gray-900">Advancing Excellence</strong> &mdash; personalised, research-driven education sustained by rigorous standards and technological innovation; and <strong className="text-gray-900">Guarding Freedom</strong> &mdash; upholding the democratic, humane, and international values that make the pursuit of truth possible, with freedom of thought and inquiry as non-negotiable commitments.</p>
+                <p>Our operating philosophy is one of <strong className="text-gray-900">Foundational Efficiency</strong> &mdash; ninety pence of every pound goes directly to academic programmes, student access, and research. We have no redundant campuses, no bloated administration. We have scholars, students, and a mission. The Founding Campaign provides the strategic capital to endow our first residential colleges, launch our Centres of Inquiry, and build the digital infrastructure that makes a borderless university possible.</p>
               </motion.div>
               <motion.button {...fadeUp(caseAnim.visible, 0.4)} onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-4 py-2 mt-10 border-b-2 border-[#8A0000] text-[#8A0000] text-[12px] font-bold uppercase tracking-[0.2em] hover:text-[#141414] hover:border-[#141414] transition-all group">
                 <span>Support the Campaign</span>
@@ -465,13 +466,13 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               </motion.button>
             </div>
 
-            {/* RIGHT — Large stacked numbers */}
+            {/* RIGHT — Three pillars as large statements */}
             <div className="lg:col-span-5">
               <motion.div {...slideRight(caseAnim.visible, 0.15)} className="space-y-10 mb-12">
                 {[
-                  { value: '60%', label: 'Less Overhead', desc: 'No redundant campuses, no bloated administration' },
-                  { value: '90%', label: 'To Programmes', desc: 'Capital directed to academic and research work' },
-                  { value: '3', label: 'Continents', desc: 'Borderless scaling via our core digital stack' },
+                  { value: 'Broaden', label: 'Access', desc: 'Talent has no postcode. Opportunity should not either.' },
+                  { value: 'Advance', label: 'Excellence', desc: 'Research-driven rigour, powered by innovation, not inertia.' },
+                  { value: 'Guard', label: 'Freedom', desc: 'Thought, inquiry, and expression \u2014 non-negotiable.' },
                 ].map((item, i) => (
                   <div key={i}>
                     <div className="text-[80px] lg:text-[96px] font-black text-[#8A0000] leading-none tracking-tighter">{item.value}</div>
@@ -491,22 +492,22 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Endowment for Autonomous Research</h4>
-              <p className="text-[14px] text-gray-600 leading-relaxed">A permanent endowment supporting interdisciplinary research hubs that operate independently of state or commercial agendas &mdash; each with a 20-year operational runway that frees researchers from the grant cycle.</p>
+              <p className="text-[14px] text-gray-600 leading-relaxed">A permanent endowment supporting interdisciplinary research hubs that operate independently of state or commercial agendas &mdash; each with a 20-year operational runway that frees researchers from the grant cycle and protects the independence that real discovery demands.</p>
             </div>
             <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">The Global Scholars Fund</h4>
-              <p className="text-[14px] text-gray-600 leading-relaxed">Full-ride virtual residencies and travel grants for scholars from underserved digital nodes &mdash; ensuring our community represents the true intellectual capital of the world, not merely the economic capital.</p>
+              <p className="text-[14px] text-gray-600 leading-relaxed">Full-ride scholarships, virtual residencies, and travel grants for scholars from every corner of the world &mdash; ensuring that admission to Artemis is determined by the quality of your mind, never by the limits of your means.</p>
             </div>
             <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Residential Colleges &amp; Global Hubs</h4>
-              <p className="text-[14px] text-gray-600 leading-relaxed">Acquisition, design, and construction of physical residential colleges and hub spaces across continents &mdash; the living-learning environments where the Artemis community takes physical form, from seminar rooms to communal dining halls to maker spaces.</p>
+              <p className="text-[14px] text-gray-600 leading-relaxed">Living-learning environments across continents where the Artemis community takes physical form &mdash; residential colleges with communal dining, seminar rooms, maker spaces, and the daily intellectual collision that only shared space can create.</p>
             </div>
             <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">Senior &amp; Junior Fellows Programme</h4>
-              <p className="text-[14px] text-gray-600 leading-relaxed">Endowed fellowships for both distinguished senior scholars and the most promising early-career researchers &mdash; building the intellectual core of Artemis by attracting and retaining the brightest minds, free from the precarity of fixed-term contracts and grant cycles.</p>
+              <p className="text-[14px] text-gray-600 leading-relaxed">Endowed fellowships for distinguished senior scholars and the most promising early-career researchers &mdash; building the intellectual core of Artemis by attracting minds that refuse to be constrained by borders, fixed-term contracts, or the grant cycle.</p>
             </div>
           </motion.div>
         </div>
@@ -722,72 +723,162 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             })}
           </motion.div>
 
-          {/* Constellations — Horizontal scrolling strip */}
+          {/* Constellations — Circular universe in motion */}
           <motion.div {...clipReveal(opportunitiesAnim.visible)}>
-            <h3 className="text-[28px] font-bold text-[#141414] mb-2">Constellations</h3>
-            <p className="text-[14px] text-gray-500 mb-8">Every contribution earns a place in the founding constellation and unlocks exclusive perks.</p>
+            <div className="flex items-center gap-4 mb-2">
+              <h3 className="text-[28px] font-bold text-[#141414]">The Constellation</h3>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">8 Stars</span>
+            </div>
+            <p className="text-[14px] text-gray-500 mb-10">Every contribution places a star in the founding constellation. The greater the gift, the brighter the star. Click a star to explore its orbit.</p>
 
-            <div className="overflow-x-auto pb-4 -mx-8 px-8 lg:-mx-20 lg:px-20 scrollbar-thin">
-              <div className="flex gap-4" style={{ minWidth: 'max-content' }}>
+            <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
+              {/* Circular constellation universe */}
+              <div className="relative w-[340px] h-[340px] md:w-[420px] md:h-[420px] shrink-0 mx-auto lg:mx-0">
+                {/* Outer rotating ring — slow drift */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border border-gray-200"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
+                />
+                {/* Mid rotating ring — opposite direction */}
+                <motion.div
+                  className="absolute inset-6 rounded-full border border-dashed border-gray-200"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
+                />
+                {/* Inner rotating ring */}
+                <motion.div
+                  className="absolute inset-12 rounded-full border border-gray-100"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+                />
+                {/* Center glow */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-[#8A0000]/5 flex items-center justify-center">
+                    <Orbit size={20} className="text-[#8A0000]/40" />
+                  </div>
+                </div>
+                {/* Faint radial lines from center */}
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                  <div
+                    key={angle}
+                    className="absolute top-1/2 left-1/2 w-[1px] bg-gray-100 origin-top"
+                    style={{ height: '46%', transform: `translate(-50%, 0) rotate(${angle}deg)` }}
+                  />
+                ))}
+
+                {/* Constellation nodes — positioned in orbit */}
                 {CONSTELLATIONS.map((c, i) => {
                   const Icon = c.icon;
                   const isSelected = selectedPerk === c.id;
+                  const angle = (i / CONSTELLATIONS.length) * 2 * Math.PI - Math.PI / 2;
+                  const orbitPct = 30 + c.magnitude * 3.5; // % from center
+                  const offsetX = Math.cos(angle) * orbitPct;
+                  const offsetY = Math.sin(angle) * orbitPct;
+                  const size = 28 + c.magnitude * 5; // circle size grows with magnitude
                   return (
                     <motion.button
                       key={c.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
+                      className="absolute z-10"
+                      style={{
+                        top: `calc(50% + ${offsetY}% - ${size / 2}px)`,
+                        left: `calc(50% + ${offsetX}% - ${size / 2}px)`,
+                      }}
+                      initial={{ opacity: 0, scale: 0 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.05, duration: 0.4 }}
+                      transition={{ delay: 0.3 + i * 0.1, duration: 0.5, type: 'spring', stiffness: 200 }}
                       viewport={{ once: true }}
                       onClick={() => { setSelectedPerk(isSelected ? null : c.id); if (!isSelected) { setSelectedAmount(c.min); setCustomAmount(''); } }}
-                      className={`text-left p-6 border-2 transition-all group shrink-0 w-[240px] ${isSelected ? 'border-[#8A0000] bg-[#8A0000]/5' : 'border-gray-200 bg-white hover:border-[#8A0000]/50'}`}
                     >
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-9 h-9 flex items-center justify-center bg-[#8A0000]/10"><Icon size={16} className="text-[#8A0000]" /></div>
-                        {isSelected && <Check size={16} className="text-[#8A0000]" />}
+                      {/* Glow behind selected */}
+                      {isSelected && (
+                        <motion.div
+                          className="absolute rounded-full bg-[#8A0000]/10"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0.2, 0.6] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          style={{ inset: '-30%' }}
+                        />
+                      )}
+                      <div
+                        className={`rounded-full flex items-center justify-center transition-all cursor-pointer border-2 ${
+                          isSelected
+                            ? 'bg-[#8A0000] border-[#8A0000] shadow-[0_0_20px_rgba(138,0,0,0.3)]'
+                            : 'bg-white border-gray-200 hover:border-[#8A0000]/50 hover:shadow-md'
+                        }`}
+                        style={{ width: size, height: size }}
+                      >
+                        <Icon
+                          size={Math.max(12, size * 0.35)}
+                          className={isSelected ? 'text-white' : 'text-[#8A0000]'}
+                        />
                       </div>
-                      <h4 className="text-[16px] font-bold text-[#141414] mb-2">{c.title}</h4>
-                      <div className="flex items-baseline gap-1 mb-3">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">From</span>
-                        <span className="text-[20px] font-black text-[#141414]">{sym}{fmtShort(c.min)}</span>
-                      </div>
-                      <div className="flex gap-1">
-                        {Array.from({ length: 8 }).map((_, j) => (
-                          <div key={j} className={`w-1.5 h-1.5 rounded-full ${j < c.magnitude ? 'bg-[#8A0000]' : 'bg-gray-200'}`} />
-                        ))}
+                      {/* Label below circle */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 whitespace-nowrap">
+                        <span className={`text-[9px] font-bold uppercase tracking-wider ${isSelected ? 'text-[#8A0000]' : 'text-gray-400'}`}>{c.title}</span>
                       </div>
                     </motion.button>
                   );
                 })}
               </div>
-            </div>
 
-            {/* Selected constellation detail — expands below */}
-            <AnimatePresence>
-              {selectedPerk && (() => {
-                const c = CONSTELLATIONS.find(x => x.id === selectedPerk);
-                if (!c) return null;
-                const Icon = c.icon;
-                return (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-6 bg-white border-2 border-[#8A0000]/30 p-8 lg:p-10 overflow-hidden">
-                    <div className="flex flex-col lg:flex-row gap-8 items-start">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-4"><Icon size={22} className="text-[#8A0000]" /><span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Magnitude {c.magnitude}</span></div>
-                        <h3 className="text-[28px] font-extrabold text-[#141414] mb-3">{c.title}</h3>
-                        <p className="text-[15px] text-gray-600 leading-relaxed">{c.desc}</p>
-                      </div>
-                      <div className="lg:text-right shrink-0">
-                        <div className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">Minimum contribution</div>
-                        <div className="text-[48px] font-black text-[#141414] leading-none">{sym}{fmtShort(c.min)}</div>
-                        <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="mt-5 flex items-center space-x-3 px-8 py-3 bg-[#8A0000] text-white text-[11px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors group mx-auto lg:ml-auto">
-                          <span>Claim This Tier</span><ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              {/* Detail panel — right side */}
+              <div className="flex-1 w-full min-h-[240px]">
+                <AnimatePresence mode="wait">
+                  {selectedPerk ? (() => {
+                    const c = CONSTELLATIONS.find(x => x.id === selectedPerk);
+                    if (!c) return null;
+                    const Icon = c.icon;
+                    return (
+                      <motion.div
+                        key={c.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.35 }}
+                        className="bg-white border-2 border-[#8A0000]/20 p-8 lg:p-10"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-full bg-[#8A0000] flex items-center justify-center">
+                            <Icon size={18} className="text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-[24px] font-extrabold text-[#141414]">{c.title}</h3>
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Magnitude {c.magnitude} of 8</span>
+                          </div>
+                        </div>
+                        <p className="text-[15px] text-gray-600 leading-relaxed mb-6">{c.desc}</p>
+                        <div className="flex items-baseline gap-3 mb-6">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">From</span>
+                          <span className="text-[36px] font-black text-[#141414] leading-none">{sym}{fmtShort(c.min)}</span>
+                        </div>
+                        {/* Magnitude dots */}
+                        <div className="flex gap-1.5 mb-6">
+                          {Array.from({ length: 8 }).map((_, j) => (
+                            <div key={j} className={`w-2.5 h-2.5 rounded-full transition-colors ${j < c.magnitude ? 'bg-[#8A0000]' : 'bg-gray-200'}`} />
+                          ))}
+                        </div>
+                        <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 px-8 py-3 bg-[#8A0000] text-white text-[11px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors group">
+                          <span>Claim This Star</span><ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </button>
+                      </motion.div>
+                    );
+                  })() : (
+                    <motion.div
+                      key="empty"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="bg-white border border-gray-200 p-8 lg:p-10 flex flex-col items-center justify-center text-center min-h-[240px]"
+                    >
+                      <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-4">
+                        <Orbit size={24} className="text-gray-300" />
                       </div>
-                    </div>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
+                      <p className="text-[15px] text-gray-400 leading-relaxed">Select a star in the constellation to explore its orbit and discover the perks that await.</p>
+                    </motion.div>
+                  )()}
+                </AnimatePresence>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
