@@ -18,19 +18,19 @@ interface Props {
   goToPage: (page: string) => void;
 }
 
-/* ─── Data (unchanged) ─── */
-const CAMPAIGN = { goal: 80_000_000, raised: 28_400_000, donors: 1847, currency: 'GBP' };
+/* ─── Data ─── */
+const CAMPAIGN = { goal: 15_000_000, raised: 312_000, donors: 127, currency: 'GBP' };
 const fmtNum = (n: number) => n.toLocaleString('en-GB');
 const fmtShort = (n: number) => n >= 1_000_000 ? `${(n/1_000_000).toFixed(n%1_000_000===0?0:1)}M` : n >= 1_000 ? `${(n/1_000).toFixed(0)}K` : fmtNum(n);
 const sym = '\u00a3';
 const pct = Math.round((CAMPAIGN.raised / CAMPAIGN.goal) * 100);
 
 const MILESTONES = [
-  { title: 'Digital Foundation', target: 10_000_000, reached: true, desc: 'Core platform and global access layer deployed across 3 continents. The digital backbone of a borderless university \u2014 live and operational.', icon: Rocket, date: 'Completed Dec 2025', deliverables: ['Core platform live across 3 continents', 'Artemis Collegium Network (ACN) operational', 'Digital admissions and enrolment system deployed'] },
-  { title: 'First Five Nodes', target: 25_000_000, reached: true, desc: 'Geneva, Valletta, San Francisco, Tokyo, Reykjavik \u2014 residential hubs operational with full faculty and student services.', icon: Globe, date: 'Completed Mar 2026', deliverables: ['Five residential hubs fully operational', 'Founding faculty of 35 scholars in residence', 'Cross-node synchronisation and travel programme launched'] },
-  { title: 'Inaugural Cohort', target: 40_000_000, reached: false, desc: 'Full scholarship fund for 200 students with dedicated faculty, mentorship networks, and cross-node residency programmes.', icon: GraduationCap, date: 'Target 2027', deliverables: ['200 full scholarships funded', 'Mentorship network connecting students across all nodes', 'Cross-node residency programme for inaugural class'] },
-  { title: 'Research Endowment', target: 60_000_000, reached: false, desc: 'Perpetual endowment for five flagship institutes with a 20-year runway \u2014 freeing researchers from the grant cycle permanently.', icon: FlaskConical, date: 'Target 2028', deliverables: ['Five flagship research institutes permanently endowed', '20-year operational runway secured for each', 'Centres of Inquiry fully staffed and publishing'] },
-  { title: 'Global Scale', target: 80_000_000, reached: false, desc: '12 nodes across 6 continents \u2014 a planetary university with borderless access, self-sustaining and permanently independent.', icon: Landmark, date: 'Target 2030', deliverables: ['12 nodes operational across 6 continents', 'Self-sustaining endowment \u2014 no tuition dependency', '2,400 students and 25 permanently endowed institutes'] },
+  { title: 'Digital Foundation', target: 2_500_000, reached: true, desc: 'Core platform and global access layer deployed. The digital backbone of a borderless university \u2014 live and operational. The Artemis Collegium Network connects our first scholars across three continents.', icon: Rocket, date: 'Completed Dec 2025', deliverables: ['Core platform live with ACN operational', 'Digital admissions and enrolment system deployed', 'First virtual residencies and seminars running'] },
+  { title: 'First Residential Hub', target: 5_000_000, reached: false, desc: 'Geneva \u2014 our first physical node with residential colleges, faculty offices, seminar rooms, and a dedicated research wing. A living proof-of-concept for the Artemis model of borderless education.', icon: Globe, date: 'Target 2027', deliverables: ['Geneva hub operational with full services', 'Founding faculty of 15 scholars in residence', 'First residential cohort of 60 students enrolled'] },
+  { title: 'Inaugural Cohort', target: 8_000_000, reached: false, desc: 'Full scholarship fund for 200 students across multiple nodes with dedicated faculty, mentorship networks, and cross-node residency programmes ensuring access regardless of background.', icon: GraduationCap, date: 'Target 2028', deliverables: ['200 full scholarships funded', 'Mentorship network connecting students across nodes', 'Cross-node residency programme for inaugural class'] },
+  { title: 'Research Endowment', target: 12_000_000, reached: false, desc: 'Perpetual endowment for five flagship institutes with a 20-year runway \u2014 freeing researchers from the grant cycle permanently and ensuring intellectual independence.', icon: FlaskConical, date: 'Target 2029', deliverables: ['Five flagship research institutes permanently endowed', '20-year operational runway secured for each', 'Centres of Inquiry fully staffed and publishing'] },
+  { title: 'Global Scale', target: 15_000_000, reached: false, desc: 'Five nodes operational across four continents with the infrastructure and endowment to scale to 50+ nodes \u2014 a planetary university with borderless access, self-sustaining and permanently independent.', icon: Landmark, date: 'Target 2031', deliverables: ['Five nodes operational across four continents', 'Self-sustaining endowment \u2014 no tuition dependency', 'Foundation laid for 50+ node global network'] },
 ];
 
 const CONSTELLATIONS = [
@@ -38,22 +38,22 @@ const CONSTELLATIONS = [
   { id: 'c2', title: 'The Dispatch', desc: 'Quarterly intelligence brief from the Chancellor \u2014 exclusive essays, research previews, and strategic updates from inside the founding. Not a newsletter. A window into the build. Each dispatch includes unreleased data from our research nodes and early access to Artemis publications.', min: 100, icon: Mail, color: '#8A0000', magnitude: 2 },
   { id: 'c3', title: 'The Passage', desc: 'Priority invitation to visit any Artemis node worldwide during the founding year. Walk the spaces, meet the community, witness the construction of something unprecedented. Includes guided access to restricted research areas and private sessions with resident faculty.', min: 500, icon: Compass, color: '#8A0000', magnitude: 3 },
   { id: 'c4', title: 'The Codex', desc: 'A limited-edition leather-bound volume documenting the founding of Artemis \u2014 your name inscribed in the founding roll. Printed on archival paper. Meant to last centuries. Only 200 copies will ever be produced, each numbered and signed by the founding Chancellor.', min: 1000, icon: BookOpen, color: '#8A0000', magnitude: 4 },
-  { id: 'c5', title: 'The Patron', desc: 'Fully fund a named micro-scholarship for one student. You choose the focus \u2014 AI ethics, marine biology, civic design. They carry your name through their Artemis journey. You receive annual impact reports from your scholar and are invited to their thesis defence.', min: 5000, icon: GraduationCap, color: '#8A0000', magnitude: 5 },
-  { id: 'c6', title: 'The Dedication', desc: 'Name a research lab within a node. A permanent plaque, a dedication ceremony, annual reports from the researchers. Your name becomes synonymous with discovery. The lab operates under your chosen name for the lifetime of the institution.', min: 25000, icon: FlaskConical, color: '#8A0000', magnitude: 6 },
-  { id: 'c7', title: 'The Commons', desc: 'Name one of the 12 Living Commons. Your name becomes part of daily life at Artemis \u2014 spoken by every resident, written on every map, etched into the identity of a community. Includes a dedication ceremony attended by the inaugural cohort and the Chancellor.', min: 100000, icon: Home, color: '#8A0000', magnitude: 7 },
-  { id: 'c8', title: 'The Apex', desc: 'Become the patron of an entire Artemis node. The building bears your name. The community carries your legacy. A seat on the Founders\' Council. The highest honour in the founding of a university that will endure for centuries.', min: 1000000, icon: Building2, color: '#8A0000', magnitude: 8 },
+  { id: 'c5', title: 'The Patron', desc: 'Fully fund a named micro-scholarship for one student. You choose the focus \u2014 AI ethics, marine biology, civic design. They carry your name through their Artemis journey. You receive annual impact reports from your scholar and are invited to their thesis defence.', min: 2500, icon: GraduationCap, color: '#8A0000', magnitude: 5 },
+  { id: 'c6', title: 'The Dedication', desc: 'Name a research lab within a node. A permanent plaque, a dedication ceremony, annual reports from the researchers. Your name becomes synonymous with discovery. The lab operates under your chosen name for the lifetime of the institution.', min: 10000, icon: FlaskConical, color: '#8A0000', magnitude: 6 },
+  { id: 'c7', title: 'The Commons', desc: 'Name one of the Living Commons. Your name becomes part of daily life at Artemis \u2014 spoken by every resident, written on every map, etched into the identity of a community. Includes a dedication ceremony attended by the inaugural cohort and the Chancellor.', min: 50000, icon: Home, color: '#8A0000', magnitude: 7 },
+  { id: 'c8', title: 'The Apex', desc: 'Become the patron of an entire Artemis node. The building bears your name. The community carries your legacy. A seat on the Founders\' Council. The highest honour in the founding of a university that will endure for centuries.', min: 500000, icon: Building2, color: '#8A0000', magnitude: 8 },
 ];
 
 const FOUNDING_OPPORTUNITIES = [
-  { title: 'Micro-Scholarship for One Student', amount: 40000, desc: 'Fully fund a graduate student\'s tuition and living expenses for one year at any Artemis node. You choose the focus area \u2014 from synthetic intelligence to cosmological humanities. Your scholar carries your name and provides annual impact reports.', icon: GraduationCap, type: 'Scholarship' },
-  { title: 'Undergraduate Scholarship (Four Years)', amount: 120000, desc: 'Support a student through their entire Artemis journey \u2014 from matriculation to commencement. A named four-year scholarship that transforms one person\'s life and creates a ripple effect across the global network.', icon: BookOpen, type: 'Scholarship' },
-  { title: 'Artemis Dispatch Fellowship', amount: 200000, desc: 'Underwrite 20 fellows per year in the Dispatch programme \u2014 the university\'s signature public intellectual initiative. Fellows produce research, writing, and public engagement that reaches millions.', icon: Compass, type: 'Fellowship' },
-  { title: 'Polaris Research Fellowship', amount: 1000000, desc: 'Endow a named Polaris Fellowship supporting a cohort of 20 early-career researchers annually. Fellows receive full funding, dedicated workspace at a node, and mentorship from senior Artemis faculty.', icon: Star, type: 'Fellowship' },
-  { title: 'Endowed Chair for a Faculty Member', amount: 5000000, desc: 'Permanently endow a named faculty chair \u2014 securing world-class teaching and research at Artemis in perpetuity. The chair holder operates independently of the grant cycle, free to pursue the most ambitious and long-term research.', icon: Crown, type: 'Endowment' },
-  { title: 'Institute for Entrepreneurship and Leadership', amount: 25000000, desc: 'Name the Institute for Entrepreneurship and Leadership \u2014 the engine of Artemis\'s innovation pipeline. A permanent centre connecting students, faculty, and industry partners across every node.', icon: Rocket, type: 'Naming' },
-  { title: 'Centre of Inquiry', amount: 50000000, desc: 'Name one of the five flagship Centres of Inquiry \u2014 a permanently endowed, independently operating research centre. Each centre carries a 20-year runway and the freedom to pursue truth without institutional pressure.', icon: FlaskConical, type: 'Naming' },
-  { title: 'Undergraduate College', amount: 100000000, desc: 'Name an entire undergraduate college within Artemis \u2014 a living-learning community of scholars, faculty, and staff. Your name becomes synonymous with an academic tradition that will endure for centuries.', icon: Building2, type: 'Naming' },
-  { title: 'Academic and Residential Buildings', amount: 15000000, range: '\u00a315M \u2013 \u00a375M', desc: 'Name a landmark academic or residential building at any Artemis node. From lecture halls to libraries, from laboratories to living commons \u2014 these are the physical spaces where the future of knowledge takes shape.', icon: Landmark, type: 'Naming' },
+  { title: 'Micro-Scholarship for One Student', amount: 10000, desc: 'Fully fund a graduate student\'s tuition and living expenses for one year at any Artemis node. You choose the focus area \u2014 from synthetic intelligence to cosmological humanities. Your scholar carries your name and provides annual impact reports.', icon: GraduationCap, type: 'Scholarship' },
+  { title: 'Undergraduate Scholarship (Four Years)', amount: 40000, desc: 'Support a student through their entire Artemis journey \u2014 from matriculation to commencement. A named four-year scholarship that transforms one person\'s life and creates a ripple effect across the global network.', icon: BookOpen, type: 'Scholarship' },
+  { title: 'Artemis Dispatch Fellowship', amount: 75000, desc: 'Underwrite fellows per year in the Dispatch programme \u2014 the university\'s signature public intellectual initiative. Fellows produce research, writing, and public engagement that reaches millions.', icon: Compass, type: 'Fellowship' },
+  { title: 'Junior Research Fellowship', amount: 250000, desc: 'Endow a named Junior Fellowship supporting early-career researchers annually. Fellows receive full funding, dedicated workspace at a node, and mentorship from senior Artemis faculty \u2014 launching the next generation of independent scholars.', icon: Star, type: 'Fellowship' },
+  { title: 'Senior Fellowship & Faculty Chair', amount: 1000000, desc: 'Permanently endow a named senior faculty chair \u2014 securing world-class teaching and research at Artemis in perpetuity. The chair holder operates independently of the grant cycle, free to pursue the most ambitious and long-term research.', icon: Crown, type: 'Endowment' },
+  { title: 'Research Lab or Seminar Room', amount: 2500000, desc: 'Name a research laboratory or seminar room within an Artemis node. A permanent dedication in a space where breakthroughs happen \u2014 from computational labs to humanities seminar rooms to maker spaces.', icon: FlaskConical, type: 'Naming' },
+  { title: 'Residential College Living Commons', amount: 5000000, desc: 'Name a Living Commons within a residential college \u2014 the heart of daily life at Artemis. Your name becomes part of the community\'s identity, spoken by every resident, written on every map, for the lifetime of the institution.', icon: Home, type: 'Naming' },
+  { title: 'Centre of Inquiry', amount: 7500000, desc: 'Name one of the flagship Centres of Inquiry \u2014 a permanently endowed, independently operating research centre. Each centre carries a 20-year runway and the freedom to pursue truth without institutional pressure.', icon: FlaskConical, type: 'Naming' },
+  { title: 'Academic or Residential Building', amount: 3000000, range: '\u00a33M \u2013 \u00a38M', desc: 'Name a landmark academic or residential building at any Artemis node. From lecture halls to libraries, from laboratories to living commons \u2014 these are the physical spaces where the future of knowledge takes shape.', icon: Landmark, type: 'Naming' },
 ];
 
 const WAYS_TO_GIVE = [
@@ -68,11 +68,11 @@ const WAYS_TO_GIVE = [
 ];
 
 const FINANCIAL_GOALS = [
-  { category: 'Student Access & Scholarships', amount: 25000000, pct: 31, desc: 'Full scholarships, travel grants, and living stipends ensuring that admission to Artemis is never determined by a student\'s ability to pay.' },
-  { category: 'Research Endowment', amount: 20000000, pct: 25, desc: 'Perpetual endowment for five flagship Centres of Inquiry with 20-year operational runways \u2014 freeing researchers from the grant cycle.' },
-  { category: 'Faculty & Academic Staff', amount: 15000000, pct: 19, desc: 'Recruitment and retention of world-class faculty, endowed chairs, and the academic staff that make the Artemis model possible.' },
-  { category: 'Digital Infrastructure', amount: 10000000, pct: 13, desc: 'The ACN platform, global learning tools, synchronised teaching systems, and the data backbone connecting every node.' },
-  { category: 'Physical Nodes & Facilities', amount: 10000000, pct: 12, desc: 'Acquisition, construction, and outfitting of residential hubs and shared spaces across the global network.' },
+  { category: 'Student Access & Scholarships', amount: 4000000, pct: 27, desc: 'Full scholarships, travel grants, and living stipends ensuring that admission to Artemis is never determined by a student\'s ability to pay.' },
+  { category: 'Research Endowment', amount: 3500000, pct: 23, desc: 'Perpetual endowment for five flagship Centres of Inquiry with 20-year operational runways \u2014 freeing researchers from the grant cycle.' },
+  { category: 'Faculty & Fellows', amount: 3000000, pct: 20, desc: 'Recruitment and retention of world-class senior and junior fellows, endowed chairs, and the academic staff that make the Artemis model possible.' },
+  { category: 'Physical Nodes & Facilities', amount: 2500000, pct: 17, desc: 'Acquisition, construction, and outfitting of residential colleges, hubs, and shared spaces across the global network.' },
+  { category: 'Digital Infrastructure', amount: 2000000, pct: 13, desc: 'The ACN platform, global learning tools, synchronised teaching systems, and the data backbone connecting every node.' },
 ];
 
 const EVENTS = [
@@ -85,27 +85,27 @@ const EVENTS = [
 ];
 
 const DONORS = [
-  { name: 'The Nordgren Foundation', amount: 500000, date: '28 Apr', msg: 'Investing in the infrastructure of imagination.', tier: 'chancellors' },
-  { name: 'Chen Wei Laboratories', amount: 200000, date: '4 May', msg: null, tier: 'founders' },
-  { name: 'Dr. Elena Vasquez', amount: 50000, date: '10 May', msg: 'For the students who will change everything.', tier: 'founders' },
-  { name: 'Anonymous Patron', amount: 100000, date: '7 May', msg: 'Because knowledge should have no borders.', tier: 'chancellors' },
-  { name: 'The Matsuo Trust', amount: 150000, date: '18 Apr', msg: null, tier: 'founders' },
-  { name: 'Liu Fang Foundation', amount: 75000, date: '25 Apr', msg: null, tier: 'guild' },
-  { name: 'James & Priya Okonkwo', amount: 25000, date: '8 May', msg: null, tier: 'guild' },
-  { name: 'The Al-Rashidi Family', amount: 15000, date: '5 May', msg: 'In memory of Fatima Al-Rashidi.', tier: 'guild' },
-  { name: 'Dr. Robert & Sarah Kimani', amount: 10000, date: '22 Apr', msg: 'For the next generation of African scholars.', tier: 'guild' },
-  { name: 'Sven & Astrid Lindqvist', amount: 20000, date: '20 Apr', msg: 'For the north, and for everywhere.', tier: 'guild' },
-  { name: 'Anonymous', amount: 5000, date: '23 Apr', msg: null, tier: 'community' },
-  { name: 'Takeshi Yamamoto', amount: 1000, date: '2 May', msg: null, tier: 'community' },
-  { name: 'Maria Santos', amount: 500, date: '3 May', msg: 'Proud to be part of the founding.', tier: 'community' },
+  { name: 'The Nordgren Foundation', amount: 100000, date: '28 Apr', msg: 'Investing in the infrastructure of imagination.', tier: 'chancellors' },
+  { name: 'Chen Wei Laboratories', amount: 50000, date: '4 May', msg: null, tier: 'founders' },
+  { name: 'Dr. Elena Vasquez', amount: 25000, date: '10 May', msg: 'For the students who will change everything.', tier: 'founders' },
+  { name: 'Anonymous Patron', amount: 40000, date: '7 May', msg: 'Because knowledge should have no borders.', tier: 'chancellors' },
+  { name: 'The Matsuo Trust', amount: 30000, date: '18 Apr', msg: null, tier: 'founders' },
+  { name: 'Liu Fang Foundation', amount: 15000, date: '25 Apr', msg: null, tier: 'guild' },
+  { name: 'James & Priya Okonkwo', amount: 5000, date: '8 May', msg: null, tier: 'guild' },
+  { name: 'The Al-Rashidi Family', amount: 3000, date: '5 May', msg: 'In memory of Fatima Al-Rashidi.', tier: 'guild' },
+  { name: 'Dr. Robert & Sarah Kimani', amount: 2500, date: '22 Apr', msg: 'For the next generation of African scholars.', tier: 'guild' },
+  { name: 'Sven & Astrid Lindqvist', amount: 5000, date: '20 Apr', msg: 'For the north, and for everywhere.', tier: 'guild' },
+  { name: 'Anonymous', amount: 1000, date: '23 Apr', msg: null, tier: 'community' },
+  { name: 'Takeshi Yamamoto', amount: 500, date: '2 May', msg: null, tier: 'community' },
+  { name: 'Maria Santos', amount: 250, date: '3 May', msg: 'Proud to be part of the founding.', tier: 'community' },
   { name: 'Amara Osei', amount: 100, date: '27 Apr', msg: 'Every great university starts with a first believer.', tier: 'community' },
-  { name: 'Isla McGregor', amount: 250, date: '15 Apr', msg: 'A small stone in a great cathedral.', tier: 'community' },
+  { name: 'Isla McGregor', amount: 150, date: '15 Apr', msg: 'A small stone in a great cathedral.', tier: 'community' },
 ];
 
 const TIER_COLORS: Record<string, string> = { chancellors: '#8A0000', founders: '#4338ca', guild: '#0e7490', community: '#15803d' };
 const TIER_LABELS: Record<string, string> = { chancellors: "Chancellor's Circle", founders: "Founder's Society", guild: 'Guild Partners', community: 'Community' };
 const CRYPTO = { BTC: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', ETH: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F' };
-const PRESETS = [25, 100, 500, 1000, 5000, 25000];
+const PRESETS = [25, 100, 500, 1000, 5000, 10000];
 
 /* ─── Hooks ─── */
 function useInView(threshold = 0.15) {
@@ -205,59 +205,71 @@ export default function FundraisingCampaign({ goToPage }: Props) {
     <div className="flex flex-col bg-white">
 
       {/* ══════════════════════════════════════════
-          1. THE CAMPAIGN — Full-Bleed Hero
+          1. HERO — Matches site pattern
           ══════════════════════════════════════════ */}
-      <section className="relative w-full h-[75vh] min-h-[560px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1800"
-          alt="Building the Future of Knowledge"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
-
-        {/* Floating stats overlay */}
-        <div className="absolute top-8 right-8 lg:top-12 lg:right-16 flex flex-col gap-6 z-20">
-          <motion.div {...slideRight(heroAnim.visible, 0.3)} className="text-right">
-            <div className="text-[56px] lg:text-[72px] font-black text-white leading-none tracking-tighter">{sym}{fmtShort(CAMPAIGN.raised)}</div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40 mt-1">raised of {sym}{fmtShort(CAMPAIGN.goal)}</div>
-          </motion.div>
-          <motion.div {...slideRight(heroAnim.visible, 0.5)} className="text-right">
-            <div className="text-[56px] lg:text-[72px] font-black text-[#8A0000] leading-none tracking-tighter">{pct}%</div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40 mt-1">funded</div>
-          </motion.div>
-          <motion.div {...slideRight(heroAnim.visible, 0.7)} className="text-right">
-            <div className="text-[56px] lg:text-[72px] font-black text-white leading-none tracking-tighter">{fmtNum(CAMPAIGN.donors)}</div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.35em] text-white/40 mt-1">founding donors</div>
-          </motion.div>
-        </div>
-
-        {/* Main hero content */}
-        <div className="relative z-10 flex flex-col justify-end h-full px-8 lg:px-20 pb-16 max-w-[1400px] mx-auto w-full">
-          <motion.div ref={heroAnim.ref} {...clipReveal(heroAnim.visible)}>
-            <h1 className="text-[52px] md:text-[72px] lg:text-[88px] font-black leading-[0.9] tracking-tighter text-white mb-4">
-              IGNITING<br />THE LIGHT
-            </h1>
-            <p className="text-[14px] md:text-[16px] text-white/60 max-w-md leading-relaxed font-light mb-8">
-              The Founders Campaign for the University of Artemis
-            </p>
-
-            <div className="max-w-md mb-8">
-              <div className="h-2 bg-white/10 w-full overflow-hidden">
-                <motion.div className="h-full bg-[#8A0000]" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} transition={{ duration: 2.5, ease: 'easeOut' }} viewport={{ once: true }} />
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1800"
+              alt="Igniting the Light — The Founders Campaign"
+              className="absolute inset-0 w-full h-full object-cover grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+              <div ref={heroAnim.ref} className={`transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className="mb-8 flex items-center space-x-3">
+                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Founding Campaign</span>
+                </div>
+                <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">
+                  Igniting the Light
+                </h1>
+                <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light mb-8">
+                  The Founders Campaign for the University of Artemis. Help us build a borderless university that will endure for centuries.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 px-8 py-4 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-[0.25em] hover:bg-[#6B0000] transition-colors group">
+                    <span>Give Now</span>
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <button onClick={() => document.getElementById('case')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 px-8 py-4 border border-white/25 text-white/60 text-[12px] font-bold uppercase tracking-[0.25em] hover:bg-white/10 hover:text-white transition-colors">
+                    <span>Read the Case</span>
+                    <ChevronDown size={14} />
+                  </button>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 px-8 py-4 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-[0.25em] hover:bg-[#6B0000] transition-colors group">
-                <span>Give Now</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button onClick={() => document.getElementById('case')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 px-8 py-4 border border-white/25 text-white/60 text-[12px] font-bold uppercase tracking-[0.25em] hover:bg-white/10 hover:text-white transition-colors">
-                <span>Read the Case</span>
-                <ChevronDown size={14} />
-              </button>
+      {/* ══════════════════════════════════════════
+          ANIMATED GOAL BAR — Standalone between hero and content
+          ══════════════════════════════════════════ */}
+      <section className="bg-[#141414] py-8">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+            <div className="flex items-baseline gap-3">
+              <span className="text-[36px] md:text-[48px] font-black text-white leading-none">{sym}{fmtShort(CAMPAIGN.raised)}</span>
+              <span className="text-[12px] text-white/40 font-bold uppercase tracking-widest">raised of {sym}{fmtShort(CAMPAIGN.goal)}</span>
             </div>
-          </motion.div>
+            <div className="flex-1 w-full md:w-auto">
+              <div className="h-3 bg-white/10 w-full overflow-hidden">
+                <motion.div className="h-full bg-[#8A0000]" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} transition={{ duration: 2, ease: 'easeOut' }} viewport={{ once: true }} />
+              </div>
+            </div>
+            <div className="flex items-center gap-8">
+              <div className="text-center">
+                <div className="text-[28px] md:text-[36px] font-black text-[#8A0000] leading-none">{pct}%</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">funded</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[28px] md:text-[36px] font-black text-white leading-none">{fmtNum(CAMPAIGN.donors)}</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">donors</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -319,7 +331,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             </div>
           </div>
 
-          {/* Strategic initiatives — Full-width horizontal band */}
+          {/* Strategic initiatives — Full-width horizontal band (4 initiatives) */}
           <motion.div {...fadeUp(caseAnim.visible, 0.3)} className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-20 border-t border-gray-200">
             <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
@@ -330,6 +342,16 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
               <h4 className="text-[20px] font-bold text-[#141414] mb-3">The Global Scholars Fund</h4>
               <p className="text-[14px] text-gray-600 leading-relaxed">Full-ride virtual residencies and travel grants for scholars from underserved digital nodes &mdash; ensuring our community represents the true intellectual capital of the world, not merely the economic capital.</p>
+            </div>
+            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
+              <h4 className="text-[20px] font-bold text-[#141414] mb-3">Residential Colleges &amp; Global Hubs</h4>
+              <p className="text-[14px] text-gray-600 leading-relaxed">Acquisition, design, and construction of physical residential colleges and hub spaces across continents &mdash; the living-learning environments where the Artemis community takes physical form, from seminar rooms to communal dining halls to maker spaces.</p>
+            </div>
+            <div className="border-l-4 border-[#8A0000] p-8 lg:p-10 bg-white hover:bg-gray-50 transition-colors border-t border-gray-200">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Strategic Initiative</span>
+              <h4 className="text-[20px] font-bold text-[#141414] mb-3">Senior &amp; Junior Fellows Programme</h4>
+              <p className="text-[14px] text-gray-600 leading-relaxed">Endowed fellowships for both distinguished senior scholars and the most promising early-career researchers &mdash; building the intellectual core of Artemis by attracting and retaining the brightest minds, free from the precarity of fixed-term contracts and grant cycles.</p>
             </div>
           </motion.div>
         </div>
@@ -415,15 +437,15 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           {/* Phase indicator */}
           <motion.div {...clipReveal(phasesAnim.visible)} className="mb-16">
             <div className="flex items-center gap-4 mb-8">
-              {['I', 'II', 'III'].map((num, i) => (
+              {['I', 'II', 'III', 'IV', 'V'].map((num, i) => (
                 <React.Fragment key={i}>
                   <span className="text-[48px] md:text-[64px] font-black text-[#8A0000] leading-none">{num}</span>
-                  {i < 2 && <ArrowRight size={24} className="text-gray-300" />}
+                  {i < 4 && <ArrowRight size={24} className="text-gray-300" />}
                 </React.Fragment>
               ))}
             </div>
             <h2 className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
-              Three phases<br />to launch
+              Five milestones<br />to launch
             </h2>
             <p className="text-[16px] text-gray-600 max-w-xl leading-relaxed">Each phase has concrete deliverables. Not aspirations &mdash; commitments. Track our progress as we climb from foundation to global scale.</p>
           </motion.div>
@@ -483,7 +505,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                     <div className="lg:col-span-5 lg:pt-2">
                       <div className="lg:ml-auto lg:max-w-[280px]">
                         <div className="h-2 bg-gray-200 w-full overflow-hidden mb-2">
-                          <div className={`h-full transition-all duration-1000 ${ms.reached ? 'bg-[#8A0000]' : 'bg-gray-300'}`} style={{ width: ms.reached ? '100%' : `${Math.max(5, Math.min(95, ((CAMPAIGN.raised - ms.target + 15_000_000) / 15_000_000) * 100))}%` }} />
+                          <div className={`h-full transition-all duration-1000 ${ms.reached ? 'bg-[#8A0000]' : 'bg-gray-300'}`} style={{ width: ms.reached ? '100%' : `${Math.max(5, Math.min(95, (CAMPAIGN.raised / ms.target) * 100))}%` }} />
                         </div>
                         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">{ms.reached ? 'Complete' : 'In progress'}</span>
                       </div>
@@ -690,11 +712,11 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                 <div className="flex items-center gap-2">
                   <Heart size={14} className="text-[#8A0000]" />
                   <span className="text-[13px] text-gray-600">
-                    {effectiveAmount >= 1000000 && 'Patron of an entire Artemis node. The building bears your name.'}
-                    {effectiveAmount >= 100000 && effectiveAmount < 1000000 && 'Names a Living Commons. Your name becomes part of daily life at Artemis.'}
-                    {effectiveAmount >= 25000 && effectiveAmount < 100000 && 'Names a research lab in perpetuity. A permanent dedication.'}
-                    {effectiveAmount >= 5000 && effectiveAmount < 25000 && 'Funds a named micro-scholarship for one student.'}
-                    {effectiveAmount >= 500 && effectiveAmount < 5000 && 'Sponsors a student\'s travel to an Artemis node.'}
+                    {effectiveAmount >= 500000 && 'Patron of an entire Artemis node. The building bears your name.'}
+                    {effectiveAmount >= 50000 && effectiveAmount < 500000 && 'Names a Living Commons. Your name becomes part of daily life at Artemis.'}
+                    {effectiveAmount >= 10000 && effectiveAmount < 50000 && 'Names a research lab in perpetuity. A permanent dedication.'}
+                    {effectiveAmount >= 2500 && effectiveAmount < 10000 && 'Funds a named micro-scholarship for one student.'}
+                    {effectiveAmount >= 500 && effectiveAmount < 2500 && 'Sponsors a student\'s travel to an Artemis node.'}
                     {effectiveAmount >= 100 && effectiveAmount < 500 && 'Funds one week of digital infrastructure.'}
                     {effectiveAmount > 0 && effectiveAmount < 100 && 'Every star counts in the founding constellation.'}
                   </span>
@@ -843,10 +865,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             <h2 className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-8">The founders</h2>
             <div className="flex flex-wrap gap-6 lg:gap-12 pb-8 border-b border-gray-200">
               {[
-                { name: "Chancellor's Circle", range: '\u00a32M+', icon: Crown, color: '#8A0000' },
-                { name: "Founder's Society", range: '\u00a3200K\u2013\u00a32M', icon: Star, color: '#4338ca' },
-                { name: 'Guild Partners', range: '\u00a325K\u2013\u00a3200K', icon: Trophy, color: '#0e7490' },
-                { name: 'Community', range: 'Up to \u00a325K', icon: Heart, color: '#15803d' },
+                { name: "Chancellor's Circle", range: '\u00a3500K+', icon: Crown, color: '#8A0000' },
+                { name: "Founder's Society", range: '\u00a350K\u2013\u00a3500K', icon: Star, color: '#4338ca' },
+                { name: 'Guild Partners', range: '\u00a35K\u2013\u00a350K', icon: Trophy, color: '#0e7490' },
+                { name: 'Community', range: 'Up to \u00a35K', icon: Heart, color: '#15803d' },
               ].map((t, i) => {
                 const TIcon = t.icon;
                 return (
@@ -936,29 +958,40 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           ══════════════════════════════════════════ */}
       <section id="beyond" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
         <div ref={beyondAnim.ref} className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          {/* Three phase cards */}
+          {/* Four phase cards with images */}
           <motion.h2 {...clipReveal(beyondAnim.visible)} className="text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Beyond the founding
           </motion.h2>
-          <motion.p {...fadeUp(beyondAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues &mdash; not as an ending, but as a beginning.</motion.p>
+          <motion.p {...fadeUp(beyondAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues &mdash; not as an ending, but as a beginning. Four phases to build a university that spans the world.</motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
             {[
-              { phase: 'Phase I', title: 'The Founding', period: '2025 \u2014 2028', desc: 'Raise the capital. Build five nodes. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries \u2014 and your name is inscribed in its first chapter.', icon: Rocket },
-              { phase: 'Phase II', title: 'The Expansion', period: '2028 \u2014 2033', desc: 'Scale to 12 nodes on 6 continents. Double the student body. Launch the next generation of research institutes. The giving community becomes permanent philanthropic infrastructure \u2014 an engine that accelerates rather than a campaign that ends.', icon: Globe },
-              { phase: 'Phase III', title: 'The Perpetuity', period: '2033 \u2014 Beyond', desc: 'The endowment becomes self-sustaining. Artemis operates in perpetuity, independent of tuition dependency. The Founding Campaign becomes the Artemis Foundation \u2014 a permanent charitable trust stewarding the mission for generations.', icon: Landmark },
+              { phase: 'Phase I', title: 'The Founding', period: '2025 \u2014 2028', goal: sym + '15M', desc: 'Raise the capital. Build the first residential hub. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries \u2014 and your name is inscribed in its first chapter.', icon: Rocket, img: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase II', title: 'The Expansion', period: '2028 \u2014 2033', goal: sym + '50M', desc: 'Scale to 15 nodes on 5 continents. Triple the student body. Launch the next generation of research institutes and residential colleges. The giving community becomes permanent philanthropic infrastructure \u2014 an engine that accelerates rather than a campaign that ends.', icon: Globe, img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase III', title: 'The Network', period: '2033 \u2014 2040', goal: sym + '150M', desc: 'Expand to 50 nodes across every inhabited continent. 10,000 students. 100 permanently endowed institutes. A fully realised planetary university where knowledge flows without borders and every scholar has a home. The endowment becomes self-sustaining.', icon: Landmark, img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase IV', title: 'The Perpetuity', period: '2040 \u2014 Beyond', goal: 'Perpetual', desc: 'Artemis operates in perpetuity, independent of tuition dependency, government funding, or commercial pressure. 100+ nodes. A global scholarly commons that renews itself with each generation. The Founding Campaign becomes the Artemis Foundation \u2014 a permanent charitable trust stewarding the mission for centuries.', icon: Building2, img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600' },
             ].map((p, i) => {
               const Icon = p.icon;
               return (
-                <motion.div key={i} {...scaleIn(beyondAnim.visible, i * 0.15)} className="bg-white border border-gray-200 p-8 hover:border-[#8A0000]/30 transition-colors group">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{p.phase}</span>
-                    <span className="text-[11px] text-gray-300">&mdash;</span>
-                    <span className="text-[11px] text-gray-400">{p.period}</span>
+                <motion.div key={i} {...scaleIn(beyondAnim.visible, i * 0.12)} className="bg-white border border-gray-200 overflow-hidden hover:border-[#8A0000]/30 transition-colors group">
+                  <div className="relative h-[200px] overflow-hidden">
+                    <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute bottom-4 left-6 right-6 flex items-end justify-between">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-1">{p.phase}</span>
+                        <h4 className="text-[22px] font-bold text-white">{p.title}</h4>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-[20px] font-black text-white leading-none">{p.goal}</div>
+                        <div className="text-[9px] font-bold uppercase tracking-widest text-white/50">{p.period}</div>
+                      </div>
+                    </div>
                   </div>
-                  <Icon size={28} className="text-[#8A0000] mb-4" />
-                  <h4 className="text-[22px] font-bold text-[#141414] mb-3">{p.title}</h4>
-                  <p className="text-[14px] text-gray-600 leading-relaxed">{p.desc}</p>
+                  <div className="p-6 lg:p-8">
+                    <Icon size={22} className="text-[#8A0000] mb-3" />
+                    <p className="text-[14px] text-gray-600 leading-relaxed">{p.desc}</p>
+                  </div>
                 </motion.div>
               );
             })}
@@ -971,9 +1004,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
             <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
               <div className="bg-white max-w-lg p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">By the Numbers</div>
-                <h3 className="text-[24px] font-bold text-[#141414] mb-6 leading-tight">A university built to last centuries</h3>
+                <h3 className="text-[24px] font-bold text-[#141414] mb-6 leading-tight">A university built to span the world</h3>
                 <div className="grid grid-cols-2 gap-6">
-                  {[{ value: '12', label: 'Global Nodes', detail: 'Residential hubs across 6 continents' },{ value: '2,400', label: 'Students', detail: 'Full capacity across the network' },{ value: '25', label: 'Institutes', detail: 'Permanently endowed, independent' },{ value: '\u00a3200M', label: 'Endowment', detail: 'Self-sustaining by Phase III' }].map((s, i) => (
+                  {[{ value: '50+', label: 'Global Nodes', detail: 'Residential hubs across every continent' },{ value: '10,000', label: 'Students', detail: 'Full capacity across the network' },{ value: '100', label: 'Institutes', detail: 'Permanently endowed, independent' },{ value: sym+'150M', label: 'Endowment', detail: 'Self-sustaining by Phase III' }].map((s, i) => (
                     <div key={i} className="relative pl-4">
                       <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]"></div>
                       <div className="text-[24px] font-black text-[#141414] leading-none mb-1">{s.value}</div>
