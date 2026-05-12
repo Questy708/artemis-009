@@ -1,6 +1,7 @@
 'use client';
 
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface ProgramsOfStudyProps {
   goToPage: (page: string, program?: string) => void;
@@ -19,76 +20,121 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
     "General Information"
   ];
 
-  const majors = [
-    // School of Natural Sciences
-    "Biology (B.S.)",
-    "Chemistry (B.S.)",
-    "Physics (B.S.)",
-    "Astronomy (B.S.)",
-    "Applied Physics (B.S.)",
-    "Environmental Science (B.S.)",
-    "Geology (B.S.)",
-    "Mathematics (B.S.)",
-    "Agricultural Sciences (B.S.)",
-    "Planetary Science (B.S.)",
-    // School of Engineering & Technology
-    "Mechanical Engineering (B.S.)",
-    "Civil Engineering (B.S.)",
-    "Chemical Engineering (B.S.)",
-    "Software Engineering (B.S.)",
-    "Computer Science (B.S.)",
-    "Data Science (B.S.)",
-    "Robotics (B.S.)",
-    "Mechatronics (B.S.)",
-    "Nanotechnology (B.S.)",
-    "Architecture (B.S.)",
-    "Design (B.A.)",
-    // School of Arts & Humanities
-    "Philosophy (B.A.)",
-    "Comparative Literature (B.A.)",
-    "Media & Communication Design (B.A.)",
-    "History (B.A.)",
-    "Art History (B.A.)",
-    "Linguistics (B.A.)",
-    "Theater & Performance (B.A.)",
-    "Film & Media Studies (B.A.)",
-    "Archaeology (B.A.)",
-    "Art Practice (B.F.A.)",
-    "Dance (B.F.A.)",
-    "Classics (B.A.)",
-    "Music (B.A.)",
-    "Theater and Performance Studies (B.F.A.)",
-    // School of Social Sciences
-    "Anthropology (B.A.)",
-    "Political Science (B.A.)",
-    "Urban Studies (B.A.)",
-    "Economics (B.A.)",
-    "Global Governance & Systems (B.A.)",
-    "Social Innovation & Design (B.A.)",
-    // School of Health & Medicine
-    "Neuroscience (B.S.)",
-    "Public Health (B.S.)",
-    "Biomedical Engineering (B.S.)",
-    "Nutrition Science (B.S.)",
-    "Genetics (B.S.)",
-    "Immunobiology (B.S.)",
-    "Biomedical Computation (B.S.)",
-    "Food Systems (B.S.)",
-    // School of Education & Human Development
-    "Education (B.A.)",
-    "Learning Design & Technology (B.A.)",
-    "Cognitive Science (B.A.)",
-    "Developmental Psychology (B.A.)",
-    "Educational Leadership (B.A.)",
-    "Childhood & Human Development (B.A.)",
-    // School of Business
-    "International Business (B.S.)",
-    "Finance (B.S.)",
-    "Business Analytics (B.S.)",
-    "Supply Chain & Logistics (B.S.)",
-    "Consulting & Strategy (B.S.)",
-    "Entrepreneurship (B.S.)"
+  const schoolSections = [
+    {
+      id: 'school-natural-sciences',
+      label: 'Natural Sciences',
+      heading: 'School of Natural Sciences',
+      majors: [
+        "Biology (B.S.)",
+        "Chemistry (B.S.)",
+        "Physics (B.S.)",
+        "Astronomy (B.S.)",
+        "Applied Physics (B.S.)",
+        "Environmental Science (B.S.)",
+        "Geology (B.S.)",
+        "Mathematics (B.S.)",
+        "Agricultural Sciences (B.S.)",
+        "Planetary Science (B.S.)",
+      ]
+    },
+    {
+      id: 'school-engineering-technology',
+      label: 'Engineering & Technology',
+      heading: 'School of Engineering & Technology',
+      majors: [
+        "Mechanical Engineering (B.S.)",
+        "Civil Engineering (B.S.)",
+        "Chemical Engineering (B.S.)",
+        "Software Engineering (B.S.)",
+        "Computer Science (B.S.)",
+        "Data Science (B.S.)",
+        "Robotics (B.S.)",
+        "Mechatronics (B.S.)",
+        "Nanotechnology (B.S.)",
+        "Architecture (B.S.)",
+        "Design (B.A.)",
+      ]
+    },
+    {
+      id: 'school-arts-humanities',
+      label: 'Arts & Humanities',
+      heading: 'School of Arts & Humanities',
+      majors: [
+        "Philosophy (B.A.)",
+        "Comparative Literature (B.A.)",
+        "Media & Communication Design (B.A.)",
+        "History (B.A.)",
+        "Art History (B.A.)",
+        "Linguistics (B.A.)",
+        "Theater & Performance (B.A.)",
+        "Film & Media Studies (B.A.)",
+        "Archaeology (B.A.)",
+        "Art Practice (B.F.A.)",
+        "Dance (B.F.A.)",
+        "Classics (B.A.)",
+        "Music (B.A.)",
+        "Theater and Performance Studies (B.F.A.)",
+      ]
+    },
+    {
+      id: 'school-social-sciences',
+      label: 'Social Sciences',
+      heading: 'School of Social Sciences',
+      majors: [
+        "Anthropology (B.A.)",
+        "Political Science (B.A.)",
+        "Urban Studies (B.A.)",
+        "Economics (B.A.)",
+        "Global Governance & Systems (B.A.)",
+        "Social Innovation & Design (B.A.)",
+      ]
+    },
+    {
+      id: 'school-health-medicine',
+      label: 'Health & Medicine',
+      heading: 'School of Health & Medicine',
+      majors: [
+        "Neuroscience (B.S.)",
+        "Public Health (B.S.)",
+        "Biomedical Engineering (B.S.)",
+        "Nutrition Science (B.S.)",
+        "Genetics (B.S.)",
+        "Immunobiology (B.S.)",
+        "Biomedical Computation (B.S.)",
+        "Food Systems (B.S.)",
+      ]
+    },
+    {
+      id: 'school-education-human-development',
+      label: 'Education & Human Development',
+      heading: 'School of Education & Human Development',
+      majors: [
+        "Education (B.A.)",
+        "Learning Design & Technology (B.A.)",
+        "Cognitive Science (B.A.)",
+        "Developmental Psychology (B.A.)",
+        "Educational Leadership (B.A.)",
+        "Childhood & Human Development (B.A.)",
+      ]
+    },
+    {
+      id: 'school-business',
+      label: 'Business',
+      heading: 'School of Business',
+      majors: [
+        "International Business (B.S.)",
+        "Finance (B.S.)",
+        "Business Analytics (B.S.)",
+        "Supply Chain & Logistics (B.S.)",
+        "Consulting & Strategy (B.S.)",
+        "Entrepreneurship (B.S.)",
+      ]
+    },
   ];
+
+  const sectionIds = schoolSections.map(s => s.id);
+  const activeSection = useActiveSection(sectionIds);
 
   return (
     <div className="flex flex-col bg-white">
@@ -104,6 +150,12 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
         <span>/</span>
         <span className="text-black uppercase tracking-wider font-bold text-xs">Majors in Artemis College</span>
       </div>
+
+      {/* On This Page Navigation */}
+      <OnThisPageNav
+        sections={schoolSections.map(s => ({ id: s.id, label: s.label }))}
+        activeSection={activeSection}
+      />
 
       <div className="flex flex-col md:flex-row max-w-[1400px] w-full mx-auto pb-24 border-l border-r border-gray-200">
         {/* Catalog Navigation Sidebar */}
@@ -131,15 +183,30 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
           <h1 className="text-[36px] font-serif font-bold text-[#141414] mb-10 border-b border-gray-200 pb-4">
             Majors in Artemis College
           </h1>
-          <div className="column-1 md:columns-2 gap-12">
-             {majors.map((major, i) => (
-                <div key={i} className="mb-4">
-                  <button onClick={() => goToPage('program_detail', major)} className="text-left text-[15px] font-serif text-[#141414] hover:text-[#8A0000] hover:underline leading-snug block pl-4 -indent-4">
-                    {major}
-                  </button>
-                </div>
-             ))}
-          </div>
+
+          {schoolSections.map((section) => (
+            <section
+              key={section.id}
+              id={section.id}
+              className="scroll-mt-[110px] mb-12"
+            >
+              <h2 className="text-[22px] font-serif font-bold text-[#8A0000] mb-5 pb-2 border-b border-gray-200">
+                {section.heading}
+              </h2>
+              <div className="column-1 md:columns-2 gap-12">
+                {section.majors.map((major, i) => (
+                  <div key={i} className="mb-4">
+                    <button
+                      onClick={() => goToPage('program_detail', major)}
+                      className="text-left text-[15px] font-serif text-[#141414] hover:text-[#8A0000] hover:underline leading-snug block pl-4 -indent-4"
+                    >
+                      {major}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
         </main>
       </div>
 
