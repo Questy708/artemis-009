@@ -413,12 +413,11 @@ export default function Research({ goToPage }: ResearchProps) {
       <section className="py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           {/* Section divider */}
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Featured Projects
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Featured Projects</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="flex flex-col md:flex-row gap-4">
             {featuredProjects.map((project, i) => (
@@ -523,12 +522,11 @@ export default function Research({ goToPage }: ResearchProps) {
           ref={highlightsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Highlights
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Highlights</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           {/* Card-and-image parallax section */}
           <div className="max-w-[1600px] mx-auto">
@@ -621,12 +619,11 @@ export default function Research({ goToPage }: ResearchProps) {
       <section id="centers" className="scroll-mt-[110px] py-16 lg:py-24">
         {/* Intro — constrained width */}
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Centers of Inquiry
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Centers of Inquiry</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="mb-12">
             <div className="mb-8 flex items-center space-x-3">

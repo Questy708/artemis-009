@@ -221,12 +221,13 @@ export default function OurPeople({ goToPage }: Props) {
           ref={spotlightAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Faculty Spotlight
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Faculty Spotlight
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           {/* Card-and-image parallax section */}
           <div className="max-w-[1600px] mx-auto">
@@ -307,12 +308,13 @@ export default function OurPeople({ goToPage }: Props) {
           ref={workingAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Careers
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Careers
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}

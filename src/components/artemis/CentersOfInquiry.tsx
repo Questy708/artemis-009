@@ -265,7 +265,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
   const [activePillar, setActivePillar] = useState(0);
   const introAnim = useInView();
   const pillarsAnim = useInView();
-  const centersAnim = useInView();
+  const centersAnim = useInView(0);
   const guildAnim = useInView();
   const cyclesAnim = useInView();
 
@@ -346,12 +346,11 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       {/* All Centers Grid */}
       <section id="centers" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Our Centers
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Centers</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="space-y-12">
             {centers.map((center, i) => (
@@ -438,12 +437,11 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       {/* Cycles of Activity */}
       <section id="cycles" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Cycles of Activity
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Cycles of Activity</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Three interlocking rhythms</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-12 max-w-2xl">Guilds pulse through three interlocking cycles, synchronized with Artemis&apos;s global calendar. These rhythms operationalize CoI&apos;s static hubs into fluid engines, ensuring capstones evolve from ideation to deployment.</p>
 

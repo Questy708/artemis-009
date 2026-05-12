@@ -355,12 +355,11 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Programs of Study
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Programs of Study</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
             <div>

@@ -205,12 +205,11 @@ export default function Innovation({ goToPage }: InnovationProps) {
       <section id="incubators" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           {/* Section divider */}
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Venture Hubs
-              </span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Venture Hubs</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="flex flex-col md:flex-row gap-4">
             {ventureHubs.map((hub, i) => (

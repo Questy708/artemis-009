@@ -329,11 +329,12 @@ export default function Education({ goToPage }: EducationProps) {
             className={`transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Section divider */}
-            <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+            <div className="relative flex items-center mb-14">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Programs of Study
               </span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
             <div className="mb-14">
@@ -483,11 +484,12 @@ export default function Education({ goToPage }: EducationProps) {
             className={`transition-all duration-700 ${globalAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Section divider */}
-            <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+            <div className="relative flex items-center mb-14">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Global Learning
               </span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
           </div>
         </div>

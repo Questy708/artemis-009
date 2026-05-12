@@ -290,11 +290,12 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
         >
           {/* Section divider */}
           <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24">
-            <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+            <div className="relative flex items-center mb-14">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">
                 Meta-Competencies
               </span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
             <div className="mb-14">
