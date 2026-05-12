@@ -113,34 +113,43 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
 
   return (
     <div className="w-full shrink-0">
-      {/* ── Campus Life Photo Collage on Crimson ── */}
-      <section className="bg-[#8A0000] py-10 lg:py-14 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-16">
+      {/* ── Photo Mosaic on Crimson ── */}
+      <section className="bg-[#8A0000] py-12 px-6 lg:px-16 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
           {/* Section label */}
           <div className="flex items-center space-x-3 mb-6">
             <span className="w-6 h-[1px] bg-white/40"></span>
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50">Campus Life at Artemis</span>
           </div>
 
-          {/* Uniform rectangle grid — 3 rows × 5 cols on desktop, 2×3 on tablet, 2×2 on mobile */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1">
-            {cells.map((cell, i) => (
-              <div
-                key={i}
-                className="relative w-full overflow-hidden bg-[#6B0000]"
-                style={{ aspectRatio: '4/3' }}
-              >
-                <img
-                  src={cell.src}
-                  alt=""
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    cell.isTransitioning ? 'opacity-0' : 'opacity-100'
+          {/* Gapless image mosaic */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 auto-rows-[140px] md:auto-rows-[170px] lg:auto-rows-[180px]">
+            {cells.map((cell, i) => {
+              // Index 2 is the large featured cell (2x2)
+              const isFeatured = i === 2;
+              return (
+                <div
+                  key={i}
+                  className={`relative overflow-hidden bg-[#6B0000] ${
+                    isFeatured
+                      ? 'md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2'
+                      : ''
                   }`}
-                  style={{ objectFit: 'cover' }}
-                />
-                <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-300" />
-              </div>
-            ))}
+                >
+                  {/* Current image */}
+                  <img
+                    src={cell.src}
+                    alt=""
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      cell.isTransitioning ? 'opacity-0' : 'opacity-100'
+                    }`}
+                    style={{ objectFit: 'cover' }}
+                  />
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-300" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

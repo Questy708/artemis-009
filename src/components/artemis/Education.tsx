@@ -621,34 +621,6 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          8. ACADEMIC CALENDAR CTA — full-width crimson band
-          Background: full-width crimson
-          Content: centered in max-w-[1400px]
-          ═══════════════════════════════════════════ */}
-      <section className="w-full bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-[28px] md:text-[36px] font-extrabold text-white leading-tight tracking-tight mb-2">
-              Academic Calendars
-            </h3>
-            <p className="text-[17px] text-white/70 leading-[1.75] max-w-lg">
-              View key dates for Artemis College and the graduate and professional schools.
-              Plan your academic year with confidence.
-            </p>
-          </div>
-          <button
-            onClick={() => goToPage('application-deadlines')}
-            className="shrink-0 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors shadow-lg"
-          >
-            Browse Calendars
-          </button>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          9. FOOTER
-          ═══════════════════════════════════════════ */}
       <SubPageFooter goToPage={goToPage} />
     </div>
   );
