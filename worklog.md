@@ -220,3 +220,35 @@ Stage Summary:
 - OnThisPageNav placed after the breadcrumb header, before the sidebar+content layout
 - useActiveSection tracks which section is in view based on the existing tab IDs
 - Existing sticky tab navigation preserved inside the content area for in-page UX
+
+---
+Task ID: 1+2
+Agent: Main
+Task: Education.tsx — auto-slide cards carousel + 2 new pathways
+
+Work Log:
+- Read worklog.md and Education.tsx to understand current structure
+- Change 1: Converted "Programs of Study" section from static 3-column grid to auto-scrolling horizontal carousel
+  - Changed section container from max-w-[1400px] to max-w-[1600px] to match hero image width
+  - Added carouselRef and isPausedRef refs for carousel state management
+  - Added useEffect with requestAnimationFrame for frame-rate-independent auto-scrolling at 50px/s
+  - Seamless loop achieved by duplicating academicPrograms array (9+9=18 items) and resetting scrollLeft at midpoint
+  - Pause-on-hover via onMouseEnter/onMouseLeave setting isPausedRef
+  - Pause-on-touch via onTouchStart/onTouchEnd (with 2-second delay before resuming after touch ends)
+  - Hidden scrollbar via CSS (.programs-carousel::-webkit-scrollbar) and style prop (scrollbarWidth: 'none')
+  - Responsive card widths: w-[280px] mobile, sm:w-[380px] tablet, lg:w-[500px] desktop
+  - Mobile supports horizontal touch scrolling via overflow-x-auto
+  - Card numbering uses padStart(2, '0') with modulo for duplicated items
+- Change 2: Added two new pathways to academicPrograms array
+  - K-12 Education: pathway for younger learners, image from Unsplash, link to admissions
+  - Dual-Degree Pathway (P-TECH): modeled after P-TECH initiative, inspired by Avenues: The World School, 6-year program combining secondary + tertiary education, link to admissions
+  - Changed heading from "Seven paths to mastery" to "Nine paths to mastery"
+- Split Programs section into two parts: header content (with padding) and carousel (with separate max-w-[1600px] container)
+- Build verified successfully (npx next build passes)
+- Committed and pushed: "feat: Education - auto-slide cards + 2 new pathways"
+
+Stage Summary:
+- Education.tsx Programs section now has auto-scrolling horizontal carousel matching hero image width (max-w-[1600px])
+- 9 pathways total (was 7): added K-12 Education and Dual-Degree Pathway (P-TECH)
+- Carousel features: requestAnimationFrame auto-scroll, pause-on-hover, pause-on-touch, seamless loop, hidden scrollbar, responsive card widths, mobile touch scrolling
+- Build passes, changes pushed to GitHub
