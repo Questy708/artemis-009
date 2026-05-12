@@ -152,6 +152,39 @@ const fadeUp = (visible: boolean, delay = 0) => ({
   transition: { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 });
 
+/* ─── Animated Counter Component ─── */
+function AnimatedCounter({ value, prefix = '', suffix = '', className = '' }: { value: number; prefix?: string; suffix?: string; className?: string }) {
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !hasAnimated) {
+        setHasAnimated(true);
+        const duration = 2000;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(Math.round(eased * value));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+      }
+    }, { threshold: 0.3 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [value, hasAnimated]);
+
+  const formatted = display >= 1000 ? display.toLocaleString('en-GB') : display.toString();
+  return <span ref={ref} className={className}>{prefix}{formatted}{suffix}</span>;
+}
+
 /* ─── Main Component ─── */
 export default function FundraisingCampaign({ goToPage }: Props) {
   const activeSection = useActiveSection(['case', 'goals', 'phases', 'opportunities', 'ways', 'give', 'founders', 'beyond']);
@@ -245,28 +278,150 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
-          ANIMATED GOAL BAR — Standalone between hero and content
+          ANIMATED GOAL BAR — Live Campaign Pulse
           ══════════════════════════════════════════ */}
-      <section className="bg-[#141414] py-8">
+      <section className="bg-white py-20 lg:py-28 border-b border-gray-100">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-            <div className="flex items-baseline gap-3">
-              <span className="text-[36px] md:text-[48px] font-black text-white leading-none">{sym}{fmtShort(CAMPAIGN.raised)}</span>
-              <span className="text-[12px] text-white/40 font-bold uppercase tracking-widest">raised of {sym}{fmtShort(CAMPAIGN.goal)}</span>
-            </div>
-            <div className="flex-1 w-full md:w-auto">
-              <div className="h-3 bg-white/10 w-full overflow-hidden">
-                <motion.div className="h-full bg-[#8A0000]" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} transition={{ duration: 2, ease: 'easeOut' }} viewport={{ once: true }} />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            {/* LEFT — Animated circular progress */}
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="relative w-[220px] h-[220px] md:w-[260px] md:h-[260px]">
+                {/* Outer pulsing ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-[#8A0000]/10"
+                  animate={{ scale: [1, 1.06, 1], opacity: [0.4, 0.8, 0.4] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute inset-2 rounded-full border border-[#8A0000]/5"
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.5, 0.2] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                />
+
+                {/* SVG progress ring */}
+                <svg className="w-full h-full -rotate-90" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="88" fill="none" stroke="#f3f3f3" strokeWidth="6" />
+                  <motion.circle
+                    cx="100" cy="100" r="88" fill="none" stroke="#8A0000" strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeDasharray={2 * Math.PI * 88}
+                    initial={{ strokeDashoffset: 2 * Math.PI * 88 }}
+                    whileInView={{ strokeDashoffset: 2 * Math.PI * 88 * (1 - pct / 100) }}
+                    transition={{ duration: 2.5, ease: 'easeOut', delay: 0.3 }}
+                    viewport={{ once: true }}
+                  />
+                </svg>
+
+                {/* Center content — animated counter */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <AnimatedCounter value={pct} suffix="%" className="text-[48px] md:text-[56px] font-black text-[#8A0000] leading-none" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400 mt-2">funded</span>
+                </div>
+
+                {/* Floating dot on progress edge */}
+                <motion.div
+                  className="absolute w-3 h-3 rounded-full bg-[#8A0000] shadow-[0_0_12px_rgba(138,0,0,0.5)]"
+                  style={{
+                    top: '50%',
+                    left: '50%',
+                    transformOrigin: '0 0',
+                  }}
+                  animate={{
+                    x: Math.cos((pct / 100) * 2 * Math.PI - Math.PI / 2) * 88 - 6,
+                    y: Math.sin((pct / 100) * 2 * Math.PI - Math.PI / 2) * 88 - 6,
+                  }}
+                  transition={{ duration: 2.5, ease: 'easeOut', delay: 0.3 }}
+                />
               </div>
             </div>
-            <div className="flex items-center gap-8">
-              <div className="text-center">
-                <div className="text-[28px] md:text-[36px] font-black text-[#8A0000] leading-none">{pct}%</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">funded</div>
+
+            {/* RIGHT — Stats + shimmer bar */}
+            <div className="lg:col-span-8">
+              <div className="mb-8">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8A0000] block mb-3">Campaign Progress</span>
+                <h3 className="text-[32px] md:text-[40px] font-black tracking-tighter text-[#141414] leading-none mb-2">
+                  <AnimatedCounter value={CAMPAIGN.raised} prefix={sym} className="text-[32px] md:text-[40px] font-black tracking-tighter text-[#141414]" />
+                  <span className="text-[16px] font-normal text-gray-400 tracking-normal ml-2">raised of {sym}{fmtShort(CAMPAIGN.goal)}</span>
+                </h3>
               </div>
-              <div className="text-center">
-                <div className="text-[28px] md:text-[36px] font-black text-white leading-none">{fmtNum(CAMPAIGN.donors)}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">donors</div>
+
+              {/* Shimmer progress bar */}
+              <div className="relative h-4 bg-gray-100 w-full overflow-hidden mb-8">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-[#8A0000] to-[#a01010]"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${pct}%` }}
+                  transition={{ duration: 2, ease: 'easeOut' }}
+                  viewport={{ once: true }}
+                />
+                {/* Shimmer overlay */}
+                <motion.div
+                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  style={{ width: '40%' }}
+                  animate={{ x: ['-100%', `${pct * 10}%`] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 3 }}
+                />
+                {/* Breathing glow at the tip */}
+                <motion.div
+                  className="absolute top-0 h-full w-4 bg-[#8A0000]/30 blur-sm"
+                  initial={{ left: 0 }}
+                  whileInView={{ left: `${pct}%` }}
+                  transition={{ duration: 2, ease: 'easeOut' }}
+                  viewport={{ once: true }}
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                />
+              </div>
+
+              {/* Milestone markers on the bar */}
+              <div className="relative w-full mb-12 h-6">
+                {[25, 50, 75].map((m) => (
+                  <div
+                    key={m}
+                    className="absolute top-0 flex flex-col items-center"
+                    style={{ left: `${m}%`, transform: 'translateX(-50%)' }}
+                  >
+                    <div className={`w-[1px] h-3 ${pct >= m ? 'bg-[#8A0000]' : 'bg-gray-300'}`} />
+                    <span className={`text-[9px] font-bold uppercase tracking-widest mt-1 ${pct >= m ? 'text-[#8A0000]' : 'text-gray-300'}`}>{m}%</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Live stats row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {[
+                  { label: 'Donors', value: CAMPAIGN.donors, animate: true, icon: Users },
+                  { label: 'Avg. Gift', value: Math.round(CAMPAIGN.raised / CAMPAIGN.donors), prefix: sym, animate: true, icon: CreditCard },
+                  { label: 'Countries', value: 14, animate: false, icon: Globe },
+                  { label: 'Days Left', value: 247, animate: false, icon: Zap },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center bg-gray-50 shrink-0">
+                      <stat.icon size={16} className="text-[#8A0000]" />
+                    </div>
+                    <div>
+                      {stat.animate ? (
+                        <AnimatedCounter
+                          value={stat.value}
+                          prefix={stat.prefix}
+                          className="text-[20px] font-black text-[#141414] leading-none"
+                        />
+                      ) : (
+                        <div className="text-[20px] font-black text-[#141414] leading-none">
+                          {stat.prefix || ''}{stat.value.toLocaleString()}
+                        </div>
+                      )}
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-1">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
