@@ -5,95 +5,76 @@ import SubPageFooter from '@/components/artemis/SubPageFooter';
 import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  ArrowRight, ArrowUpRight, Shield, Heart, Zap, Star, Crown, Building2,
+  ArrowRight, Shield, Zap, Star, Crown, Building2,
   Home, FlaskConical, GraduationCap, BookOpen, Compass, Mail, Hash,
-  Users, Globe, Clock, Calendar, MapPin, Video, Sparkles, Trophy,
-  ChevronDown, ChevronRight, Check, Lock, Bitcoin, Wallet, CreditCard,
-  Banknote, Repeat, Gift, Eye, MessageSquare, PartyPopper, Target,
-  Rocket, Landmark, CircleDot, Flame
+  Users, Globe, MapPin, Video, Trophy,
+  ChevronDown, Check, Lock, Bitcoin, Wallet, CreditCard,
+  Banknote, Repeat, Rocket, Landmark, Flame,
+  Sparkles, CircleDot, Gem, Orbit
 } from 'lucide-react';
 
 interface Props {
   goToPage: (page: string) => void;
 }
 
-/* ─── Campaign Data ─── */
-const CAMPAIGN = {
-  goal: 80_000_000,
-  raised: 28_400_000,
-  donors: 1847,
-  currency: 'GBP',
-};
-
-const symbol = (c: string) => c === 'GBP' ? '£' : '$';
-const fmt = (n: number) => n.toLocaleString('en-GB');
-const fmtShort = (n: number) => {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(0)}K`;
-  return fmt(n);
-};
+/* ─── Data ─── */
+const CAMPAIGN = { goal: 80_000_000, raised: 28_400_000, donors: 1847, currency: 'GBP' };
+const fmtNum = (n: number) => n.toLocaleString('en-GB');
+const fmtShort = (n: number) => n >= 1_000_000 ? `${(n/1_000_000).toFixed(n%1_000_000===0?0:1)}M` : n >= 1_000 ? `${(n/1_000).toFixed(0)}K` : fmtNum(n);
+const sym = '£';
+const pct = Math.round((CAMPAIGN.raised / CAMPAIGN.goal) * 100);
 
 const MILESTONES = [
-  { title: 'Digital Foundation', target: 10_000_000, reached: true, desc: 'Core platform, secure infrastructure, and global access layer — deployed and operational across 3 continents.', icon: Rocket },
-  { title: 'First Five Nodes', target: 25_000_000, reached: true, desc: 'Geneva, Valletta, San Francisco, Tokyo, Reykjavik — five residential hubs now accepting residents.', icon: Globe },
-  { title: 'Inaugural Cohort', target: 40_000_000, reached: false, desc: 'Full scholarship fund for the first 200 students across all nodes, with dedicated faculty and mentorship networks.', icon: GraduationCap },
-  { title: 'Research Endowment', target: 60_000_000, reached: false, desc: 'Perpetual endowment securing five flagship research institutes with a 20-year operational runway.', icon: FlaskConical },
-  { title: 'Global Scale', target: 80_000_000, reached: false, desc: '12 nodes on 6 continents — a truly planetary university with borderless access to knowledge.', icon: Landmark },
+  { title: 'Digital Foundation', target: 10_000_000, reached: true, desc: 'Core platform and global access layer — deployed across 3 continents.', icon: Rocket },
+  { title: 'First Five Nodes', target: 25_000_000, reached: true, desc: 'Geneva, Valletta, San Francisco, Tokyo, Reykjavik — residential hubs operational.', icon: Globe },
+  { title: 'Inaugural Cohort', target: 40_000_000, reached: false, desc: 'Full scholarship fund for 200 students with dedicated faculty and mentorship.', icon: GraduationCap },
+  { title: 'Research Endowment', target: 60_000_000, reached: false, desc: 'Perpetual endowment for five flagship institutes with 20-year runway.', icon: FlaskConical },
+  { title: 'Global Scale', target: 80_000_000, reached: false, desc: '12 nodes, 6 continents — a planetary university with borderless access.', icon: Landmark },
 ];
 
-const PERKS = [
-  { id: 'p1', title: 'Founding Cipher', desc: 'A unique cryptographic token permanently recording your contribution on the Artemis ledger. Your name, encrypted, becomes part of the university\'s foundation — visible forever on the public chain.', min: 25, category: 'digital', icon: Hash, color: '#6366f1' },
-  { id: 'p2', title: 'The Artemis Dispatch', desc: 'Quarterly intelligence brief from the Chancellor — exclusive essays, research previews, and strategic updates from inside the founding. Not a newsletter. A window into the build.', min: 100, category: 'digital', icon: Mail, color: '#8b5cf6' },
-  { id: 'p3', title: 'Node Access Pass', desc: 'Priority invitation to visit any Artemis node worldwide during the founding year. Walk the spaces, meet the community, witness the construction of something unprecedented.', min: 500, category: 'experience', icon: Compass, color: '#0891b2' },
-  { id: 'p4', title: 'Founders\' Book', desc: 'A limited-edition leather-bound volume documenting the founding of Artemis — with your name inscribed in the founding roll. Printed on archival paper. Meant to last centuries.', min: 1000, category: 'physical', icon: BookOpen, color: '#059669' },
-  { id: 'p5', title: 'Scholarship Patron', desc: 'Fully fund a named micro-scholarship for one student. You choose the focus — AI ethics, marine biology, civic design. They carry your name through their Artemis journey and beyond.', min: 5000, category: 'naming', icon: GraduationCap, color: '#d97706' },
-  { id: 'p6', title: 'Lab Dedication', desc: 'Name a research lab within a node. A permanent plaque, a dedication ceremony, and annual reports from the researchers who work there. Your name becomes synonymous with discovery.', min: 25000, category: 'naming', icon: FlaskConical, color: '#dc2626' },
-  { id: 'p7', title: 'Commons Naming', desc: 'Name one of the 12 Living Commons. Your name becomes part of daily life at Artemis — spoken by every resident, written on every map, etched into the identity of a community.', min: 100000, category: 'naming', icon: Home, color: '#8A0000' },
-  { id: 'p8', title: 'Node Patron', desc: 'Become the patron of an entire Artemis node. The building bears your name. The community carries your legacy. A seat on the Founders\' Council. The highest honour in the founding.', min: 1000000, category: 'naming', icon: Building2, color: '#1a1a2e' },
+const CONSTELLATIONS = [
+  { id: 'c1', title: 'The Cipher', desc: 'A cryptographic token permanently recording your contribution on the Artemis ledger. Your name, encrypted, becomes part of the university\'s foundation — visible forever on the public chain.', min: 25, icon: Hash, color: '#818cf8', magnitude: 1 },
+  { id: 'c2', title: 'The Dispatch', desc: 'Quarterly intelligence brief from the Chancellor — exclusive essays, research previews, and strategic updates from inside the founding. Not a newsletter. A window into the build.', min: 100, icon: Mail, color: '#a78bfa', magnitude: 2 },
+  { id: 'c3', title: 'The Passage', desc: 'Priority invitation to visit any Artemis node worldwide during the founding year. Walk the spaces, meet the community, witness the construction of something unprecedented.', min: 500, icon: Compass, color: '#22d3ee', magnitude: 3 },
+  { id: 'c4', title: 'The Codex', desc: 'A limited-edition leather-bound volume documenting the founding of Artemis — your name inscribed in the founding roll. Printed on archival paper. Meant to last centuries.', min: 1000, icon: BookOpen, color: '#34d399', magnitude: 4 },
+  { id: 'c5', title: 'The Patron', desc: 'Fully fund a named micro-scholarship for one student. You choose the focus — AI ethics, marine biology, civic design. They carry your name through their Artemis journey.', min: 5000, icon: GraduationCap, color: '#fbbf24', magnitude: 5 },
+  { id: 'c6', title: 'The Dedication', desc: 'Name a research lab within a node. A permanent plaque, a dedication ceremony, annual reports from the researchers. Your name becomes synonymous with discovery.', min: 25000, icon: FlaskConical, color: '#f87171', magnitude: 6 },
+  { id: 'c7', title: 'The Commons', desc: 'Name one of the 12 Living Commons. Your name becomes part of daily life at Artemis — spoken by every resident, written on every map, etched into the identity of a community.', min: 100000, icon: Home, color: '#8A0000', magnitude: 7 },
+  { id: 'c8', title: 'The Apex', desc: 'Become the patron of an entire Artemis node. The building bears your name. The community carries your legacy. A seat on the Founders\' Council. The highest honour.', min: 1000000, icon: Building2, color: '#fbbf24', magnitude: 8 },
 ];
 
 const EVENTS = [
-  { id: 'e1', title: 'The Founding Convocation', type: 'gala', desc: 'An evening of vision and commitment. Meet the Chancellor, the founding faculty, and fellow patrons at the Geneva node. Black tie. Historic.', date: '2026-09-15', location: 'Geneva, Switzerland', virtual: false, capacity: 200, registered: 87, price: 500, icon: Crown },
-  { id: 'e2', title: 'Inside the Build: Virtual Site Tour', type: 'webinar', desc: 'Walk through the digital and physical architecture of Artemis with the design team. Live Q&A with founding engineers.', date: '2026-07-22', location: 'Online', virtual: true, capacity: 1000, registered: 432, price: 0, icon: Video },
-  { id: 'e3', title: 'Double Impact Day', type: 'matching', desc: 'Every pound donated today is matched pound-for-pound by the Catalyst Foundation. Your £1 becomes £2. 24 hours only.', date: '2026-10-01', location: 'Global', virtual: true, capacity: null, registered: 0, price: null, icon: Zap },
-  { id: 'e4', title: 'The Artemis Auction', type: 'auction', desc: 'Bid on naming rights, original artwork, and exclusive experiences — all proceeds fund the Global Scholars Fund.', date: '2026-11-20', location: 'London, UK', virtual: false, capacity: 150, registered: 34, price: 250, icon: Star },
-  { id: 'e5', title: 'Hack the Future: 48-Hour Build', type: 'hackathon', desc: 'A founding-weekend hackathon where donors and students co-build tools for the Artemis platform. Prizes. Glory. Pizza.', date: '2026-08-08', location: 'San Francisco, USA', virtual: false, capacity: 100, registered: 61, price: 0, icon: Flame },
-  { id: 'e6', title: 'Spring Benefactor Dinner', type: 'gala', desc: 'An intimate dinner for major donors at the Valletta node. Michelin-starred cuisine, Mediterranean views, and the future of knowledge.', date: '2027-03-14', location: 'Valletta, Malta', virtual: false, capacity: 80, registered: 22, price: 1000, icon: PartyPopper },
+  { title: 'The Founding Convocation', type: 'gala', desc: 'An evening of vision and commitment. Meet the Chancellor and founding faculty at the Geneva node. Black tie. Historic.', date: '15 Sep 2026', location: 'Geneva', virtual: false, capacity: 200, registered: 87, price: 500, icon: Crown },
+  { title: 'Inside the Build', type: 'webinar', desc: 'Walk through the digital and physical architecture of Artemis with the design team. Live Q&A with founding engineers.', date: '22 Jul 2026', location: 'Online', virtual: true, capacity: 1000, registered: 432, price: 0, icon: Video },
+  { title: 'Double Impact Day', type: 'matching', desc: 'Every pound donated is matched by the Catalyst Foundation. Your £1 becomes £2. 24 hours only.', date: '1 Oct 2026', location: 'Global', virtual: true, capacity: null, registered: 0, price: null, icon: Zap },
+  { title: 'The Artemis Auction', type: 'auction', desc: 'Bid on naming rights, original artwork, and exclusive experiences. All proceeds fund the Global Scholars Fund.', date: '20 Nov 2026', location: 'London', virtual: false, capacity: 150, registered: 34, price: 250, icon: Star },
+  { title: 'Hack the Future', type: 'hackathon', desc: 'A founding-weekend hackathon where donors and students co-build tools for the Artemis platform.', date: '8 Aug 2026', location: 'San Francisco', virtual: false, capacity: 100, registered: 61, price: 0, icon: Flame },
+  { title: 'Spring Benefactor Dinner', type: 'gala', desc: 'An intimate dinner for major donors at the Valletta node. Michelin-starred cuisine and the future of knowledge.', date: '14 Mar 2027', location: 'Valletta', virtual: false, capacity: 80, registered: 22, price: 1000, icon: Gem },
 ];
 
-const DONOR_WALL = [
-  { name: 'The Nordgren Foundation', amount: 500000, date: '28 Apr', message: 'Investing in the infrastructure of imagination.', tier: 'chancellors' },
-  { name: 'Chen Wei Laboratories', amount: 200000, date: '4 May', message: null, tier: 'founders' },
-  { name: 'Dr. Elena Vasquez', amount: 50000, date: '10 May', message: 'For the students who will change everything.', tier: 'founders' },
-  { name: 'James & Priya Okonkwo', amount: 25000, date: '8 May', message: null, tier: 'guild' },
-  { name: 'Liu Fang Foundation', amount: 75000, date: '25 Apr', message: null, tier: 'guild' },
-  { name: 'Dr. Robert & Sarah Kimani', amount: 10000, date: '22 Apr', message: 'For the next generation of African scholars.', tier: 'guild' },
-  { name: 'The Al-Rashidi Family', amount: 15000, date: '5 May', message: 'In memory of Fatima Al-Rashidi, who believed in education for all.', tier: 'guild' },
-  { name: 'Anonymous Patron', amount: 100000, date: '7 May', message: 'Because knowledge should have no borders.', tier: 'chancellors' },
-  { name: 'Takeshi Yamamoto', amount: 1000, date: '2 May', message: null, tier: 'community' },
-  { name: 'Maria Santos', amount: 500, date: '3 May', message: 'Proud to be part of the founding.', tier: 'community' },
-  { name: 'Amara Osei', amount: 100, date: '27 Apr', message: 'Every great university starts with a first believer.', tier: 'community' },
-  { name: 'Anonymous', amount: 5000, date: '23 Apr', message: null, tier: 'community' },
-  { name: 'Sven & Astrid Lindqvist', amount: 20000, date: '20 Apr', message: 'For the north, and for everywhere.', tier: 'guild' },
-  { name: 'The Matsuo Trust', amount: 150000, date: '18 Apr', message: null, tier: 'founders' },
-  { name: 'Isla McGregor', amount: 250, date: '15 Apr', message: 'A small stone in a great cathedral.', tier: 'community' },
+const DONORS = [
+  { name: 'The Nordgren Foundation', amount: 500000, date: '28 Apr', msg: 'Investing in the infrastructure of imagination.', tier: 'chancellors' },
+  { name: 'Chen Wei Laboratories', amount: 200000, date: '4 May', msg: null, tier: 'founders' },
+  { name: 'Dr. Elena Vasquez', amount: 50000, date: '10 May', msg: 'For the students who will change everything.', tier: 'founders' },
+  { name: 'Anonymous Patron', amount: 100000, date: '7 May', msg: 'Because knowledge should have no borders.', tier: 'chancellors' },
+  { name: 'The Matsuo Trust', amount: 150000, date: '18 Apr', msg: null, tier: 'founders' },
+  { name: 'Liu Fang Foundation', amount: 75000, date: '25 Apr', msg: null, tier: 'guild' },
+  { name: 'James & Priya Okonkwo', amount: 25000, date: '8 May', msg: null, tier: 'guild' },
+  { name: 'The Al-Rashidi Family', amount: 15000, date: '5 May', msg: 'In memory of Fatima Al-Rashidi.', tier: 'guild' },
+  { name: 'Dr. Robert & Sarah Kimani', amount: 10000, date: '22 Apr', msg: 'For the next generation of African scholars.', tier: 'guild' },
+  { name: 'Sven & Astrid Lindqvist', amount: 20000, date: '20 Apr', msg: 'For the north, and for everywhere.', tier: 'guild' },
+  { name: 'Anonymous', amount: 5000, date: '23 Apr', msg: null, tier: 'community' },
+  { name: 'Takeshi Yamamoto', amount: 1000, date: '2 May', msg: null, tier: 'community' },
+  { name: 'Maria Santos', amount: 500, date: '3 May', msg: 'Proud to be part of the founding.', tier: 'community' },
+  { name: 'Amara Osei', amount: 100, date: '27 Apr', msg: 'Every great university starts with a first believer.', tier: 'community' },
+  { name: 'Isla McGregor', amount: 250, date: '15 Apr', msg: 'A small stone in a great cathedral.', tier: 'community' },
 ];
 
-const TIER_COLORS: Record<string, string> = {
-  chancellors: '#8A0000',
-  founders: '#6366f1',
-  guild: '#0891b2',
-  community: '#059669',
-};
+const TIER_COLORS: Record<string, string> = { chancellors: '#8A0000', founders: '#818cf8', guild: '#22d3ee', community: '#34d399' };
+const CRYPTO = { BTC: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', ETH: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F' };
+const PRESETS = [25, 100, 500, 1000, 5000, 25000];
 
-const CRYPTO_ADDRESSES = {
-  BTC: { address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', qr: '/qr-btc.svg' },
-  ETH: { address: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F', qr: '/qr-eth.svg' },
-};
-
-const PRESET_AMOUNTS = [25, 50, 100, 250, 500, 1000, 5000, 25000];
-
-/* ─── Hook: animate on scroll ─── */
+/* ─── Hooks ─── */
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -107,45 +88,153 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-/* ─── Animated Counter ─── */
-function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2000 }: { target: number; prefix?: string; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const { ref, visible } = useInView(0);
-  useEffect(() => {
-    if (!visible) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) { setCount(target); clearInterval(timer); }
-      else setCount(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [visible, target, duration]);
-  return <span ref={ref}>{prefix}{count.toLocaleString('en-GB')}{suffix}</span>;
+/* ─── Constellation SVG — the central visual metaphor ─── */
+function ConstellationMap({ percent, hoveredConstellation }: { percent: number; hoveredConstellation: string | null }) {
+  const stars = [
+    // Central star (the campaign)
+    { cx: 400, cy: 250, r: 6, glow: true, id: 'center' },
+    // Milestone cluster 1 — reached
+    { cx: 180, cy: 160, r: 4, glow: true, id: 'm1' },
+    { cx: 210, cy: 130, r: 3, glow: true, id: 'm1b' },
+    { cx: 160, cy: 190, r: 3, glow: true, id: 'm1c' },
+    // Milestone cluster 2 — reached
+    { cx: 300, cy: 120, r: 4, glow: true, id: 'm2' },
+    { cx: 330, cy: 100, r: 3, glow: true, id: 'm2b' },
+    { cx: 280, cy: 140, r: 2.5, glow: true, id: 'm2c' },
+    // Milestone cluster 3
+    { cx: 520, cy: 140, r: 3.5, glow: false, id: 'm3' },
+    { cx: 550, cy: 120, r: 2.5, glow: false, id: 'm3b' },
+    { cx: 500, cy: 160, r: 2, glow: false, id: 'm3c' },
+    // Milestone cluster 4
+    { cx: 600, cy: 250, r: 3.5, glow: false, id: 'm4' },
+    { cx: 630, cy: 230, r: 2.5, glow: false, id: 'm4b' },
+    { cx: 580, cy: 270, r: 2, glow: false, id: 'm4c' },
+    // Milestone cluster 5
+    { cx: 520, cy: 360, r: 3.5, glow: false, id: 'm5' },
+    { cx: 550, cy: 380, r: 2.5, glow: false, id: 'm5b' },
+    { cx: 500, cy: 340, r: 2, glow: false, id: 'm5c' },
+    // Scattered donor stars
+    { cx: 120, cy: 300, r: 1.5, glow: true, id: 'd1' },
+    { cx: 350, cy: 80, r: 1.5, glow: true, id: 'd2' },
+    { cx: 450, cy: 380, r: 1, glow: true, id: 'd3' },
+    { cx: 250, cy: 350, r: 1, glow: true, id: 'd4' },
+    { cx: 680, cy: 160, r: 1, glow: false, id: 'd5' },
+    { cx: 150, cy: 80, r: 1.5, glow: true, id: 'd6' },
+    { cx: 650, cy: 350, r: 1, glow: false, id: 'd7' },
+    { cx: 90, cy: 220, r: 1, glow: true, id: 'd8' },
+    { cx: 700, cy: 280, r: 1, glow: false, id: 'd9' },
+  ];
+
+  const lines = [
+    ['m1', 'm1b'], ['m1', 'm1c'], ['m1b', 'center'], ['m1c', 'center'],
+    ['m2', 'm2b'], ['m2', 'm2c'], ['m2', 'center'],
+    ['m3', 'm3b'], ['m3', 'm3c'], ['m3', 'center'],
+    ['m4', 'm4b'], ['m4', 'm4c'], ['m4', 'center'],
+    ['m5', 'm5b'], ['m5', 'm5c'], ['m5', 'center'],
+    ['d1', 'm1'], ['d2', 'm2'], ['d3', 'center'], ['d4', 'm1c'],
+    ['d6', 'm1b'], ['d8', 'm1'],
+  ];
+
+  const starMap = Object.fromEntries(stars.map(s => [s.id, s]));
+
+  return (
+    <svg viewBox="0 0 800 500" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      {/* Background grid — subtle */}
+      <defs>
+        <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#8A0000" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#8A0000" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="starGlowWhite" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      {/* Connection lines */}
+      {lines.map(([from, to], i) => {
+        const s1 = starMap[from], s2 = starMap[to];
+        if (!s1 || !s2) return null;
+        const bothReached = s1.glow && s2.glow;
+        return (
+          <motion.line
+            key={i}
+            x1={s1.cx} y1={s1.cy} x2={s2.cx} y2={s2.cy}
+            stroke={bothReached ? '#8A0000' : '#ffffff'}
+            strokeWidth={0.5}
+            strokeOpacity={bothReached ? 0.4 : 0.08}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, delay: i * 0.05 }}
+          />
+        );
+      })}
+
+      {/* Stars */}
+      {stars.map((star, i) => (
+        <g key={star.id}>
+          {/* Glow halo */}
+          {(star.glow || star.id === 'center') && (
+            <circle cx={star.cx} cy={star.cy} r={star.r * 4} fill={star.id === 'center' ? 'url(#starGlow)' : 'url(#starGlowWhite)'} opacity={0.5}>
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur={`${3 + i * 0.5}s`} repeatCount="indefinite" />
+            </circle>
+          )}
+          {/* Star point */}
+          <motion.circle
+            cx={star.cx} cy={star.cy} r={star.r}
+            fill={star.glow ? (star.id === 'center' ? '#8A0000' : '#ffffff') : '#555'}
+            filter={star.glow ? 'url(#glow)' : undefined}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: i * 0.03, duration: 0.4 }}
+          />
+        </g>
+      ))}
+
+      {/* Current position indicator — pulsing ring at campaign % */}
+      <circle cx={400} cy={250} r={12} fill="none" stroke="#8A0000" strokeWidth={1} strokeOpacity={0.6}>
+        <animate attributeName="r" values="12;20;12" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  );
 }
 
-/* ─── Progress Ring (SVG) ─── */
-function ProgressRing({ percent, size = 120, strokeWidth = 8 }: { percent: number; size?: number; strokeWidth?: number }) {
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percent / 100) * circumference;
+/* ─── Star Magnitude Visualizer ─── */
+function StarMagnitude({ amount }: { amount: number }) {
+  const magnitude = amount <= 0 ? 0 : amount < 100 ? 1 : amount < 500 ? 2 : amount < 1000 ? 3 : amount < 5000 ? 4 : amount < 25000 ? 5 : amount < 100000 ? 6 : amount < 1000000 ? 7 : 8;
+  const size = 6 + magnitude * 4;
+  const glowSize = size * 4;
+  const opacity = 0.3 + (magnitude / 8) * 0.7;
   return (
-    <svg width={size} height={size} className="-rotate-90">
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#e5e7eb" strokeWidth={strokeWidth} />
-      <motion.circle
-        cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#8A0000" strokeWidth={strokeWidth}
-        strokeLinecap="round" strokeDasharray={circumference} initial={{ strokeDashoffset: circumference }}
-        animate={{ strokeDashoffset: offset }} transition={{ duration: 2, ease: 'easeOut' }}
-      />
-    </svg>
+    <div className="relative flex items-center justify-center" style={{ width: 80, height: 80 }}>
+      {magnitude > 0 && (
+        <>
+          <div className="absolute rounded-full" style={{ width: glowSize, height: glowSize, background: `radial-gradient(circle, rgba(138,0,0,${opacity}) 0%, transparent 70%)` }} />
+          <motion.div
+            className="rounded-full bg-[#8A0000]"
+            style={{ width: size, height: size }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          />
+          <div className="absolute rounded-full border border-[#8A0000]/30" style={{ width: size + 16, height: size + 16 }}>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+          </div>
+        </>
+      )}
+      {magnitude === 0 && <div className="w-2 h-2 rounded-full bg-gray-600" />}
+    </div>
   );
 }
 
 /* ─── Main Component ─── */
 export default function FundraisingCampaign({ goToPage }: Props) {
-  const activeSection = useActiveSection(['campaign', 'milestones', 'perks', 'events', 'donate', 'community', 'vision']);
-  const [donateModalOpen, setDonateModalOpen] = useState(false);
+  const activeSection = useActiveSection(['campaign', 'milestones', 'constellations', 'events', 'offering', 'foundry', 'horizon']);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
   const [donorName, setDonorName] = useState('');
@@ -159,126 +248,120 @@ export default function FundraisingCampaign({ goToPage }: Props) {
   const [selectedPerk, setSelectedPerk] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [donationResult, setDonationResult] = useState<{ success: boolean; message: string } | null>(null);
-  const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
-  const [perkFilter, setPerkFilter] = useState<string>('all');
+  const [hoveredConstellation, setHoveredConstellation] = useState<string | null>(null);
 
   const heroAnim = useInView(0);
-  const progressAnim = useInView(0);
+  const caseAnim = useInView(0);
   const milestonesAnim = useInView(0);
-  const perksAnim = useInView(0);
+  const constellationsAnim = useInView(0);
   const eventsAnim = useInView(0);
-  const donorWallAnim = useInView(0);
-  const visionAnim = useInView(0);
+  const offeringAnim = useInView(0);
+  const foundryAnim = useInView(0);
+  const horizonAnim = useInView(0);
 
-  const percentComplete = Math.round((CAMPAIGN.raised / CAMPAIGN.goal) * 100);
+  const effectiveAmount = selectedAmount || parseFloat(customAmount) || 0;
 
   const handleDonate = useCallback(async () => {
     const amount = selectedAmount || parseFloat(customAmount);
     if (!amount || amount <= 0 || !donorEmail) return;
-
     setSubmitting(true);
     try {
       const res = await fetch('/api/donations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          donorEmail,
-          donorName: isAnonymous ? null : donorName,
-          donorAnonymous: isAnonymous,
-          amount,
-          currency: CAMPAIGN.currency,
-          paymentMethod: paymentMethod === 'crypto' ? `crypto_${cryptoCoin.toLowerCase()}` : paymentMethod,
-          perkId: selectedPerk,
-          isRecurring,
-          recurringFreq: isRecurring ? recurringFreq : null,
-          message: donorMessage || null,
+          donorEmail, donorName: isAnonymous ? null : donorName, donorAnonymous: isAnonymous,
+          amount, currency: CAMPAIGN.currency, paymentMethod: paymentMethod === 'crypto' ? `crypto_${cryptoCoin.toLowerCase()}` : paymentMethod,
+          perkId: selectedPerk, isRecurring, recurringFreq: isRecurring ? recurringFreq : null, message: donorMessage || null,
         }),
       });
       const data = await res.json();
-      if (data.success) {
-        setDonationResult({ success: true, message: data.message });
-      } else {
-        setDonationResult({ success: false, message: data.error || 'Something went wrong. Please try again.' });
-      }
-    } catch {
-      setDonationResult({ success: false, message: 'Network error. Please try again.' });
-    } finally {
-      setSubmitting(false);
-    }
+      setDonationResult(data.success ? { success: true, message: data.message } : { success: false, message: data.error || 'Something went wrong.' });
+    } catch { setDonationResult({ success: false, message: 'Network error.' }); }
+    finally { setSubmitting(false); }
   }, [selectedAmount, customAmount, donorEmail, donorName, isAnonymous, paymentMethod, cryptoCoin, selectedPerk, isRecurring, recurringFreq, donorMessage]);
 
-  const filteredPerks = perkFilter === 'all' ? PERKS : PERKS.filter(p => p.category === perkFilter);
-  const activePerk = selectedPerk ? PERKS.find(p => p.id === selectedPerk) : null;
-  const effectiveAmount = selectedAmount || parseFloat(customAmount) || 0;
-
   return (
-    <div className="flex flex-col bg-white">
-      {/* ════════════════════════════════════════════════════════
-          1. HERO — Cinematic dark hero with animated progress ring
-          ════════════════════════════════════════════════════════ */}
-      <section className="relative w-full overflow-hidden bg-[#0a0a0a]">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full min-h-[520px] md:min-h-[600px] overflow-hidden">
-            {/* Background image */}
-            <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1800"
-              className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
-              alt="Building the future"
+    <div className="flex flex-col bg-[#050505]">
+
+      {/* ══════════════════════════════════════════
+          I. THE VOID — Hero
+          ══════════════════════════════════════════ */}
+      <section className="relative w-full overflow-hidden bg-[#050505] min-h-[90vh] flex flex-col">
+        {/* Twinkling stars background — CSS only */}
+        <div className="absolute inset-0 overflow-hidden">
+          {Array.from({ length: 60 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: Math.random() * 2 + 1,
+                height: Math.random() * 2 + 1,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.1,
+                animation: `twinkle ${3 + Math.random() * 4}s ease-in-out ${Math.random() * 3}s infinite`,
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/60" />
+          ))}
+        </div>
 
-            <div className="relative z-10 flex flex-col lg:flex-row items-center max-w-[1400px] mx-auto w-full px-8 lg:px-20 h-full py-16 lg:py-0 min-h-[520px] md:min-h-[600px]">
-              {/* Left — Text */}
-              <div
-                ref={heroAnim.ref}
-                className={`lg:w-3/5 transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              >
-                <div className="mb-6 flex items-center space-x-3">
-                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Founding Campaign</span>
-                </div>
-                <h1 className="text-[40px] md:text-[56px] lg:text-[68px] font-extrabold leading-[1.0] tracking-tighter text-white mb-6">
-                  Building the<br />
-                  <span className="text-[#8A0000]">Future</span> of<br />
-                  Knowledge
-                </h1>
-                <p className="text-[17px] md:text-[19px] text-white/60 max-w-xl leading-relaxed mb-10 font-light">
-                  The Artemis Founding Campaign is the cornerstone of our mission. Join a select generation of supporters establishing the intellectual and physical foundations of the world&apos;s most agile university.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => { setDonateModalOpen(true); document.getElementById('donate-section')?.scrollIntoView({ behavior: 'smooth' }); }}
-                    className="px-10 py-4 bg-[#8A0000] text-white text-[13px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors flex items-center gap-3 group"
-                  >
-                    Donate Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <button
-                    onClick={() => document.getElementById('campaign')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="px-10 py-4 bg-transparent border border-white/30 text-white text-[13px] font-bold uppercase tracking-widest hover:bg-white hover:text-[#141414] transition-colors"
-                  >
-                    Explore Impact
-                  </button>
-                </div>
-              </div>
+        <style>{`
+          @keyframes twinkle { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.7; } }
+          @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(138,0,0,0.3); } 50% { box-shadow: 0 0 60px rgba(138,0,0,0.6); } }
+        `}</style>
 
-              {/* Right — Progress Ring */}
-              <div className={`lg:w-2/5 flex flex-col items-center lg:items-end mt-12 lg:mt-0 transition-all duration-700 delay-300 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <div className="relative">
-                  <ProgressRing percent={percentComplete} size={180} strokeWidth={10} />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[42px] font-black text-white leading-none">{percentComplete}%</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mt-1">funded</span>
-                  </div>
-                </div>
-                <div className="mt-6 text-right">
-                  <div className="text-[28px] font-black text-white">{symbol(CAMPAIGN.currency)}{fmtShort(CAMPAIGN.raised)}</div>
-                  <div className="text-[13px] text-white/40">of {symbol(CAMPAIGN.currency)}{fmtShort(CAMPAIGN.goal)} goal</div>
-                  <div className="flex items-center gap-2 mt-2 justify-end">
-                    <Users size={14} className="text-[#8A0000]" />
-                    <span className="text-[13px] text-white/50">{fmt(CAMPAIGN.donors)} donors</span>
-                  </div>
-                </div>
+        <div className="flex-1 flex flex-col items-center justify-center relative z-10 px-8 text-center">
+          <div ref={heroAnim.ref} className={`transition-all duration-[1500ms] ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            {/* The central star */}
+            <div className="mx-auto mb-12 relative">
+              <div className="w-4 h-4 bg-[#8A0000] rounded-full mx-auto" style={{ animation: 'pulse-glow 3s ease-in-out infinite' }} />
+              <div className="absolute inset-0 w-4 h-4 rounded-full mx-auto" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: 60, height: 60, background: 'radial-gradient(circle, rgba(138,0,0,0.3) 0%, transparent 70%)' }} />
+            </div>
+
+            <p className="text-[13px] font-bold uppercase tracking-[0.5em] text-white/30 mb-8">The Founding Campaign</p>
+
+            <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-extrabold leading-[0.9] tracking-tighter text-white mb-8">
+              Building the<br />
+              <span className="text-[#8A0000]">Future</span> of Knowledge
+            </h1>
+
+            <p className="text-[18px] md:text-[20px] text-white/40 max-w-2xl mx-auto leading-relaxed font-light mb-12">
+              Before the university, there was a question. What if knowledge had no borders? What if a university could be built from nothing but conviction — by people who believe that the next century of discovery begins with a single act of faith?
+            </p>
+
+            {/* Campaign stats row */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 mb-12">
+              <div className="text-center">
+                <div className="text-[36px] md:text-[48px] font-black text-white leading-none">{sym}{fmtShort(CAMPAIGN.raised)}</div>
+                <div className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 mt-2">raised of {sym}{fmtShort(CAMPAIGN.goal)}</div>
               </div>
+              <div className="w-px h-12 bg-white/10 hidden sm:block" />
+              <div className="text-center">
+                <div className="text-[36px] md:text-[48px] font-black text-[#8A0000] leading-none">{pct}%</div>
+                <div className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 mt-2">funded</div>
+              </div>
+              <div className="w-px h-12 bg-white/10 hidden sm:block" />
+              <div className="text-center">
+                <div className="text-[36px] md:text-[48px] font-black text-white leading-none">{fmtNum(CAMPAIGN.donors)}</div>
+                <div className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 mt-2">founders</div>
+              </div>
+            </div>
+
+            {/* Progress arc */}
+            <div className="max-w-xl mx-auto mb-12">
+              <div className="h-1 bg-white/5 w-full overflow-hidden">
+                <motion.div className="h-full bg-gradient-to-r from-[#8A0000] to-[#dc2626]" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} transition={{ duration: 2.5, ease: 'easeOut' }} viewport={{ once: true }} />
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={() => document.getElementById('offering')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-4 bg-[#8A0000] text-white text-[13px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors flex items-center gap-3 group">
+                Ignite Your Star <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button onClick={() => document.getElementById('campaign')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-4 border border-white/20 text-white/60 text-[13px] font-bold uppercase tracking-widest hover:bg-white/5 hover:text-white transition-colors">
+                Read the Case
+              </button>
             </div>
           </div>
         </div>
@@ -286,197 +369,119 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
       <OnThisPageNav
         sections={[
-          { id: 'campaign', label: 'Campaign' },
-          { id: 'milestones', label: 'Milestones' },
-          { id: 'perks', label: 'Perks' },
-          { id: 'events', label: 'Events' },
-          { id: 'donate', label: 'Donate' },
-          { id: 'community', label: 'Community' },
-          { id: 'vision', label: 'Vision' },
+          { id: 'campaign', label: 'Case' },
+          { id: 'milestones', label: 'Ascent' },
+          { id: 'constellations', label: 'Constellations' },
+          { id: 'events', label: 'Gatherings' },
+          { id: 'offering', label: 'Offering' },
+          { id: 'foundry', label: 'Foundry' },
+          { id: 'horizon', label: 'Horizon' },
         ]}
         activeSection={activeSection}
       />
 
-      {/* ════════════════════════════════════════════════════════
-          2. CAMPAIGN — The Case for Support
-          ════════════════════════════════════════════════════════ */}
-      <section id="campaign" className="scroll-mt-[110px] py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+      {/* ══════════════════════════════════════════
+          II. THE CASE — Why Artemis, Why Now
+          ══════════════════════════════════════════ */}
+      <section id="campaign" className="scroll-mt-[110px] py-20 lg:py-32 bg-[#050505]">
+        <div ref={caseAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${caseAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Commitment</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Case for Support</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="lg:col-span-7">
+              <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-10">
                 Why Artemis?<br />Why now?
               </h2>
-              <div className="space-y-5 text-[16px] text-gray-600 leading-relaxed">
+              <div className="space-y-6 text-[17px] text-white/50 leading-relaxed">
                 <p>The traditional university model is at an inflection point. Decades of bureaucratic growth, physical limitations, and closed systems have severely constrained the potential of the modern scholar. Artemis was founded to transcend these limitations — not by merely digitizing existing structures, but by reimagining the very nature of an academic community from the ground up.</p>
-                <p>We are building a <em>universitas</em> optimized for our era: borderless, data-driven, and intrinsically collaborative. Our core operating philosophy is one of <strong>Foundational Efficiency</strong>. We recognize that true innovation thrives when resources are concentrated on the intellectual work, not on massive administrative overhead. The Artemis Founding Campaign provides the strategic capital to construct our fundamental digital estate, endow our first residential colleges, and launch interdisciplinary research hubs that operate at the speed of modern discovery instead of the pace of administrative committees.</p>
-                <p>Every pound donated goes directly toward faculty excellence, student access, and research breakthroughs — ensuring your support is the primary engine of our growth. By leveraging decentralized technologies, we reduce operational drag by nearly 60% compared to traditional institutions of similar scale, directing 90% of all capital toward academic and research programmes.</p>
+                <p>We are building a <em className="text-white/70">universitas</em> optimized for our era: borderless, data-driven, and intrinsically collaborative. Our core operating philosophy is one of <strong className="text-white/80">Foundational Efficiency</strong> — true innovation thrives when resources are concentrated on the intellectual work, not on massive administrative overhead. Every pound donated goes directly toward faculty excellence, student access, and research breakthroughs.</p>
+                <p>The Founding Campaign provides the strategic capital to construct our fundamental digital estate, endow our first residential colleges, and launch interdisciplinary research hubs that operate at the speed of modern discovery instead of the pace of administrative committees. By leveraging decentralized technologies, we reduce operational drag by nearly 60% compared to traditional institutions, directing 90% of all capital toward academic and research programmes.</p>
               </div>
             </div>
 
-            {/* Efficiency Metrics — dark card */}
-            <div className="bg-[#141414] p-10 lg:p-12 text-white">
-              <h3 className="text-[22px] font-bold text-white mb-8">Foundational Efficiency</h3>
-              <div className="space-y-8">
+            <div className="lg:col-span-5 space-y-6">
+              {/* Efficiency Metrics */}
+              <div className="bg-white/[0.03] border border-white/[0.06] p-8">
+                <h3 className="text-[16px] font-bold text-white/70 mb-6 uppercase tracking-widest">Foundational Efficiency</h3>
                 {[
-                  { value: '60%', label: 'Less Overhead', desc: 'Than peer-tier physical institutions — no redundant campuses, no bloated administration' },
-                  { value: '90%', label: 'To Programmes', desc: 'Of all capital directed straight to academic and research programmes, not operating costs' },
-                  { value: '3', label: 'Continents', desc: 'Borderless scaling via our core digital stack — knowledge without geography' },
+                  { value: '60%', label: 'Less Overhead', desc: 'No redundant campuses, no bloated administration' },
+                  { value: '90%', label: 'To Programmes', desc: 'Capital directed to academic and research work' },
+                  { value: '3', label: 'Continents', desc: 'Borderless scaling via our core digital stack' },
                 ].map((item, i) => (
-                  <div key={i} className="border-b border-white/10 pb-6 last:border-0 last:pb-0">
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-[36px] font-black text-[#8A0000] leading-none">{item.value}</span>
-                      <span className="text-[14px] font-bold uppercase tracking-widest text-white/70">{item.label}</span>
+                  <div key={i} className="border-b border-white/[0.06] py-5 last:border-0">
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-[32px] font-black text-[#8A0000] leading-none">{item.value}</span>
+                      <span className="text-[13px] font-bold uppercase tracking-widest text-white/40">{item.label}</span>
                     </div>
-                    <p className="text-[14px] text-white/40 leading-relaxed">{item.desc}</p>
+                    <p className="text-[13px] text-white/25 mt-1">{item.desc}</p>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
 
-          {/* Strategic Initiatives */}
-          <div className="mt-20 space-y-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
-                <div className="mb-4 flex items-center space-x-3">
-                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">Strategic Initiative</span>
-                </div>
-                <h3 className="text-[28px] font-extrabold text-[#141414] mb-4 leading-tight">Endowment for Autonomous Research</h3>
-                <p className="text-[16px] text-gray-600 leading-relaxed mb-4">We are building a permanent endowment to support interdisciplinary research hubs that operate independently of state or commercial agendas, focusing on long-term challenges — from the ethics of AI to sustainable bio-engineering. Our Founding Campaign aims to fully endow the first five flagship institutes, each with a 20-year operational runway that frees researchers from the grant cycle and lets them pursue questions that matter on decadal timescales.</p>
-                <p className="text-[16px] text-gray-600 leading-relaxed">These institutes are not silos. They are woven together through the Artemis network, sharing data, methods, and insights across disciplines in real time. A climate modeler in Tokyo feeds parameters to a policy lab in Geneva. A bio-ethicist in Valletta reviews protocols for a synthetic biology team in San Francisco. This is research at the speed of connection.</p>
+              {/* Strategic Initiative */}
+              <div className="bg-white/[0.03] border border-white/[0.06] p-8">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-3 block">Strategic Initiative</span>
+                <h4 className="text-[18px] font-bold text-white mb-3">Endowment for Autonomous Research</h4>
+                <p className="text-[14px] text-white/40 leading-relaxed">A permanent endowment supporting interdisciplinary research hubs that operate independently of state or commercial agendas — each with a 20-year operational runway that frees researchers from the grant cycle.</p>
               </div>
-              <div className="group">
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000" alt="Research" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
-                </div>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div className="group order-2 lg:order-1">
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000" alt="Scholars" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
-                </div>
+              <div className="bg-white/[0.03] border border-white/[0.06] p-8">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-3 block">Strategic Initiative</span>
+                <h4 className="text-[18px] font-bold text-white mb-3">The Global Scholars Fund</h4>
+                <p className="text-[14px] text-white/40 leading-relaxed">Full-ride virtual residencies and travel grants for scholars from underserved digital nodes — ensuring our community represents the true intellectual capital of the world, not merely the economic capital.</p>
               </div>
-              <div className="order-1 lg:order-2">
-                <div className="mb-4 flex items-center space-x-3">
-                  <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">Strategic Initiative</span>
-                </div>
-                <h3 className="text-[28px] font-extrabold text-[#141414] mb-4 leading-tight">The Global Scholars Fund</h3>
-                <p className="text-[16px] text-gray-600 leading-relaxed mb-4">Artemis is designed to be accessible to the best minds, not just those with the greatest resources. This fund provides full-ride virtual residencies and travel grants for scholars from underserved digital nodes, ensuring our community represents the true intellectual capital of the world — not merely the economic capital.</p>
-                <p className="text-[16px] text-gray-600 leading-relaxed">The fund covers tuition, housing, research materials, and a living stipend for scholars from over 40 countries who would otherwise be excluded from world-class education. It is not charity. It is an investment in human capital that the world cannot afford to waste. Every scholar we enable creates a multiplier effect in their home community that lasts for generations.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Campaign Pillars */}
-          <div className="mt-24">
-            <div className="relative flex items-center mb-16">
-              <div className="flex-grow border-t border-gray-200"></div>
-              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">Campaign Pillars</span>
-              <div className="flex-grow border-t border-gray-200"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { icon: Users, title: 'Access & Opportunity', desc: 'Endowing scholarships for the next generation of global scholars, regardless of their economic background. Talent is distributed uniformly; opportunity is not. We correct that imbalance at the structural level, ensuring that the most promising minds on Earth can access the education they deserve.' },
-                { icon: BookOpen, title: 'Frontier Research', desc: 'Funding interdisciplinary research hubs tackling humanity\'s most complex challenges in medicine, climate, and technology. Our institutes are designed to operate across traditional boundaries, connecting fields that should never have been separated and accelerating the cycle from question to discovery to application.' },
-                { icon: Zap, title: 'Digital Estate', desc: 'Developing the secure, decentralized infrastructure essential for a modern, borderless university. This is not a website. It is the connective tissue of an institution — authentication, collaboration, assessment, credentials — built to serve tens of thousands of scholars across every timezone simultaneously.' },
-              ].map((pillar, idx) => (
-                <div key={idx} className="p-10 border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer group bg-white">
-                  <pillar.icon size={36} className="text-[#8A0000] mb-6" />
-                  <h3 className="text-[22px] font-bold text-[#141414] mb-4 group-hover:text-[#8A0000] transition-colors">{pillar.title}</h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">{pillar.desc}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          3. MILESTONES — Gamified Progress Mountain
-          ════════════════════════════════════════════════════════ */}
-      <section id="milestones" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
-        <div
-          ref={milestonesAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${milestonesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ══════════════════════════════════════════
+          III. THE ASCENT — Milestones as Constellation
+          ══════════════════════════════════════════ */}
+      <section id="milestones" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#080808]">
+        <div ref={milestonesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${milestonesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Campaign Progress</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Ascent</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            The ascent
-          </h2>
-          <p className="text-[17px] text-gray-500 max-w-2xl leading-relaxed mb-16">
-            Every great institution is built one milestone at a time. Track our progress as we climb from foundation to global scale — and see exactly where your contribution lands on the mountain.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">Every star, a milestone</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-16">Track our progress as we climb from foundation to global scale. Each milestone ignites a new cluster in the Artemis constellation — and your contribution determines which stars light next.</p>
 
-          {/* Giant progress bar with milestone markers */}
-          <div className="relative mb-20">
-            {/* Background track */}
-            <div className="h-3 bg-gray-200 w-full overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-[#8A0000] to-[#b91c1c]"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${percentComplete}%` }}
-                transition={{ duration: 2, ease: 'easeOut' }}
-                viewport={{ once: true }}
-              />
-            </div>
-            {/* Milestone markers */}
-            <div className="relative mt-8">
-              {MILESTONES.map((ms, i) => {
-                const pos = (ms.target / CAMPAIGN.goal) * 100;
-                const Icon = ms.icon;
-                return (
-                  <div
-                    key={i}
-                    className="absolute -translate-x-1/2 flex flex-col items-center"
-                    style={{ left: `${Math.min(pos, 98)}%` }}
-                  >
-                    <div className={`w-10 h-10 flex items-center justify-center ${ms.reached ? 'bg-[#8A0000] text-white' : 'bg-white border-2 border-gray-300 text-gray-400'} transition-colors`}>
-                      <Icon size={18} />
-                    </div>
-                    <div className={`text-[12px] font-bold mt-2 ${ms.reached ? 'text-[#8A0000]' : 'text-gray-400'}`}>{symbol(CAMPAIGN.currency)}{fmtShort(ms.target)}</div>
-                    <div className={`text-[13px] font-bold text-center mt-1 max-w-[140px] ${ms.reached ? 'text-[#141414]' : 'text-gray-500'}`}>{ms.title}</div>
-                    {ms.reached && <Check size={14} className="text-[#8A0000] mt-1" />}
-                  </div>
-                );
-              })}
-            </div>
+          {/* Constellation Map */}
+          <div className="mb-16 max-w-3xl mx-auto">
+            <ConstellationMap percent={pct} hoveredConstellation={hoveredConstellation} />
           </div>
 
-          {/* Milestone Detail Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          {/* Milestone vertical timeline */}
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-white/[0.06]" />
             {MILESTONES.map((ms, i) => {
               const Icon = ms.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.12, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className={`p-6 border ${ms.reached ? 'border-[#8A0000] bg-white' : 'border-gray-200 bg-white'} group hover:shadow-lg transition-all`}
+                  className="relative pl-14 pb-12 last:pb-0"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-8 h-8 flex items-center justify-center ${ms.reached ? 'bg-[#8A0000]' : 'bg-gray-100'}`}>
-                      <Icon size={16} className={ms.reached ? 'text-white' : 'text-gray-400'} />
-                    </div>
-                    {ms.reached && <Check size={16} className="text-[#8A0000]" />}
+                  <div className={`absolute left-0 top-0 w-10 h-10 flex items-center justify-center border ${ms.reached ? 'bg-[#8A0000] border-[#8A0000]' : 'bg-[#080808] border-white/10'}`}>
+                    <Icon size={16} className={ms.reached ? 'text-white' : 'text-white/20'} />
                   </div>
-                  <h4 className="text-[15px] font-bold text-[#141414] mb-2">{ms.title}</h4>
-                  <p className="text-[13px] text-gray-500 leading-relaxed mb-3">{ms.desc}</p>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">{symbol(CAMPAIGN.currency)}{fmtShort(ms.target)}</div>
+                  <div className="flex items-baseline gap-4 mb-2">
+                    <h4 className="text-[18px] font-bold text-white">{ms.title}</h4>
+                    <span className="text-[13px] font-bold text-[#8A0000]">{sym}{fmtShort(ms.target)}</span>
+                    {ms.reached && <Check size={14} className="text-[#8A0000]" />}
+                  </div>
+                  <p className="text-[15px] text-white/35 leading-relaxed">{ms.desc}</p>
+                  {/* Progress within milestone */}
+                  <div className="mt-3 h-0.5 bg-white/[0.06] w-full max-w-md">
+                    <div className={`h-full transition-all ${ms.reached ? 'bg-[#8A0000]' : 'bg-white/10'}`} style={{ width: ms.reached ? '100%' : `${Math.max(0, Math.min(100, ((CAMPAIGN.raised - ms.target + 15_000_000) / 15_000_000) * 100))}%` }} />
+                  </div>
                 </motion.div>
               );
             })}
@@ -484,229 +489,140 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          4. PERKS — Giving Tiers & Rewards
-          ════════════════════════════════════════════════════════ */}
-      <section id="perks" className="scroll-mt-[110px] py-16 lg:py-24">
-        <div
-          ref={perksAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${perksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ══════════════════════════════════════════
+          IV. THE CONSTELLATIONS — Giving Tiers
+          ══════════════════════════════════════════ */}
+      <section id="constellations" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#050505]">
+        <div ref={constellationsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${constellationsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Rewards</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Constellations</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            What you receive
-          </h2>
-          <p className="text-[17px] text-gray-500 max-w-2xl leading-relaxed mb-10">
-            Every contribution earns a place in the founding story. From cryptographic tokens to named buildings — the more you give, the more indelible your mark on the university that will shape the next century.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">Place your star</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-16">Every contribution earns a place in the founding sky. From a single cipher-star to an apex constellation that bears your name — the brighter you give, the more indelible your mark on the university that will shape the next century.</p>
 
-          {/* Filter tabs */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {['all', 'digital', 'experience', 'physical', 'naming'].map(cat => (
-              <button
-                key={cat}
-                onClick={() => setPerkFilter(cat)}
-                className={`px-5 py-2 text-[11px] font-bold uppercase tracking-widest border transition-colors ${perkFilter === cat ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#8A0000] hover:text-[#8A0000]'}`}
-              >
-                {cat === 'all' ? 'All Tiers' : cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Perk Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredPerks.map((perk, i) => {
-                const Icon = perk.icon;
-                const isSelected = selectedPerk === perk.id;
-                const canAfford = effectiveAmount >= perk.min;
-                return (
-                  <motion.div
-                    key={perk.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    onClick={() => {
-                      setSelectedPerk(isSelected ? null : perk.id);
-                      if (!isSelected) {
-                        setSelectedAmount(perk.min);
-                        setCustomAmount('');
-                      }
-                    }}
-                    className={`p-6 border-2 cursor-pointer transition-all hover:shadow-lg ${isSelected ? 'border-[#8A0000] bg-[#8A0000]/5 shadow-lg' : 'border-gray-200 bg-white hover:border-[#8A0000]/50'}`}
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 flex items-center justify-center" style={{ backgroundColor: perk.color + '15' }}>
-                        <Icon size={20} style={{ color: perk.color }} />
-                      </div>
-                      {isSelected && <Check size={18} className="text-[#8A0000]" />}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {CONSTELLATIONS.map((c, i) => {
+              const Icon = c.icon;
+              const isSelected = selectedPerk === c.id;
+              return (
+                <motion.button
+                  key={c.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  viewport={{ once: true }}
+                  onClick={() => { setSelectedPerk(isSelected ? null : c.id); if (!isSelected) { setSelectedAmount(c.min); setCustomAmount(''); } }}
+                  className={`text-left p-6 border transition-all group ${isSelected ? 'border-[#8A0000] bg-[#8A0000]/10' : 'border-white/[0.06] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'}`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 flex items-center justify-center" style={{ backgroundColor: c.color + '20' }}>
+                      <Icon size={16} style={{ color: c.color }} />
                     </div>
-                    <h4 className="text-[16px] font-bold text-[#141414] mb-2">{perk.title}</h4>
-                    <p className="text-[13px] text-gray-500 leading-relaxed mb-4 min-h-[60px]">{perk.desc}</p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">From</span>
-                      <span className="text-[20px] font-black text-[#141414]">{symbol(CAMPAIGN.currency)}{fmt(perk.min)}</span>
-                    </div>
-                    <div className="mt-2">
-                      <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 ${perk.category === 'naming' ? 'bg-[#8A0000]/10 text-[#8A0000]' : perk.category === 'experience' ? 'bg-cyan-50 text-cyan-700' : perk.category === 'physical' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{perk.category}</span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                    {isSelected && <Check size={14} className="text-[#8A0000]" />}
+                  </div>
+                  <h4 className="text-[15px] font-bold text-white mb-2">{c.title}</h4>
+                  <p className="text-[12px] text-white/30 leading-relaxed mb-4 min-h-[48px]">{c.desc.slice(0, 80)}...</p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">From</span>
+                    <span className="text-[18px] font-black text-white">{sym}{fmtShort(c.min)}</span>
+                  </div>
+                  {/* Magnitude indicator */}
+                  <div className="flex gap-1 mt-3">
+                    {Array.from({ length: 8 }).map((_, j) => (
+                      <div key={j} className={`w-1.5 h-1.5 rounded-full ${j < c.magnitude ? 'bg-[#8A0000]' : 'bg-white/10'}`} />
+                    ))}
+                  </div>
+                </motion.button>
+              );
+            })}
           </div>
 
-          {/* Selected Perk Detail */}
+          {/* Expanded constellation detail */}
           <AnimatePresence>
-            {activePerk && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-8 bg-[#141414] text-white p-8 lg:p-12 overflow-hidden"
-              >
-                <div className="flex flex-col lg:flex-row gap-8 items-start">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      {React.createElement(activePerk.icon, { size: 24, style: { color: activePerk.color } })}
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">{activePerk.category} tier</span>
+            {selectedPerk && (() => {
+              const c = CONSTELLATIONS.find(x => x.id === selectedPerk);
+              if (!c) return null;
+              const Icon = c.icon;
+              return (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="mt-6 bg-white/[0.03] border border-[#8A0000]/30 p-8 lg:p-10 overflow-hidden"
+                >
+                  <div className="flex flex-col lg:flex-row gap-8 items-start">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <Icon size={22} style={{ color: c.color }} />
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Magnitude {c.magnitude}</span>
+                      </div>
+                      <h3 className="text-[26px] font-extrabold text-white mb-3">{c.title}</h3>
+                      <p className="text-[15px] text-white/50 leading-relaxed">{c.desc}</p>
                     </div>
-                    <h3 className="text-[28px] font-extrabold text-white mb-4">{activePerk.title}</h3>
-                    <p className="text-[15px] text-white/60 leading-relaxed">{activePerk.desc}</p>
+                    <div className="lg:text-right shrink-0">
+                      <div className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">Minimum</div>
+                      <div className="text-[44px] font-black text-white leading-none">{sym}{fmtShort(c.min)}</div>
+                      <button onClick={() => document.getElementById('offering')?.scrollIntoView({ behavior: 'smooth' })} className="mt-5 px-8 py-3 bg-[#8A0000] text-white text-[11px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors flex items-center gap-2 group mx-auto lg:ml-auto">
+                        Claim <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
                   </div>
-                  <div className="lg:text-right shrink-0">
-                    <div className="text-[14px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">Minimum contribution</div>
-                    <div className="text-[48px] font-black text-white leading-none">{symbol(CAMPAIGN.currency)}{fmtShort(activePerk.min)}</div>
-                    <button
-                      onClick={() => { setDonateModalOpen(true); setSelectedAmount(activePerk.min); }}
-                      className="mt-6 px-8 py-3 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors flex items-center gap-2 group"
-                    >
-                      Claim This Perk <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              );
+            })()}
           </AnimatePresence>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          5. EVENTS — Fundraising Events Calendar
-          ════════════════════════════════════════════════════════ */}
-      <section id="events" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
-        <div
-          ref={eventsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${eventsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ══════════════════════════════════════════
+          V. THE GATHERINGS — Events
+          ══════════════════════════════════════════ */}
+      <section id="events" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#080808]">
+        <div ref={eventsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${eventsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Events</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Gatherings</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Gather. Connect.<br />Build together.
-          </h2>
-          <p className="text-[17px] text-gray-500 max-w-2xl leading-relaxed mb-12">
-            The founding is not just a financial campaign — it is a movement. Join us at events around the world to experience the Artemis vision firsthand, meet fellow patrons, and become part of the story.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">Convene the founders</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-12">The founding is a movement, not just a financial campaign. These gatherings — from galas to hackathons to matching days — are where the community becomes real.</p>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {EVENTS.map((ev, i) => {
               const Icon = ev.icon;
-              const isExpanded = expandedEvent === ev.id;
-              const capacityPercent = ev.capacity ? Math.min((ev.registered / ev.capacity) * 100, 100) : 0;
-              const isSoldOut = ev.capacity ? ev.registered >= ev.capacity : false;
+              const isFull = ev.capacity ? ev.registered >= ev.capacity : false;
               return (
                 <motion.div
-                  key={ev.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.07 }}
                   viewport={{ once: true }}
-                  className={`bg-white border transition-all ${isExpanded ? 'border-[#8A0000] shadow-lg' : 'border-gray-200 hover:border-[#8A0000]/50'}`}
+                  className="bg-white/[0.02] border border-white/[0.06] p-6 hover:border-[#8A0000]/30 transition-colors group"
                 >
-                  <button
-                    onClick={() => setExpandedEvent(isExpanded ? null : ev.id)}
-                    className="w-full flex items-center gap-6 p-6 lg:p-8 text-left"
-                  >
-                    {/* Date badge */}
-                    <div className="shrink-0 w-16 text-center">
-                      <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">
-                        {new Date(ev.date).toLocaleDateString('en-GB', { month: 'short' })}
-                      </div>
-                      <div className="text-[28px] font-black text-[#141414] leading-none">
-                        {new Date(ev.date).getDate()}
-                      </div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 bg-[#8A0000]/10 flex items-center justify-center">
+                      <Icon size={14} className="text-[#8A0000]" />
                     </div>
-
-                    {/* Icon */}
-                    <div className="shrink-0 w-12 h-12 bg-[#8A0000]/10 flex items-center justify-center">
-                      <Icon size={20} className="text-[#8A0000]" />
-                    </div>
-
-                    {/* Title & Meta */}
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-[17px] font-bold text-[#141414] truncate">{ev.title}</h4>
-                      <div className="flex items-center gap-4 mt-1 text-[13px] text-gray-500">
-                        <span className="flex items-center gap-1"><MapPin size={12} /> {ev.location}</span>
-                        {ev.virtual && <span className="flex items-center gap-1"><Video size={12} /> Virtual</span>}
-                        {ev.price !== null && ev.price > 0 && <span>{symbol(CAMPAIGN.currency)}{ev.price}</span>}
-                        {ev.price === 0 && <span className="text-[#8A0000] font-bold">Free</span>}
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">{ev.type}</span>
+                    {ev.type === 'matching' && <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 bg-[#8A0000] text-white">2x</span>}
+                  </div>
+                  <h4 className="text-[16px] font-bold text-white mb-2 group-hover:text-[#8A0000] transition-colors">{ev.title}</h4>
+                  <p className="text-[13px] text-white/30 leading-relaxed mb-4">{ev.desc}</p>
+                  <div className="flex items-center gap-4 text-[12px] text-white/25">
+                    <span className="flex items-center gap-1"><MapPin size={10} />{ev.location}</span>
+                    <span>{ev.date}</span>
+                    {ev.price !== null && ev.price > 0 && <span>{sym}{ev.price}</span>}
+                    {ev.price === 0 && <span className="text-[#8A0000]">Free</span>}
+                  </div>
+                  {ev.capacity && (
+                    <div className="mt-3">
+                      <div className="h-0.5 bg-white/[0.06] w-full">
+                        <div className="h-full bg-[#8A0000]/60" style={{ width: `${(ev.registered / ev.capacity) * 100}%` }} />
                       </div>
+                      <span className="text-[10px] text-white/15 mt-1 block">{ev.registered}/{ev.capacity} registered</span>
                     </div>
-
-                    {/* Capacity indicator */}
-                    {ev.capacity && (
-                      <div className="hidden md:block shrink-0 w-32">
-                        <div className="text-[11px] text-gray-400 mb-1">{ev.registered}/{ev.capacity} registered</div>
-                        <div className="h-1.5 bg-gray-100 w-full">
-                          <div className="h-full bg-[#8A0000] transition-all" style={{ width: `${capacityPercent}%` }} />
-                        </div>
-                      </div>
-                    )}
-
-                    <ChevronDown size={20} className={`text-gray-400 shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 lg:px-8 pb-8 border-t border-gray-100 pt-6">
-                          <p className="text-[15px] text-gray-600 leading-relaxed mb-6 max-w-2xl">{ev.desc}</p>
-                          <div className="flex flex-wrap items-center gap-4">
-                            <button
-                              onClick={() => setDonateModalOpen(true)}
-                              className={`px-6 py-3 text-[12px] font-bold uppercase tracking-widest flex items-center gap-2 group ${isSoldOut ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[#8A0000] text-white hover:bg-[#6B0000] transition-colors'}`}
-                              disabled={isSoldOut}
-                            >
-                              {isSoldOut ? 'Sold Out' : 'Register Now'} {!isSoldOut && <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />}
-                            </button>
-                            {ev.capacity && !isSoldOut && (
-                              <span className="text-[12px] text-gray-400">
-                                {ev.capacity - ev.registered} spots remaining
-                              </span>
-                            )}
-                            {ev.type === 'matching' && (
-                              <span className="px-3 py-1 bg-[#8A0000]/10 text-[#8A0000] text-[10px] font-bold uppercase tracking-widest">
-                                2x Match Active
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  )}
                 </motion.div>
               );
             })}
@@ -714,311 +630,210 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          6. DONATE — The Giving Engine (multi-method payment)
-          ════════════════════════════════════════════════════════ */}
-      <section id="donate" className="scroll-mt-[110px] py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+      {/* ══════════════════════════════════════════
+          VI. THE OFFERING — Donate
+          ══════════════════════════════════════════ */}
+      <section id="offering" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#050505]">
+        <div ref={offeringAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${offeringAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Give Now</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Offering</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Fuel the founding
-          </h2>
-          <p className="text-[17px] text-gray-500 max-w-2xl leading-relaxed mb-12">
-            Every contribution, at every level, is a brick in the foundation. Choose your amount, your method, and your reward — and join the ranks of those who built a university from nothing but conviction.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">Transmit your signal</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-16">Every contribution is a transmission — a signal sent into the future that you were here, that you believed, that you helped build something that will outlast every one of us.</p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left — Amount + Perk Selection */}
-            <div className="lg:col-span-2 space-y-8">
-              {/* Amount Selection */}
-              <div>
-                <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#141414] mb-4">Choose your amount</h3>
-                <div className="grid grid-cols-4 gap-3 mb-4">
-                  {PRESET_AMOUNTS.map(amt => (
-                    <button
-                      key={amt}
-                      onClick={() => { setSelectedAmount(amt); setCustomAmount(''); }}
-                      className={`py-3 text-[14px] font-bold border transition-colors ${selectedAmount === amt ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-white text-[#141414] border-gray-200 hover:border-[#8A0000]'}`}
-                    >
-                      {symbol(CAMPAIGN.currency)}{fmtShort(amt)}
-                    </button>
-                  ))}
-                </div>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[18px] font-bold text-gray-400">{symbol(CAMPAIGN.currency)}</span>
-                  <input
-                    type="number"
-                    value={customAmount}
-                    onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null); }}
-                    placeholder="Custom amount"
-                    className="w-full pl-10 pr-4 py-4 border border-gray-200 focus:border-[#8A0000] focus:outline-none text-[18px] font-bold bg-[#F9F8F6]"
-                  />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Left — Form */}
+            <div className="lg:col-span-8 space-y-8">
+              {/* Amount + Star Magnitude Visualizer */}
+              <div className="bg-white/[0.02] border border-white/[0.06] p-8">
+                <div className="flex items-start gap-8">
+                  <div className="flex-1">
+                    <h3 className="text-[13px] font-bold uppercase tracking-widest text-white/50 mb-4">Select your magnitude</h3>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
+                      {PRESETS.map(amt => (
+                        <button key={amt} onClick={() => { setSelectedAmount(amt); setCustomAmount(''); }} className={`py-3 text-[13px] font-bold border transition-colors ${selectedAmount === amt ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-transparent text-white/50 border-white/10 hover:border-[#8A0000]/50 hover:text-white'}`}>
+                          {sym}{fmtShort(amt)}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[16px] font-bold text-white/20">{sym}</span>
+                      <input type="number" value={customAmount} onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null); }} placeholder="Custom amount" className="w-full pl-8 pr-4 py-3 bg-white/[0.03] border border-white/10 focus:border-[#8A0000] focus:outline-none text-[16px] font-bold text-white placeholder:text-white/15" />
+                    </div>
+                  </div>
+                  <StarMagnitude amount={effectiveAmount} />
                 </div>
               </div>
 
-              {/* Recurring Toggle */}
-              <div className="bg-gray-50 border border-gray-200 p-6">
-                <div className="flex items-center justify-between mb-4">
+              {/* Recurring */}
+              <div className="bg-white/[0.02] border border-white/[0.06] p-6">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Repeat size={18} className="text-[#8A0000]" />
-                    <span className="text-[14px] font-bold text-[#141414]">Make it recurring</span>
+                    <Repeat size={16} className="text-[#8A0000]" />
+                    <span className="text-[14px] font-bold text-white">Make it recurring</span>
+                    <span className="text-[12px] text-white/25">— multiply your impact</span>
                   </div>
-                  <button
-                    onClick={() => setIsRecurring(!isRecurring)}
-                    className={`w-12 h-6 rounded-full transition-colors relative ${isRecurring ? 'bg-[#8A0000]' : 'bg-gray-300'}`}
-                  >
-                    <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-all ${isRecurring ? 'left-[26px]' : 'left-0.5'}`} />
+                  <button onClick={() => setIsRecurring(!isRecurring)} className={`w-11 h-5 rounded-full transition-colors relative ${isRecurring ? 'bg-[#8A0000]' : 'bg-white/10'}`}>
+                    <div className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${isRecurring ? 'left-[24px]' : 'left-0.5'}`} />
                   </button>
                 </div>
                 {isRecurring && (
-                  <div className="flex gap-3">
-                    {['monthly', 'quarterly', 'annual'].map(freq => (
-                      <button
-                        key={freq}
-                        onClick={() => setRecurringFreq(freq)}
-                        className={`px-4 py-2 text-[11px] font-bold uppercase tracking-widest border transition-colors ${recurringFreq === freq ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#8A0000]'}`}
-                      >
-                        {freq}
-                      </button>
+                  <div className="flex gap-2 mt-4">
+                    {['monthly', 'quarterly', 'annual'].map(f => (
+                      <button key={f} onClick={() => setRecurringFreq(f)} className={`px-4 py-2 text-[10px] font-bold uppercase tracking-widest border transition-colors ${recurringFreq === f ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-transparent text-white/30 border-white/10 hover:border-white/20'}`}>{f}</button>
                     ))}
                   </div>
-                )}
-                {isRecurring && (
-                  <p className="mt-3 text-[13px] text-gray-500">Recurring donations multiply your impact over time. A {symbol(CAMPAIGN.currency)}100/month gift becomes {symbol(CAMPAIGN.currency)}1,200/year — and qualifies for the {symbol(CAMPAIGN.currency)}1,000 Founders&apos; Book tier.</p>
                 )}
               </div>
 
               {/* Payment Method */}
               <div>
-                <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#141414] mb-4">Payment method</h3>
+                <h3 className="text-[13px] font-bold uppercase tracking-widest text-white/50 mb-4">Transmission channel</h3>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                   {[
                     { key: 'card' as const, icon: CreditCard, label: 'Card' },
                     { key: 'bank' as const, icon: Banknote, label: 'Bank Transfer' },
                     { key: 'crypto' as const, icon: Bitcoin, label: 'Crypto' },
                     { key: 'paypal' as const, icon: Wallet, label: 'PayPal' },
-                  ].map(method => (
-                    <button
-                      key={method.key}
-                      onClick={() => setPaymentMethod(method.key)}
-                      className={`flex items-center gap-3 p-4 border transition-colors ${paymentMethod === method.key ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-white text-gray-600 border-gray-200 hover:border-[#8A0000]'}`}
-                    >
-                      <method.icon size={18} />
-                      <span className="text-[12px] font-bold uppercase tracking-widest">{method.label}</span>
+                  ].map(m => (
+                    <button key={m.key} onClick={() => setPaymentMethod(m.key)} className={`flex items-center gap-3 p-4 border transition-colors ${paymentMethod === m.key ? 'bg-[#8A0000]/20 border-[#8A0000] text-white' : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:border-white/20'}`}>
+                      <m.icon size={16} />
+                      <span className="text-[11px] font-bold uppercase tracking-widest">{m.label}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Crypto addresses */}
+              {/* Crypto panel */}
               {paymentMethod === 'crypto' && (
-                <div className="bg-[#141414] text-white p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Bitcoin size={20} className="text-[#f7931a]" />
-                    <span className="text-[14px] font-bold">Cryptocurrency Donation</span>
+                <div className="bg-white/[0.03] border border-white/[0.08] p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Bitcoin size={18} className="text-[#f7931a]" />
+                    <span className="text-[14px] font-bold text-white">Cryptocurrency</span>
                   </div>
-                  <div className="flex gap-4 mb-6">
+                  <div className="flex gap-2 mb-4">
                     {(['BTC', 'ETH'] as const).map(coin => (
-                      <button
-                        key={coin}
-                        onClick={() => setCryptoCoin(coin)}
-                        className={`px-5 py-2 text-[12px] font-bold uppercase tracking-widest border transition-colors ${cryptoCoin === coin ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'bg-transparent text-white/50 border-white/20 hover:border-white/50'}`}
-                      >
-                        {coin}
-                      </button>
+                      <button key={coin} onClick={() => setCryptoCoin(coin)} className={`px-4 py-2 text-[11px] font-bold uppercase tracking-widest border transition-colors ${cryptoCoin === coin ? 'bg-[#8A0000] text-white border-[#8A0000]' : 'text-white/30 border-white/10'}`}>{coin}</button>
                     ))}
                   </div>
-                  <div className="mb-4">
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-2">{cryptoCoin} Address</div>
-                    <div className="flex items-center gap-3">
-                      <code className="text-[13px] text-white/70 bg-white/5 px-4 py-3 flex-1 break-all font-mono">
-                        {CRYPTO_ADDRESSES[cryptoCoin].address}
-                      </code>
-                      <button
-                        onClick={() => navigator.clipboard?.writeText(CRYPTO_ADDRESSES[cryptoCoin].address)}
-                        className="shrink-0 px-4 py-3 bg-white/10 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/20 transition-colors"
-                      >
-                        Copy
-                      </button>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <code className="text-[12px] text-white/40 bg-white/[0.03] px-3 py-2 flex-1 break-all font-mono">{CRYPTO[cryptoCoin]}</code>
+                    <button onClick={() => navigator.clipboard?.writeText(CRYPTO[cryptoCoin])} className="px-3 py-2 bg-white/[0.06] text-white/40 text-[10px] font-bold uppercase tracking-widest hover:bg-white/10 transition-colors">Copy</button>
                   </div>
-                  <p className="text-[13px] text-white/40 leading-relaxed">Please use the exact address above for your {cryptoCoin} transfer. After sending, email <span className="text-white/60">crypto@artemis.edu</span> with your transaction hash to receive your perk and confirmation. Donations are recorded at the exchange rate at the time of receipt.</p>
+                  <p className="text-[12px] text-white/20 mt-3">After sending, email crypto@artemis.edu with your transaction hash to receive your constellation perk.</p>
                 </div>
               )}
 
-              {/* Bank Transfer Details */}
+              {/* Bank transfer panel */}
               {paymentMethod === 'bank' && (
-                <div className="bg-gray-50 border border-gray-200 p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Banknote size={20} className="text-[#8A0000]" />
-                    <span className="text-[14px] font-bold">Bank Transfer Details</span>
+                <div className="bg-white/[0.03] border border-white/[0.08] p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Banknote size={18} className="text-[#8A0000]" />
+                    <span className="text-[14px] font-bold text-white">Bank Transfer</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {[
-                      { label: 'Account Name', value: 'Artemis University Founding Fund' },
-                      { label: 'Sort Code', value: '20-45-78' },
-                      { label: 'Account Number', value: '73128945' },
-                      { label: 'IBAN', value: 'GB29 BARC 2045 7873 1289 45' },
-                      { label: 'SWIFT/BIC', value: 'BARCGB2L' },
-                      { label: 'Reference', value: 'ARTEMIS-FOUNDING' },
-                    ].map((row, i) => (
-                      <div key={i} className="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
-                        <span className="text-[13px] text-gray-500">{row.label}</span>
+                      ['Account', 'Artemis University Founding Fund'],
+                      ['Sort Code', '20-45-78'],
+                      ['Account No', '73128945'],
+                      ['IBAN', 'GB29 BARC 2045 7873 1289 45'],
+                      ['Reference', 'ARTEMIS-FOUNDING'],
+                    ].map(([label, value], i) => (
+                      <div key={i} className="flex justify-between items-center py-2 border-b border-white/[0.04] last:border-0">
+                        <span className="text-[12px] text-white/25">{label}</span>
                         <div className="flex items-center gap-2">
-                          <code className="text-[13px] font-bold text-[#141414] font-mono">{row.value}</code>
-                          <button onClick={() => navigator.clipboard?.writeText(row.value)} className="text-[10px] text-[#8A0000] font-bold uppercase tracking-widest hover:underline">Copy</button>
+                          <code className="text-[12px] font-bold text-white/60 font-mono">{value}</code>
+                          <button onClick={() => navigator.clipboard?.writeText(value)} className="text-[9px] text-[#8A0000] font-bold uppercase tracking-widest hover:underline">Copy</button>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[13px] text-gray-500 mt-4 leading-relaxed">For transfers over {symbol(CAMPAIGN.currency)}10,000, please email <span className="text-[#8A0000]">founding@artemis.edu</span> to arrange a personal briefing with the campaign team.</p>
                 </div>
               )}
 
-              {/* Donor Information Form */}
+              {/* Donor info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1 block">Name</label>
+                  <input type="text" value={donorName} onChange={(e) => setDonorName(e.target.value)} disabled={isAnonymous} placeholder={isAnonymous ? 'Anonymous' : 'Your name'} className={`w-full px-4 py-3 bg-white/[0.03] border border-white/10 focus:border-[#8A0000] focus:outline-none text-[14px] text-white placeholder:text-white/15 ${isAnonymous ? 'opacity-30' : ''}`} />
+                </div>
+                <div>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1 block">Email *</label>
+                  <input type="email" value={donorEmail} onChange={(e) => setDonorEmail(e.target.value)} placeholder="you@email.com" className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 focus:border-[#8A0000] focus:outline-none text-[14px] text-white placeholder:text-white/15" />
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <button onClick={() => setIsAnonymous(!isAnonymous)} className={`w-5 h-5 border-2 flex items-center justify-center transition-colors ${isAnonymous ? 'bg-[#8A0000] border-[#8A0000]' : 'bg-transparent border-white/20'}`}>
+                  {isAnonymous && <Check size={12} className="text-white" />}
+                </button>
+                <span className="text-[13px] text-white/40">Transmit anonymously</span>
+              </div>
               <div>
-                <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#141414] mb-4">Your information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1 block">Full Name</label>
-                    <input
-                      type="text"
-                      value={donorName}
-                      onChange={(e) => setDonorName(e.target.value)}
-                      disabled={isAnonymous}
-                      placeholder={isAnonymous ? 'Anonymous' : 'Your name'}
-                      className={`w-full px-4 py-3 border focus:border-[#8A0000] focus:outline-none text-[15px] bg-[#F9F8F6] ${isAnonymous ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    />
-                  </div>
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1 block">Email *</label>
-                    <input
-                      type="email"
-                      value={donorEmail}
-                      onChange={(e) => setDonorEmail(e.target.value)}
-                      placeholder="you@email.com"
-                      className="w-full px-4 py-3 border border-gray-200 focus:border-[#8A0000] focus:outline-none text-[15px] bg-[#F9F8F6]"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4 flex items-center gap-3">
-                  <button
-                    onClick={() => setIsAnonymous(!isAnonymous)}
-                    className={`w-5 h-5 border-2 flex items-center justify-center transition-colors ${isAnonymous ? 'bg-[#8A0000] border-[#8A0000]' : 'bg-white border-gray-300'}`}
-                  >
-                    {isAnonymous && <Check size={12} className="text-white" />}
-                  </button>
-                  <span className="text-[14px] text-gray-600">Donate anonymously</span>
-                </div>
-
-                <div className="mt-4">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1 block">Message (optional)</label>
-                  <textarea
-                    value={donorMessage}
-                    onChange={(e) => setDonorMessage(e.target.value)}
-                    placeholder="Share why you're supporting Artemis..."
-                    rows={3}
-                    className="w-full px-4 py-3 border border-gray-200 focus:border-[#8A0000] focus:outline-none text-[15px] bg-[#F9F8F6] resize-none"
-                  />
-                </div>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1 block">Message (optional)</label>
+                <textarea value={donorMessage} onChange={(e) => setDonorMessage(e.target.value)} placeholder="Why you're supporting Artemis..." rows={3} className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 focus:border-[#8A0000] focus:outline-none text-[14px] text-white placeholder:text-white/15 resize-none" />
               </div>
             </div>
 
-            {/* Right — Summary Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-[180px] bg-white border-2 border-[#8A0000] p-8">
-                <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#8A0000] mb-6">Your Donation</h3>
+            {/* Right — Summary */}
+            <div className="lg:col-span-4">
+              <div className="sticky top-[180px] bg-white/[0.03] border border-[#8A0000]/40 p-8">
+                <h3 className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000] mb-6">Your Transmission</h3>
 
-                {/* Amount */}
-                <div className="mb-6">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-1">Amount</div>
-                  <div className="text-[36px] font-black text-[#141414] leading-none">
-                    {symbol(CAMPAIGN.currency)}{fmt(effectiveAmount || 0)}
+                <div className="flex items-center gap-4 mb-6">
+                  <StarMagnitude amount={effectiveAmount} />
+                  <div>
+                    <div className="text-[32px] font-black text-white leading-none">{sym}{fmtShort(effectiveAmount || 0)}</div>
+                    {isRecurring && <div className="text-[12px] text-[#8A0000] font-bold mt-1">{recurringFreq} &middot; {sym}{fmtShort(effectiveAmount * (recurringFreq === 'monthly' ? 12 : recurringFreq === 'quarterly' ? 4 : 1))}/yr</div>}
                   </div>
-                  {isRecurring && (
-                    <div className="text-[13px] text-[#8A0000] font-bold mt-1">
-                      {recurringFreq} &middot; {symbol(CAMPAIGN.currency)}{fmt(effectiveAmount * (recurringFreq === 'monthly' ? 12 : recurringFreq === 'quarterly' ? 4 : 1))}/year
+                </div>
+
+                {selectedPerk && (() => {
+                  const c = CONSTELLATIONS.find(x => x.id === selectedPerk);
+                  if (!c) return null;
+                  return (
+                    <div className="mb-6 p-4 bg-[#8A0000]/5 border border-[#8A0000]/20">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">Your Constellation</span>
+                      <div className="flex items-center gap-2 mt-1">
+                        {React.createElement(c.icon, { size: 14, style: { color: c.color } })}
+                        <span className="text-[14px] font-bold text-white">{c.title}</span>
+                      </div>
                     </div>
-                  )}
+                  );
+                })()}
+
+                {/* Impact */}
+                <div className="mb-6 p-4 bg-white/[0.02] border border-white/[0.06]">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-2 block">Your Impact</span>
+                  {effectiveAmount >= 1000000 && <p className="text-[12px] text-white/40">Patron of an entire node. Your name on a building. A seat on the Founders&apos; Council.</p>}
+                  {effectiveAmount >= 100000 && effectiveAmount < 1000000 && <p className="text-[12px] text-white/40">Names a Living Commons — your name spoken daily by every resident.</p>}
+                  {effectiveAmount >= 25000 && effectiveAmount < 100000 && <p className="text-[12px] text-white/40">Names a research lab in perpetuity. A permanent dedication.</p>}
+                  {effectiveAmount >= 5000 && effectiveAmount < 25000 && <p className="text-[12px] text-white/40">Funds a named micro-scholarship for one student.</p>}
+                  {effectiveAmount >= 500 && effectiveAmount < 5000 && <p className="text-[12px] text-white/40">Sponsors a student&apos;s travel to a node.</p>}
+                  {effectiveAmount >= 100 && effectiveAmount < 500 && <p className="text-[12px] text-white/40">Funds one week of digital infrastructure.</p>}
+                  {effectiveAmount > 0 && effectiveAmount < 100 && <p className="text-[12px] text-white/40">Every star counts in the constellation.</p>}
                 </div>
 
-                {/* Perk */}
-                {activePerk && (
-                  <div className="mb-6 p-4 bg-gray-50 border border-gray-200">
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">Your Perk</div>
-                    <div className="flex items-center gap-2">
-                      {React.createElement(activePerk.icon, { size: 16, style: { color: activePerk.color } })}
-                      <span className="text-[14px] font-bold text-[#141414]">{activePerk.title}</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Impact Calculator */}
-                <div className="mb-6 p-4 bg-[#8A0000]/5 border border-[#8A0000]/20">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] mb-3">Your Impact</div>
-                  {effectiveAmount >= 5000 && <p className="text-[13px] text-gray-600 mb-1">Funds a named micro-scholarship for one student</p>}
-                  {effectiveAmount >= 1000 && effectiveAmount < 5000 && <p className="text-[13px] text-gray-600 mb-1">Provides research materials for a founding lab</p>}
-                  {effectiveAmount >= 500 && effectiveAmount < 1000 && <p className="text-[13px] text-gray-600 mb-1">Sponsors a student&apos;s travel to a node</p>}
-                  {effectiveAmount >= 100 && effectiveAmount < 500 && <p className="text-[13px] text-gray-600 mb-1">Funds one week of digital infrastructure</p>}
-                  {effectiveAmount < 100 && effectiveAmount > 0 && <p className="text-[13px] text-gray-600 mb-1">Every brick counts in the foundation</p>}
-                  {effectiveAmount >= 25000 && <p className="text-[13px] text-gray-600">Names a research lab in perpetuity</p>}
-                  {effectiveAmount >= 100000 && <p className="text-[13px] text-[#8A0000] font-bold">Names a Living Commons — your name spoken daily</p>}
-                  {effectiveAmount >= 1000000 && <p className="text-[13px] text-[#8A0000] font-bold">Patron of an entire Artemis node</p>}
-                </div>
-
-                {/* Payment method indicator */}
-                <div className="mb-6">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-1">Method</div>
-                  <div className="text-[14px] font-bold text-[#141414]">
-                    {paymentMethod === 'card' ? 'Credit/Debit Card' : paymentMethod === 'bank' ? 'Bank Transfer' : paymentMethod === 'crypto' ? `${cryptoCoin} Cryptocurrency` : 'PayPal'}
-                  </div>
-                </div>
-
-                {/* Submit */}
-                <button
-                  onClick={handleDonate}
-                  disabled={submitting || !donorEmail || effectiveAmount <= 0}
-                  className={`w-full py-4 text-[13px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors ${submitting || !donorEmail || effectiveAmount <= 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[#8A0000] text-white hover:bg-[#6B0000]'}`}
-                >
-                  {submitting ? 'Processing...' : 'Complete Donation'} {!submitting && <ArrowRight size={14} />}
+                <button onClick={handleDonate} disabled={submitting || !donorEmail || effectiveAmount <= 0} className={`w-full py-4 text-[12px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors ${submitting || !donorEmail || effectiveAmount <= 0 ? 'bg-white/5 text-white/20 cursor-not-allowed' : 'bg-[#8A0000] text-white hover:bg-[#6B0000]'}`}>
+                  {submitting ? 'Transmitting...' : 'Transmit'} {!submitting && <ArrowRight size={14} />}
                 </button>
 
-                {/* Security note */}
-                <div className="flex items-center gap-2 mt-4">
-                  <Lock size={12} className="text-gray-300" />
-                  <span className="text-[11px] text-gray-400">256-bit SSL encryption. Your data is safe.</span>
+                <div className="flex items-center gap-2 mt-3 justify-center">
+                  <Lock size={10} className="text-white/10" />
+                  <span className="text-[10px] text-white/15">256-bit SSL. Your signal is encrypted.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Donation Result */}
+          {/* Result */}
           <AnimatePresence>
             {donationResult && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className={`mt-8 p-8 ${donationResult.success ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'}`}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  {donationResult.success ? <Check size={20} className="text-emerald-600" /> : <Shield size={20} className="text-red-600" />}
-                  <span className={`text-[16px] font-bold ${donationResult.success ? 'text-emerald-800' : 'text-red-800'}`}>
-                    {donationResult.success ? 'Thank you for your generosity!' : 'Donation could not be processed'}
-                  </span>
-                </div>
-                <p className={`text-[15px] ${donationResult.success ? 'text-emerald-700' : 'text-red-700'}`}>{donationResult.message}</p>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className={`mt-8 p-8 border ${donationResult.success ? 'bg-emerald-950/50 border-emerald-800/50' : 'bg-red-950/50 border-red-800/50'}`}>
+                <span className={`text-[16px] font-bold block mb-2 ${donationResult.success ? 'text-emerald-400' : 'text-red-400'}`}>{donationResult.success ? 'Signal received. Thank you.' : 'Transmission failed.'}</span>
+                <p className={`text-[14px] ${donationResult.success ? 'text-emerald-500/70' : 'text-red-500/70'}`}>{donationResult.message}</p>
                 {donationResult.success && (
-                  <button
-                    onClick={() => { setDonationResult(null); setSelectedAmount(null); setCustomAmount(''); setDonorName(''); setDonorEmail(''); setDonorMessage(''); setSelectedPerk(null); }}
-                    className="mt-4 text-[12px] font-bold uppercase tracking-widest text-[#8A0000] border-b border-[#8A0000] pb-1 hover:text-[#6B0000] transition-colors"
-                  >
-                    Make another donation
-                  </button>
+                  <button onClick={() => { setDonationResult(null); setSelectedAmount(null); setCustomAmount(''); setDonorName(''); setDonorEmail(''); setDonorMessage(''); setSelectedPerk(null); }} className="mt-4 text-[11px] font-bold uppercase tracking-widest text-[#8A0000] border-b border-[#8A0000] pb-1 hover:text-white transition-colors">Send another signal</button>
                 )}
               </motion.div>
             )}
@@ -1026,72 +841,62 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          7. COMMUNITY — Donor Wall & Giving Societies
-          ════════════════════════════════════════════════════════ */}
-      <section id="community" className="scroll-mt-[110px] py-16 lg:py-24 bg-[#141414]">
-        <div
-          ref={donorWallAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${donorWallAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ══════════════════════════════════════════
+          VII. THE FOUNDRY — Donor Wall
+          ══════════════════════════════════════════ */}
+      <section id="foundry" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#0a0a0a]">
+        <div ref={foundryAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${foundryAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#8A0000] animate-pulse" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/25">Live transmissions</span>
+          </div>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Community</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Foundry</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4">
-            The founders&apos; wall
-          </h2>
-          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-16">
-            Every name here represents a bet on the future of knowledge. These are the individuals and families who chose to build something unprecedented — and whose names will be inscribed in the university&apos;s founding record for as long as Artemis endures.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">The founders&apos; sky</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-8">Every name here is a star in the founding constellation — a bet on the future of knowledge, placed by those who chose to build something unprecedented.</p>
 
           {/* Giving Societies */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             {[
-              { name: "Chancellor's Circle", range: '£2M+', color: '#8A0000', desc: 'Founding benefactors shaping university strategy. Seat on the Founders\' Council. Private annual audience with the Chancellor. Exclusive naming rights for major facilities and programmes.', icon: Crown },
-              { name: "Founder's Society", range: '£200K – £2M', color: '#6366f1', desc: 'Direct support for chairs and building projects. Named fellowship or scholarship. Invitations to closed-door strategic briefings. Priority access to all founding events.', icon: Star },
-              { name: 'Guild Partners', range: '£25K – £200K', color: '#0891b2', desc: 'Sustained impact across research and scholarships. Annual impact report on funded programmes. Invitation to the Guild Dinner at the Geneva node. Name on the Founders\' Wall.', icon: Trophy },
-            ].map((society, i) => {
-              const Icon = society.icon;
-              return (
-                <div key={i} className="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group">
-                  <Icon size={28} style={{ color: society.color }} className="mb-4" />
-                  <h4 className="text-[18px] font-bold text-white mb-1">{society.name}</h4>
-                  <div className="text-[13px] font-bold mb-4" style={{ color: society.color }}>{society.range}</div>
-                  <p className="text-[14px] text-white/40 leading-relaxed">{society.desc}</p>
-                </div>
-              );
-            })}
+              { name: "Chancellor's Circle", range: '£2M+', color: '#8A0000', desc: 'Seat on the Founders\' Council. Private audience with the Chancellor. Naming rights for major facilities.', icon: Crown },
+              { name: "Founder's Society", range: '£200K–£2M', color: '#818cf8', desc: 'Named fellowship or scholarship. Closed-door strategic briefings. Priority access to all events.', icon: Star },
+              { name: 'Guild Partners', range: '£25K–£200K', color: '#22d3ee', desc: 'Annual impact report. Invitation to the Guild Dinner. Name on the Founders\' Wall.', icon: Trophy },
+            ].map((s, i) => (
+              <div key={i} className="bg-white/[0.02] border border-white/[0.06] p-6 hover:border-white/10 transition-colors">
+                <s.icon size={20} style={{ color: s.color }} className="mb-3" />
+                <h4 className="text-[15px] font-bold text-white mb-1">{s.name}</h4>
+                <div className="text-[12px] font-bold mb-2" style={{ color: s.color }}>{s.range}</div>
+                <p className="text-[12px] text-white/25 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
           </div>
 
-          {/* Live Donor Stream */}
-          <div className="mb-4 flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#8A0000] animate-pulse"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30">Recent Supporters</span>
-          </div>
+          {/* Donor star field */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {DONOR_WALL.map((donor, i) => (
+            {DONORS.map((d, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: i * 0.04 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4 p-4 bg-white/5 border border-white/5"
+                className="flex items-start gap-3 p-4 bg-white/[0.015] border border-white/[0.03] hover:bg-white/[0.03] transition-colors"
               >
-                <div className="shrink-0 w-10 h-10 flex items-center justify-center text-white text-[16px] font-bold" style={{ backgroundColor: TIER_COLORS[donor.tier] + '33' }}>
-                  {donor.name.charAt(0)}
+                <div className="shrink-0 w-8 h-8 flex items-center justify-center text-white/80 text-[13px] font-bold" style={{ backgroundColor: TIER_COLORS[d.tier] + '25', color: TIER_COLORS[d.tier] }}>
+                  {d.name.charAt(0)}
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-[14px] font-bold text-white truncate">{donor.name}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 shrink-0" style={{ color: TIER_COLORS[donor.tier], backgroundColor: TIER_COLORS[donor.tier] + '15' }}>{donor.tier}</span>
+                    <span className="text-[13px] font-bold text-white/70 truncate">{d.name}</span>
+                    <span className="text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 shrink-0" style={{ color: TIER_COLORS[d.tier], backgroundColor: TIER_COLORS[d.tier] + '15' }}>{d.tier}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-[13px] font-bold text-white/60">{symbol(CAMPAIGN.currency)}{fmtShort(donor.amount)}</span>
-                    <span className="text-[12px] text-white/20">{donor.date}</span>
+                    <span className="text-[12px] font-bold text-white/30">{sym}{fmtShort(d.amount)}</span>
+                    <span className="text-[10px] text-white/10">{d.date}</span>
                   </div>
-                  {donor.message && <p className="text-[12px] text-white/30 mt-1 italic truncate">&ldquo;{donor.message}&rdquo;</p>}
+                  {d.msg && <p className="text-[11px] text-white/15 mt-1 italic truncate">&ldquo;{d.msg}&rdquo;</p>}
                 </div>
               </motion.div>
             ))}
@@ -1099,119 +904,78 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          8. VISION — Post-Founding Future & Long-Term Impact
-          ════════════════════════════════════════════════════════ */}
-      <section id="vision" className="scroll-mt-[110px] py-16 lg:py-24">
-        <div
-          ref={visionAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${visionAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ══════════════════════════════════════════
+          VIII. THE HORIZON — Post-Founding Vision
+          ══════════════════════════════════════════ */}
+      <section id="horizon" className="scroll-mt-[110px] py-20 lg:py-28 bg-[#050505]">
+        <div ref={horizonAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${horizonAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Beyond the Founding</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Horizon</span>
           </div>
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            A living campaign
-          </h2>
-          <p className="text-[17px] text-gray-500 max-w-2xl leading-relaxed mb-16">
-            The Founding Campaign is not a moment — it is a movement. When the founding goal is reached, the campaign evolves. The infrastructure of giving remains. The community deepens. The mission continues.
-          </p>
+          <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.0] tracking-tighter text-white mb-4">Beyond the founding</h2>
+          <p className="text-[17px] text-white/40 max-w-2xl leading-relaxed mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues — not as an ending, but as a beginning.</p>
 
-          {/* Three Eras */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {/* Three phases as expanding orbits */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             {[
-              {
-                era: 'Phase I',
-                title: 'The Founding',
-                period: '2025 — 2028',
-                desc: 'Raise the founding capital. Build the first five nodes. Enrol the inaugural cohort. Establish the research endowment. Create the digital estate. Everything from nothing. This is where your donation builds the physical and intellectual foundations of a university that will endure for centuries.',
-                icon: Rocket,
-                color: '#8A0000',
-              },
-              {
-                era: 'Phase II',
-                title: 'The Expansion',
-                period: '2028 — 2033',
-                desc: 'Scale to 12 nodes on 6 continents. Double the student body. Launch the next generation of research institutes. Deepen the endowment. The giving community becomes a permanent philanthropic infrastructure — not a campaign that ends, but an engine that accelerates. Named scholarships and research positions multiply as the endowment grows.',
-                icon: Globe,
-                color: '#0891b2',
-              },
-              {
-                era: 'Phase III',
-                title: 'The Perpetuity',
-                period: '2033 — Beyond',
-                desc: 'The endowment becomes self-sustaining. Artemis operates in perpetuity, independent of tuition dependency, free from the financial pressures that constrain traditional universities. The Founding Campaign becomes the Artemis Foundation — a permanent, independent charitable trust that stewards the university\'s mission for generations. Your name, inscribed in the founding record, endures as long as knowledge itself matters.',
-                icon: Landmark,
-                color: '#6366f1',
-              },
-            ].map((phase, i) => {
-              const Icon = phase.icon;
+              { phase: 'Phase I', title: 'The Founding', period: '2025 — 2028', desc: 'Raise the capital. Build five nodes. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries — and your name is inscribed in its first chapter.', icon: Rocket, color: '#8A0000' },
+              { phase: 'Phase II', title: 'The Expansion', period: '2028 — 2033', desc: 'Scale to 12 nodes on 6 continents. Double the student body. Launch the next generation of research institutes. The giving community becomes permanent philanthropic infrastructure — an engine that accelerates rather than a campaign that ends. Named scholarships and research positions multiply as the endowment grows.', icon: Globe, color: '#22d3ee' },
+              { phase: 'Phase III', title: 'The Perpetuity', period: '2033 — Beyond', desc: 'The endowment becomes self-sustaining. Artemis operates in perpetuity, independent of tuition dependency, free from financial pressures. The Founding Campaign becomes the Artemis Foundation — a permanent charitable trust stewarding the mission for generations. Your name, inscribed in the founding record, endures as long as knowledge itself matters.', icon: Landmark, color: '#818cf8' },
+            ].map((p, i) => {
+              const Icon = p.icon;
               return (
-                <div key={i} className="relative p-8 border border-gray-200 hover:border-[#8A0000] transition-colors group">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4" style={{ color: phase.color }}>{phase.era}</div>
-                  <Icon size={32} style={{ color: phase.color }} className="mb-4" />
-                  <h4 className="text-[22px] font-bold text-[#141414] mb-1">{phase.title}</h4>
-                  <div className="text-[13px] text-gray-400 mb-4">{phase.period}</div>
-                  <p className="text-[14px] text-gray-600 leading-relaxed">{phase.desc}</p>
-                </div>
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15 }} viewport={{ once: true }} className="bg-white/[0.02] border border-white/[0.06] p-8 hover:border-white/10 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4" style={{ color: p.color }}>{p.phase}</div>
+                  <Icon size={28} style={{ color: p.color }} className="mb-4" />
+                  <h4 className="text-[20px] font-bold text-white mb-1">{p.title}</h4>
+                  <div className="text-[12px] text-white/20 mb-4">{p.period}</div>
+                  <p className="text-[13px] text-white/35 leading-relaxed">{p.desc}</p>
+                </motion.div>
               );
             })}
           </div>
 
-          {/* Future Stats */}
-          <div className="bg-gray-50 border border-gray-200 p-10 lg:p-14">
+          {/* Future stats */}
+          <div className="bg-white/[0.02] border border-white/[0.06] p-10">
             <div className="mb-8 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">By the Numbers</span>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
               {[
-                { value: '12', label: 'Global Nodes', detail: 'Residential hubs across 6 continents by 2033' },
-                { value: '2,400', label: 'Students', detail: 'Full capacity across the Artemis network' },
-                { value: '25', label: 'Research Institutes', detail: 'Permanently endowed, operationally independent' },
-                { value: '£200M', label: 'Endowment Target', detail: 'Self-sustaining by Phase III — forever' },
-              ].map((stat, i) => (
-                <div key={i} className="relative pl-6">
-                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]"></div>
-                  <div className="text-[32px] font-black text-[#141414] leading-none mb-2">{stat.value}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{stat.label}</div>
-                  <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
+                { value: '12', label: 'Global Nodes', detail: 'Residential hubs across 6 continents' },
+                { value: '2,400', label: 'Students', detail: 'Full capacity across the network' },
+                { value: '25', label: 'Institutes', detail: 'Permanently endowed, independent' },
+                { value: '£200M', label: 'Endowment', detail: 'Self-sustaining by Phase III' },
+              ].map((s, i) => (
+                <div key={i} className="relative pl-5">
+                  <div className="absolute left-0 top-0 bottom-0 w-px bg-[#8A0000]/50"></div>
+                  <div className="text-[28px] font-black text-white leading-none mb-2">{s.value}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{s.label}</div>
+                  <div className="text-[11px] text-white/20 leading-snug">{s.detail}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Voices from the Future */}
+          {/* Voices */}
           <div className="mt-20">
             <div className="relative flex items-center mb-16">
-              <div className="flex-grow border-t border-gray-200"></div>
-              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-400">Stories of a Future That Can Be</span>
-              <div className="flex-grow border-t border-gray-200"></div>
+              <div className="flex-grow border-t border-white/[0.06]"></div>
+              <span className="mx-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/15">Voices from the Future</span>
+              <div className="flex-grow border-t border-white/[0.06]"></div>
             </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               {[
-                {
-                  quote: "I was the first in my village to attend university — and the first to attend one that didn't care about my village's wealth. Artemis saw my mind, not my postcode. The scholarship that brought me here was funded by someone I will never meet, but whose name I carry in my thesis dedication.",
-                  name: 'Amara Osei',
-                  role: 'Inaugural Cohort, Weavers Commons',
-                  location: 'Accra → Geneva Node',
-                },
-                {
-                  quote: "I donated because I remember being seventeen and brilliant and broke. I remember the university that let me in anyway — and how that changed everything. Artemis is that chance, scaled to the planet. I couldn't not give.",
-                  name: 'Dr. Elena Vasquez',
-                  role: 'Chancellor\'s Circle, Founding Donor',
-                  location: 'Mexico City',
-                },
-              ].map((story, i) => (
-                <div key={i} className="relative">
-                  <svg className="w-10 h-10 text-[#8A0000] opacity-20 mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-                  <p className="text-[18px] md:text-[20px] text-[#141414] leading-relaxed mb-8 font-light italic">{story.quote}</p>
-                  <div>
-                    <div className="text-[14px] font-bold text-[#141414]">{story.name}</div>
-                    <div className="text-[12px] text-gray-500">{story.role} — {story.location}</div>
-                  </div>
+                { quote: "I was the first in my village to attend university — and the first to attend one that didn't care about my village's wealth. Artemis saw my mind, not my postcode. The scholarship that brought me here was funded by someone I will never meet, but whose name I carry in my thesis dedication.", name: 'Amara Osei', role: 'Inaugural Cohort, Weavers Commons', loc: 'Accra → Geneva' },
+                { quote: "I donated because I remember being seventeen and brilliant and broke. I remember the university that let me in anyway — and how that changed everything. Artemis is that chance, scaled to the planet. I couldn't not give.", name: 'Dr. Elena Vasquez', role: "Chancellor's Circle, Founding Donor", loc: 'Mexico City' },
+              ].map((v, i) => (
+                <div key={i}>
+                  <svg className="w-8 h-8 text-[#8A0000] opacity-20 mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                  <p className="text-[17px] md:text-[19px] text-white/60 leading-relaxed mb-8 font-light italic">{v.quote}</p>
+                  <div className="text-[14px] font-bold text-white/70">{v.name}</div>
+                  <div className="text-[12px] text-white/25">{v.role} — {v.loc}</div>
                 </div>
               ))}
             </div>
@@ -1219,30 +983,29 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════
-          9. FINAL CTA — Crimson Bar
-          ════════════════════════════════════════════════════════ */}
-      <section className="bg-[#8A0000] py-16 px-8 lg:px-20">
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      {/* ══════════════════════════════════════════
+          IX. FINAL SIGNAL — CTA
+          ══════════════════════════════════════════ */}
+      <section className="bg-[#8A0000] py-20 px-8 lg:px-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div key={i} className="absolute rounded-full bg-white" style={{ width: Math.random() * 2 + 0.5, height: Math.random() * 2 + 0.5, left: `${Math.random()*100}%`, top: `${Math.random()*100}%`, opacity: Math.random() * 0.5 + 0.1, animation: `twinkle ${3 + Math.random() * 4}s ease-in-out ${Math.random() * 3}s infinite` }} />
+          ))}
+        </div>
+        <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">
-              The future is unfunded.<br />Until you fund it.
+            <h2 className="text-[28px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-3">
+              The universe is waiting<br />for your light.
             </h2>
-            <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">
-              Every great institution began with someone who chose to believe before there was proof. Artemis is that choice. This is your moment to build a university that will outlast every one of us.
-            </p>
+            <p className="text-[16px] text-white/60 leading-relaxed max-w-lg">Every great institution began with someone who chose to believe before there was proof. This is your moment to place a star in a constellation that will guide scholars for centuries.</p>
           </div>
-          <button
-            onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex items-center space-x-3 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors shrink-0 group"
-          >
-            <span>Donate Now</span>
+          <button onClick={() => document.getElementById('offering')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 bg-white text-[#8A0000] px-10 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors shrink-0 group">
+            <span>Ignite Now</span>
             <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
       </section>
 
-      {/* Footer */}
       <SubPageFooter goToPage={goToPage} />
     </div>
   );
