@@ -164,7 +164,9 @@ export default function Education({ goToPage }: EducationProps) {
           The image spans 100% of the viewport.
           Only the text overlay is positioned inside a centered container.
           ═══════════════════════════════════════════ */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=2560"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -186,6 +188,8 @@ export default function Education({ goToPage }: EducationProps) {
             Transforming human potential through learning for life. We move beyond static degrees
             to dynamic, skill-based certifications and interdisciplinary exploration.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -534,6 +538,7 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
 
         {/* Full-bleed image — breaks OUT of the content container */}
+        <div className="max-w-[1800px] mx-auto">
         <div className="relative w-full min-h-[420px] md:min-h-[500px] overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2560"
@@ -562,6 +567,7 @@ export default function Education({ goToPage }: EducationProps) {
               </button>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

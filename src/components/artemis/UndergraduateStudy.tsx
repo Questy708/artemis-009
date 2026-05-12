@@ -22,6 +22,8 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('education')}>
             Education at Artemis
             </h2>
@@ -31,6 +33,8 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           </div>
         </div>
       </div>
+          </div>
+        </div>
 
       <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">

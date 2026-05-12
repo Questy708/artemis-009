@@ -16,6 +16,8 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Support Artemis
               </h2>
@@ -25,6 +27,8 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                 <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
               </div>
       </div>
+          </div>
+        </div>
           </div>
         </div>
 

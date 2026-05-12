@@ -499,6 +499,8 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('research')}>
             Research at Artemis
             </h2>
@@ -508,9 +510,13 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
           </div>
         </div>
       </div>
+          </div>
+        </div>
 
       {/* Hero */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden group">
+      <section className="relative w-full overflow-hidden group">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img src={center.heroImg} alt={center.name} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 hover:scale-105 transition-all duration-700" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
@@ -520,6 +526,8 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
           </div>
           <h1 className="text-[38px] md:text-[48px] font-extrabold leading-[1.05] tracking-tighter text-white mb-3">{center.name}</h1>
           <p className="text-[16px] text-white/70 max-w-xl leading-relaxed font-light">{center.nodes}</p>
+        </div>
+          </div>
         </div>
       </section>
 

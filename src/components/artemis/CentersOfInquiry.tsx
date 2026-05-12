@@ -274,6 +274,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Research at Artemis
               </h2>
@@ -285,18 +287,24 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* Hero */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800" alt="Centers of Inquiry" className="absolute inset-0 w-full h-full object-cover grayscale" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-14">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Frontiers of Research</span>
           </div>
           <h1 className="text-[44px] md:text-[52px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">Centers of Inquiry</h1>
           <p className="text-[17px] text-white/70 max-w-xl leading-relaxed font-light">The epicenters of transformative research — where curiosity-driven exploration meets goal-oriented inquiry to address the grand challenges of our time.</p>
+        </div>
+          </div>
         </div>
       </section>
 

@@ -80,6 +80,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Campus Life
               </h2>
@@ -92,9 +94,13 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* ── 2. Hero ── */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -112,6 +118,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             Across three continents, Artemis students live and learn in a community that stretches far beyond the classroom — connected digitally, united by a shared culture of inquiry and mutual respect.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -222,6 +230,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
 
           {/* Card-and-image parallax */}
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-16">
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1400"
@@ -270,6 +279,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             </div>
           </div>
         </div>
+          </div>
       </section>
 
       {/* ── 6. Stats row ── */}

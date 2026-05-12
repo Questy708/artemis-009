@@ -83,6 +83,8 @@ export default function OurPeople({ goToPage }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Our People
               </h2>
@@ -94,9 +96,13 @@ export default function OurPeople({ goToPage }: Props) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -116,6 +122,8 @@ export default function OurPeople({ goToPage }: Props) {
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             The scholars, researchers, and staff who form the beating heart of the Artemis experiment — a global guild united by the pursuit of knowledge without borders.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -230,6 +238,7 @@ export default function OurPeople({ goToPage }: Props) {
           </div>
 
           {/* Card-and-image parallax section */}
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1400"
@@ -258,6 +267,7 @@ export default function OurPeople({ goToPage }: Props) {
             </div>
           </div>
         </div>
+          </div>
       </section>
 
       {/* ── 5. BY THE NUMBERS ── */}

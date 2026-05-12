@@ -125,6 +125,8 @@ export default function Colleges({ goToPage }: CollegesProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Our Colleges
               </h2>
@@ -136,9 +138,13 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -156,6 +162,8 @@ export default function Colleges({ goToPage }: CollegesProps) {
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             Each school within Artemis represents a pillar of human achievement, dedicated to deep expertise and cross-collegiate collaboration. We break the barriers between science and humanities.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -335,6 +343,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       {/* ── 5. CARD-AND-IMAGE PARALLAX ── */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
@@ -359,6 +368,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
             </div>
           </div>
         </div>
+          </div>
       </section>
 
       {/* ── 6. EXPLORE MORE ── */}

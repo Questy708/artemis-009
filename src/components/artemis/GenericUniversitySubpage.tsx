@@ -670,6 +670,8 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('the-university')}>
             The University
             </h2>
@@ -679,10 +681,14 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
           </div>
         </div>
       </div>
+          </div>
+        </div>
 
       {/* Hero Image */}
       {heroConfig && (
-        <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+        <section className="relative w-full overflow-hidden">
+          <div className="max-w-[1800px] mx-auto">
+            <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
           <img src={heroConfig.image} className="absolute inset-0 w-full h-full object-cover grayscale" alt={title} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
@@ -691,6 +697,8 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{heroConfig.label}</span>
             </div>
             <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">{title}</h1>
+          </div>
+            </div>
           </div>
         </section>
       )}

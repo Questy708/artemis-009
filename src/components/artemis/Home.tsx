@@ -58,14 +58,16 @@ export default function Home({ goToPage }: HomeProps) {
       {/* ═══════════════════════════════════════════
           1. HERO — Full-bleed with gradient overlay
           ═══════════════════════════════════════════ */}
-      <section className="relative w-full h-[65vh] min-h-[480px] overflow-hidden">
-        <img
-          src={heroContent.image}
-          alt="Artemis Expedition"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+      <section className="relative w-full py-12 lg:py-16">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-16">
+          <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
+            <img
+              src={heroContent.image}
+              alt="Artemis Expedition"
+              className="absolute inset-0 w-full h-full object-cover grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="relative z-10 flex flex-col justify-end h-full pb-16">
           <div
             ref={heroAnim}
             className="transition-all duration-700 artemis-out"
@@ -91,6 +93,8 @@ export default function Home({ goToPage }: HomeProps) {
                 FULL STORY
               </button>
               <span>SHARE: X F</span>
+            </div>
+          </div>
             </div>
           </div>
         </div>

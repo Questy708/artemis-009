@@ -266,6 +266,8 @@ export default function Research({ goToPage }: ResearchProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Research at Artemis
               </h2>
@@ -279,9 +281,13 @@ export default function Research({ goToPage }: ResearchProps) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -299,6 +305,8 @@ export default function Research({ goToPage }: ResearchProps) {
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             At Artemis, research is not a siloed activity but a collective endeavor. We prioritize high-impact projects that address the core existential challenges of our time.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -528,6 +536,7 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
 
           {/* Card-and-image parallax section */}
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-20">
             <img
               src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1400"
@@ -575,6 +584,7 @@ export default function Research({ goToPage }: ResearchProps) {
               </div>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
@@ -584,6 +594,7 @@ export default function Research({ goToPage }: ResearchProps) {
           ref={facilitiesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${facilitiesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[360px] md:min-h-[440px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400"
@@ -608,6 +619,7 @@ export default function Research({ goToPage }: ResearchProps) {
             </div>
           </div>
         </div>
+          </div>
       </section>
 
       {/* ── 8. CENTERS OF INQUIRY ── */}

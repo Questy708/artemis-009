@@ -120,6 +120,8 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Admissions + Aid
               </h2>
@@ -133,9 +135,13 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </div>
           </div>
         </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -153,6 +159,8 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             We seek the boldest minds — those who look at the horizon and see not a limit, but a challenge they are ready to meet. Your journey starts with a single step.
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
@@ -319,6 +327,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           ref={aidAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${aidAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
+          <div className="max-w-[1800px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&q=80&w=1400"
@@ -344,6 +353,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             </div>
           </div>
         </div>
+          </div>
       </section>
 
       {/* ── 6. START YOUR APPLICATION ── */}

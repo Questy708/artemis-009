@@ -960,6 +960,8 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('about')}>
             About Artemis
             </h2>
@@ -969,9 +971,13 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
           </div>
         </div>
       </div>
+          </div>
+        </div>
 
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src={data?.heroImage || 'https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800'}
           className="absolute inset-0 w-full h-full object-cover grayscale"
@@ -989,6 +995,8 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
           <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
             {description}
           </p>
+        </div>
+          </div>
         </div>
       </section>
 
