@@ -485,7 +485,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
   if (!center) {
     return (
       <div className="flex-1 flex flex-col bg-white">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-16 py-20 text-center">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24 text-center">
           <h1 className="text-[36px] font-bold mb-4">Center not found</h1>
           <button onClick={() => goToPage('centers-of-inquiry')} className="text-[#8A0000] border-b-2 border-[#8A0000] pb-0.5 text-[14px] font-bold uppercase tracking-widest hover:opacity-70 transition-opacity">Return to Centers of Inquiry</button>
         </div>
@@ -496,20 +496,24 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('research')}>
-          Research at Artemis
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{center.name}</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('research')}>
+            Research at Artemis
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{center.name}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Hero */}
-      <section className="relative w-full h-[45vh] min-h-[340px] overflow-hidden group">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden group">
         <img src={center.heroImg} alt={center.name} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 hover:scale-105 transition-all duration-700" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-14">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Center of Inquiry</span>
@@ -521,8 +525,8 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
 
       {/* Stats */}
       <section className="bg-gray-50 py-12">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {center.stats.map((stat, i) => (
               <div key={i} className="relative pl-6 border-l-2 border-[#8A0000]">
                 <div className="text-[30px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
@@ -535,7 +539,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Overview */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-12">
             <hr className="flex-grow border-t border-gray-200" />
@@ -549,14 +553,14 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Focus Areas */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Research Focus</span>
           </div>
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Areas of inquiry</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {center.focus.map((item, i) => (
               <div key={i} className="flex items-start gap-3 bg-white p-5 border border-gray-100">
                 <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
@@ -572,7 +576,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Four Pillars Detail */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-12">
             <hr className="flex-grow border-t border-gray-200" />
@@ -582,7 +586,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-10">How this Center operates</h2>
 
           <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               <div className="bg-gray-50 p-8 border border-gray-100">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">01 — Core Investigators</div>
                 <p className="text-[15px] text-gray-600 leading-relaxed">{center.coreInvestigators}</p>
@@ -592,7 +596,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
                 <p className="text-[15px] text-gray-600 leading-relaxed">{center.juniorFellows}</p>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               <div className="bg-gray-50 p-8 border border-gray-100">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">03 — Translational Programs</div>
                 <p className="text-[15px] text-gray-600 leading-relaxed">{center.translationalPrograms}</p>
@@ -607,8 +611,8 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Featured Projects */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Featured Projects</span>
@@ -627,8 +631,8 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Other Centers */}
-      <section className="py-20">
-        <div ref={anim5.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim5.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="py-16 lg:py-24">
+        <div ref={anim5.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim5.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Explore More</span>

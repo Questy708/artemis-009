@@ -84,27 +84,31 @@ export default function About({ goToPage }: AboutProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── 1. Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          About Artemis
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#university" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">The University</a>
-          <a href="#people" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">People</a>
-          <a href="#visit" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Visit</a>
-          <a href="#contact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Contact</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                About Artemis
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#university" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">The University</a>
+                <a href="#people" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">People</a>
+                <a href="#visit" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Visit</a>
+                <a href="#contact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Contact</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 2. Hero ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="About Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Institution</span>
@@ -119,7 +123,7 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 3. Our Story ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={storyAnim.ref}
           className={`transition-all duration-700 ${storyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -131,7 +135,7 @@ export default function About({ goToPage }: AboutProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Rich text */}
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -176,10 +180,10 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 4. Pages in This Section ── */}
-      <section id="university" className="scroll-mt-24 bg-gray-50 py-20">
+      <section id="university" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
         <div
           ref={pagesAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${pagesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pagesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -188,7 +192,7 @@ export default function About({ goToPage }: AboutProps) {
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Pages in this section
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {sectionLinks.map((item) => (
               <button
                 key={item.title}
@@ -206,10 +210,10 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 5. Teaser Cards ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={cardsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${cardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -217,7 +221,7 @@ export default function About({ goToPage }: AboutProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {teasers.map((teaser, i) => (
               <div key={teaser.title} className="group cursor-pointer">
                 <div className="aspect-[3/2] bg-gray-100 overflow-hidden mb-6">
@@ -245,10 +249,10 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 6. Our People — Card-and-Image Parallax ── */}
-      <section id="people" className="scroll-mt-24 py-20 bg-gray-50">
+      <section id="people" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
         <div
           ref={peopleAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${peopleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${peopleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
@@ -281,7 +285,7 @@ export default function About({ goToPage }: AboutProps) {
 
       {/* ── 7. Crimson CTA Bar ── */}
       <section id="visit" className="scroll-mt-24 bg-[#8A0000] py-16">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Discover more about Artemis
@@ -301,14 +305,14 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 8. Contact Anchor ── */}
-      <section id="contact" className="scroll-mt-24 py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section id="contact" className="scroll-mt-24 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Get in Touch</span>
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Contact us

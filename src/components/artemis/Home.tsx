@@ -378,7 +378,7 @@ export default function Home({ goToPage }: HomeProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left — Heading + CTA */}
             <div className="md:col-span-5">
               <div className="mb-6 flex items-center space-x-3">

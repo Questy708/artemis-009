@@ -81,27 +81,31 @@ export default function TheUniversity({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          The University
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#micro-colleges" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Micro-Colleges</a>
-          <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
-          <a href="#press" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Press</a>
-          <a href="#lifelong-learning" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Lifelong Learning</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                The University
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#micro-colleges" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Micro-Colleges</a>
+                <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
+                <a href="#press" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Press</a>
+                <a href="#lifelong-learning" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Lifelong Learning</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── Hero Section ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="The University of Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
@@ -120,7 +124,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Pages in This Section ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div className="relative flex items-center mb-12">
           <div className="flex-grow border-t border-gray-200"></div>
           <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
@@ -128,7 +132,7 @@ export default function TheUniversity({ goToPage }: Props) {
           </span>
           <div className="flex-grow border-t border-gray-200"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sectionLinks.map((item) => (
             <button
               key={item.title}
@@ -148,7 +152,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── The Micro-Colleges ── */}
-      <section id="micro-colleges" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+      <section id="micro-colleges" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-24">
         <div
           ref={microCollegesAnim.ref}
           className={`transition-all duration-700 ${microCollegesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -160,7 +164,7 @@ export default function TheUniversity({ goToPage }: Props) {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-5">
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 The Micro-Colleges
@@ -200,8 +204,8 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Role of Micro-Colleges and the Network ── */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div
             ref={roleAnim.ref}
             className={`transition-all duration-700 ${roleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -224,7 +228,7 @@ export default function TheUniversity({ goToPage }: Props) {
               infrastructure that ensures rigor and coherence across the federation.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               {/* Left — What the Micro-Colleges do */}
               <div className="bg-white p-8 md:p-10 shadow-sm">
                 <div className="mb-8 flex items-center space-x-3">
@@ -282,7 +286,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Schools and Research Divisions ── */}
-      <section id="schools" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
+      <section id="schools" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-24">
         <div
           ref={schoolsAnim.ref}
           className={`transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -294,7 +298,7 @@ export default function TheUniversity({ goToPage }: Props) {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
             <div className="md:col-span-7">
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Schools and<br />Research Divisions
@@ -339,7 +343,7 @@ export default function TheUniversity({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis University Press ── */}
-      <section id="press" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-24">
+      <section id="press" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-24">
         <div
           ref={pressAnim.ref}
           className={`transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -352,7 +356,7 @@ export default function TheUniversity({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-7">
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Artemis<br />University Press
@@ -407,7 +411,7 @@ export default function TheUniversity({ goToPage }: Props) {
 
       {/* ── Artemis Lifelong Learning ── */}
       <section id="lifelong-learning" className="bg-gray-50 py-24">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div
             ref={lifelongAnim.ref}
             className={`transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -419,7 +423,7 @@ export default function TheUniversity({ goToPage }: Props) {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <div className="md:col-span-7">
                 <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                   Artemis<br />Lifelong Learning

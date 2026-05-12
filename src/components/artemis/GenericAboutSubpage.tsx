@@ -339,10 +339,10 @@ function AccessContent({ goToPage }: { goToPage: (page: string) => void }) {
   return (
     <>
       {/* Need-Blind Admissions */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Our Commitment" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Need-blind admissions
@@ -366,13 +366,13 @@ function AccessContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Accessibility Services */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Accessibility" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
             Removing barriers to learning
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
                 Artemis provides comprehensive accessibility services across all nodes. Every Micro-College is equipped with adaptive technology suites, and our digital platforms are designed to WCAG 2.1 AA standards — with a roadmap toward full AAA compliance.
@@ -419,10 +419,10 @@ function AccessContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Financial Access */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Financial Access" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Financial access for all
@@ -450,8 +450,8 @@ function AccessContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Quick Links */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Explore" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Related resources</h2>
           <LinkRows links={pageData.access.links} goToPage={goToPage} />
@@ -471,10 +471,10 @@ function WorldContent({ goToPage }: { goToPage: (page: string) => void }) {
   return (
     <>
       {/* Global Network Intro */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Global Presence" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 A university without borders
@@ -498,13 +498,13 @@ function WorldContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Hub Grid */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Our Nodes" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Global hubs of inquiry
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {worldHubs.map((hub, i) => (
               <div key={hub.city} className="group cursor-pointer bg-white border border-gray-100 overflow-hidden">
                 <div className="aspect-[3/2] overflow-hidden">
@@ -530,10 +530,10 @@ function WorldContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* International Partnerships */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Partnerships" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Collaboration by design
@@ -561,8 +561,8 @@ function WorldContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Quick Links */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Explore" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Related resources</h2>
           <LinkRows links={pageData.world.links} goToPage={goToPage} />
@@ -582,10 +582,10 @@ function VisitContent({ goToPage }: { goToPage: (page: string) => void }) {
   return (
     <>
       {/* Visiting Artemis Intro */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Plan Your Visit" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Welcome to the network
@@ -609,13 +609,13 @@ function VisitContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Open Days & Tours */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Experiences" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Open days & tours
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 border border-gray-100">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Guided Tours</div>
               <h4 className="text-[18px] font-bold text-[#141414] mb-3">Walk the network</h4>
@@ -645,10 +645,10 @@ function VisitContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Travel & Accommodation */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Travel" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Getting here & staying over
@@ -676,8 +676,8 @@ function VisitContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Quick Links */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Explore" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Related resources</h2>
           <LinkRows links={pageData.visit.links} goToPage={goToPage} />
@@ -697,10 +697,10 @@ function JobsContent({ goToPage }: { goToPage: (page: string) => void }) {
   return (
     <>
       {/* Working at Artemis */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Your Career" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Building the future of knowledge
@@ -724,13 +724,13 @@ function JobsContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Job Listings */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Featured Roles" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Open positions
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {jobListings.map((job, i) => (
               <div key={i} className="bg-white p-6 border border-gray-100 hover:border-[#8A0000] transition-colors group cursor-pointer">
                 <div className="flex items-start justify-between mb-4">
@@ -752,10 +752,10 @@ function JobsContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Benefits */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Benefits" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 More than a job
@@ -791,8 +791,8 @@ function JobsContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Quick Links */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Explore" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Related resources</h2>
           <LinkRows links={pageData.jobs.links} goToPage={goToPage} />
@@ -812,10 +812,10 @@ function ContactContent({ goToPage }: { goToPage: (page: string) => void }) {
   return (
     <>
       {/* Contact Intro */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Connect" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 How to reach us
@@ -839,13 +839,13 @@ function ContactContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Contact Blocks */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Departments" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Direct contacts
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {contactBlocks.map((block, i) => (
               <div key={i} className="bg-white p-6 border border-gray-100 hover:border-[#8A0000] transition-colors group">
                 <div className="flex items-start gap-4">
@@ -868,10 +868,10 @@ function ContactContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Physical Address */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Location" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
                 Central Governance Node
@@ -914,8 +914,8 @@ function ContactContent({ goToPage }: { goToPage: (page: string) => void }) {
       </section>
 
       {/* Quick Links */}
-      <section className="bg-gray-50 py-20">
-        <div ref={anim4.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Explore" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Related resources</h2>
           <LinkRows links={pageData.contact.links} goToPage={goToPage} />
@@ -957,24 +957,28 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('about')}>
-          About Artemis
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('about')}>
+            About Artemis
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src={data?.heroImage || 'https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800'}
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt={title}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{data?.heroLabel || 'About Artemis'}</span>

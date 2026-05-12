@@ -95,7 +95,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Annual Costs" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -131,8 +131,8 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Financial Aid" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
             Need-based aid packages
@@ -141,7 +141,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
             Artemis meets 100% of demonstrated financial need for every admitted student. Aid packages are composed of three components: need-based scholarships (grants that do not need to be repaid), a work-study allocation of up to $5,000 per year, and low-interest student loans designed to minimise long-term debt. There are no merit-based scholarships — every rupee of aid goes toward demonstrated need.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             <div className="bg-white p-6 border border-gray-100">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">01 — Scholarships</div>
               <h4 className="text-[18px] font-bold text-[#141414] mb-3">Need-Based Grants</h4>
@@ -160,7 +160,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
           </div>
 
           <div className="bg-white border border-gray-100 p-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
               <div className="relative pl-4 border-l-2 border-[#8A0000]">
                 <div className="text-[30px] font-black text-[#141414] leading-none mb-1">70%+</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight">Students Receiving Aid</div>
@@ -182,7 +182,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="How Aid Works" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Applying for financial aid</h2>
@@ -230,7 +230,7 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
 
   return (
     <>
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Global Admissions" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -243,7 +243,7 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
             Our federated model means that no single country dominates the Artemis experience. You will study alongside peers from every inhabited continent, rotating between global nodes that each offer a distinct cultural and intellectual context.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             <div className="relative pl-6 border-l-2 border-[#8A0000]">
               <div className="text-[36px] font-black text-[#141414] leading-none mb-2">140+</div>
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">Countries</div>
@@ -268,13 +268,13 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="English Proficiency" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
             Assessed through your application
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
                 Artemis does not require separate English proficiency test scores such as TOEFL, IELTS, or Duolingo. Instead, your English fluency is assessed directly through the application — specifically through your personal statement, mission statement, and the accomplishment descriptions you provide.
@@ -310,10 +310,10 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
         </div>
       </section>
 
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Visa & Records" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Visa support & academic records</h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
@@ -354,7 +354,7 @@ function TransferContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Transfer Admissions" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -367,7 +367,7 @@ function TransferContent({ goToPage }: { goToPage: (page: string) => void }) {
             Transfer applicants use the same application as first-year applicants, with additional requirements: official transcripts from all post-secondary institutions attended, a transfer statement explaining your reasons for seeking a move to Artemis, and a dean&apos;s reference from your current institution.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div className="bg-white p-8 border border-gray-100">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">01 — Eligibility</div>
               <h4 className="text-[18px] font-bold text-[#141414] mb-3">Who can apply</h4>
@@ -392,8 +392,8 @@ function TransferContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Apply Now" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Ready to transfer?</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-8 max-w-2xl">
@@ -426,7 +426,7 @@ function DeadlinesContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Key Dates" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -465,10 +465,10 @@ function DeadlinesContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20">
-        <div ref={anim2.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Important Notes" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div className="space-y-6">
               <div className="flex items-start gap-3">
                 <span className="w-1.5 h-1.5 bg-[#8A0000] rounded-full mt-2 shrink-0"></span>
@@ -518,9 +518,9 @@ function VisitCampusContent() {
   const anim1 = useInView();
 
   return (
-    <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+    <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
       <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="flex flex-col items-center text-center py-20">
+        <div className="flex flex-col items-center text-center py-16 lg:py-24">
           <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-6 uppercase">Coming Soon</div>
           <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
             Visit the Artemis Network
@@ -542,9 +542,9 @@ function GraduateComingSoonContent() {
   const anim1 = useInView();
 
   return (
-    <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+    <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
       <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="flex flex-col items-center text-center py-20">
+        <div className="flex flex-col items-center text-center py-16 lg:py-24">
           <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-6 uppercase">Under Development</div>
           <h2 className="text-[36px] md:text-[48px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
             Graduate Programmes
@@ -567,7 +567,7 @@ export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
   if (!config) {
     return (
       <div className="flex-1 flex flex-col bg-white">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-16 py-20 text-center">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20 py-16 lg:py-24 text-center">
           <h1 className="text-[36px] font-bold">Page not found</h1>
           <button onClick={() => goToPage('admissions')} className="mt-6 text-[#8A0000] underline">Return to Admissions</button>
         </div>
@@ -597,24 +597,28 @@ export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('admissions')}>
-          Admissions + Aid
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{config.title}</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('admissions')}>
+            Admissions + Aid
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{config.title}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Hero */}
-      <section className="relative w-full h-[40vh] min-h-[300px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src={config.heroImage}
           alt={config.title}
           className="absolute inset-0 w-full h-full object-cover grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-12">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{config.heroLabel}</span>

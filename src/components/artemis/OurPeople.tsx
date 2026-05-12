@@ -80,26 +80,30 @@ export default function OurPeople({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Our People
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#faculty" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Faculty</a>
-          <a href="#staff" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Staff</a>
-          <a href="#leadership" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Leadership</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Our People
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#faculty" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Faculty</a>
+                <a href="#staff" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Staff</a>
+                <a href="#leadership" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Leadership</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="The people of Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
@@ -116,7 +120,7 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 2. EXPLORE ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={exploreAnim.ref}
           className={`transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -130,7 +134,7 @@ export default function OurPeople({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {exploreLinks.map((link, i) => (
               <button
                 key={i}
@@ -158,10 +162,10 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 3. LEADERSHIP ── */}
-      <section id="leadership" className="bg-gray-50 py-20">
+      <section id="leadership" className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={leadershipAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${leadershipAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${leadershipAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Red line accent */}
           <div className="mb-8 flex items-center space-x-3">
@@ -182,7 +186,7 @@ export default function OurPeople({ goToPage }: Props) {
           </p>
 
           {/* Role cards — 4 per row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {leadershipRoles.map((role, i) => (
               <div
                 key={i}
@@ -212,10 +216,10 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 4. FACULTY SPOTLIGHT ── */}
-      <section id="faculty" className="py-20">
+      <section id="faculty" className="py-16 lg:py-24">
         <div
           ref={spotlightAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -257,10 +261,10 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 5. BY THE NUMBERS ── */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -277,7 +281,7 @@ export default function OurPeople({ goToPage }: Props) {
           </p>
 
           {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {peopleStats.map((stat, i) => (
               <div key={i} className="relative pl-6">
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]"></div>
@@ -297,10 +301,10 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 6. WORKING AT ARTEMIS ── */}
-      <section id="staff" className="py-20">
+      <section id="staff" className="py-16 lg:py-24">
         <div
           ref={workingAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -310,7 +314,7 @@ export default function OurPeople({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">

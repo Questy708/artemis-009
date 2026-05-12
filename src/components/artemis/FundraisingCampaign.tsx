@@ -13,20 +13,24 @@ export default function FundraisingCampaign({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Support Artemis
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#campaign" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Campaign</a>
-          <a href="#giving" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Giving</a>
-          <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Support Artemis
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#campaign" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Campaign</a>
+                <a href="#giving" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Giving</a>
+                <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* Hero Section */}
       <div className="bg-[#141414] text-white pt-24 pb-24">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-16">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-[56px] lg:text-[84px] font-extrabold leading-[0.9] tracking-tighter uppercase mb-8">
               Building the <br className="hidden lg:block"/> Future of Knowledge
@@ -46,13 +50,13 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </div>
 
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-24">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-24">
         
         {/* Case for Support */}
         <section id="campaign" className="mb-24">
             <h2 className="text-[14px] font-bold text-[#8A0000] tracking-widest uppercase mb-4">Our Commitment</h2>
             <h3 className="text-[40px] font-extrabold tracking-tight text-gray-900 mb-8">Why Artemis? Why Now?</h3>
-            <div className="prose prose-lg text-gray-600 max-w-3xl leading-relaxed">
+            <div className="prose prose-lg text-gray-600 leading-relaxed">
                 <p>The traditional university model is at an inflection point. Decades of bureaucratic growth, physical limitations, and closed systems have severely constrained the potential of the modern scholar. Artemis was founded to transcend these limitations, not by merely digitizing existing structures, but by reimagining the very nature of an academic community.</p>
                 <p>We are building a <em>universitas</em> optimized for our era: borderless, data-driven, and intrinsically collaborative. Our core operating philosophy is one of <b>Foundational Efficiency</b>. We recognize that true innovation thrives when resources are concentrated on the intellectual work, not on massive administrative overhead. The Artemis Founding Campaign is the cornerstone of a mission to build a globally distributed, high-impact institution from the ground up, with a remarkably lean founding budget that maximizes donor impact at every layer.</p>
                 <p>The Founding Campaign provides the strategic capital to construct our fundamental digital estate, endow our first residential colleges, and launch interdisciplinary research hubs that operate at the speed of modern discovery instead of the pace of administrative committees.</p>
@@ -120,7 +124,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         {/* Campaign Pillars */}
         <section className="mb-24">
           <h2 className="text-[32px] font-extrabold text-gray-900 tracking-tight mb-16 uppercase">Campaign Pillars</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
                 { icon: Users, title: "Access & Opportunity", desc: "Endowing scholarships for the next generation of global scholars, regardless of their economic background." },
                 { icon: BookOpenText, title: "Frontier Research", desc: "Funding interdisciplinary research hubs tackling humanity's most complex challenges in medicine, climate, and tech." },

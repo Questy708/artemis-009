@@ -77,27 +77,31 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── 1. Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Campus Life
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#living" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Living</a>
-          <a href="#traditions" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Traditions</a>
-          <a href="#community" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Community</a>
-          <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Campus Life
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#living" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Living</a>
+                <a href="#traditions" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Traditions</a>
+                <a href="#community" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Community</a>
+                <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 2. Hero ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Campus life at Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Life at Artemis</span>
@@ -112,10 +116,10 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 3. Living Commons — section divider with two-column ── */}
-      <section id="living" className="scroll-mt-24 py-20">
+      <section id="living" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={heroAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -126,7 +130,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
 
           <div
             ref={commonsIntroAnim.ref}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-start transition-all duration-700 ${commonsIntroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start transition-all duration-700 ${commonsIntroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Left — Text */}
             <div>
@@ -166,17 +170,17 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 4. The Commons — 4-card grid on gray-50 ── */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={commonsCardsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Commons</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {commonsCards.map((card, i) => (
               <div key={i} className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden">
                 <div className="aspect-[16/9] bg-gray-100 overflow-hidden">
@@ -205,10 +209,10 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 5. Traditions & Rituals — card-and-image parallax ── */}
-      <section id="traditions" className="scroll-mt-24 py-20">
+      <section id="traditions" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={traditionsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -243,7 +247,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
 
           {/* Two tradition descriptions */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
               <div className="mb-4 flex items-center space-x-3">
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -269,10 +273,10 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 6. Stats row ── */}
-      <section id="community" className="scroll-mt-24 py-20 bg-gray-50">
+      <section id="community" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -283,7 +287,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             Community in<br />every dimension
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {campusStats.map((stat, i) => (
               <div key={i} className="relative pl-6">
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]"></div>
@@ -297,17 +301,17 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 7. Student Life link grid ── */}
-      <section id="explore" className="scroll-mt-24 py-20">
+      <section id="explore" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={studentLifeAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${studentLifeAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${studentLifeAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Student Life</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-12">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Everything you need,<br />everything you are
@@ -337,8 +341,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 8. Crimson CTA bar ── */}
-      <section className="bg-[#8A0000] py-16 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="bg-[#8A0000] py-16 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Experience Artemis in person

@@ -122,26 +122,30 @@ export default function Colleges({ goToPage }: CollegesProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Our Colleges
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#overview" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Overview</a>
-          <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
-          <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Our Colleges
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#overview" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Overview</a>
+                <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
+                <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Our Colleges"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Academic Structure</span>
@@ -156,7 +160,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 2. OVERVIEW ── */}
-      <section id="overview" className="scroll-mt-24 max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section id="overview" className="scroll-mt-24 max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={introAnim.ref}
           className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -168,7 +172,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -215,17 +219,17 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 3. STATS ROW ── */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">By the Numbers</span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {collegesStats.map((stat, i) => (
               <div key={i} className="relative pl-6 border-l-2 border-[#8A0000]">
                 <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
@@ -238,10 +242,10 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 4. SCHOOLS GRID ── */}
-      <section id="schools" className="scroll-mt-24 py-20">
+      <section id="schools" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={schoolsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -268,7 +272,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
                 className="group border-b border-gray-200 hover:border-[#8A0000] transition-colors cursor-pointer"
               >
                 {/* Top row: Image + Basic info */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                   {/* Image */}
                   <div className="md:col-span-4 aspect-[16/9] md:aspect-auto bg-gray-100 overflow-hidden">
                     <img
@@ -329,8 +333,8 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 5. CARD-AND-IMAGE PARALLAX ── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
@@ -358,17 +362,17 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 6. EXPLORE MORE ── */}
-      <section id="explore" className="scroll-mt-24 py-20">
+      <section id="explore" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={exploreAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Explore</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-12">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Discover your<br />path at Artemis
@@ -398,8 +402,8 @@ export default function Colleges({ goToPage }: CollegesProps) {
       </section>
 
       {/* ── 7. CRIMSON CTA BAR ── */}
-      <section className="bg-[#8A0000] py-16 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="bg-[#8A0000] py-16 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Find the school that fits your ambition

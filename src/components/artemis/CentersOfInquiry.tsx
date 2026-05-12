@@ -271,22 +271,26 @@ export default function CentersOfInquiry({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Research at Artemis
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
-          <a href="#projects" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Projects</a>
-          <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Research at Artemis
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
+                <a href="#projects" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Projects</a>
+                <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* Hero */}
-      <section className="relative w-full h-[45vh] min-h-[340px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800" alt="Centers of Inquiry" className="absolute inset-0 w-full h-full object-cover grayscale" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-14">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-14">
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Frontiers of Research</span>
@@ -297,7 +301,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Introduction */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={introAnim.ref} className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -312,8 +316,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Pillar Tabs */}
-      <section className="bg-gray-50 py-20">
-        <div ref={pillarsAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${pillarsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div ref={pillarsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pillarsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Five Pillars</span>
@@ -338,8 +342,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* All Centers Grid */}
-      <section id="centers" className="py-20">
-        <div ref={centersAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section id="centers" className="py-16 lg:py-24">
+        <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Centers</span>
@@ -348,7 +352,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
           <div className="space-y-12">
             {centers.map((center, i) => (
-              <div key={i} onClick={() => goToPage('center-detail', center.slug)} className="group cursor-pointer grid grid-cols-1 md:grid-cols-2 gap-8 border border-gray-100 hover:border-[#8A0000] transition-all bg-white overflow-hidden shadow-sm hover:shadow-lg">
+              <div key={i} onClick={() => goToPage('center-detail', center.slug)} className="group cursor-pointer grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 border border-gray-100 hover:border-[#8A0000] transition-all bg-white overflow-hidden shadow-sm hover:shadow-lg">
                 <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
                   <img src={center.img} alt={center.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 hover:scale-105 transition-all duration-500" />
                 </div>
@@ -371,8 +375,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Guilds Section */}
-      <section id="projects" className="bg-gray-50 py-20">
-        <div ref={guildAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section id="projects" className="bg-gray-50 py-16 lg:py-24">
+        <div ref={guildAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Applied Engine</span>
@@ -408,7 +412,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
           {/* Co-Stewardship */}
           <h3 className="text-[20px] font-bold text-[#141414] mb-6">Co-Stewardship for Adaptive Intelligence</h3>
           <p className="text-[14px] text-gray-600 leading-relaxed mb-6">Guild governance distributes authority across a triadic structure of faculty leads, civic advisors, and student fellows, creating a co-stewardship model that ensures every voice is heard and every perspective is integrated into decision-making.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             <div className="bg-white p-6 border border-gray-100">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Core Investigators</div>
               <h4 className="text-[16px] font-bold text-[#141414] mb-3">2-3 per Guild</h4>
@@ -429,8 +433,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Cycles of Activity */}
-      <section id="impact" className="py-20">
-        <div ref={cyclesAnim.ref} className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section id="impact" className="py-16 lg:py-24">
+        <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Cycles of Activity</span>

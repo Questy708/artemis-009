@@ -135,7 +135,7 @@ function FactsAndFigures({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         {/* Key Statistics */}
         <SectionDivider label="Key Statistics" />
 
@@ -269,7 +269,7 @@ function ArtemisGlossary() {
 
   return (
     <>
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <SectionDivider label="Core Terms" />
 
         {/* Glossary list */}
@@ -338,7 +338,7 @@ function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         {/* Estate at a Glance */}
         <SectionDivider label="At a Glance" />
 
@@ -353,7 +353,7 @@ function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
         <SectionDivider label="Physical Hubs" />
 
         <RevealSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {hubs.map((hub) => (
               <HubCard key={hub.name} hub={hub} />
             ))}
@@ -498,7 +498,7 @@ function Brand({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-32">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         {/* Brand Philosophy */}
         <SectionDivider label="Brand Philosophy" />
 
@@ -599,7 +599,7 @@ function Brand({ goToPage }: { goToPage: (page: string) => void }) {
         <RevealSection>
           <div className="bg-gray-50 p-8 lg:p-12 rounded-lg">
             <RedAccentLabel text="Writing as Artemis" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mt-6">
               <div>
                 <h4 className="text-[15px] font-bold text-[#141414] mb-3">We Are</h4>
                 <ul className="space-y-2 text-[14px] text-gray-600">
@@ -667,21 +667,25 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
   return (
     <div className="flex flex-col bg-white">
       {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('the-university')}>
-          The University
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('the-university')}>
+            The University
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{title}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Hero Image */}
       {heroConfig && (
-        <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+        <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
           <img src={heroConfig.image} className="absolute inset-0 w-full h-full object-cover grayscale" alt={title} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+          <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
             <div className="mb-8 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{heroConfig.label}</span>

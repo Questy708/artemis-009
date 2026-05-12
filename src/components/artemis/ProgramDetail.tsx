@@ -129,11 +129,11 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
   return (
     <div className="flex flex-col bg-white">
       {/* Catalog Header */}
-      <div className="bg-[#8A0000] text-white pt-8 pb-4 px-6 lg:px-16 flex justify-between items-end">
+      <div className="bg-[#8A0000] text-white pt-8 pb-4 px-8 lg:px-20 flex justify-between items-end">
          <h1 className="text-3xl lg:text-4xl font-serif font-bold">Artemis College Programs of Study 2026–2027</h1>
       </div>
       
-      <div className="bg-gray-100 border-b border-gray-200 px-6 lg:px-16 py-3 flex flex-wrap text-sm text-gray-600 gap-4">
+      <div className="bg-gray-100 border-b border-gray-200 px-8 lg:px-20 py-3 flex flex-wrap text-sm text-gray-600 gap-4">
         <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('home')}>Artemis University Publications</span>
         <span>/</span>
         <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('education')}>Artemis College Programs of Study</span>
@@ -165,7 +165,7 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 px-8 md:px-16 py-12 bg-white">
+        <main className="flex-1 px-8 lg:px-20 py-16 lg:py-24 bg-white">
           <h1 className="text-[36px] font-serif font-bold text-[#141414] mb-8">
             {data.title}
           </h1>
@@ -283,7 +283,7 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
             <section id="faculty" ref={(el) => { sectionRefs.current['faculty'] = el; }} className="scroll-mt-32">
               <h3 className="text-[22px] font-bold text-[#141414] mb-8">Departmental Faculty</h3>
               <div className="space-y-6 text-[15px] text-[#141414]">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                   <div className="p-6 bg-gray-50 rounded-lg">
                     <h5 className="font-bold text-[#8A0000] uppercase tracking-widest text-[11px] mb-3">Full Professors</h5>
                     <p className="leading-relaxed break-words">{data.facultyProfessors}</p>
@@ -306,7 +306,7 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
                   <div className="w-12 h-12 rounded-full border-4 border-gray-100 border-t-[#8A0000] animate-spin"></div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                   {facultyBios.map((bio, idx) => (
                     <div key={idx} className="group flex flex-col bg-white p-6 items-start shadow-sm border border-gray-100 hover:border-[#8A0000]/30 transition-all rounded-xl">
                       <div className="flex items-center space-x-4 mb-6">

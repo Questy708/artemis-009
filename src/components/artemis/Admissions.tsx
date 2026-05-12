@@ -117,28 +117,32 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Admissions + Aid
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#paths" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Paths</a>
-          <a href="#cycles" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Cycles</a>
-          <a href="#aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Aid</a>
-          <a href="#apply" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Apply</a>
-          <a href="#info" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Info</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Admissions + Aid
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#paths" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Paths</a>
+                <a href="#cycles" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Cycles</a>
+                <a href="#aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Aid</a>
+                <a href="#apply" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Apply</a>
+                <a href="#info" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Info</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Applying to Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Begin Here</span>
@@ -153,10 +157,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 2. YOUR PATH — 3-card grid ── */}
-      <section id="paths" className="scroll-mt-24 py-20">
+      <section id="paths" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={pathsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${pathsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pathsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -165,7 +169,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {pathCards.map((card, i) => (
               <div key={i} className="group cursor-pointer">
                 <div className="aspect-[3/2] bg-gray-100 overflow-hidden mb-6 relative">
@@ -203,10 +207,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 3. ADMISSIONS BY THE NUMBERS ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -217,7 +221,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             Admissions by<br />the numbers
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {admissionsStats.map((stat, i) => (
               <div key={i} className="relative pl-6 border-l-2 border-[#8A0000]">
                 <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
@@ -230,10 +234,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 4. APPLICATION CYCLES (Minerva-style) ── */}
-      <section id="cycles" className="scroll-mt-24 py-20 bg-gray-50">
+      <section id="cycles" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
         <div
           ref={cyclesAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -248,7 +252,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           </p>
 
           {/* Cycle cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-12">
             {applicationCycles.map((cycle, i) => (
               <div 
                 key={i} 
@@ -310,10 +314,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 5. FINANCIAL AID ── */}
-      <section id="aid" className="scroll-mt-24 py-20">
+      <section id="aid" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={aidAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${aidAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${aidAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
@@ -343,10 +347,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 6. START YOUR APPLICATION ── */}
-      <section id="apply" className="scroll-mt-24 bg-[#8A0000] py-20">
+      <section id="apply" className="scroll-mt-24 bg-[#8A0000] py-16 lg:py-24">
         <div
           ref={applyAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${applyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${applyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="flex flex-col items-center text-center">
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
@@ -374,10 +378,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 7. MORE INFORMATION — link grid ── */}
-      <section id="info" className="scroll-mt-24 bg-gray-50 py-20">
+      <section id="info" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
         <div
           ref={infoAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${infoAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${infoAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -388,7 +392,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
             More information
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {infoLinks.map((link, i) => (
               <button
                 key={i}

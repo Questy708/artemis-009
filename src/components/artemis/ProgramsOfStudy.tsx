@@ -93,11 +93,11 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* Catalog Header */}
-      <div className="bg-[#8A0000] text-white pt-8 pb-4 px-6 lg:px-16 flex justify-between items-end">
+      <div className="bg-[#8A0000] text-white pt-8 pb-4 px-8 lg:px-20 flex justify-between items-end">
          <h1 className="text-3xl lg:text-4xl font-serif font-bold">Artemis College Programs of Study 2026–2027</h1>
       </div>
       
-      <div className="bg-gray-100 border-b border-gray-200 px-6 lg:px-16 py-3 flex flex-wrap text-sm text-gray-600 gap-4">
+      <div className="bg-gray-100 border-b border-gray-200 px-8 lg:px-20 py-3 flex flex-wrap text-sm text-gray-600 gap-4">
         <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('home')}>Artemis University Publications</span>
         <span>/</span>
         <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('education')}>Artemis College Programs of Study</span>
@@ -127,7 +127,7 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 px-8 md:px-16 py-12 bg-white">
+        <main className="flex-1 px-8 lg:px-20 py-16 lg:py-24 bg-white">
           <h1 className="text-[36px] font-serif font-bold text-[#141414] mb-10 border-b border-gray-200 pb-4">
             Majors in Artemis College
           </h1>

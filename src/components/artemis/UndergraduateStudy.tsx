@@ -19,20 +19,24 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('education')}>
-          Education at Artemis
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-           <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">Undergraduate Study</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('education')}>
+            Education at Artemis
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">Undergraduate Study</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16">
+      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           
           {/* Main Content Area */}
-          <div className="flex-1 max-w-[800px]">
+          <div className="flex-1">
              <section className="mb-24">
               <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-10 uppercase">
                 Artemis Undergraduate Study
@@ -79,7 +83,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
                  {/* The 4-Year Curriculum Model */}
                   <article className="my-10 pt-16 border-t border-gray-100">
                     <h2 className="text-[32px] font-extrabold text-[#141414] tracking-tight mb-8 uppercase">The 4-Year Journey</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                        {[
                          { year: "Year 1", title: "Inception & Core", desc: "Foundational Core + Interdisciplinary Exposure. Focus on learning to learn, think, and act." },
                          { year: "Year 2", title: "Concentration & Orientation", desc: "Concentration Courses + Guild Orientation. Integration with real-world problems begins." },

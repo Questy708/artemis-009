@@ -195,15 +195,19 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
   if (!data) {
     return (
       <div className="flex flex-col bg-white">
-        <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-          <h2
-            className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80"
-            onClick={() => goToPage('colleges')}
-          >
-            Our Colleges
-          </h2>
+        <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+          <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+            <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2
+              className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80"
+              onClick={() => goToPage('colleges')}
+              >
+              Our Colleges
+              </h2>
+            </div>
+          </div>
         </div>
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 pb-32">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 pb-32">
           <h1 className="text-[48px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-8 uppercase">
             {schoolName}
           </h1>
@@ -226,24 +230,28 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 h-[60px] shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('colleges')}>
-          Our Colleges
-        </h2>
-        <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-          <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{schoolName}</span>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('colleges')}>
+              Our Colleges
+            </h2>
+            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
+              <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{schoolName}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src={data.image}
           alt={schoolName}
           className="absolute inset-0 w-full h-full object-cover grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
@@ -260,7 +268,7 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 2. ABOUT THE SCHOOL ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         {/* Section divider */}
         <div className="relative flex items-center mb-16">
           <div className="flex-grow border-t border-gray-200"></div>
@@ -268,7 +276,7 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
           <div className="flex-grow border-t border-gray-200"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left — Text */}
           <div>
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -314,10 +322,10 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 3. HIGHLIGHTS ── */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={highlightsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -331,7 +339,7 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
             Each school within Artemis houses world-class facilities and flagship programmes that define its contribution to the university's research and teaching mission.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.highlights.map((highlight, i) => (
               <div key={i} className="bg-white p-8 border border-gray-200 hover:border-[#8A0000] transition-all shadow-sm hover:shadow-md">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-4 uppercase">
@@ -350,10 +358,10 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 4. PROGRAMS OF STUDY ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={programsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -362,7 +370,7 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
                 Programs of study
@@ -400,10 +408,10 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 5. RESEARCH AREAS ── */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={researchAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${researchAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${researchAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -437,8 +445,8 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 6. CARD-AND-IMAGE PARALLAX ── */}
-      <section className="py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section className="py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
@@ -466,8 +474,8 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       </section>
 
       {/* ── 7. CRIMSON CTA BAR ── */}
-      <section className="bg-[#8A0000] py-16 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="bg-[#8A0000] py-16 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Ready to join the {schoolName.split(' ').slice(-1)[0]}?

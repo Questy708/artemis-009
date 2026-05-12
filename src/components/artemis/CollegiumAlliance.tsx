@@ -105,26 +105,30 @@ export default function CollegiumAlliance({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Global Alliance
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#network" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Network</a>
-          <a href="#partnerships" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Partnerships</a>
-          <a href="#nodes" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Nodes</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Global Alliance
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#network" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Network</a>
+                <a href="#partnerships" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Partnerships</a>
+                <a href="#nodes" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Nodes</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 2. Hero Section ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Collegium Alliance"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Alliance</span>
@@ -139,7 +143,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 3. Overview Section ── */}
-      <section id="network" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section id="network" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={overviewAnim.ref}
           className={`transition-all duration-700 ${overviewAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -151,7 +155,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Rich text */}
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -184,8 +188,8 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 4. Founding Members Grid ── */}
-      <section id="partnerships" className="bg-gray-50 py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section id="partnerships" className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div
             ref={membersAnim.ref}
             className={`transition-all duration-700 ${membersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -202,7 +206,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             </h2>
 
             {/* First row: 3 cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {foundingMembers.slice(0, 3).map((member, i) => (
                 <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                   <div className="aspect-[16/10] overflow-hidden bg-gray-100">
@@ -239,7 +243,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             </div>
 
             {/* Second row: 2 cards centered */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[680px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-[680px] mx-auto">
               {foundingMembers.slice(3, 5).map((member) => (
                 <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
                   <div className="aspect-[16/10] overflow-hidden bg-gray-100">
@@ -279,7 +283,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 5. How the Alliance Works ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={howAnim.ref}
           className={`transition-all duration-700 ${howAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -295,7 +299,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             Shared scaffolds, independent minds
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {howItWorks.map((item) => (
               <div key={item.number} className="group">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-4">
@@ -311,8 +315,8 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 6. Stats Section ── */}
-      <section id="nodes" className="bg-gray-50 py-20 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto">
+      <section id="nodes" className="bg-gray-50 py-16 lg:py-24 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto">
           <div
             ref={statsAnim.ref}
             className={`transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -322,7 +326,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">By the Numbers</span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
               {stats.map((stat, i) => (
                 <div key={i} className="relative">
                   <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
@@ -337,8 +341,8 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 7. Card-and-Image Parallax Section ── */}
-      <section className="py-20 px-6 lg:px-16">
-        <div className="max-w-[1000px] mx-auto">
+      <section className="py-16 lg:py-24 px-8 lg:px-20">
+        <div className="max-w-[1400px] mx-auto">
           <div
             ref={parallaxAnim.ref}
             className={`transition-all duration-700 ${parallaxAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -377,7 +381,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
 
       {/* ── 8. Crimson CTA Bar ── */}
       <section className="bg-[#8A0000] py-16">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Ready to join the Alliance?

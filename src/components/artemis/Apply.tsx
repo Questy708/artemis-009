@@ -120,25 +120,29 @@ export default function Apply({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* Sticky sub-header */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Admissions + Aid
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
-          <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
-          <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Admissions + Aid
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
+                <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
+                <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
+              </div>
       </div>
+          </div>
+        </div>
 
-      <div id="application" className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 pt-16 mb-24">
+      <div id="application" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24">
         <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-4 uppercase">
           Application for Admission
         </h1>
-        <p className="text-[18px] font-light text-gray-600 leading-relaxed mb-2 max-w-3xl">
+        <p className="text-[18px] font-light text-gray-600 leading-relaxed mb-2">
           Join the next generation of scholars, innovators, and leaders at the University of Artemis.
         </p>
-        <p className="text-[14px] text-gray-500 leading-relaxed mb-10 max-w-3xl">
+        <p className="text-[14px] text-gray-500 leading-relaxed mb-10">
           Our application assesses who you are, how you think, and what you have done. There is no application fee. Standardised tests (SAT/ACT) are optional. Take your time — you can navigate between sections using the step indicators above.
         </p>
 
@@ -158,7 +162,7 @@ export default function Apply({ goToPage }: Props) {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-8 max-w-3xl">
+          <form onSubmit={handleSubmit} className="space-y-8">
 
             {/* ═══ PART 1: PERSONAL INFORMATION ═══ */}
             {currentStep === 1 && (
@@ -179,7 +183,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Name */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>First Name *</label>
                       <input required type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className={inputClass} />
@@ -191,7 +195,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Email */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>Email Address *</label>
                       <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className={inputClass} />
@@ -203,7 +207,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Phone & Birthdate */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>Phone Number *</label>
                       <input required type="tel" value={phone} onChange={e => setPhone(e.target.value)} className={inputClass} placeholder="+country code number" />
@@ -215,7 +219,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Gender & Pronoun */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>Gender *</label>
                       <select required value={gender} onChange={e => setGender(e.target.value)} className={selectClass}>
@@ -234,7 +238,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Citizenship */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>Primary Citizenship *</label>
                       <select required value={citizenship} onChange={e => setCitizenship(e.target.value)} className={selectClass}>
@@ -256,7 +260,7 @@ export default function Apply({ goToPage }: Props) {
                     <label className={labelClass}>Street Address *</label>
                     <input required type="text" value={address} onChange={e => setAddress(e.target.value)} className={inputClass} />
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-6">
                     <div className="col-span-1">
                       <label className={labelClass}>City *</label>
                       <input required type="text" value={city} onChange={e => setCity(e.target.value)} className={inputClass} />
@@ -332,7 +336,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* School info */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                     <div>
                       <label className={labelClass}>School Name *</label>
                       <input required type="text" value={schoolName} onChange={e => setSchoolName(e.target.value)} className={inputClass} />
@@ -345,7 +349,7 @@ export default function Apply({ goToPage }: Props) {
                       </select>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
                     <div>
                       <label className={labelClass}>School City *</label>
                       <input required type="text" value={schoolCity} onChange={e => setSchoolCity(e.target.value)} className={inputClass} />
@@ -361,7 +365,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Grading */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Grading Scale *</label>
                       <select required value={gradingScale} onChange={e => setGradingScale(e.target.value)} className={selectClass}>
@@ -390,7 +394,7 @@ export default function Apply({ goToPage }: Props) {
                       </button>
                     </div>
                     {isTestOptional && (
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div>
                           <label className={labelClass}>SAT Math</label>
                           <input type="number" min="200" max="800" value={satMath} onChange={e => setSatMath(e.target.value)} className={inputClass} placeholder="200-800" />
@@ -521,7 +525,7 @@ export default function Apply({ goToPage }: Props) {
 
                   {applyingForAid === 'yes' && (
                     <>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
                         <div>
                           <label className={labelClass}>Estimated Household Income (USD equivalent)</label>
                           <select value={householdIncome} onChange={e => setHouseholdIncome(e.target.value)} className={selectClass}>

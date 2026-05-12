@@ -263,28 +263,32 @@ export default function Research({ goToPage }: ResearchProps) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sticky Sub-header — Artemis style ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          Research at Artemis
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#join" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Join Us</a>
-          <a href="#growth" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Growth &amp; Impact</a>
-          <a href="#highlights" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Highlights</a>
-          <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
-          <a href="#learn" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Learn More</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Research at Artemis
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#join" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Join Us</a>
+                <a href="#growth" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Growth &amp; Impact</a>
+                <a href="#highlights" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Highlights</a>
+                <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
+                <a href="#learn" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Learn More</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── 1. HERO ── */}
-      <section className="relative w-full h-[55vh] min-h-[400px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Research at Artemis"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Knowledge Enterprise</span>
@@ -299,7 +303,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 2. REVOLUTIONIZING THE RESEARCH ENTERPRISE ── */}
-      <section className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 py-20">
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={heroAnim.ref}
           className={`transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -311,7 +315,7 @@ export default function Research({ goToPage }: ResearchProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -366,12 +370,12 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 3. BE A PART OF ARTEMIS RESEARCH ── */}
-      <section id="join" className="scroll-mt-24 bg-gray-50 py-20">
+      <section id="join" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
         <div
           ref={joinAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${joinAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${joinAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left */}
             <div>
               <div className="mb-8 flex items-center space-x-3">
@@ -405,8 +409,8 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 4. FEATURED PROJECTS ── */}
-      <section className="py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section className="py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -455,10 +459,10 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 5. RESEARCH GROWTH & IMPACT ── */}
-      <section id="growth" className="scroll-mt-24 py-20">
+      <section id="growth" className="scroll-mt-24 py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -498,7 +502,7 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {researchStats.map((stat, i) => (
               <div key={i} className="relative">
                 <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
@@ -512,10 +516,10 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 6. HIGHLIGHTS ── */}
-      <section id="highlights" className="scroll-mt-24 py-20 bg-gray-50">
+      <section id="highlights" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
         <div
           ref={highlightsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -551,7 +555,7 @@ export default function Research({ goToPage }: ResearchProps) {
           {/* Three highlight cards */}
           <div
             ref={cardsAnim.ref}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${cardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700 ${cardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {highlightCards.map((card, i) => (
               <div key={i} className="group cursor-pointer">
@@ -575,10 +579,10 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 7. CORE RESEARCH FACILITIES ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={facilitiesAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${facilitiesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${facilitiesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative w-full min-h-[360px] md:min-h-[440px] overflow-hidden">
             <img
@@ -607,9 +611,9 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 8. CENTERS OF INQUIRY ── */}
-      <section id="centers" className="scroll-mt-24 py-20">
+      <section id="centers" className="scroll-mt-24 py-16 lg:py-24">
         {/* Intro — constrained width */}
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Centers of Inquiry</span>
@@ -636,7 +640,7 @@ export default function Research({ goToPage }: ResearchProps) {
         {/* Carousel — full bleed */}
         <div className="relative">
           {/* Nav header row */}
-          <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 mb-6 flex items-center justify-between">
+          <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 mb-6 flex items-center justify-between">
             <button
               onClick={() => goToPage('centers-of-inquiry')}
               className="flex items-center space-x-3 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
@@ -696,7 +700,7 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
 
           {/* Progress bar */}
-          <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16 mt-4">
+          <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 mt-4">
             <div className="h-[2px] bg-gray-100 w-full relative overflow-hidden">
               <div
                 className="absolute top-0 left-0 h-full bg-[#8A0000] transition-all duration-300"
@@ -708,8 +712,8 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 9. LEARN MORE ── */}
-      <section id="learn" className="scroll-mt-24 bg-gray-50 py-20">
-        <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
+      <section id="learn" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Resources</span>
@@ -717,7 +721,7 @@ export default function Research({ goToPage }: ResearchProps) {
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Learn more about the<br />Knowledge Enterprise
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {learnMoreLinks.map((col, i) => (
               <div key={i}>
                 <h3 className="text-[13px] font-bold uppercase tracking-widest text-gray-900 mb-4 border-b border-gray-200 pb-2">{col.heading}</h3>

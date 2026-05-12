@@ -131,26 +131,30 @@ export default function HowWeAreRun({ goToPage }: Props) {
   return (
     <div className="flex flex-col bg-white">
       {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 h-[60px] bg-white border-b border-gray-100 flex items-center px-6 lg:px-16 shrink-0 overflow-x-auto hide-scrollbar shadow-sm">
-        <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-          How We Are Run
-        </h2>
-        <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-          <a href="#governance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Governance</a>
-          <a href="#finance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Finance</a>
-          <a href="#policies" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Policies</a>
-        </div>
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                How We Are Run
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#governance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Governance</a>
+                <a href="#finance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Finance</a>
+                <a href="#policies" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Policies</a>
+              </div>
       </div>
+          </div>
+        </div>
 
       {/* ── Hero Section ── */}
-      <section className="relative w-full h-[50vh] min-h-[380px] overflow-hidden">
+      <section className="relative w-full h-[60vh] min-h-[440px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="How Artemis is run"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Governance</span>
@@ -165,10 +169,10 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Pages in This Section ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={linksAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-12">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -176,7 +180,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {sectionLinks.map((item) => (
               <button
                 key={item.title}
@@ -194,10 +198,10 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── The Governance Model ── */}
-      <section id="governance" className="py-20 bg-gray-50">
+      <section id="governance" className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={governanceAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${governanceAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${governanceAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -231,7 +235,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-gray-200">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 pt-12 border-t border-gray-200">
             {governanceStats.map((stat, i) => (
               <div key={i} className="relative pl-5 border-l-2 border-[#8A0000]">
                 <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
@@ -244,10 +248,10 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── The Seven Schools ── */}
-      <section className="py-20">
+      <section className="py-16 lg:py-24">
         <div
           ref={schoolsAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -264,7 +268,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {sevenSchools.map((school, i) => (
               <div
                 key={school.name}
@@ -300,12 +304,12 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis University Press ── */}
-      <section id="finance" className="py-20 bg-gray-50">
+      <section id="finance" className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={pressAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <div className="mb-8 flex items-center space-x-3">
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -339,12 +343,12 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Lifelong Learning ── */}
-      <section id="policies" className="py-20">
+      <section id="policies" className="py-16 lg:py-24">
         <div
           ref={lifelongAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 aspect-[4/3] bg-gray-200 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800"
@@ -378,10 +382,10 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Teaser Cards ── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={teaserAnim.ref}
-          className={`max-w-[1000px] mx-auto w-full px-6 lg:px-16 transition-all duration-700 ${teaserAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${teaserAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>
@@ -389,7 +393,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {teaserCards.map((card, i) => (
               <div key={i} className="group cursor-pointer" onClick={() => goToPage(card.link)}>
                 <div className="aspect-[3/2] bg-gray-200 overflow-hidden mb-6">
