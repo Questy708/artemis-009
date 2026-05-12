@@ -58,16 +58,14 @@ export default function Home({ goToPage }: HomeProps) {
       {/* ═══════════════════════════════════════════
           1. HERO — Full-bleed with gradient overlay
           ═══════════════════════════════════════════ */}
-      <section className="relative w-full py-12 lg:py-16">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-16">
-          <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
-            <img
-              src={heroContent.image}
-              alt="Artemis Expedition"
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="relative z-10 flex flex-col justify-end h-full pb-16">
+      <section className="relative w-full h-[65vh] min-h-[480px] overflow-hidden">
+        <img
+          src={heroContent.image}
+          alt="Artemis Expedition"
+          className="absolute inset-0 w-full h-full object-cover grayscale"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
           <div
             ref={heroAnim}
             className="transition-all duration-700 artemis-out"
@@ -93,8 +91,6 @@ export default function Home({ goToPage }: HomeProps) {
                 FULL STORY
               </button>
               <span>SHARE: X F</span>
-            </div>
-          </div>
             </div>
           </div>
         </div>
@@ -382,7 +378,7 @@ export default function Home({ goToPage }: HomeProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
             {/* Left — Heading + CTA */}
             <div className="md:col-span-5">
               <div className="mb-6 flex items-center space-x-3">
