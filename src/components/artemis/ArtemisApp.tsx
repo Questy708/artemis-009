@@ -32,6 +32,7 @@ import SchoolDetail from '@/components/artemis/SchoolDetail';
 import AdmissionsSubpage from '@/components/artemis/AdmissionsSubpage';
 import CentersOfInquiry from '@/components/artemis/CentersOfInquiry';
 import CenterDetail from '@/components/artemis/CenterDetail';
+import Blog from '@/components/artemis/Blog';
 
 export default function ArtemisApp() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -94,6 +95,8 @@ export default function ArtemisApp() {
         return <Colleges goToPage={goToPage} />;
       case 'collegium-alliance':
         return <CollegiumAlliance goToPage={goToPage} />;
+      case 'blog':
+        return <Blog goToPage={goToPage} />;
       case 'about':
         return <About goToPage={goToPage} />;
       case 'the-university':

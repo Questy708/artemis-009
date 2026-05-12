@@ -642,10 +642,10 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
         </div>
 
-        {/* Carousel — full bleed */}
-        <div className="relative">
+        {/* Carousel — constrained within max-w-[1400px] */}
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Nav header row */}
-          <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 mb-6 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between">
             <button
               onClick={() => goToPage('centers-of-inquiry')}
               className="flex items-center space-x-3 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
@@ -678,7 +678,7 @@ export default function Research({ goToPage }: ResearchProps) {
           <div
             ref={centersTrackRef}
             onScroll={handleCentersScroll}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 lg:px-[calc((100vw-1000px)/2+24px)] pb-4 hide-scrollbar"
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 hide-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {centers.map((center, i) => (

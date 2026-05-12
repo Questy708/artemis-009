@@ -112,9 +112,8 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
   const statsAnim = useInView();
   const cyclesAnim = useInView();
   const aidAnim = useInView();
-  const applyAnim = useInView();
   const infoAnim = useInView();
-  const activeSection = useActiveSection(['paths', 'cycles', 'aid', 'apply', 'info']);
+  const activeSection = useActiveSection(['paths', 'cycles', 'aid', 'info']);
 
   return (
     <div className="flex flex-col bg-white">
@@ -149,7 +148,6 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           { id: 'paths', label: 'Paths' },
           { id: 'cycles', label: 'Cycles' },
           { id: 'aid', label: 'Aid' },
-          { id: 'apply', label: 'Apply' },
           { id: 'info', label: 'Info' },
         ]}
         activeSection={activeSection}
@@ -348,38 +346,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           </div>
       </section>
 
-      {/* ── 6. START YOUR APPLICATION ── */}
-      <section id="apply" className="scroll-mt-[110px] bg-[#8A0000] py-16 lg:py-24">
-        <div
-          ref={applyAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${applyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          <div className="flex flex-col items-center text-center">
-            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
-              Ready to join the vanguard?
-            </h2>
-            <p className="text-[16px] text-white/70 max-w-lg leading-relaxed mb-10">
-              Applications for the Class of 2031 are now open. Start your digital portfolio today and take the first step toward an education without boundaries. No application fee.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => goToPage('apply')}
-                className="px-10 py-3 border-2 border-white text-white font-bold uppercase text-[12px] tracking-widest hover:bg-white hover:text-[#8A0000] transition-colors"
-              >
-                Start Application
-              </button>
-              <button
-                onClick={() => goToPage('application-deadlines')}
-                className="px-10 py-3 border-2 border-white text-white font-bold uppercase text-[12px] tracking-widest hover:bg-white hover:text-[#8A0000] transition-colors"
-              >
-                View Deadlines
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. MORE INFORMATION — link grid ── */}
+      {/* ── 6. MORE INFORMATION — link grid ── */}
       <section id="info" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
           ref={infoAnim.ref}

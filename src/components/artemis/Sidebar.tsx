@@ -85,6 +85,19 @@ export default function Sidebar({ isOpen, onClose, goHome, goToPage, hideDesktop
           <h4 className="text-[14px] font-bold border-b border-[#FFDADA] pb-2 mb-3">Artemis Manifesto</h4>
           <button onClick={() => { goToPage('about'); onClose?.(); }} className="text-[13px] leading-snug text-left hover:underline">Read the 'The Artemis Project' - our mission to re-engineer human learning.</button>
         </div>
+
+        <div className="mb-6">
+          <button
+            onClick={() => { goToPage('blog'); onClose?.(); }}
+            className="flex items-center justify-between w-full py-3 border-t border-b border-gray-100 group"
+          >
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-1">From the Journal</div>
+              <span className="text-[13px] font-medium group-hover:text-[#8A0000] transition-colors">Latest stories & research</span>
+            </div>
+            <svg className="w-4 h-4 text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
 
       {/* SIDEBAR FOOTER */}
@@ -95,6 +108,7 @@ export default function Sidebar({ isOpen, onClose, goHome, goToPage, hideDesktop
         <div className="text-[12px] space-x-2 mb-2 font-medium">
           <button onClick={() => goToPage('visit-us')} className="footer-link">Visit</button>
           <button onClick={() => goToPage('campus')} className="footer-link">Map</button>
+          <button onClick={() => goToPage('blog')} className="footer-link">Journal</button>
           <button onClick={() => goToPage('campus')} className="footer-link">Events</button>
           <button onClick={() => goToPage('jobs')} className="footer-link">Jobs</button>
           <button onClick={() => goToPage('fundraising')} className="footer-link text-[#8A0000]">Give</button>

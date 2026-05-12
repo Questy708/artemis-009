@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { articles, heroContent } from '@/lib/artemis-data';
+import { heroContent, blogArticles } from '@/lib/artemis-data';
 import ArtemisMap from '@/components/artemis/ArtemisMap';
 
 interface HomeProps {
@@ -97,7 +97,7 @@ export default function Home({ goToPage }: HomeProps) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          2. ARTICLE GRID — 2x2 with grayscale images
+          2. FROM THE JOURNAL — Featured blog articles
           ═══════════════════════════════════════════ */}
       <section className="py-20 px-6 lg:px-16">
         <div className="max-w-[1000px] mx-auto">
@@ -106,38 +106,87 @@ export default function Home({ goToPage }: HomeProps) {
             className="transition-all duration-700 artemis-out"
           >
             {/* Section divider */}
-            <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Research &amp; Education that Matter
-              </span>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                  From the Journal
+                </span>
+              </div>
+              <button
+                onClick={() => goToPage('blog')}
+                className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] border-b border-[#8A0000] hover:text-black hover:border-black transition-colors"
+              >
+                All Stories
+              </button>
             </div>
 
-            {/* 2x2 Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-20 mb-8">
-              {articles.slice(0, 4).map((article) => (
+            {/* Featured story — full width */}
+            <div
+              className="group cursor-pointer mb-12"
+              onClick={() => goToPage('fundraising')}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div className="aspect-[16/10] bg-gray-100 overflow-hidden shadow-sm">
+                  <img
+                    src={blogArticles[0].image}
+                    alt={blogArticles[0].title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[9px] font-bold uppercase tracking-widest bg-[#8A0000] text-white px-2 py-0.5">
+                      {blogArticles[0].category}
+                    </span>
+                    <span className="text-[11px] text-gray-400">{blogArticles[0].date}</span>
+                  </div>
+                  <h3 className="text-[24px] md:text-[28px] font-extrabold mb-3 group-hover:text-[#8A0000] text-gray-900 leading-tight transition-colors">
+                    {blogArticles[0].title}
+                  </h3>
+                  <p className="text-gray-600 text-[15px] leading-relaxed line-clamp-3">
+                    {blogArticles[0].summary}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2-column grid for next 2 stories */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-12">
+              {blogArticles.slice(1, 3).map((article) => (
                 <article
                   key={article.id}
                   className="cursor-pointer group"
                   onClick={() => goToPage(
-                    article.category === 'Education' ? 'education' :
-                    article.category === 'Research' ? 'centers-of-inquiry' :
+                    article.category === 'Campaign' ? 'fundraising' :
+                    article.category === 'Research' ? 'research' :
                     article.category === 'Innovation' ? 'innovation' :
-                    article.category === 'Philosophy' ? 'about' :
-                    'collegium-alliance'
+                    article.category === 'Campus Life' ? 'campus' :
+                    'blog'
                   )}
                 >
-                  <div className="w-full mb-6 overflow-hidden bg-gray-100 shadow-sm aspect-[16/10]">
+                  <div className="w-full mb-5 overflow-hidden bg-gray-100 shadow-sm aspect-[16/10]">
                     <img
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
                     />
                   </div>
-                  <h3 className="text-[22px] font-bold mb-3 group-hover:text-[#8A0000] text-gray-900 leading-tight transition-colors">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 ${
+                      article.category === 'Campaign' ? 'bg-[#8A0000] text-white' :
+                      article.category === 'Research' ? 'bg-gray-900 text-white' :
+                      article.category === 'Innovation' ? 'bg-gray-800 text-white' :
+                      'bg-[#8A0000]/10 text-[#8A0000]'
+                    }`}>
+                      {article.category}
+                    </span>
+                    <span className="text-[11px] text-gray-400">{article.date}</span>
+                  </div>
+                  <h3 className="text-[20px] font-bold mb-2 group-hover:text-[#8A0000] text-gray-900 leading-tight transition-colors">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 text-[16px] leading-relaxed line-clamp-3">
+                  <p className="text-gray-600 text-[14px] leading-relaxed line-clamp-3">
                     {article.summary}
                   </p>
                 </article>
@@ -487,12 +536,12 @@ export default function Home({ goToPage }: HomeProps) {
           <h4 className="text-[20px] font-bold mb-2">Want more about the Artemis Project?</h4>
           <p className="text-[16px] font-medium leading-relaxed">
             Explore{' '}
-            <button onClick={() => goToPage('research')} className="underline hover:opacity-80">
-              more spotlights
+            <button onClick={() => goToPage('blog')} className="underline hover:opacity-80">
+              the Artemis Journal
             </button>
             , or subscribe to receive{' '}
             <button onClick={() => goToPage('innovation')} className="underline hover:opacity-80">
-              daily doses of innovation
+              weekly dispatches
             </button>{' '}
             in your inbox.
           </p>
