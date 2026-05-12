@@ -183,7 +183,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Name */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>First Name *</label>
                       <input required type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className={inputClass} />
@@ -195,7 +195,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Email */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Email Address *</label>
                       <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className={inputClass} />
@@ -207,7 +207,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Phone & Birthdate */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Phone Number *</label>
                       <input required type="tel" value={phone} onChange={e => setPhone(e.target.value)} className={inputClass} placeholder="+country code number" />
@@ -219,7 +219,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Gender & Pronoun */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Gender *</label>
                       <select required value={gender} onChange={e => setGender(e.target.value)} className={selectClass}>
@@ -238,7 +238,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Citizenship */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Primary Citizenship *</label>
                       <select required value={citizenship} onChange={e => setCitizenship(e.target.value)} className={selectClass}>
@@ -260,7 +260,7 @@ export default function Apply({ goToPage }: Props) {
                     <label className={labelClass}>Street Address *</label>
                     <input required type="text" value={address} onChange={e => setAddress(e.target.value)} className={inputClass} />
                   </div>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
                     <div className="col-span-1">
                       <label className={labelClass}>City *</label>
                       <input required type="text" value={city} onChange={e => setCity(e.target.value)} className={inputClass} />
@@ -336,7 +336,7 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* School info */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>School Name *</label>
                       <input required type="text" value={schoolName} onChange={e => setSchoolName(e.target.value)} className={inputClass} />
@@ -525,7 +525,7 @@ export default function Apply({ goToPage }: Props) {
 
                   {applyingForAid === 'yes' && (
                     <>
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                         <div>
                           <label className={labelClass}>Estimated Household Income (USD equivalent)</label>
                           <select value={householdIncome} onChange={e => setHouseholdIncome(e.target.value)} className={selectClass}>

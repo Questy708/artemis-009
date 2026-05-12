@@ -198,8 +198,6 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
         <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
           <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
             <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-          <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-            <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2
               className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80"
               onClick={() => goToPage('colleges')}
@@ -209,8 +207,6 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
             </div>
           </div>
         </div>
-            </div>
-          </div>
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 py-16 lg:py-24">
           <h1 className="text-[48px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-8 uppercase">
             {schoolName}
@@ -237,8 +233,6 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('colleges')}>
               Our Colleges
             </h2>
@@ -248,8 +242,6 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
           </div>
         </div>
       </div>
-          </div>
-        </div>
 
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
