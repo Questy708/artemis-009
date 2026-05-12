@@ -97,6 +97,7 @@ export default function Sidebar({ isOpen, onClose, goHome, goToPage, hideDesktop
           <button onClick={() => goToPage('campus')} className="footer-link">Map</button>
           <button onClick={() => goToPage('campus')} className="footer-link">Events</button>
           <button onClick={() => goToPage('jobs')} className="footer-link">Jobs</button>
+          <button onClick={() => goToPage('fundraising')} className="footer-link text-[#8A0000]">Give</button>
           <button onClick={() => goToPage('contact-us')} className="footer-link">Contact</button>
         </div>
         <div className="text-[12px] space-x-2 mb-6 font-medium">

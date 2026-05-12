@@ -195,7 +195,7 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
               <button onClick={() => goToPage('education')} className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">Education</button>
               <button onClick={() => goToPage('admissions')} className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">Admissions + Aid</button>
               <button onClick={() => goToPage('about')} className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">About Artemis</button>
-              <button className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">Give</button>
+              <button onClick={() => goToPage('fundraising')} className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">Give</button>
             </div>
             <div className="flex flex-col gap-3">
               <button onClick={() => goToPage('research')} className="text-[13px] font-bold text-gray-900 text-left hover:text-[#8A0000] transition-colors">Research</button>

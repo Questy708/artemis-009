@@ -33,6 +33,7 @@ export default function Header({ onMenuClick, goHome, goToPage }: HeaderProps) {
         <button onClick={() => goToPage('campus')} className="hover:underline transition-opacity cursor-pointer text-white/90">campus life</button>
         <button onClick={() => goToPage('colleges')} className="hover:underline transition-opacity cursor-pointer text-white/90">colleges</button>
         <button onClick={() => goToPage('about')} className="hover:underline transition-opacity cursor-pointer text-white/90">about artemis</button>
+        <button onClick={() => goToPage('fundraising')} className="border border-white/40 text-white px-4 py-1 rounded-sm uppercase tracking-wider text-[11px] hover:bg-white/10 transition-colors cursor-pointer">give</button>
         <button onClick={() => goToPage('apply')} className="bg-white text-[#8A0000] px-4 py-1 rounded-sm uppercase tracking-wider text-[11px] hover:bg-gray-100 transition-colors cursor-pointer">apply</button>
       </div>
       <div className="flex items-center group cursor-pointer">
