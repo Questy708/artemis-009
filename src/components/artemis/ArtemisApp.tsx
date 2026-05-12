@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '@/components/artemis/Header';
 import Sidebar from '@/components/artemis/Sidebar';
 import Home from '@/components/artemis/Home';
@@ -35,11 +35,311 @@ import CenterDetail from '@/components/artemis/CenterDetail';
 import Blog from '@/components/artemis/Blog';
 import BlogArticlePage from '@/components/artemis/BlogArticlePage';
 import ArtemisChatBot from '@/components/artemis/ArtemisChatBot';
+import Breadcrumb, { BreadcrumbItem } from '@/components/artemis/Breadcrumb';
+import SearchOverlay from '@/components/artemis/SearchOverlay';
+
+/* ─── Page hierarchy map: child page → breadcrumb items ─── */
+function getBreadcrumbs(currentPage: string, currentProgram: string): { items: BreadcrumbItem[]; currentLabel: string } | null {
+  switch (currentPage) {
+    case 'program_detail':
+      return {
+        items: [
+          { label: 'Education', page: 'education' },
+          { label: 'Programs of Study', page: 'programs' },
+        ],
+        currentLabel: currentProgram || 'Program Detail',
+      };
+    case 'school_detail':
+      return {
+        items: [
+          { label: 'Colleges', page: 'colleges' },
+        ],
+        currentLabel: currentProgram || 'School Detail',
+      };
+    case 'center-detail':
+      return {
+        items: [
+          { label: 'Research', page: 'research' },
+          { label: 'Centers of Inquiry', page: 'centers-of-inquiry' },
+        ],
+        currentLabel: currentProgram || 'Center Detail',
+      };
+    case 'blog_article':
+      return {
+        items: [
+          { label: 'Journal', page: 'blog' },
+        ],
+        currentLabel: currentProgram || 'Article',
+      };
+    case 'undergraduate':
+      return {
+        items: [
+          { label: 'Education', page: 'education' },
+        ],
+        currentLabel: 'Undergraduate Study',
+      };
+    case 'undergraduate_curriculum':
+      return {
+        items: [
+          { label: 'Education', page: 'education' },
+          { label: 'Undergraduate Study', page: 'undergraduate' },
+        ],
+        currentLabel: 'Curriculum',
+      };
+    case 'programs':
+      return {
+        items: [
+          { label: 'Education', page: 'education' },
+        ],
+        currentLabel: 'Programs of Study',
+      };
+    case 'centers-of-inquiry':
+      return {
+        items: [
+          { label: 'Research', page: 'research' },
+        ],
+        currentLabel: 'Centers of Inquiry',
+      };
+    case 'collegium-alliance':
+      return {
+        items: [
+          { label: 'Research', page: 'research' },
+        ],
+        currentLabel: 'Collegium Alliance',
+      };
+    // About subpages
+    case 'how-we-are-run':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'How We Are Run',
+      };
+    case 'our-people':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Our People',
+      };
+    case 'history':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'History',
+      };
+    case 'access-at-artemis':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Access at Artemis',
+      };
+    case 'artemis-in-the-world':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Artemis in the World',
+      };
+    case 'visit-us':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Visit Us',
+      };
+    case 'jobs':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Jobs',
+      };
+    case 'contact-us':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Contact Us',
+      };
+    case 'governance-finance':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Governance & Finance',
+      };
+    case 'policies':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Policies',
+      };
+    case 'strategic-plan':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Strategic Plan',
+      };
+    case 'improvement':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Continuous Improvement',
+      };
+    case 'equality':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Equality & Diversity',
+      };
+    case 'sustainability':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'Sustainability',
+      };
+    case 'gazette':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'How We Are Run', page: 'how-we-are-run' },
+        ],
+        currentLabel: 'The Gazette',
+      };
+    // University subpages
+    case 'the-university':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'The University',
+      };
+    case 'facts':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'The University', page: 'the-university' },
+        ],
+        currentLabel: 'Facts & Figures',
+      };
+    case 'glossary':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'The University', page: 'the-university' },
+        ],
+        currentLabel: 'Glossary',
+      };
+    case 'estate':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'The University', page: 'the-university' },
+        ],
+        currentLabel: 'Our Estate',
+      };
+    case 'brand':
+      return {
+        items: [
+          { label: 'About', page: 'about' },
+          { label: 'The University', page: 'the-university' },
+        ],
+        currentLabel: 'Brand',
+      };
+    // Admissions subpages
+    case 'tuition-expenses':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'Tuition & Expenses',
+      };
+    case 'international-students':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'International Students',
+      };
+    case 'transfer-students':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'Transfer Students',
+      };
+    case 'application-deadlines':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'Application Deadlines',
+      };
+    case 'visit-campus':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'Visit Campus',
+      };
+    case 'graduate-coming-soon':
+      return {
+        items: [{ label: 'Admissions + Aid', page: 'admissions' }],
+        currentLabel: 'Graduate Programs',
+      };
+    // Other
+    case 'fundraising':
+      return {
+        items: [],
+        currentLabel: 'Give',
+      };
+    case 'nodes':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Institutional Nodes',
+      };
+    case 'visiting':
+      return {
+        items: [{ label: 'About', page: 'about' }],
+        currentLabel: 'Visiting the Colleges',
+      };
+    default:
+      return null;
+  }
+}
+
+/* ─── Page transition wrapper ─── */
+function PageTransition({ pageKey, children }: { pageKey: string; children: React.ReactNode }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const prevKeyRef = useRef(pageKey);
+
+  useEffect(() => {
+    if (prevKeyRef.current !== pageKey) {
+      setIsVisible(false);
+      // Brief fade out then fade in
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+        prevKeyRef.current = pageKey;
+      }, 80);
+      return () => clearTimeout(timer);
+    } else {
+      // Initial mount
+      setIsVisible(true);
+    }
+  }, [pageKey]);
+
+  return (
+    <div
+      className={`transition-all duration-300 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function ArtemisApp() {
   const [currentPage, setCurrentPage] = useState('home');
   const [currentProgram, setCurrentProgram] = useState('');
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
+
+  // Keyboard shortcut: Cmd/Ctrl+K to open search
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
 
   const goToPage = (page: string, program?: string) => {
     setCurrentPage(page);
@@ -48,6 +348,8 @@ export default function ArtemisApp() {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const pageKey = `${currentPage}-${currentProgram}`;
 
   const renderPage = () => {
     switch (currentPage) {
@@ -163,27 +465,40 @@ export default function ArtemisApp() {
 
   const isHome = currentPage === 'home';
 
+  // Get breadcrumbs for current page
+  const breadcrumbData = !isHome ? getBreadcrumbs(currentPage, currentProgram) : null;
+
   return (
     <div className="w-full min-h-screen bg-white flex flex-col font-sans text-[#141414]">
       {/* Fixed Header — always full-width */}
-      <Header 
+      <Header
         onMenuClick={() => setSidebarOpen(true)}
-        goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }} 
-        goToPage={goToPage} 
+        goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+        goToPage={goToPage}
+        onSearchClick={() => setSearchOpen(true)}
+      />
+
+      {/* Search Overlay */}
+      <SearchOverlay
+        isOpen={isSearchOpen}
+        onClose={() => setSearchOpen(false)}
+        goToPage={goToPage}
       />
 
       {isHome ? (
         /* ─── Homepage: sidebar + content side-by-side, centered with max-width ─── */
         <div className="flex flex-1 justify-center relative">
           <div className="flex w-full max-w-[1440px]">
-            <Sidebar 
+            <Sidebar
               isOpen={isSidebarOpen}
               onClose={() => setSidebarOpen(false)}
               goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
               goToPage={goToPage}
             />
             <main className="flex-1 flex flex-col min-w-0">
-              {renderPage()}
+              <PageTransition pageKey={pageKey}>
+                {renderPage()}
+              </PageTransition>
             </main>
           </div>
         </div>
@@ -191,15 +506,28 @@ export default function ArtemisApp() {
         /* ─── Subpages: full-viewport-width content, no sidebar in flow ─── */
         <>
           {/* Mobile drawer only — uses fixed positioning, zero layout impact */}
-          <Sidebar 
+          <Sidebar
             isOpen={isSidebarOpen}
             onClose={() => setSidebarOpen(false)}
             goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
             goToPage={goToPage}
             hideDesktopSidebar={true}
           />
+
+          {/* Breadcrumb navigation — only on subpages */}
+          {breadcrumbData && (
+            <Breadcrumb
+              items={breadcrumbData.items}
+              currentPage={breadcrumbData.currentLabel}
+              goToPage={goToPage}
+              showBack={true}
+            />
+          )}
+
           <main className="flex-1 flex flex-col w-full">
-            {renderPage()}
+            <PageTransition pageKey={pageKey}>
+              {renderPage()}
+            </PageTransition>
           </main>
         </>
       )}

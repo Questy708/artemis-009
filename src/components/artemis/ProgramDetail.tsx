@@ -136,15 +136,7 @@ export default function ProgramDetail({ goToPage, programName = "African Studies
          <h1 className="text-3xl lg:text-4xl font-serif font-bold">Artemis College Programs of Study 2026–2027</h1>
       </div>
       
-      <div className="bg-gray-100 border-b border-gray-200 px-8 lg:px-20 py-3 flex flex-wrap text-sm text-gray-600 gap-4">
-        <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('home')}>Artemis University Publications</span>
-        <span>/</span>
-        <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('education')}>Artemis College Programs of Study</span>
-        <span>/</span>
-        <span className="hover:text-black cursor-pointer uppercase tracking-wider font-bold text-xs" onClick={() => goToPage('programs')}>Subjects of Instruction</span>
-        <span>/</span>
-        <span className="text-black uppercase tracking-wider font-bold text-xs">{data.title}</span>
-      </div>
+
 
       <OnThisPageNav
         sections={tabs.map(t => ({ id: t.id, label: t.label }))}
