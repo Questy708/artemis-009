@@ -4,12 +4,10 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
-  Send,
+  ArrowUp,
   ChevronDown,
   Maximize2,
   PanelRightOpen,
-  Minimize2,
-  ArrowUp,
   Sparkles,
 } from 'lucide-react';
 
@@ -19,20 +17,15 @@ interface Message {
 }
 
 type ViewMode = 'expanded' | 'side-panel';
-type ChatState = 'initial' | 'ask-btn' | 'chat';
+type ChatState = 'compact' | 'ask-btn' | 'chat';
 
 const SUGGESTED_QUESTIONS = [
   'What programs of study does Artemis offer?',
   'How do I apply to Artemis College?',
-  'Tell me about the Collegium Alliance',
 ];
 
 export default function ArtemisChatBot() {
-  // Initial = compact widget auto-shown on first visit
-  // ask-btn = "Ask a question" pill (only after user has used & closed chat)
-  // chat = expanded or side-panel full chat
-  const [chatState, setChatState] = useState<ChatState>('initial');
-  const [hasUsedChat, setHasUsedChat] = useState(false);
+  const [chatState, setChatState] = useState<ChatState>('compact');
   const [viewMode, setViewMode] = useState<ViewMode>('expanded');
   const [showModeDropdown, setShowModeDropdown] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -40,7 +33,6 @@ export default function ArtemisChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const compactInputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = useCallback(() => {
@@ -54,8 +46,6 @@ export default function ArtemisChatBot() {
   useEffect(() => {
     if (chatState === 'chat') {
       setTimeout(() => inputRef.current?.focus(), 300);
-    } else if (chatState === 'initial') {
-      setTimeout(() => compactInputRef.current?.focus(), 300);
     }
   }, [chatState]);
 
@@ -70,8 +60,9 @@ export default function ArtemisChatBot() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
-  const closeAll = () => {
-    setChatState(hasUsedChat ? 'ask-btn' : 'initial');
+  const closeChat = () => {
+    // If user has chatted before, show "Ask a question" pill; otherwise show compact widget
+    setChatState(messages.length > 0 ? 'ask-btn' : 'compact');
     setShowModeDropdown(false);
   };
 
@@ -89,10 +80,9 @@ export default function ArtemisChatBot() {
     setMessages(updatedMessages);
     setInput('');
     setIsLoading(true);
-    setHasUsedChat(true);
 
     // Auto-advance from compact to full chat
-    if (fromCompact || chatState === 'initial') {
+    if (fromCompact || chatState === 'compact') {
       setChatState('chat');
     }
 
@@ -131,51 +121,51 @@ export default function ArtemisChatBot() {
 
   const modeLabel = viewMode === 'expanded' ? 'Expanded View' : 'Side Panel';
 
-  // ─── Suggested question button (shared style) ───
-  const SuggestedButton = ({ text, onClick }: { text: string; onClick: () => void }) => (
+  // ─── Shared: Question Button ───
+  const QuestionBtn = ({ text, onClick }: { text: string; onClick: () => void }) => (
     <button
       onClick={onClick}
-      className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white text-[13px] text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors text-left group"
+      className="flex items-center justify-between w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white text-[13px] text-gray-800 hover:bg-gray-50 transition-colors text-left"
     >
       <span>{text}</span>
-      <ArrowUp className="h-3 w-3 text-gray-400 group-hover:text-gray-600 transition-colors shrink-0 ml-2 rotate-45" />
+      <ArrowUp className="h-3 w-3 text-gray-400 shrink-0 ml-2 rotate-45" />
     </button>
   );
 
-  // ─── Input bar (shared style) ───
-  const InputBar = ({ compactRef, fromCompact }: { compactRef?: React.RefObject<HTMLInputElement | null>; fromCompact?: boolean }) => (
-    <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 focus-within:border-gray-400 transition-all">
+  // ─── Shared: Input Bar ───
+  const InputBar = ({ refArg, fromCompact }: { refArg?: React.RefObject<HTMLInputElement | null>; fromCompact?: boolean }) => (
+    <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
       <Sparkles className="h-3.5 w-3.5 text-gray-400 shrink-0" />
       <input
-        ref={compactRef || inputRef}
+        ref={refArg || inputRef}
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e, fromCompact)}
-        placeholder="Ask anything about Artemis..."
+        placeholder="Ask anything about Artemis"
         disabled={isLoading}
         className="flex-1 bg-transparent text-[13px] text-gray-800 placeholder-gray-400 outline-none disabled:opacity-50"
       />
       <button
         onClick={() => sendMessage(undefined, fromCompact)}
         disabled={!input.trim() || isLoading}
-        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition-all hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
+        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-gray-500 transition-all hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
         aria-label="Send message"
       >
-        <ArrowUp className="h-3.5 w-3.5" />
+        <ArrowUp className="h-3 w-3" />
       </button>
     </div>
   );
 
-  // ─── Chat content (shared across expanded + side panel) ───
+  // ─── Chat Content (expanded + side panel) ───
   const chatContent = (
-    <div className="flex flex-col h-full bg-white">
-      {/* Top bar: mode toggle + close */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-100">
+    <div className="flex flex-col h-full bg-[#f7f7f7]">
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setShowModeDropdown(!showModeDropdown)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-gray-200 bg-white text-[13px] font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-md border border-gray-200 bg-white text-[12px] font-medium text-gray-600 hover:bg-gray-50 transition-colors"
           >
             <span>{modeLabel}</span>
             <ChevronDown className="h-3 w-3" />
@@ -187,13 +177,13 @@ export default function ArtemisChatBot() {
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.15 }}
-                className="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden z-50"
+                transition={{ duration: 0.12 }}
+                className="absolute top-full left-0 mt-1 w-40 bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden z-50"
               >
                 <button
                   onClick={() => switchMode('expanded')}
-                  className={`flex items-center gap-2.5 w-full px-3.5 py-2 text-[13px] text-left hover:bg-gray-50 transition-colors ${
-                    viewMode === 'expanded' ? 'bg-gray-50 text-[#8A0000] font-medium' : 'text-gray-700'
+                  className={`flex items-center gap-2 w-full px-3 py-2 text-[12px] text-left hover:bg-gray-50 transition-colors ${
+                    viewMode === 'expanded' ? 'bg-gray-50 text-gray-900 font-medium' : 'text-gray-600'
                   }`}
                 >
                   <Maximize2 className="h-3.5 w-3.5" />
@@ -201,8 +191,8 @@ export default function ArtemisChatBot() {
                 </button>
                 <button
                   onClick={() => switchMode('side-panel')}
-                  className={`flex items-center gap-2.5 w-full px-3.5 py-2 text-[13px] text-left hover:bg-gray-50 transition-colors ${
-                    viewMode === 'side-panel' ? 'bg-gray-50 text-[#8A0000] font-medium' : 'text-gray-700'
+                  className={`flex items-center gap-2 w-full px-3 py-2 text-[12px] text-left hover:bg-gray-50 transition-colors ${
+                    viewMode === 'side-panel' ? 'bg-gray-50 text-gray-900 font-medium' : 'text-gray-600'
                   }`}
                 >
                   <PanelRightOpen className="h-3.5 w-3.5" />
@@ -214,11 +204,11 @@ export default function ArtemisChatBot() {
         </div>
 
         <button
-          onClick={closeAll}
-          className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+          onClick={closeChat}
+          className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
           aria-label="Close chat"
         >
-          <X className="h-3.5 w-3.5" />
+          <X className="h-3 w-3" />
         </button>
       </div>
 
@@ -227,49 +217,39 @@ export default function ArtemisChatBot() {
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-              <Sparkles className="h-5 w-5 text-gray-500" />
+              <Sparkles className="h-5 w-5 text-gray-400" />
             </div>
             <p className="text-sm text-gray-500 mb-6">Ask me anything about Artemis College</p>
-
             <div className="w-full space-y-2">
               {SUGGESTED_QUESTIONS.map((q, i) => (
-                <SuggestedButton key={i} text={q} onClick={() => sendMessage(q)} />
+                <QuestionBtn key={i} text={q} onClick={() => sendMessage(q)} />
               ))}
             </div>
           </div>
         )}
 
         {messages.map((msg, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.15 }}
-            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
+          <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13px] leading-relaxed ${
+              className={`max-w-[85%] text-[13px] leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-[#f0f0f0] text-gray-800 rounded-br-md'
-                  : 'text-gray-800 rounded-bl-md'
+                  ? 'bg-[#f0f0f0] text-gray-800 rounded-2xl rounded-br-sm px-4 py-2.5'
+                  : 'text-gray-800'
               }`}
             >
               {msg.content}
             </div>
-          </motion.div>
+          </div>
         ))}
 
         {isLoading && (
-          <div className="flex justify-start">
-            <div className="text-gray-400 text-[13px]">Generating...</div>
-          </div>
+          <div className="flex justify-start text-gray-400 text-[13px]">Generating...</div>
         )}
-
         <div ref={messagesEndRef} />
       </div>
 
       {/* Input area */}
-      <div className="border-t border-gray-100 px-4 py-3">
+      <div className="bg-white border-t border-gray-100 px-4 py-3">
         <InputBar />
         <p className="text-[10px] text-gray-400 text-center mt-2">
           AI-generated replies &middot; Powered by Artemis AI
@@ -280,68 +260,62 @@ export default function ArtemisChatBot() {
 
   return (
     <>
-      {/* ─── State: INITIAL — Compact widget auto-shown (first visit) ─── */}
+      {/* ─── COMPACT — Auto-shown widget at bottom center ─── */}
       <AnimatePresence>
-        {chatState === 'initial' && (
+        {chatState === 'compact' && (
           <motion.div
-            key="initial-compact"
+            key="compact"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] px-4"
+            className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-[520px]"
           >
-            <div className="bg-[#f0f0f0] rounded-2xl p-4 shadow-lg">
-              {/* Suggested questions */}
-              <div className="space-y-2 mb-3">
-                {SUGGESTED_QUESTIONS.map((q, i) => (
-                  <SuggestedButton key={i} text={q} onClick={() => sendMessage(q, true)} />
-                ))}
-              </div>
-
-              {/* Input */}
-              <InputBar compactRef={compactInputRef} fromCompact />
+            <div className="bg-[#f0f0f0] rounded-xl p-3 shadow-lg space-y-2">
+              {SUGGESTED_QUESTIONS.map((q, i) => (
+                <QuestionBtn key={i} text={q} onClick={() => sendMessage(q, true)} />
+              ))}
+              <InputBar fromCompact />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ─── State: ASK-BTN — "Ask a question" pill (after close) ─── */}
+      {/* ─── ASK-BTN — "Ask a question" pill after close ─── */}
       <AnimatePresence>
         {chatState === 'ask-btn' && (
           <motion.div
             key="ask-btn"
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.25 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40"
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40"
           >
             <button
               onClick={() => setChatState('chat')}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 bg-white text-[13px] text-gray-600 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-800 transition-all shadow-sm"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white text-[13px] text-gray-600 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm"
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <ArrowUp className="h-3 w-3" />
               <span>Ask a question</span>
-              <ArrowUp className="h-3 w-3 rotate-45" />
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ─── State: CHAT — Expanded or Side Panel ─── */}
+      {/* ─── CHAT — Expanded or Side Panel ─── */}
       <AnimatePresence>
         {chatState === 'chat' && (
           <>
-            {/* Backdrop — only for expanded view, NOT for side panel */}
+            {/* Backdrop only for expanded */}
             {viewMode === 'expanded' && (
               <motion.div
-                key="chat-backdrop"
+                key="backdrop"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-black/10"
+                className="fixed inset-0 z-40 bg-black/20"
               />
             )}
 
@@ -351,23 +325,23 @@ export default function ArtemisChatBot() {
               initial={
                 viewMode === 'side-panel'
                   ? { opacity: 0, x: 60 }
-                  : { opacity: 0, scale: 0.97, y: 10 }
+                  : { opacity: 0, scale: 0.97 }
               }
               animate={
                 viewMode === 'side-panel'
                   ? { opacity: 1, x: 0 }
-                  : { opacity: 1, scale: 1, y: 0 }
+                  : { opacity: 1, scale: 1 }
               }
               exit={
                 viewMode === 'side-panel'
                   ? { opacity: 0, x: 60 }
-                  : { opacity: 0, scale: 0.97, y: 10 }
+                  : { opacity: 0, scale: 0.97 }
               }
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`fixed z-50 bg-white shadow-2xl border border-gray-200 overflow-hidden ${
+              className={`fixed z-50 bg-white shadow-2xl overflow-hidden ${
                 viewMode === 'side-panel'
-                  ? 'top-0 right-0 h-full w-[30vw] min-w-[360px] max-w-[480px] rounded-l-2xl'
-                  : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] max-w-[720px] h-[80vh] max-h-[680px] min-w-[400px] rounded-2xl'
+                  ? 'top-0 right-0 h-full w-[28vw] min-w-[360px] max-w-[460px]'
+                  : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[580px] h-[80vh] rounded-2xl'
               }`}
             >
               {chatContent}
