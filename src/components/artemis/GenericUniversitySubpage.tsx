@@ -35,12 +35,13 @@ function useScrollReveal() {
   return { ref, visible };
 }
 
-/* ─── Reusable section divider — red accent label ─── */
+/* ─── Reusable section divider ─── */
 function SectionDivider({ label }: { label: string }) {
   return (
-    <div className="mb-8 flex items-center space-x-3">
-      <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-      <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">{label}</span>
+    <div className="flex items-center py-12">
+      <div className="flex-grow border-t border-gray-200"></div>
+      <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">{label}</span>
+      <div className="flex-grow border-t border-gray-200"></div>
     </div>
   );
 }

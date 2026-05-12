@@ -79,14 +79,67 @@ export default function OurPeople({ goToPage }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      <section id="explore" className="py-16 lg:py-24">
-        <div
-          ref={exploreAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+      {/* ── Sub-header ── */}
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Our People
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#faculty" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Faculty</a>
+                <a href="#staff" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Staff</a>
+                <a href="#leadership" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Leadership</a>
+              </div>
+      </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+      {/* ── 1. HERO ── */}
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1800"
+          className="absolute inset-0 w-full h-full object-cover grayscale"
+          alt="The people of Artemis"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Explore</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              The Artemis Community
+            </span>
+          </div>
+          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+            Our People
+          </h1>
+          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
+            The scholars, researchers, and staff who form the beating heart of the Artemis experiment — a global guild united by the pursuit of knowledge without borders.
+          </p>
+        </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2. EXPLORE ── */}
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+        <div
+          ref={exploreAnim.ref}
+          className={`transition-all duration-700 ${exploreAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Explore
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -176,10 +229,13 @@ export default function OurPeople({ goToPage }: Props) {
           ref={spotlightAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Faculty Spotlight</span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Faculty Spotlight
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           {/* Card-and-image parallax section */}
           <div className="max-w-[1600px] mx-auto">
@@ -260,10 +316,13 @@ export default function OurPeople({ goToPage }: Props) {
           ref={workingAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Careers</span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Careers
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Text */}

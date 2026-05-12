@@ -76,19 +76,158 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Living Commons</span>
-            </div>
+      {/* ── 1. Sticky Sub-header ── */}
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Campus Life
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#living" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Living</a>
+                <a href="#traditions" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Traditions</a>
+                <a href="#community" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Community</a>
+                <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
+              </div>
+      </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+      {/* ── 2. Hero ── */}
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
+          className="absolute inset-0 w-full h-full object-cover grayscale"
+          alt="Campus life at Artemis"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Life at Artemis</span>
+          </div>
+          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
+            A global<br />living lab
+          </h1>
+          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
+            Across three continents, Artemis students live and learn in a community that stretches far beyond the classroom — connected digitally, united by a shared culture of inquiry and mutual respect.
+          </p>
+        </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. Living Commons — section divider with two-column ── */}
+      <section id="living" className="scroll-mt-24 py-16 lg:py-24">
+        <div
+          ref={heroAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Living Commons</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div
             ref={commonsIntroAnim.ref}
             className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start transition-all duration-700 ${commonsIntroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Traditions & Rituals</span>
+            {/* Left — Text */}
+            <div>
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+                Where living<br />is the curriculum
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                Every student is assigned to one of our 12 Living Commons, themed around archetypes of learning and societal transformation. These are not just residences — they are shared kitchens, meditation rooms, civic salons, and outdoor labs where student life itself becomes the living curriculum.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
+                Each Commons cultivates a distinct character — from the quiet contemplation of the Scholars to the restless energy of the Builders — while remaining woven into the larger Artemis tapestry through shared rituals, cross-Commons projects, and the digital connective tissue that links all our hubs.
+              </p>
+              <button
+                onClick={() => goToPage('campus')}
+                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+              >
+                <span>Explore the Commons</span>
+                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
             </div>
+
+            {/* Right — Image */}
+            <div className="group">
+              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1000"
+                  alt="Living Commons community"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                />
+              </div>
+              <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
+                The Weavers Commons courtyard at the Geneva hub — a space designed for conversation, collaboration, and the quiet art of community.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. The Commons — 4-card grid on gray-50 ── */}
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div
+          ref={commonsCardsAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Commons</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            {commonsCards.map((card, i) => (
+              <div key={i} className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden">
+                <div className="aspect-[16/9] bg-gray-100 overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+                <div className="p-8">
+                  <div className="flex items-center mb-4">
+                    <span className="text-[10px] font-bold text-[#8A0000] tracking-widest mr-4 uppercase">{card.tag}</span>
+                  </div>
+                  <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-[14px] text-gray-600 leading-relaxed mb-4">{card.desc}</p>
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#141414] border-b border-black w-fit group-hover:text-[#8A0000] group-hover:border-[#8A0000] transition-all">
+                    Discover More
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Traditions & Rituals — card-and-image parallax ── */}
+      <section id="traditions" className="scroll-mt-24 py-16 lg:py-24">
+        <div
+          ref={traditionsAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Traditions & Rituals</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           {/* Card-and-image parallax */}
           <div className="max-w-[1600px] mx-auto">
@@ -141,6 +280,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
         </div>
           </div>
+      </section>
 
       {/* ── 6. Stats row ── */}
       <section id="community" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">

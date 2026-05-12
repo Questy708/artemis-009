@@ -133,10 +133,13 @@ export default function TheUniversity({ goToPage }: Props) {
 
       {/* ── Pages in This Section ── */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Pages in this section</span>
-            </div>
+        <div className="relative flex items-center mb-12">
+          <div className="flex-grow border-t border-gray-200"></div>
+          <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            Pages in this section
+          </span>
+          <div className="flex-grow border-t border-gray-200"></div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {sectionLinks.map((item) => (
             <button
@@ -215,9 +218,12 @@ export default function TheUniversity({ goToPage }: Props) {
             ref={roleAnim.ref}
             className={`transition-all duration-700 ${roleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Governance & Roles</span>
+            <div className="relative flex items-center mb-16">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+                Governance & Roles
+              </span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
@@ -350,10 +356,13 @@ export default function TheUniversity({ goToPage }: Props) {
           ref={pressAnim.ref}
           className={`transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Publishing</span>
-            </div>
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              Publishing
+            </span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="md:col-span-7">

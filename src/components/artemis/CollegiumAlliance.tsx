@@ -104,25 +104,204 @@ export default function CollegiumAlliance({ goToPage }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Network</span>
-            </div>
+      {/* ── Sub-header ── */}
+      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
+                Global Alliance
+              </h2>
+              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#network" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Network</a>
+                <a href="#partnerships" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Partnerships</a>
+                <a href="#nodes" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Nodes</a>
+              </div>
+      </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+      {/* ── 2. Hero Section ── */}
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1800"
+          className="absolute inset-0 w-full h-full object-cover grayscale"
+          alt="Collegium Alliance"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Alliance</span>
+          </div>
+          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
+            Collegium Alliance
+          </h1>
+          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
+            A federated alliance of founding institutions — each autonomous in identity, united in purpose — co-creating the academic scaffolds of a new kind of university.
+          </p>
+        </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. Overview Section ── */}
+      <section id="network" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+        <div
+          ref={overviewAnim.ref}
+          className={`transition-all duration-700 ${overviewAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">The Network</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Founding Members</span>
+            {/* Left — Rich text */}
+            <div>
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+                Stronger together
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                The Collegium Alliance is the foundational pact that binds the founding micro-colleges of the Artemis Collegium Network. Rather than a top-down institution imposing uniformity, the Alliance is a bottom-up federation — each member retains full autonomy over its identity, academic specialisation, and cultural character while committing to shared standards, mutual support, and collective advancement.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                In practice, this means that a student attending Kigali College and another attending Berlin College follow the same rigorous curriculum framework and graduate with the same globally recognised degree — yet their day-to-day experience reflects the unique strengths, faculty, and cultural context of their respective nodes.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed">
+                The Alliance is not merely a network of branch campuses. Each college is a founding partner — a co-creator of the university itself — with genuine influence over institutional direction, curriculum design, and research priorities. This is governance by contribution, not by hierarchy.
+              </p>
+            </div>
+
+            {/* Right — Quote */}
+            <div className="pt-4">
+              <blockquote className="border-l-4 border-[#8A0000] pl-8 py-2">
+                <p className="text-[20px] md:text-[22px] text-[#141414] leading-relaxed font-normal italic mb-6">
+                  &ldquo;The Collegium Alliance is not a merger — it is a multiplication. Each member retains its identity while gaining the infrastructure of a global university.&rdquo;
+                </p>
+                <footer className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#8A0000]">
+                  — Artemis Founding Principle
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Founding Members Grid ── */}
+      <section id="partnerships" className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+          <div
+            ref={membersAnim.ref}
+            className={`transition-all duration-700 ${membersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            {/* Section divider */}
+            <div className="relative flex items-center mb-16">
+              <div className="flex-grow border-t border-gray-200"></div>
+              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Founding Members</span>
+              <div className="flex-grow border-t border-gray-200"></div>
             </div>
 
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-16">
               The founding five
             </h2>
 
-            <div className="mb-8 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">How It Works</span>
+            {/* First row: 3 cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {foundingMembers.slice(0, 3).map((member, i) => (
+                <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={14} className="text-[#8A0000]" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">{member.city}</span>
+                    </div>
+                    <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {member.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.focus.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-gray-100 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">
+                      {member.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
+
+            {/* Second row: 2 cards centered */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-[680px] mx-auto">
+              {foundingMembers.slice(3, 5).map((member) => (
+                <div key={member.name} className="group bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={14} className="text-[#8A0000]" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000]">{member.city}</span>
+                    </div>
+                    <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {member.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.focus.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-gray-100 px-2 py-1"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">
+                      {member.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. How the Alliance Works ── */}
+      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+        <div
+          ref={howAnim.ref}
+          className={`transition-all duration-700 ${howAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          {/* Section divider */}
+          <div className="relative flex items-center mb-16">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">How It Works</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
 
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-16">
             Shared scaffolds, independent minds
@@ -141,6 +320,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             ))}
           </div>
         </div>
+      </section>
 
       {/* ── 6. Stats Section ── */}
       <section id="nodes" className="bg-gray-50 py-16 lg:py-24 px-8 lg:px-20">
