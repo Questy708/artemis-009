@@ -9,38 +9,75 @@ interface CampusLifeProps {
 }
 
 /* ─── Data ─── */
-const commonsCards = [
-  {
-    tag: '01 — WEAVERS',
-    title: 'The Weavers Commons',
-    desc: 'Social innovation and community weaving. Residents collaborate on civic projects, mutual aid networks, and the art of building bonds that hold society together.',
-    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    tag: '02 — CATALYST',
-    title: 'The Catalyst Commons',
-    desc: 'Scientific discovery and experimental living. A community of researchers who treat daily life as a laboratory — testing ideas, running experiments, and accelerating breakthroughs.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    tag: '03 — EXPLORERS',
-    title: 'The Explorers Commons',
-    desc: 'Cosmological inquiry and frontier thinking. From astrophysics to philosophy, Explorers push the boundaries of what is known and imagine what lies beyond the horizon.',
-    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    tag: '04 — BUILDERS',
-    title: 'The Builders Commons',
-    desc: 'Engineering, design, and making. Builders are architects of the tangible — from sustainable infrastructure to digital platforms that reshape how communities function.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
-  },
-];
-
 const campusStats = [
   { value: '12', label: 'Living Commons', detail: 'Themed residential communities' },
   { value: '50+', label: 'Student societies', detail: 'Clubs, guilds, and collectives' },
   { value: '3', label: 'Continents', detail: 'Global hub presence' },
   { value: '24h', label: 'Initiation immersion', detail: 'Co-design experience for all newcomers' },
+];
+
+/* ─── Living Moments: editorial atlas data ─── */
+const livingMoments = [
+  {
+    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1000',
+    location: 'Valletta',
+    time: '06:00',
+    caption: 'Dawn over the Mediterranean — the Weavers gather for morning reflection on the terrace',
+    tag: 'Weavers Commons',
+    span: 'col-span-1 md:col-span-2 row-span-2', // hero cell
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
+    location: 'Tokyo',
+    time: '14:00',
+    caption: 'An afternoon of molecular prototyping at the Catalyst lab',
+    tag: 'Catalyst Commons',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    // Text-only cell — student quote
+    type: 'quote',
+    quote: '"The Commons doesn\'t just house you — it reshapes how you think about belonging."',
+    attribution: 'Yuki Tanaka, Explorers Commons, Class of 2027',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=800',
+    location: 'Reykjavik',
+    time: '22:00',
+    caption: 'Stargazing from the Explorers rooftop observatory — where the sky becomes a syllabus',
+    tag: 'Explorers Commons',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    // Network map cell
+    type: 'network',
+    span: 'col-span-1 md:col-span-2 row-span-1',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    location: 'San Francisco',
+    time: '10:00',
+    caption: 'The Builders workshop — where infrastructure meets imagination on the Pacific coast',
+    tag: 'Builders Commons',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
+    location: 'Geneva',
+    time: '18:00',
+    caption: 'Evening seminar in the Weavers salon — ideas tested against the fire of conversation',
+    tag: 'Weavers Commons',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    // Stats/typography cell
+    type: 'stat',
+    statValue: '12',
+    statLabel: 'Living Commons across 3 continents',
+    statDetail: 'Each one a world. Together, a universe.',
+    span: 'col-span-1 row-span-1',
+  },
 ];
 
 const studentLifeLinks = [
@@ -169,41 +206,115 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 4. The Commons — 4-card grid on gray-50 ── */}
-      <section className="bg-gray-50 py-16 lg:py-24">
+      {/* ── 4. The Artemis Atlas — Living Moments editorial grid ── */}
+      <section className="py-16 lg:py-24">
         <div
           ref={commonsCardsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Commons</span>
+          <div className="flex items-start justify-between mb-12">
+            <div>
+              <div className="mb-4 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Artemis Atlas</span>
+              </div>
+              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414]">
+                Living moments<br />across the network
+              </h2>
+            </div>
+            <p className="hidden md:block text-[14px] text-gray-500 max-w-xs text-right leading-relaxed">
+              A single day spans three continents. These are the moments that make the Artemis network alive.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {commonsCards.map((card, i) => (
-              <div key={i} className="group border border-gray-200 hover:border-[#8A0000] transition-all cursor-pointer bg-white shadow-sm hover:shadow-lg overflow-hidden">
-                <div className="aspect-[16/9] bg-gray-100 overflow-hidden">
+          {/* Bento Grid — asymmetric editorial layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[220px] md:auto-rows-[200px]">
+            {livingMoments.map((moment, i) => {
+              /* ── Quote cell ── */
+              if (moment.type === 'quote') {
+                return (
+                  <div key={i} className={`${moment.span} bg-[#141414] p-8 flex flex-col justify-between`}>
+                    <svg className="w-8 h-8 text-[#8A0000] opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                    <div>
+                      <p className="text-[16px] md:text-[18px] text-white/90 leading-snug font-light mb-4">{moment.quote}</p>
+                      <p className="text-[11px] text-white/40 uppercase tracking-widest">{moment.attribution}</p>
+                    </div>
+                  </div>
+                );
+              }
+
+              /* ── Network map cell ── */
+              if (moment.type === 'network') {
+                return (
+                  <div key={i} className={`${moment.span} bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center`}>
+                    {/* Animated dots + lines constellation */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice">
+                      {/* Connecting lines */}
+                      <line x1="100" y1="60" x2="250" y2="140" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
+                      <line x1="250" y1="140" x2="400" y2="50" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
+                      <line x1="400" y1="50" x2="520" y2="130" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
+                      <line x1="100" y1="60" x2="400" y2="50" stroke="#8A0000" strokeWidth="0.3" opacity="0.15" />
+                      <line x1="250" y1="140" x2="520" y2="130" stroke="#8A0000" strokeWidth="0.3" opacity="0.15" />
+                      {/* Pulsing dots — hub nodes */}
+                      <circle cx="100" cy="60" r="4" fill="#8A0000"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite" /></circle>
+                      <circle cx="250" cy="140" r="5" fill="#8A0000"><animate attributeName="r" values="4;6;4" dur="4s" repeatCount="indefinite" /></circle>
+                      <circle cx="400" cy="50" r="4" fill="#8A0000"><animate attributeName="r" values="3;5;3" dur="3.5s" repeatCount="indefinite" /></circle>
+                      <circle cx="520" cy="130" r="3" fill="#8A0000"><animate attributeName="r" values="2;4;2" dur="2.8s" repeatCount="indefinite" /></circle>
+                      {/* Secondary dots */}
+                      <circle cx="170" cy="90" r="1.5" fill="#8A0000" opacity="0.5" />
+                      <circle cx="330" cy="100" r="1.5" fill="#8A0000" opacity="0.5" />
+                      <circle cx="460" cy="80" r="1.5" fill="#8A0000" opacity="0.5" />
+                      <circle cx="560" cy="60" r="1" fill="#8A0000" opacity="0.3" />
+                      {/* Location labels */}
+                      <text x="100" y="42" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">VALLETTA</text>
+                      <text x="250" y="162" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">GENEVA</text>
+                      <text x="400" y="35" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">TOKYO</text>
+                      <text x="520" y="152" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">SAN FRANCISCO</text>
+                    </svg>
+                    <div className="relative z-10 text-center">
+                      <p className="text-[11px] text-white/50 uppercase tracking-[0.3em]">The network is always on</p>
+                    </div>
+                  </div>
+                );
+              }
+
+              /* ── Stat cell ── */
+              if (moment.type === 'stat') {
+                return (
+                  <div key={i} className={`${moment.span} bg-[#8A0000] p-8 flex flex-col justify-center`}>
+                    <div className="text-[64px] font-black text-white leading-none mb-2">{moment.statValue}</div>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 mb-3">{moment.statLabel}</div>
+                    <div className="w-12 h-[1px] bg-white/40 mb-3"></div>
+                    <div className="text-[13px] text-white/60 leading-relaxed font-light italic">{moment.statDetail}</div>
+                  </div>
+                );
+              }
+
+              /* ── Photo cell (default) ── */
+              return (
+                <div key={i} className={`${moment.span} group relative overflow-hidden cursor-pointer`}>
                   <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    src={moment.image}
+                    alt={moment.caption}
+                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center mb-4">
-                    <span className="text-[10px] font-bold text-[#8A0000] tracking-widest mr-4 uppercase">{card.tag}</span>
+                  {/* Gradient overlay — always visible at bottom, expands on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:via-black/30 transition-all duration-500" />
+                  {/* Floating time label — top left */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8A0000] animate-pulse"></span>
+                      <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest">{moment.time} — {moment.location}</span>
+                    </span>
                   </div>
-                  <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
-                    {card.title}
-                  </h3>
-                  <p className="text-[14px] text-gray-600 leading-relaxed mb-4">{card.desc}</p>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#141414] border-b border-black w-fit group-hover:text-[#8A0000] group-hover:border-[#8A0000] transition-all">
-                    Discover More
+                  {/* Caption — bottom, always visible */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                    <div className="text-[9px] font-bold text-[#8A0000] tracking-[0.2em] uppercase mb-1.5">{moment.tag}</div>
+                    <p className="text-[13px] text-white/80 leading-snug font-light">{moment.caption}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
