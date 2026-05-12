@@ -544,11 +544,12 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       {/* Overview */}
       <section id="center-overview" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative flex items-center mb-12">
-            <hr className="flex-grow border-t border-gray-200" />
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Overview</span>
-            <hr className="flex-grow border-t border-gray-200" />
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Overview
+              </span>
+            </div>
           {center.overview.map((para, i) => (
             <p key={i} className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">{para}</p>
           ))}
@@ -581,11 +582,12 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       {/* Four Pillars Detail */}
       <section id="center-structure" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative flex items-center mb-12">
-            <hr className="flex-grow border-t border-gray-200" />
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Structure</span>
-            <hr className="flex-grow border-t border-gray-200" />
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Structure
+              </span>
+            </div>
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-10">How this Center operates</h2>
 
           <div className="space-y-8">

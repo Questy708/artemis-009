@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
-import { ArrowRight, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface Props {
   goToPage: (page: string) => void;
@@ -41,6 +40,46 @@ const howHeardOptions = [
 const gradingScaleOptions = [
   '', '4.0 GPA Scale', '4.0 Weighted GPA', '5.0 GPA Scale', '10-point scale', '100-point scale', 'Percentage (0-100)', 'IB Points (24-45)', 'UK A-Levels (A*-E)', 'French Baccalaureate (0-20)', 'German Abitur (1-6)', 'Other international scale',
 ];
+
+const stepLabels = [
+  { short: 'Personal', full: 'Personal Information' },
+  { short: 'Academic', full: 'Academic Record' },
+  { short: 'Portfolio', full: 'Accomplishments & Statements' },
+  { short: 'Review', full: 'Financial Aid & Submit' },
+];
+
+/* ─── Hexagon Step Component (Minerva-inspired) ─── */
+function HexStep({ index, label, active, completed }: { index: number; label: string; active: boolean; completed: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-2 relative">
+      <div
+        className={`relative w-12 h-12 flex items-center justify-center transition-all duration-500 ${
+          completed
+            ? 'bg-[#8A0000] text-white'
+            : active
+            ? 'bg-[#8A0000] text-white shadow-lg shadow-[#8A0000]/30'
+            : 'bg-[#F3F4F6] text-gray-400'
+        }`}
+        style={{
+          clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+        }}
+      >
+        {completed ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        ) : (
+          <span className="text-[14px] font-bold">{index + 1}</span>
+        )}
+      </div>
+      <span className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-300 ${
+        completed || active ? 'text-[#8A0000]' : 'text-gray-400'
+      }`}>
+        {label}
+      </span>
+    </div>
+  );
+}
 
 export default function Apply({ goToPage }: Props) {
   const [submitted, setSubmitted] = useState(false);
@@ -116,16 +155,17 @@ export default function Apply({ goToPage }: Props) {
     setSubmitted(true);
   };
 
-  const inputClass = "w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[#8A0000] transition-colors text-[14px]";
-  const labelClass = "block text-[11px] font-bold text-gray-900 uppercase tracking-widest mb-2";
-  const selectClass = "w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[#8A0000] transition-colors bg-white text-[14px]";
+  // Shared form styles — Minerva-inspired warm aesthetic
+  const inputClass = "w-full border border-gray-300 bg-[#F9F8F6] px-4 py-3.5 text-[15px] text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#8A0000]/30 focus:border-[#8A0000] transition-all rounded-sm";
+  const labelClass = "block text-[11px] font-bold text-gray-900 uppercase tracking-[0.15em] mb-2";
+  const selectClass = "w-full border border-gray-300 bg-[#F9F8F6] px-4 py-3.5 text-[15px] text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#8A0000]/30 focus:border-[#8A0000] transition-all rounded-sm appearance-none";
 
   return (
     <div className="flex flex-col bg-white">
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[35vh] min-h-[280px] overflow-hidden">
+          <div className="relative w-full h-[40vh] min-h-[320px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
               alt="Apply to Artemis"
@@ -137,58 +177,119 @@ export default function Apply({ goToPage }: Props) {
                 <span className="w-8 h-[1px] bg-[#8A0000]"></span>
                 <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Join Artemis</span>
               </div>
-              <h1 className="text-[48px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">
+              <h1 className="text-[48px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4">
                 Application for<br />Admission
               </h1>
               <p className="text-[17px] text-white/70 max-w-xl leading-relaxed font-light">
-                Join the next generation of scholars, innovators, and leaders at the University of Artemis. No application fee. Standardised tests are optional.
+                Join the next generation of scholars, innovators, and leaders at the University of Artemis.
+                No application fee. Standardised tests are optional.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <OnThisPageNav
-        sections={[
-          { id: 'application', label: 'Application' },
-          { id: 'deadlines', label: 'Deadlines' },
-          { id: 'financial-aid', label: 'Financial Aid' },
-        ]}
-        activeSection={activeSection}
-      />
-
-      <div id="application" className="max-w-[1000px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24 scroll-mt-[110px]">
-        <p className="text-[14px] text-gray-500 leading-relaxed mb-10">
-          Our application assesses who you are, how you think, and what you have done. There is no application fee. Standardised tests (SAT/ACT) are optional. Take your time — you can navigate between sections using the step indicators above.
-        </p>
-
-        {/* Progress bar */}
-        <div className="w-full bg-gray-100 h-1 mb-12">
-          <div className="bg-[#8A0000] h-1 transition-all duration-500" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
+      {/* Process Overview — Minerva-inspired 3-step visual */}
+      <section className="bg-[#F9F8F6] border-b border-gray-200">
+        <div className="max-w-[1000px] mx-auto w-full px-8 lg:px-20 py-10">
+          <div className="grid grid-cols-3 gap-6">
+            {[
+              { step: '01', label: 'Start Your Application', desc: 'Complete your personal, academic, and portfolio information', active: true },
+              { step: '02', label: 'Admissions Review', desc: 'Our committee reviews your full profile holistically', active: currentStep === 4 },
+              { step: '03', label: 'Decision Released', desc: 'Receive your admissions decision within the cycle timeline', active: submitted },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <div className={`w-10 h-10 flex items-center justify-center shrink-0 text-[13px] font-bold transition-colors ${
+                  item.active ? 'bg-[#8A0000] text-white' : 'bg-gray-200 text-gray-500'
+                }`}
+                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+                >
+                  {item.active ? (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  ) : (
+                    item.step
+                  )}
+                </div>
+                <div>
+                  <div className={`text-[13px] font-bold transition-colors ${item.active ? 'text-[#8A0000]' : 'text-gray-400'}`}>
+                    {item.label}
+                  </div>
+                  <div className="text-[12px] text-gray-500 leading-relaxed mt-0.5 hidden sm:block">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
+
+      <div id="application" className="max-w-[860px] mx-auto w-full px-6 lg:px-20 pt-12 pb-24 scroll-mt-[110px]">
 
         {submitted ? (
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-12 text-center">
-            <CheckCircle2 size={64} className="text-green-600 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Received</h2>
-            <p className="text-lg text-gray-600 mb-4">Thank you for your interest in the University of Artemis. We will be in touch regarding your application status.</p>
-            <p className="text-[14px] text-gray-500 mb-8">You will receive a confirmation email at the address you provided. Please check your inbox and spam folder.</p>
-            <button onClick={() => goToPage('home')} className="px-8 py-3 bg-[#141414] text-white text-[13px] font-bold uppercase tracking-widest hover:bg-[#8A0000] transition-colors rounded">
+          /* ═══ SUCCESS STATE ═══ */
+          <div className="text-center py-20">
+            <div className="w-20 h-20 mx-auto mb-8 flex items-center justify-center bg-[#8A0000]"
+              style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h2 className="text-[32px] font-extrabold text-[#141414] tracking-tight mb-4">Application Received</h2>
+            <p className="text-[16px] text-gray-600 leading-relaxed max-w-md mx-auto mb-4">
+              Thank you for your interest in the University of Artemis. We will be in touch regarding your application status.
+            </p>
+            <p className="text-[13px] text-gray-500 mb-10">You will receive a confirmation email at the address you provided.</p>
+            <button onClick={() => goToPage('home')} className="px-10 py-4 bg-[#8A0000] text-white text-[13px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors">
               Return Home
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-0">
+
+            {/* ═══ HEXAGONAL STEP NAVIGATION ═══ */}
+            <div className="flex items-center justify-between mb-12 px-4">
+              {stepLabels.map((step, i) => (
+                <React.Fragment key={i}>
+                  <button
+                    type="button"
+                    onClick={() => { if (i + 1 < currentStep) setCurrentStep(i + 1); }}
+                    className={`flex flex-col items-center gap-2 ${i + 1 < currentStep ? 'cursor-pointer' : 'cursor-default'}`}
+                  >
+                    <HexStep
+                      index={i}
+                      label={step.short}
+                      active={currentStep === i + 1}
+                      completed={i + 1 < currentStep}
+                    />
+                  </button>
+                  {i < stepLabels.length - 1 && (
+                    <div className={`flex-1 h-[2px] mx-2 transition-colors duration-500 ${
+                      i + 1 < currentStep ? 'bg-[#8A0000]' : 'bg-gray-200'
+                    }`} />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+
+            {/* Step label */}
+            <div className="mb-10">
+              <div className="mb-4 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                  Step {currentStep} of {totalSteps}
+                </span>
+              </div>
+              <h2 className="text-[28px] md:text-[34px] font-extrabold tracking-tighter text-[#141414] leading-tight">
+                {stepLabels[currentStep - 1].full}
+              </h2>
+            </div>
 
             {/* ═══ PART 1: PERSONAL INFORMATION ═══ */}
             {currentStep === 1 && (
               <div id="deadlines" className="space-y-8 scroll-mt-[110px]">
-                <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
-                  <div className="mb-8 flex items-center space-x-3">
-                    <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Part 1 — Personal Information</span>
-                  </div>
-
+                <div className="bg-[#F9F8F6] p-8 md:p-10 border border-gray-100">
                   {/* Application Cycle */}
                   <div className="mb-8">
                     <label className={labelClass}>Application Cycle *</label>
@@ -202,11 +303,11 @@ export default function Apply({ goToPage }: Props) {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>First Name *</label>
-                      <input required type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className={inputClass} />
+                      <input required type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className={inputClass} placeholder="Legal first name" />
                     </div>
                     <div>
                       <label className={labelClass}>Last / Family Name *</label>
-                      <input required type="text" value={lastName} onChange={e => setLastName(e.target.value)} className={inputClass} />
+                      <input required type="text" value={lastName} onChange={e => setLastName(e.target.value)} className={inputClass} placeholder="Legal family name" />
                     </div>
                   </div>
 
@@ -214,11 +315,14 @@ export default function Apply({ goToPage }: Props) {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>Email Address *</label>
-                      <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className={inputClass} />
+                      <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className={inputClass} placeholder="you@example.com" />
                     </div>
                     <div>
                       <label className={labelClass}>Confirm Email *</label>
-                      <input required type="email" value={confirmEmail} onChange={e => setConfirmEmail(e.target.value)} className={inputClass} />
+                      <input required type="email" value={confirmEmail} onChange={e => setConfirmEmail(e.target.value)} className={`${inputClass} ${confirmEmail && confirmEmail !== email ? 'border-red-400 focus:ring-red-200' : ''}`} placeholder="Re-enter email" />
+                      {confirmEmail && confirmEmail !== email && (
+                        <p className="text-[11px] text-red-500 mt-1 font-medium">Email addresses do not match</p>
+                      )}
                     </div>
                   </div>
 
@@ -272,58 +376,66 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Address */}
-                  <div className="mb-6">
-                    <label className={labelClass}>Street Address *</label>
-                    <input required type="text" value={address} onChange={e => setAddress(e.target.value)} className={inputClass} />
-                  </div>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
-                    <div className="col-span-1">
-                      <label className={labelClass}>City *</label>
-                      <input required type="text" value={city} onChange={e => setCity(e.target.value)} className={inputClass} />
+                  <div className="pt-6 border-t border-gray-200 mt-6">
+                    <div className="mb-6 flex items-center space-x-3">
+                      <span className="w-6 h-[1px] bg-[#8A0000]"></span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8A0000]">Mailing Address</span>
                     </div>
-                    <div>
-                      <label className={labelClass}>State / Province</label>
-                      <input type="text" value={state} onChange={e => setState(e.target.value)} className={inputClass} />
+                    <div className="mb-6">
+                      <label className={labelClass}>Street Address *</label>
+                      <input required type="text" value={address} onChange={e => setAddress(e.target.value)} className={inputClass} />
                     </div>
-                    <div>
-                      <label className={labelClass}>Postal Code</label>
-                      <input type="text" value={postalCode} onChange={e => setPostalCode(e.target.value)} className={inputClass} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Country *</label>
-                      <select required value={country} onChange={e => setCountry(e.target.value)} className={selectClass}>
-                        <option value="">Select...</option>
-                        {countryOptions.filter(Boolean).map(c => <option key={c} value={c}>{c}</option>)}
-                      </select>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
+                      <div className="col-span-1">
+                        <label className={labelClass}>City *</label>
+                        <input required type="text" value={city} onChange={e => setCity(e.target.value)} className={inputClass} />
+                      </div>
+                      <div>
+                        <label className={labelClass}>State / Province</label>
+                        <input type="text" value={state} onChange={e => setState(e.target.value)} className={inputClass} />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Postal Code</label>
+                        <input type="text" value={postalCode} onChange={e => setPostalCode(e.target.value)} className={inputClass} />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Country *</label>
+                        <select required value={country} onChange={e => setCountry(e.target.value)} className={selectClass}>
+                          <option value="">Select...</option>
+                          {countryOptions.filter(Boolean).map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
                     </div>
                   </div>
 
                   {/* Concentration */}
-                  <div className="mb-6">
-                    <label className={labelClass}>Intended Concentration *</label>
-                    <select required value={concentration} onChange={e => setConcentration(e.target.value)} className={selectClass}>
-                      {concentrationOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-                    </select>
-                  </div>
-
-                  {/* How did you hear */}
-                  <div className="mb-6">
-                    <label className={labelClass}>How did you learn about Artemis? *</label>
-                    <select required value={howHeard} onChange={e => setHowHeard(e.target.value)} className={selectClass}>
-                      {howHeardOptions.map((o, i) => <option key={i} value={o}>{o || 'Select...'}</option>)}
-                    </select>
-                  </div>
-                  {howHeard === 'Other' && (
+                  <div className="pt-6 border-t border-gray-200 mt-6">
                     <div className="mb-6">
-                      <label className={labelClass}>Please specify</label>
-                      <input type="text" value={howHeardOther} onChange={e => setHowHeardOther(e.target.value)} className={inputClass} />
+                      <label className={labelClass}>Intended Concentration *</label>
+                      <select required value={concentration} onChange={e => setConcentration(e.target.value)} className={selectClass}>
+                        {concentrationOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                      </select>
+                      <p className="text-[11px] text-gray-500 mt-1">You may change your concentration after enrolment.</p>
                     </div>
-                  )}
+
+                    <div className="mb-6">
+                      <label className={labelClass}>How did you learn about Artemis? *</label>
+                      <select required value={howHeard} onChange={e => setHowHeard(e.target.value)} className={selectClass}>
+                        {howHeardOptions.map((o, i) => <option key={i} value={o}>{o || 'Select...'}</option>)}
+                      </select>
+                    </div>
+                    {howHeard === 'Other' && (
+                      <div className="mb-6">
+                        <label className={labelClass}>Please specify</label>
+                        <input type="text" value={howHeardOther} onChange={e => setHowHeardOther(e.target.value)} className={inputClass} />
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="flex justify-end">
-                  <button type="button" onClick={() => setCurrentStep(2)} className="flex items-center gap-2 px-8 py-3 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#141414] transition-colors rounded">
-                    Next: Academic <ArrowRight size={16} />
+                  <button type="button" onClick={() => setCurrentStep(2)} className="flex items-center gap-3 px-10 py-4 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors">
+                    Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>
@@ -332,21 +444,18 @@ export default function Apply({ goToPage }: Props) {
             {/* ═══ PART 2: ACADEMIC INFORMATION ═══ */}
             {currentStep === 2 && (
               <div className="space-y-8">
-                <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
-                  <div className="mb-8 flex items-center space-x-3">
-                    <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Part 2 — Academic Information</span>
-                  </div>
-
+                <div className="bg-[#F9F8F6] p-8 md:p-10 border border-gray-100">
                   {/* Currently enrolled */}
-                  <div className="mb-6">
+                  <div className="mb-8">
                     <label className={labelClass}>Are you currently enrolled in secondary school? *</label>
-                    <div className="flex gap-6">
-                      <label className="flex items-center gap-2 text-[14px]">
-                        <input type="radio" name="enrolled" value="yes" checked={currentlyEnrolled === 'yes'} onChange={e => setCurrentlyEnrolled(e.target.value)} className="accent-[#8A0000]" /> Yes
+                    <div className="flex gap-8 mt-2">
+                      <label className="flex items-center gap-3 text-[15px] cursor-pointer">
+                        <input type="radio" name="enrolled" value="yes" checked={currentlyEnrolled === 'yes'} onChange={e => setCurrentlyEnrolled(e.target.value)} className="w-4 h-4 accent-[#8A0000]" />
+                        <span className="text-gray-700">Yes</span>
                       </label>
-                      <label className="flex items-center gap-2 text-[14px]">
-                        <input type="radio" name="enrolled" value="no" checked={currentlyEnrolled === 'no'} onChange={e => setCurrentlyEnrolled(e.target.value)} className="accent-[#8A0000]" /> No
+                      <label className="flex items-center gap-3 text-[15px] cursor-pointer">
+                        <input type="radio" name="enrolled" value="no" checked={currentlyEnrolled === 'no'} onChange={e => setCurrentlyEnrolled(e.target.value)} className="w-4 h-4 accent-[#8A0000]" />
+                        <span className="text-gray-700">No</span>
                       </label>
                     </div>
                   </div>
@@ -365,7 +474,7 @@ export default function Apply({ goToPage }: Props) {
                       </select>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-6">
                     <div>
                       <label className={labelClass}>School City *</label>
                       <input required type="text" value={schoolCity} onChange={e => setSchoolCity(e.target.value)} className={inputClass} />
@@ -381,47 +490,59 @@ export default function Apply({ goToPage }: Props) {
                   </div>
 
                   {/* Grading */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
-                    <div>
-                      <label className={labelClass}>Grading Scale *</label>
-                      <select required value={gradingScale} onChange={e => setGradingScale(e.target.value)} className={selectClass}>
-                        {gradingScaleOptions.map((o, i) => <option key={i} value={o}>{o || 'Select...'}</option>)}
-                      </select>
+                  <div className="pt-6 border-t border-gray-200 mt-6">
+                    <div className="mb-6 flex items-center space-x-3">
+                      <span className="w-6 h-[1px] bg-[#8A0000]"></span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8A0000]">Academic Performance</span>
                     </div>
-                    <div>
-                      <label className={labelClass}>Your GPA / Score *</label>
-                      <input required type="text" value={gpa} onChange={e => setGpa(e.target.value)} className={inputClass} placeholder="e.g., 3.85" />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Maximum Possible *</label>
-                      <input required type="text" value={maxGpa} onChange={e => setMaxGpa(e.target.value)} className={inputClass} placeholder="e.g., 4.0" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-6">
+                      <div>
+                        <label className={labelClass}>Grading Scale *</label>
+                        <select required value={gradingScale} onChange={e => setGradingScale(e.target.value)} className={selectClass}>
+                          {gradingScaleOptions.map((o, i) => <option key={i} value={o}>{o || 'Select...'}</option>)}
+                        </select>
+                      </div>
+                      <div>
+                        <label className={labelClass}>Your GPA / Score *</label>
+                        <input required type="text" value={gpa} onChange={e => setGpa(e.target.value)} className={inputClass} placeholder="e.g., 3.85" />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Maximum Possible *</label>
+                        <input required type="text" value={maxGpa} onChange={e => setMaxGpa(e.target.value)} className={inputClass} placeholder="e.g., 4.0" />
+                      </div>
                     </div>
                   </div>
 
                   {/* Standardised tests */}
-                  <div className="border-t border-gray-200 pt-6 mb-4">
-                    <div className="flex items-center justify-between mb-4">
+                  <div className="pt-6 border-t border-gray-200 mt-6">
+                    <div className="flex items-center justify-between mb-6">
                       <div>
-                        <label className="text-[12px] font-bold text-gray-900 uppercase tracking-widest">Standardised Tests (Optional)</label>
+                        <div className="text-[12px] font-bold text-gray-900 uppercase tracking-[0.15em]">Standardised Tests</div>
                         <p className="text-[12px] text-gray-500 mt-1">Artemis is test-optional. Self-report if you choose.</p>
                       </div>
-                      <button type="button" onClick={() => setIsTestOptional(!isTestOptional)} className="text-[11px] font-bold uppercase tracking-widest text-[#8A0000] hover:underline">
-                        {isTestOptional ? 'Hide' : 'Report Scores'}
+                      <button
+                        type="button"
+                        onClick={() => setIsTestOptional(!isTestOptional)}
+                        className={`text-[11px] font-bold uppercase tracking-widest px-4 py-2 border transition-colors ${
+                          isTestOptional ? 'border-[#8A0000] text-[#8A0000] bg-[#8A0000]/5' : 'border-gray-300 text-gray-500 hover:border-[#8A0000] hover:text-[#8A0000]'
+                        }`}
+                      >
+                        {isTestOptional ? 'Hide Scores' : 'Report Scores'}
                       </button>
                     </div>
                     {isTestOptional && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
                         <div>
                           <label className={labelClass}>SAT Math</label>
-                          <input type="number" min="200" max="800" value={satMath} onChange={e => setSatMath(e.target.value)} className={inputClass} placeholder="200-800" />
+                          <input type="number" min="200" max="800" value={satMath} onChange={e => setSatMath(e.target.value)} className={inputClass} placeholder="200–800" />
                         </div>
                         <div>
                           <label className={labelClass}>SAT Reading/Writing</label>
-                          <input type="number" min="200" max="800" value={satReading} onChange={e => setSatReading(e.target.value)} className={inputClass} placeholder="200-800" />
+                          <input type="number" min="200" max="800" value={satReading} onChange={e => setSatReading(e.target.value)} className={inputClass} placeholder="200–800" />
                         </div>
                         <div>
                           <label className={labelClass}>ACT Composite</label>
-                          <input type="number" min="1" max="36" value={actScore} onChange={e => setActScore(e.target.value)} className={inputClass} placeholder="1-36" />
+                          <input type="number" min="1" max="36" value={actScore} onChange={e => setActScore(e.target.value)} className={inputClass} placeholder="1–36" />
                         </div>
                       </div>
                     )}
@@ -429,11 +550,11 @@ export default function Apply({ goToPage }: Props) {
                 </div>
 
                 <div className="flex justify-between">
-                  <button type="button" onClick={() => setCurrentStep(1)} className="px-8 py-3 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors rounded">
+                  <button type="button" onClick={() => setCurrentStep(1)} className="px-8 py-4 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors">
                     &larr; Back
                   </button>
-                  <button type="button" onClick={() => setCurrentStep(3)} className="flex items-center gap-2 px-8 py-3 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#141414] transition-colors rounded">
-                    Next: Portfolio <ArrowRight size={16} />
+                  <button type="button" onClick={() => setCurrentStep(3)} className="flex items-center gap-3 px-10 py-4 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors">
+                    Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>
@@ -442,30 +563,33 @@ export default function Apply({ goToPage }: Props) {
             {/* ═══ PART 3: ACCOMPLISHMENTS & STATEMENTS ═══ */}
             {currentStep === 3 && (
               <div className="space-y-8">
-                <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
-                  <div className="mb-8 flex items-center space-x-3">
-                    <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Part 3 — Accomplishments & Statements</span>
-                  </div>
-
-                  <p className="text-[14px] text-gray-600 leading-relaxed mb-8">
-                    Describe your most meaningful achievements. Artemis does not define what counts as an accomplishment — you choose what matters most. Provide between 3 and 6 items, each with a brief description of your role and its impact.
+                <div className="bg-[#F9F8F6] p-8 md:p-10 border border-gray-100">
+                  <p className="text-[14px] text-gray-600 leading-relaxed mb-8 max-w-xl">
+                    Describe your most meaningful achievements. Artemis does not define what counts as an
+                    accomplishment — you choose what matters most. Provide between 3 and 6 items.
                   </p>
 
                   {/* Accomplishments */}
                   {accomplishments.map((acc, i) => (
-                    <div key={i} className="bg-white border border-gray-100 p-6 mb-6">
-                      <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-4 uppercase">
-                        Accomplishment {i + 1}
-                      </div>
-                      <div className="space-y-4">
-                        <div>
-                          <label className={labelClass}>Title *</label>
-                          <input required type="text" value={acc.title} onChange={e => updateAccomplishment(i, 'title', e.target.value)} className={inputClass} placeholder="e.g., Founded community coding initiative" />
+                    <div key={i} className="bg-white border border-gray-200 p-6 md:p-8 mb-6 last:mb-0">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-8 flex items-center justify-center bg-[#8A0000]/10 text-[#8A0000] text-[12px] font-bold">
+                          {i + 1}
                         </div>
-                        <div>
-                          <label className={labelClass}>Your Role *</label>
-                          <input required type="text" value={acc.role} onChange={e => updateAccomplishment(i, 'role', e.target.value)} className={inputClass} placeholder="e.g., Founder and lead organiser" />
+                        <span className="text-[11px] font-bold text-[#8A0000] uppercase tracking-[0.2em]">
+                          Accomplishment {i + 1}
+                        </span>
+                      </div>
+                      <div className="space-y-5">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                          <div>
+                            <label className={labelClass}>Title *</label>
+                            <input required type="text" value={acc.title} onChange={e => updateAccomplishment(i, 'title', e.target.value)} className={inputClass} placeholder="e.g., Founded community coding initiative" />
+                          </div>
+                          <div>
+                            <label className={labelClass}>Your Role *</label>
+                            <input required type="text" value={acc.role} onChange={e => updateAccomplishment(i, 'role', e.target.value)} className={inputClass} placeholder="e.g., Founder and lead organiser" />
+                          </div>
                         </div>
                         <div>
                           <label className={labelClass}>Description *</label>
@@ -480,34 +604,44 @@ export default function Apply({ goToPage }: Props) {
                   ))}
 
                   {accomplishments.length < 6 && (
-                    <button type="button" onClick={addAccomplishment} className="w-full py-3 border-2 border-dashed border-gray-300 text-gray-500 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors rounded mb-8">
+                    <button type="button" onClick={addAccomplishment} className="w-full py-4 border-2 border-dashed border-gray-300 text-gray-500 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors mt-6">
                       + Add Accomplishment ({accomplishments.length}/6)
                     </button>
                   )}
 
                   {/* Personal Statement */}
-                  <div className="bg-white border border-gray-100 p-6 mb-6">
-                    <label className="text-[12px] font-bold text-gray-900 uppercase tracking-widest mb-2 block">Personal Statement (Max 500 words) *</label>
-                    <p className="text-[12px] text-gray-500 mb-3">Tell us about your aspirations, what drives you, and why Artemis is the right environment for your growth.</p>
-                    <textarea required rows={8} value={personalStatement} onChange={e => setPersonalStatement(e.target.value)} className={`${inputClass} resize-none`} placeholder="Write your personal statement here..." />
-                    <div className="text-right mt-1 text-[11px] text-gray-400">{personalStatement.split(/\s+/).filter(Boolean).length} / 500 words</div>
-                  </div>
+                  <div className="pt-8 border-t border-gray-200 mt-8">
+                    <div className="bg-white border border-gray-200 p-6 md:p-8 mb-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-[12px] font-bold text-gray-900 uppercase tracking-[0.15em]">Personal Statement *</label>
+                        <span className={`text-[11px] font-medium ${personalStatement.split(/\s+/).filter(Boolean).length > 500 ? 'text-red-500' : 'text-gray-400'}`}>
+                          {personalStatement.split(/\s+/).filter(Boolean).length} / 500 words
+                        </span>
+                      </div>
+                      <p className="text-[12px] text-gray-500 mb-4">Tell us about your aspirations, what drives you, and why Artemis is the right environment for your growth.</p>
+                      <textarea required rows={8} value={personalStatement} onChange={e => setPersonalStatement(e.target.value)} className={`${inputClass} resize-none`} placeholder="Write your personal statement here..." />
+                    </div>
 
-                  {/* Mission Statement */}
-                  <div className="bg-white border border-gray-100 p-6">
-                    <label className="text-[12px] font-bold text-gray-900 uppercase tracking-widest mb-2 block">Mission Statement (Max 250 words) *</label>
-                    <p className="text-[12px] text-gray-500 mb-3">At Artemis, students declare missions, not majors. What global challenge or question do you want to dedicate your studies to?</p>
-                    <textarea required rows={5} value={missionStatement} onChange={e => setMissionStatement(e.target.value)} className={`${inputClass} resize-none`} placeholder="Describe the mission you want to pursue..." />
-                    <div className="text-right mt-1 text-[11px] text-gray-400">{missionStatement.split(/\s+/).filter(Boolean).length} / 250 words</div>
+                    {/* Mission Statement */}
+                    <div className="bg-white border border-gray-200 p-6 md:p-8">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-[12px] font-bold text-gray-900 uppercase tracking-[0.15em]">Mission Statement *</label>
+                        <span className={`text-[11px] font-medium ${missionStatement.split(/\s+/).filter(Boolean).length > 250 ? 'text-red-500' : 'text-gray-400'}`}>
+                          {missionStatement.split(/\s+/).filter(Boolean).length} / 250 words
+                        </span>
+                      </div>
+                      <p className="text-[12px] text-gray-500 mb-4">At Artemis, students declare missions, not majors. What global challenge or question do you want to dedicate your studies to?</p>
+                      <textarea required rows={5} value={missionStatement} onChange={e => setMissionStatement(e.target.value)} className={`${inputClass} resize-none`} placeholder="Describe the mission you want to pursue..." />
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex justify-between">
-                  <button type="button" onClick={() => setCurrentStep(2)} className="px-8 py-3 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors rounded">
+                  <button type="button" onClick={() => setCurrentStep(2)} className="px-8 py-4 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors">
                     &larr; Back
                   </button>
-                  <button type="button" onClick={() => setCurrentStep(4)} className="flex items-center gap-2 px-8 py-3 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#141414] transition-colors rounded">
-                    Next: Aid & Submit <ArrowRight size={16} />
+                  <button type="button" onClick={() => setCurrentStep(4)} className="flex items-center gap-3 px-10 py-4 bg-[#8A0000] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors">
+                    Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>
@@ -516,31 +650,34 @@ export default function Apply({ goToPage }: Props) {
             {/* ═══ PART 4: FINANCIAL AID & AGREEMENTS ═══ */}
             {currentStep === 4 && (
               <div id="financial-aid" className="space-y-8 scroll-mt-[110px]">
-                <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
-                  <div className="mb-8 flex items-center space-x-3">
-                    <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Part 4 — Financial Aid & Agreements</span>
-                  </div>
-
-                  <p className="text-[14px] text-gray-600 leading-relaxed mb-8">
-                    Artemis is need-aware: financial need is taken into consideration when making final admissions recommendations. Applying early maximises your aid prospects. All aid is funded through private philanthropy, ensuring equitable access regardless of nationality. The Extended Decision cycle does not offer financial aid.
+                <div className="bg-[#F9F8F6] p-8 md:p-10 border border-gray-100">
+                  <p className="text-[14px] text-gray-600 leading-relaxed mb-8 max-w-xl">
+                    Artemis is need-aware: financial need is taken into consideration when making final
+                    admissions recommendations. Applying early maximises your aid prospects. All aid is
+                    funded through private philanthropy, ensuring equitable access regardless of nationality.
                   </p>
 
                   {/* Applying for aid */}
-                  <div className="mb-6">
+                  <div className="mb-8">
                     <label className={labelClass}>Are you applying for financial aid? *</label>
-                    <div className="flex gap-6">
-                      <label className="flex items-center gap-2 text-[14px]">
-                        <input type="radio" name="aid" value="yes" checked={applyingForAid === 'yes'} onChange={e => setApplyingForAid(e.target.value)} className="accent-[#8A0000]" /> Yes
+                    <div className="flex gap-8 mt-2">
+                      <label className="flex items-center gap-3 text-[15px] cursor-pointer">
+                        <input type="radio" name="aid" value="yes" checked={applyingForAid === 'yes'} onChange={e => setApplyingForAid(e.target.value)} className="w-4 h-4 accent-[#8A0000]" />
+                        <span className="text-gray-700">Yes</span>
                       </label>
-                      <label className="flex items-center gap-2 text-[14px]">
-                        <input type="radio" name="aid" value="no" checked={applyingForAid === 'no'} onChange={e => setApplyingForAid(e.target.value)} className="accent-[#8A0000]" /> No
+                      <label className="flex items-center gap-3 text-[15px] cursor-pointer">
+                        <input type="radio" name="aid" value="no" checked={applyingForAid === 'no'} onChange={e => setApplyingForAid(e.target.value)} className="w-4 h-4 accent-[#8A0000]" />
+                        <span className="text-gray-700">No</span>
                       </label>
                     </div>
                   </div>
 
                   {applyingForAid === 'yes' && (
-                    <>
+                    <div className="bg-white border border-gray-200 p-6 md:p-8 mb-8">
+                      <div className="mb-6 flex items-center space-x-3">
+                        <span className="w-6 h-[1px] bg-[#8A0000]"></span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8A0000]">Aid Details</span>
+                      </div>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6">
                         <div>
                           <label className={labelClass}>Estimated Household Income (USD equivalent)</label>
@@ -561,35 +698,41 @@ export default function Apply({ goToPage }: Props) {
                           <input type="number" min="0" value={dependents} onChange={e => setDependents(e.target.value)} className={inputClass} placeholder="e.g., 4" />
                         </div>
                       </div>
-                      <div className="bg-white border border-gray-100 p-5 mb-6 text-[13px] text-gray-600 leading-relaxed">
+                      <div className="bg-[#F9F8F6] border border-gray-200 p-5 text-[13px] text-gray-600 leading-relaxed">
                         <strong className="text-[#141414]">Next steps for aid applicants:</strong> After submitting your application, you will receive access to the Artemis Financial Aid Centre, where you will complete a detailed financial questionnaire and upload supporting documents (income statements, bank statements, tax returns or local equivalents). The aid deadline is one week after the application deadline for your chosen cycle.
                       </div>
-                    </>
+                    </div>
                   )}
 
                   {/* Agreements */}
-                  <div className="border-t border-gray-200 pt-6 space-y-5">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input type="checkbox" required checked={agreeTerms} onChange={e => setAgreeTerms(e.target.checked)} className="accent-[#8A0000] mt-1" />
-                      <span className="text-[13px] text-gray-700 leading-relaxed">
-                        I agree to the <strong>Terms of Use</strong> and <strong>Privacy Policy</strong> of the University of Artemis. I certify that all information provided in this application is true and complete to the best of my knowledge. *
-                      </span>
-                    </label>
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input type="checkbox" required checked={agreeCertification} onChange={e => setAgreeCertification(e.target.checked)} className="accent-[#8A0000] mt-1" />
-                      <span className="text-[13px] text-gray-700 leading-relaxed">
-                        I understand that I may apply in only one admissions cycle per academic year, and that if denied, I may not reapply in a subsequent cycle. I certify that I have not previously been admitted to and declined an offer from the University of Artemis. *
-                      </span>
-                    </label>
+                  <div className="pt-6 border-t border-gray-200">
+                    <div className="mb-6 flex items-center space-x-3">
+                      <span className="w-6 h-[1px] bg-[#8A0000]"></span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8A0000]">Agreements</span>
+                    </div>
+                    <div className="space-y-6">
+                      <label className="flex items-start gap-4 cursor-pointer group">
+                        <input type="checkbox" required checked={agreeTerms} onChange={e => setAgreeTerms(e.target.checked)} className="w-4 h-4 accent-[#8A0000] mt-1 shrink-0" />
+                        <span className="text-[14px] text-gray-700 leading-relaxed group-hover:text-[#141414] transition-colors">
+                          I agree to the <strong>Terms of Use</strong> and <strong>Privacy Policy</strong> of the University of Artemis. I certify that all information provided in this application is true and complete to the best of my knowledge. *
+                        </span>
+                      </label>
+                      <label className="flex items-start gap-4 cursor-pointer group">
+                        <input type="checkbox" required checked={agreeCertification} onChange={e => setAgreeCertification(e.target.checked)} className="w-4 h-4 accent-[#8A0000] mt-1 shrink-0" />
+                        <span className="text-[14px] text-gray-700 leading-relaxed group-hover:text-[#141414] transition-colors">
+                          I understand that I may apply in only one admissions cycle per academic year, and that if denied, I may not reapply in a subsequent cycle. I certify that I have not previously been admitted to and declined an offer from the University of Artemis. *
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex justify-between">
-                  <button type="button" onClick={() => setCurrentStep(3)} className="px-8 py-3 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors rounded">
+                  <button type="button" onClick={() => setCurrentStep(3)} className="px-8 py-4 border-2 border-gray-300 text-gray-600 text-[12px] font-bold uppercase tracking-widest hover:border-[#8A0000] hover:text-[#8A0000] transition-colors">
                     &larr; Back
                   </button>
-                  <button type="submit" className="flex items-center gap-2 px-10 py-4 bg-[#8A0000] text-white text-[14px] font-bold uppercase tracking-widest hover:bg-[#141414] transition-colors rounded">
-                    Submit Application <ArrowRight size={18} />
+                  <button type="submit" className="flex items-center gap-3 px-12 py-4 bg-[#8A0000] text-white text-[14px] font-bold uppercase tracking-widest hover:bg-[#6B0000] transition-colors shadow-lg shadow-[#8A0000]/20">
+                    Submit Application <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>

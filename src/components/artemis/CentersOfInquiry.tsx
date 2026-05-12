@@ -304,11 +304,12 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       {/* Introduction */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={introAnim.ref} className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Approach</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Our Approach
+              </span>
+            </div>
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">Replacing departments with purpose</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">Our Centers of Inquiry stand as the epicenters of transformative research. These centers are structured to seamlessly blend curiosity-driven exploration with goal-oriented research, focusing on unraveling significant challenges. Inspired by the pursuit of knowledge as a cohesive whole, these centers are the cornerstone of our academic landscape.</p>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">Each center is a powerhouse of interdisciplinary collaboration, bringing together researchers from diverse disciplines to tackle complex challenges. Modeled on the principles of curiosity-driven research and a commitment to truth, these centers aim not only to unravel mysteries but to address grand challenges that transcend disciplinary boundaries. The goal is to foster an environment rooted in scientific curiosity, a commitment to truth, and interdisciplinary collaboration — a collective effort to solve complex problems facing society.</p>
@@ -345,11 +346,12 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       {/* All Centers Grid */}
       <section id="centers" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Centers</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Our Centers
+              </span>
+            </div>
 
           <div className="space-y-12">
             {centers.map((center, i) => (
@@ -436,11 +438,12 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       {/* Cycles of Activity */}
       <section id="cycles" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Cycles of Activity</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Cycles of Activity
+              </span>
+            </div>
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">Three interlocking rhythms</h2>
           <p className="text-[16px] text-gray-600 leading-relaxed mb-12 max-w-2xl">Guilds pulse through three interlocking cycles, synchronized with Artemis&apos;s global calendar. These rhythms operationalize CoI&apos;s static hubs into fluid engines, ensuring capstones evolve from ideation to deployment.</p>
 

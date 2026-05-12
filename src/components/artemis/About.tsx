@@ -128,11 +128,12 @@ export default function About({ goToPage }: AboutProps) {
           className={`transition-all duration-700 ${storyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Story</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Our Story
+              </span>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left — Rich text */}
@@ -214,11 +215,12 @@ export default function About({ goToPage }: AboutProps) {
           ref={cardsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Discover</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Discover
+              </span>
+            </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {teasers.map((teaser, i) => (
@@ -308,11 +310,12 @@ export default function About({ goToPage }: AboutProps) {
       {/* ── 8. Contact Anchor ── */}
       <section id="contact" className="scroll-mt-[110px] py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Get in Touch</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Get in Touch
+              </span>
+            </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">

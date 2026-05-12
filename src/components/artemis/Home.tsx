@@ -106,10 +106,11 @@ export default function Home({ goToPage }: HomeProps) {
             className="transition-all duration-700 artemis-out"
           >
             {/* Section divider */}
-            <div className="relative flex items-center mb-16">
-              <div className="flex-grow border-t border-gray-200"></div>
-              <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Research &amp; Education that Matter</span>
-              <div className="flex-grow border-t border-gray-200"></div>
+            <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Research &amp; Education that Matter
+              </span>
             </div>
 
             {/* 2x2 Grid */}
@@ -152,11 +153,12 @@ export default function Home({ goToPage }: HomeProps) {
 
       {/* Section divider */}
       <div className="max-w-[1000px] mx-auto w-full px-6 lg:px-16">
-        <div className="relative flex items-center mb-0">
-          <div className="flex-grow border-t border-gray-200"></div>
-          <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Global Learning Interface</span>
-          <div className="flex-grow border-t border-gray-200"></div>
-        </div>
+        <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Global Learning Interface
+              </span>
+            </div>
       </div>
 
       {/* ACN Description + Stats */}
@@ -372,11 +374,12 @@ export default function Home({ goToPage }: HomeProps) {
       <section className="py-20 px-6 lg:px-16">
         <div className="max-w-[1000px] mx-auto">
           {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Upcoming Events</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-6 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Upcoming Events
+              </span>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
             {/* Left — Heading + CTA */}
