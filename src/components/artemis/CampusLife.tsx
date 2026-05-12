@@ -296,36 +296,42 @@ const dayMoments = [
     title: 'Morning Run or Meditation',
     desc: 'The harbour in Valletta, the river trail in Seoul, the volcanic path in Edinburgh — every city offers a different way to wake up. Some hostels hold group meditation; others, a quiet kitchen with coffee already brewing from the early risers.',
     image: 'https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?auto=format&fit=crop&q=80&w=600',
+    icon: 'sunrise',
   },
   {
     time: '10:00',
     title: 'Seminar or Studio',
     desc: 'Small-group tutorials in the Oxford tradition, or hands-on prototyping in the Forge Lodge workshop. Morning is for the deepest work — the kind that changes how you see the world.',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600',
+    icon: 'book',
   },
   {
     time: '13:00',
     title: 'Lunch with the World',
     desc: 'The communal kitchen is where cultures collide deliciously. Your hostel-mate from Mumbai teaches you to make dal while the Berliner argues about the perfect pretzel. Every meal is a geography lesson.',
     image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600',
+    icon: 'bowl',
   },
   {
     time: '16:00',
     title: 'Guild Sessions & Club Meetings',
     desc: 'Robotics practice, debate society, climate action planning, open-mic rehearsal, or just reading in the garden. This is when the hostel becomes a village — everyone doing their thing, together.',
     image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600',
+    icon: 'bolt',
   },
   {
     time: '19:00',
     title: 'The Common Table',
     desc: 'Friday evening, every hostel sets one long table. No devices, no agendas — only food and conversation that ranges from philosophy to gossip to plans for the weekend. This is the ritual that holds the network together.',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600',
+    icon: 'wine',
   },
   {
     time: '23:00',
     title: 'Late-Night Common Room',
     desc: 'The best conversations happen when the work is done. A physicist and a poet arguing about time. A group planning a weekend hike up Table Mountain. Someone playing guitar. The common room never really closes.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600',
+    icon: 'moon',
   },
 ];
 
@@ -391,6 +397,64 @@ const campusStats = [
   { value: '1', label: 'Common Table', detail: 'Every Friday, everywhere' },
 ];
 
+/* ─── Photo Strip Data ─── */
+const photoStripImages = [
+  { src: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600', alt: 'Students cooking together in a hostel kitchen' },
+  { src: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600', alt: 'Friends gathered in a common room' },
+  { src: 'https://images.unsplash.com/photo-1461896836934-bd45ba8b2990?auto=format&fit=crop&q=80&w=600', alt: 'Students playing sports on campus' },
+  { src: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600', alt: 'Open mic night with students performing' },
+  { src: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=600', alt: 'Students exploring a European city' },
+  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600', alt: 'Studying outdoors in the sunshine' },
+  { src: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600', alt: 'Graduation celebration with friends' },
+  { src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600', alt: 'Cultural festival on campus' },
+  { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600', alt: 'Coffee shop studying with friends' },
+  { src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600', alt: 'Group project collaboration' },
+];
+
+/* ─── Time Icon Components ─── */
+function TimeIcon({ type }: { type: string }) {
+  switch (type) {
+    case 'sunrise':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2v4" /><path d="m4.93 4.93 2.83 2.83" /><path d="M20 12h4" /><path d="m19.07 4.93-2.83 2.83" /><path d="M12 12a4 4 0 0 0-4 4" /><path d="M2 16h20" />
+        </svg>
+      );
+    case 'book':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+        </svg>
+      );
+    case 'bowl':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 12a10 10 0 0 0 20 0" /><path d="M12 2v4" /><path d="M8 2v2" /><path d="M16 2v2" />
+        </svg>
+      );
+    case 'bolt':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      );
+    case 'wine':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 22h8" /><path d="M7 10h10" /><path d="M12 22V2" /><path d="M12 2C9.5 2 7 5 7 10s2.5 8 5 8 5-3 5-8-2.5-8-5-8" />
+        </svg>
+      );
+    case 'moon':
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 /* ─── Hook: animate on scroll ─── */
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -418,12 +482,12 @@ function useInView(threshold = 0.15) {
 /* ─── Component ─── */
 export default function CampusLife({ goToPage }: CampusLifeProps) {
   const heroAnim = useInView();
-  const hostelAnim = useInView();
   const dayAnim = useInView();
-  const clubsAnim = useInView();
-  const mapAnim = useInView();
   const voicesAnim = useInView();
+  const hostelAnim = useInView();
+  const clubsAnim = useInView();
   const traditionsAnim = useInView();
+  const mapAnim = useInView();
   const statsAnim = useInView();
 
   const [activeHostelId, setActiveHostelId] = useState<string | null>(null);
@@ -431,27 +495,27 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── 1. Hero — warm, inviting, about belonging ── */}
+      {/* ── 1. Hero — warm, vibrant, alive ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[55vh] min-h-[440px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
-              className="absolute inset-0 w-full h-full object-cover grayscale"
+              className="absolute inset-0 w-full h-full object-cover"
               alt="Students at Artemis"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0505]/90 via-[#1a0505]/50 to-[#1a0505]/20" />
             <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
               <div className="mb-8 flex items-center space-x-3">
-                <span className="w-8 h-[1px] bg-[#8A0000]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                <span className="w-8 h-[1px] bg-[#D97706]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D97706]">
                   Life at Artemis
                 </span>
               </div>
               <h1 className="text-[32px] sm:text-[44px] md:text-[60px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
                 Where living<br />is the curriculum
               </h1>
-              <p className="text-[18px] text-white/80 max-w-xl leading-relaxed font-light">
+              <p className="text-[18px] text-white/85 max-w-xl leading-relaxed font-light">
                 Artemis students don&rsquo;t just study the world — they live in it. Over four years,
                 you&rsquo;ll call multiple cities home, share meals with people who reshape your thinking,
                 and discover that the most important lessons happen far from any classroom.
@@ -461,7 +525,144 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 2. Your Hostel, Your Home ── */}
+      {/* ── 2. Life in Color — auto-scrolling photo strip ── */}
+      <section className="py-10 lg:py-14 overflow-hidden bg-[#FFF8F0]">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 mb-6">
+          <div className="flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#D97706]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D97706]">
+              Life in Color
+            </span>
+          </div>
+        </div>
+        <div className="relative">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#FFF8F0] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#FFF8F0] to-transparent z-10 pointer-events-none" />
+          <style>{`
+            @keyframes scrollStrip {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-scroll-strip {
+              animation: scrollStrip 40s linear infinite;
+            }
+            .animate-scroll-strip:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-strip" style={{ width: 'max-content' }}>
+              {[...photoStripImages, ...photoStripImages].map((img, i) => (
+                <div key={i} className="flex-shrink-0 mx-2 md:mx-3">
+                  <div className="w-[240px] h-[160px] md:w-[300px] md:h-[200px] overflow-hidden rounded-sm">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. A Day in Your Life ── */}
+      <section className="bg-white py-16 lg:py-24">
+        <div
+          ref={dayAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
+            dayAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              A Day in Your Life
+            </span>
+          </div>
+
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            Same rhythm,<br />different skyline
+          </h2>
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
+            Whether you wake up in Valletta or Tokyo, the rhythm of Artemis life has a familiar
+            pulse — morning reflection, deep work, communal meals, and the kind of conversations
+            that don&rsquo;t happen in lecture halls.
+          </p>
+
+          <div className="space-y-8">
+            {dayMoments.map((moment, i) => (
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[160px_1fr_280px] gap-6 lg:gap-12 items-start">
+                <div className="flex lg:flex-col items-baseline lg:items-start gap-3 lg:gap-1">
+                  <div className="flex items-center gap-2">
+                    <TimeIcon type={moment.icon} />
+                    <span className="text-[28px] font-black text-[#8A0000] leading-none tabular-nums">{moment.time}</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-[20px] font-bold text-[#141414] mb-2 leading-tight">{moment.title}</h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">{moment.desc}</p>
+                </div>
+                <div className="aspect-[3/2] bg-gray-200 overflow-hidden shrink-0 hidden lg:block rounded-sm">
+                  <img
+                    src={moment.image}
+                    alt={moment.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Student Voices — prominent, warm ── */}
+      <section className="py-16 lg:py-24 bg-[#FDF2E9]">
+        <div
+          ref={voicesAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
+            voicesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Student Voices
+            </span>
+          </div>
+
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
+            Don&rsquo;t take our word for it
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {studentVoices.map((voice, i) => (
+              <div key={i} className="bg-white p-8 lg:p-10 rounded-sm border-l-4 border-[#8A0000] shadow-sm">
+                <svg className="w-8 h-8 text-[#8A0000]/30 mb-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+                <p className="text-[17px] md:text-[18px] text-gray-800 leading-relaxed mb-6 italic font-light">
+                  &ldquo;{voice.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#8A0000] flex items-center justify-center text-white text-[14px] font-bold">
+                    {voice.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="text-[15px] font-bold text-[#141414]">{voice.name}</p>
+                    <p className="text-[12px] text-gray-500 font-mono tracking-wider">{voice.detail}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Your Hostel, Your Home ── */}
       <section className="py-16 lg:py-24">
         <div
           ref={hostelAnim.ref}
@@ -509,11 +710,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
 
             <div className="space-y-6">
               <div className="group">
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden rounded-sm">
                   <img
                     src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1000"
                     alt="Students in a hostel common room"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
@@ -522,11 +723,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                 </p>
               </div>
               <div className="group">
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden rounded-sm">
                   <img
                     src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1000"
                     alt="Students cooking together"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
@@ -538,55 +739,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 3. A Day in Your Life ── */}
-      <section className="bg-gray-50 py-16 lg:py-24">
-        <div
-          ref={dayAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            dayAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="mb-6 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              A Day in Your Life
-            </span>
-          </div>
-
-          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Same rhythm,<br />different skyline
-          </h2>
-          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
-            Whether you wake up in Valletta or Tokyo, the rhythm of Artemis life has a familiar
-            pulse — morning reflection, deep work, communal meals, and the kind of conversations
-            that don&rsquo;t happen in lecture halls.
-          </p>
-
-          <div className="space-y-8">
-            {dayMoments.map((moment, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-[160px_1fr_280px] gap-6 lg:gap-12 items-start">
-                <div className="flex lg:flex-col items-baseline lg:items-start gap-3 lg:gap-1">
-                  <span className="text-[28px] font-black text-[#8A0000] leading-none tabular-nums">{moment.time}</span>
-                </div>
-                <div>
-                  <h3 className="text-[20px] font-bold text-[#141414] mb-2 leading-tight">{moment.title}</h3>
-                  <p className="text-[15px] text-gray-600 leading-relaxed">{moment.desc}</p>
-                </div>
-                <div className="aspect-[3/2] bg-gray-200 overflow-hidden shrink-0 hidden lg:block">
-                  <img
-                    src={moment.image}
-                    alt={moment.title}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. Clubs, Guilds & Societies ── */}
-      <section className="py-16 lg:py-24">
+      {/* ── 6. Clubs, Guilds & Societies ── */}
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={clubsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
@@ -618,11 +772,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
               </p>
             </div>
             <div className="group">
-              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+              <div className="aspect-[4/3] bg-gray-100 overflow-hidden rounded-sm">
                 <img
                   src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1000"
                   alt="Students in club activities"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
@@ -634,7 +788,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           {/* Society cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {societies.map((soc, i) => (
-              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group">
+              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group rounded-sm">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[10px] font-bold text-[#8A0000] tracking-widest uppercase">{soc.members} members</span>
                 </div>
@@ -648,7 +802,75 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 5. The Map — your world expands ── */}
+      {/* ── 7. Traditions that Travel ── */}
+      <section className="py-16 lg:py-24">
+        <div
+          ref={traditionsAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
+            traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Traditions that Travel
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
+            <div>
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+                Rituals that move<br />with you
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                In the Oxford tradition, every college has its rituals. At Artemis, those rituals
+                don&rsquo;t belong to a building — they belong to the community. Wherever students rotate,
+                the traditions travel with them, creating continuity across continents and turning
+                every new city into home by the end of the first week.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed">
+                From the Crossing to the Common Table, these practices bind the network together
+                — not through uniformity, but through a shared commitment to presence, reflection,
+                and the belief that how you live matters as much as what you learn.
+              </p>
+            </div>
+            <div className="group">
+              <div className="aspect-[4/3] bg-gray-200 overflow-hidden rounded-sm">
+                <img
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000"
+                  alt="Traditions at Artemis"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
+                The Common Table at The Forge Lodge, Berlin — the same ritual, a different city,
+                every Friday evening.
+              </p>
+            </div>
+          </div>
+
+          {/* Tradition cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {traditions.map((trad, i) => (
+              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group rounded-sm">
+                <div className="flex items-start gap-4">
+                  <span className="text-[10px] font-bold text-[#8A0000] tracking-widest mt-1 shrink-0">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h4 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {trad.name}
+                    </h4>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">{trad.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. The Map — your world expands ── */}
       <section className="bg-gray-50 py-16 lg:py-24">
         <div
           ref={mapAnim.ref}
@@ -791,110 +1013,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 6. Student Voices ── */}
-      <section className="py-16 lg:py-24">
-        <div
-          ref={voicesAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            voicesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="mb-6 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              Student Voices
-            </span>
-          </div>
-
-          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
-            Don&rsquo;t take our word for it
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {studentVoices.map((voice, i) => (
-              <div key={i} className="border-l-2 border-[#8A0000] pl-6 py-2">
-                <p className="text-[16px] text-gray-700 leading-relaxed mb-6 italic">
-                  &ldquo;{voice.quote}&rdquo;
-                </p>
-                <div>
-                  <p className="text-[14px] font-bold text-[#141414]">{voice.name}</p>
-                  <p className="text-[12px] text-gray-500 font-mono tracking-wider">{voice.detail}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. Traditions that Travel ── */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div
-          ref={traditionsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="mb-6 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              Traditions that Travel
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
-            <div>
-              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                Rituals that move<br />with you
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                In the Oxford tradition, every college has its rituals. At Artemis, those rituals
-                don&rsquo;t belong to a building — they belong to the community. Wherever students rotate,
-                the traditions travel with them, creating continuity across continents and turning
-                every new city into home by the end of the first week.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed">
-                From the Crossing to the Common Table, these practices bind the network together
-                — not through uniformity, but through a shared commitment to presence, reflection,
-                and the belief that how you live matters as much as what you learn.
-              </p>
-            </div>
-            <div className="group">
-              <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000"
-                  alt="Traditions at Artemis"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                />
-              </div>
-              <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
-                The Common Table at The Forge Lodge, Berlin — the same ritual, a different city,
-                every Friday evening.
-              </p>
-            </div>
-          </div>
-
-          {/* Tradition cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {traditions.map((trad, i) => (
-              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group">
-                <div className="flex items-start gap-4">
-                  <span className="text-[10px] font-bold text-[#8A0000] tracking-widest mt-1 shrink-0">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h4 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors leading-tight">
-                      {trad.name}
-                    </h4>
-                    <p className="text-[14px] text-gray-600 leading-relaxed">{trad.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8. Stats — warm framing ── */}
+      {/* ── 9. Stats — warm framing ── */}
       <section className="py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
@@ -926,7 +1045,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 9. Crimson CTA bar ── */}
+      {/* ── 10. Crimson CTA bar ── */}
       <section className="bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
@@ -948,7 +1067,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 10. Footer ── */}
+      {/* ── 11. Footer ── */}
       <SubPageFooter goToPage={goToPage} />
     </div>
   );

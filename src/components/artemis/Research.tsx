@@ -256,6 +256,22 @@ export default function Research({ goToPage }: ResearchProps) {
     track.scrollTo({ left: newScroll, behavior: 'smooth' });
   };
 
+  // Auto-slide centers carousel
+  useEffect(() => {
+    const track = centersTrackRef.current;
+    if (!track) return;
+    const timer = setInterval(() => {
+      const perView = centersPerView();
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollCenters('right');
+      }
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleCentersScroll = () => {
     const track = centersTrackRef.current;
     if (!track) return;
