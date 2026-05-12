@@ -286,7 +286,7 @@ export default function Research({ goToPage }: ResearchProps) {
 
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800"
@@ -536,7 +536,7 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
 
           {/* Card-and-image parallax section */}
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-20">
             <img
               src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1400"
@@ -594,7 +594,7 @@ export default function Research({ goToPage }: ResearchProps) {
           ref={facilitiesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${facilitiesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[360px] md:min-h-[440px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400"

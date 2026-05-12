@@ -106,7 +106,7 @@ export default function About({ goToPage }: AboutProps) {
 
       {/* ── 2. Hero ── */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800"
@@ -262,7 +262,7 @@ export default function About({ goToPage }: AboutProps) {
           ref={peopleAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${peopleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1400"

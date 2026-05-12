@@ -143,7 +143,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
 
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800"
@@ -343,7 +343,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
       {/* ── 5. CARD-AND-IMAGE PARALLAX ── */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"

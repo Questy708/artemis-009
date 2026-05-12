@@ -616,7 +616,7 @@ export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
 
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src={config.heroImage}

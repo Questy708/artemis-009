@@ -160,12 +160,12 @@ export default function Education({ goToPage }: EducationProps) {
     <div className="flex flex-col bg-white w-full">
 
       {/* ═══════════════════════════════════════════
-          1. HERO — FULL-BLEED image, NO max-width container
-          The image spans 100% of the viewport.
+          1. HERO — Wider image container — max-w-[1600px], 200px wider than content
+          The image spans a wider container than the content below.
           Only the text overlay is positioned inside a centered container.
           ═══════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=2560"
@@ -517,7 +517,7 @@ export default function Education({ goToPage }: EducationProps) {
 
       {/* ═══════════════════════════════════════════
           6. GLOBAL LEARNING — FULL-BLEED image with overlay card
-          The image spans 100% viewport width (like the hero).
+          The image spans the wider container (like the hero).
           Only the overlay card and section divider are inside the container.
           ═══════════════════════════════════════════ */}
       <section id="global" className="scroll-mt-[110px] w-full bg-white">
@@ -538,7 +538,7 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
 
         {/* Full-bleed image — breaks OUT of the content container */}
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
         <div className="relative w-full min-h-[420px] md:min-h-[500px] overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2560"

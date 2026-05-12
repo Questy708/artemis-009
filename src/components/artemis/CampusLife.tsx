@@ -99,7 +99,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
 
       {/* ── 2. Hero ── */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
@@ -230,7 +230,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
 
           {/* Card-and-image parallax */}
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-16">
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1400"

@@ -515,7 +515,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
 
       {/* Hero */}
       <section className="relative w-full overflow-hidden group">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img src={center.heroImg} alt={center.name} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 hover:scale-105 transition-all duration-700" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

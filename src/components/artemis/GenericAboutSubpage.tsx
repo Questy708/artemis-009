@@ -976,7 +976,7 @@ export default function GenericAboutSubpage({ goToPage, title, id, description }
 
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
           src={data?.heroImage || 'https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800'}

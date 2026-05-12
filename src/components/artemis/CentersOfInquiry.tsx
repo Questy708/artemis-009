@@ -292,7 +292,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
 
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800" alt="Centers of Inquiry" className="absolute inset-0 w-full h-full object-cover grayscale" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
