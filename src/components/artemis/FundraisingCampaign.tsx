@@ -242,7 +242,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           ══════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
+          <div className="relative w-full h-[40vh] sm:h-[45vh] min-h-[300px] sm:min-h-[360px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1800"
               alt="Igniting the Light — The Founders Campaign"
@@ -280,7 +280,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           ANIMATED GOAL BAR — Live Campaign Pulse
           ══════════════════════════════════════════ */}
-      <section className="bg-white py-20 lg:py-28 border-b border-gray-100">
+      <section className="bg-white py-12 sm:py-20 lg:py-28 border-b border-gray-100">
         <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
@@ -445,7 +445,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           2. THE CASE — Asymmetric Editorial Layout
           ══════════════════════════════════════════ */}
-      <section id="case" className="scroll-mt-[110px] py-24 lg:py-36">
+      <section id="case" className="scroll-mt-[110px] py-16 sm:py-24 lg:py-36">
         <div ref={caseAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* LEFT — Big editorial headline + body */}
@@ -468,18 +468,18 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
             {/* RIGHT — Three pillars as large statements */}
             <div className="lg:col-span-5">
-              <motion.div {...slideRight(caseAnim.visible, 0.15)} className="space-y-10 mb-12">
+              <motion.div {...slideRight(caseAnim.visible, 0.15)} className="space-y-6 sm:space-y-10 mb-8 sm:mb-12">
                 {[
                   { value: 'Broaden', label: 'Access', desc: 'Talent has no postcode. Opportunity should not either.' },
                   { value: 'Advance', label: 'Excellence', desc: 'Research-driven rigour, powered by innovation, not inertia.' },
                   { value: 'Guard', label: 'Freedom', desc: 'Thought, inquiry, and expression \u2014 non-negotiable.' },
                 ].map((item, i) => (
                   <div key={i}>
-                    <div className="text-[48px] sm:text-[64px] lg:text-[96px] font-black text-[#8A0000] leading-none tracking-tighter">{item.value}</div>
-                    <div className="flex items-baseline gap-3 mt-1">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#141414]">{item.label}</span>
-                      <span className="text-[13px] text-gray-400">&mdash;</span>
-                      <span className="text-[13px] text-gray-500">{item.desc}</span>
+                    <div className="text-[36px] sm:text-[64px] lg:text-[96px] font-black text-[#8A0000] leading-none tracking-tighter">{item.value}</div>
+                    <div className="flex items-baseline gap-2 sm:gap-3 mt-1">
+                      <span className="text-[11px] sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#141414]">{item.label}</span>
+                      <span className="text-[11px] sm:text-[13px] text-gray-400">&mdash;</span>
+                      <span className="text-[11px] sm:text-[13px] text-gray-500">{item.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -516,7 +516,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           3. WHERE YOUR GIFT GOES — Financial Goals + Pull Quote
           ══════════════════════════════════════════ */}
-      <section id="goals" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
+      <section id="goals" className="scroll-mt-[110px] bg-gray-50 py-16 sm:py-24 lg:py-36">
         <div ref={goalsAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* LEFT — Campaign summary as a clean table */}
@@ -534,9 +534,9 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                     { label: 'Remaining', value: `${sym}${fmtShort(CAMPAIGN.goal - CAMPAIGN.raised)}`, highlight: false },
                     { label: 'Founding Donors', value: fmtNum(CAMPAIGN.donors), highlight: false },
                   ].map((row, i) => (
-                    <div key={i} className="flex items-center justify-between py-5 px-6">
-                      <span className="text-[13px] font-bold text-gray-500 uppercase tracking-[0.15em]">{row.label}</span>
-                      <span className={`text-[28px] font-black leading-none ${row.highlight ? 'text-[#8A0000]' : 'text-[#141414]'}`}>{row.value}</span>
+                    <div key={i} className="flex items-center justify-between py-4 sm:py-5 px-4 sm:px-6">
+                      <span className="text-[11px] sm:text-[13px] font-bold text-gray-500 uppercase tracking-[0.15em]">{row.label}</span>
+                      <span className={`text-[22px] sm:text-[28px] font-black leading-none ${row.highlight ? 'text-[#8A0000]' : 'text-[#141414]'}`}>{row.value}</span>
                     </div>
                   ))}
                 </div>
@@ -554,16 +554,16 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               <div className="space-y-6">
                 {FINANCIAL_GOALS.map((g, i) => (
                   <motion.div key={i} {...slideRight(goalsAnim.visible, i * 0.1)}>
-                    <div className="flex items-baseline justify-between mb-2">
-                      <span className="text-[15px] font-bold text-[#141414]">{g.category}</span>
-                      <span className="text-[14px] font-black text-[#8A0000]">{sym}{fmtShort(g.amount)}</span>
+                    <div className="flex items-baseline justify-between mb-2 gap-2">
+                      <span className="text-[13px] sm:text-[15px] font-bold text-[#141414]">{g.category}</span>
+                      <span className="text-[13px] sm:text-[14px] font-black text-[#8A0000] shrink-0">{sym}{fmtShort(g.amount)}</span>
                     </div>
                     <div className="h-4 bg-gray-200 w-full overflow-hidden">
                       <motion.div className="h-full bg-[#8A0000]" initial={{ width: 0 }} whileInView={{ width: `${g.pct}%` }} transition={{ duration: 1.4, delay: i * 0.12, ease: 'easeOut' }} viewport={{ once: true }} />
                     </div>
-                    <div className="flex items-center justify-between mt-2">
-                      <span className="text-[12px] text-gray-500 leading-snug max-w-[80%]">{g.desc}</span>
-                      <span className="text-[12px] font-black text-gray-400">{g.pct}%</span>
+                    <div className="flex items-start justify-between mt-2 gap-2">
+                      <span className="text-[11px] sm:text-[12px] text-gray-500 leading-snug">{g.desc}</span>
+                      <span className="text-[11px] sm:text-[12px] font-black text-gray-400 shrink-0">{g.pct}%</span>
                     </div>
                   </motion.div>
                 ))}
@@ -572,10 +572,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </div>
 
           {/* Pull Quote — Breaking out of container slightly */}
-          <motion.div {...scaleIn(goalsAnim.visible, 0.4)} className="mt-24 lg:mt-32 relative">
+          <motion.div {...scaleIn(goalsAnim.visible, 0.4)} className="mt-16 sm:mt-24 lg:mt-32 relative">
             <div className="border-l-4 border-[#8A0000] pl-5 sm:pl-8 lg:pl-12 lg:-ml-8 max-w-[900px]">
-              <svg className="w-8 h-8 text-[#8A0000] opacity-20 mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-              <blockquote className="text-[18px] sm:text-[22px] md:text-[28px] font-light text-[#141414] leading-[1.5] mb-6 italic">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#8A0000] opacity-20 mb-4 sm:mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+              <blockquote className="text-[16px] sm:text-[22px] md:text-[28px] font-light text-[#141414] leading-[1.5] mb-4 sm:mb-6 italic">
                 The function of the university is not simply to teach bread-winning, or to furnish teachers for the public schools, or to be a centre of polite society; it is, above all, to be the organ of that fine adjustment between real life and the growing knowledge of life, an adjustment which forms the secret of civilisation.
               </blockquote>
               <div className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">W.E.B. Du Bois</div>
@@ -588,15 +588,15 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           4. THREE PHASES TO LAUNCH — Vertical Timeline
           ══════════════════════════════════════════ */}
-      <section id="phases" className="scroll-mt-[110px] py-24 lg:py-36">
+      <section id="phases" className="scroll-mt-[110px] py-16 sm:py-24 lg:py-36">
         <div ref={phasesAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Phase indicator */}
-          <motion.div {...clipReveal(phasesAnim.visible)} className="mb-16">
-            <div className="flex items-center gap-4 mb-8">
+          <motion.div {...clipReveal(phasesAnim.visible)} className="mb-10 sm:mb-16">
+            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
               {['I', 'II', 'III', 'IV', 'V'].map((num, i) => (
                 <React.Fragment key={i}>
-                  <span className="text-[28px] sm:text-[48px] md:text-[64px] font-black text-[#8A0000] leading-none">{num}</span>
-                  {i < 4 && <ArrowRight size={16} className="text-gray-300 hidden sm:block" />}
+                  <span className="text-[24px] sm:text-[48px] md:text-[64px] font-black text-[#8A0000] leading-none">{num}</span>
+                  {i < 4 && <ArrowRight size={14} className="text-gray-300 hidden sm:block" />}
                 </React.Fragment>
               ))}
             </div>
@@ -677,50 +677,79 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           5. FOUNDING OPPORTUNITIES — Table + Constellation Strip
           ══════════════════════════════════════════ */}
-      <section id="opportunities" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
+      <section id="opportunities" className="scroll-mt-[110px] bg-gray-50 py-16 sm:py-24 lg:py-36">
         <div ref={opportunitiesAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Intro — opens with just text, no red line label */}
           <motion.h2 {...clipReveal(opportunitiesAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Founding<br />opportunities
           </motion.h2>
-          <motion.p {...fadeUp(opportunitiesAnim.visible, 0.15)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-4">We are building the first borderless, network-native university in history. We are looking for donors and partners who share our vision and are excited about this legacy-building opportunity.</motion.p>
-          <motion.p {...fadeUp(opportunitiesAnim.visible, 0.2)} className="text-[14px] text-gray-500 mb-16">Contact our advancement team at <a href="mailto:donate@artemis.edu" className="text-[#8A0000] font-bold hover:underline">donate@artemis.edu</a> to learn how you can become an Artemis Founder.</motion.p>
+          <motion.p {...fadeUp(opportunitiesAnim.visible, 0.15)} className="text-[15px] sm:text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-4">We are building the first borderless, network-native university in history. We are looking for donors and partners who share our vision and are excited about this legacy-building opportunity.</motion.p>
+          <motion.p {...fadeUp(opportunitiesAnim.visible, 0.2)} className="text-[13px] sm:text-[14px] text-gray-500 mb-10 sm:mb-16">Contact our advancement team at <a href="mailto:donate@artemis.edu" className="text-[#8A0000] font-bold hover:underline">donate@artemis.edu</a> to learn how you can become an Artemis Founder.</motion.p>
 
-          {/* Table-style layout */}
-          <motion.div {...fadeUp(opportunitiesAnim.visible, 0.25)} className="bg-white border border-gray-200 overflow-hidden mb-20">
-            {/* Table header */}
-            <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-gray-200 bg-white">
-              <div className="col-span-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Type</div>
-              <div className="col-span-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Opportunity</div>
-              <div className="col-span-5 lg:col-span-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 text-right">Amount</div>
+          {/* Table-style layout — cards on mobile, table on desktop */}
+          <motion.div {...fadeUp(opportunitiesAnim.visible, 0.25)} className="mb-12 sm:mb-20">
+            {/* Desktop table */}
+            <div className="hidden md:block bg-white border border-gray-200 overflow-hidden">
+              {/* Table header */}
+              <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-gray-200 bg-white">
+                <div className="col-span-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Type</div>
+                <div className="col-span-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Opportunity</div>
+                <div className="col-span-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 text-right">Amount</div>
+              </div>
+              {/* Table rows */}
+              {FOUNDING_OPPORTUNITIES.map((opp, i) => {
+                const Icon = opp.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-12 gap-4 px-6 py-5 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors group cursor-default items-center"
+                  >
+                    <div className="col-span-2 flex items-center gap-2">
+                      <Icon size={14} className="text-[#8A0000]" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">{opp.type}</span>
+                    </div>
+                    <div className="col-span-5">
+                      <h4 className="text-[15px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors">{opp.title}</h4>
+                    </div>
+                    <div className="col-span-5 text-right">
+                      <div className="text-[20px] font-black text-[#8A0000] leading-none">{opp.range || `${sym}${fmtShort(opp.amount)}`}</div>
+                      <span className="text-[10px] text-gray-400">{opp.type === 'Naming' ? 'Naming opportunity' : opp.type === 'Endowment' ? 'Per named chair' : 'Naming opportunity'}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-            {/* Table rows */}
-            {FOUNDING_OPPORTUNITIES.map((opp, i) => {
-              const Icon = opp.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
-                  viewport={{ once: true }}
-                  className="grid grid-cols-12 gap-4 px-6 py-5 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors group cursor-default items-center"
-                >
-                  <div className="col-span-2 flex items-center gap-2">
-                    <Icon size={14} className="text-[#8A0000]" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] hidden lg:inline">{opp.type}</span>
-                  </div>
-                  <div className="col-span-5">
-                    <span className="lg:hidden text-[9px] font-bold uppercase tracking-widest text-[#8A0000] mr-2">{opp.type}</span>
-                    <h4 className="text-[15px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors inline">{opp.title}</h4>
-                  </div>
-                  <div className="col-span-5 text-right">
-                    <div className="text-[20px] font-black text-[#8A0000] leading-none">{opp.range || `${sym}${fmtShort(opp.amount)}`}</div>
-                    <span className="text-[10px] text-gray-400">{opp.type === 'Naming' ? 'Naming opportunity' : opp.type === 'Endowment' ? 'Per named chair' : 'Naming opportunity'}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
+
+            {/* Mobile cards */}
+            <div className="md:hidden space-y-3">
+              {FOUNDING_OPPORTUNITIES.map((opp, i) => {
+                const Icon = opp.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    viewport={{ once: true }}
+                    className="bg-white border border-gray-200 p-4 hover:bg-gray-50 transition-colors group cursor-default"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon size={14} className="text-[#8A0000]" />
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#8A0000]">{opp.type}</span>
+                    </div>
+                    <h4 className="text-[15px] font-bold text-[#141414] mb-2">{opp.title}</h4>
+                    <div className="flex items-baseline justify-between">
+                      <div className="text-[20px] font-black text-[#8A0000] leading-none">{opp.range || `${sym}${fmtShort(opp.amount)}`}</div>
+                      <span className="text-[10px] text-gray-400">{opp.type === 'Naming' ? 'Naming opportunity' : opp.type === 'Endowment' ? 'Per named chair' : 'Naming opportunity'}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
 
           {/* Constellations — Circular universe in motion */}
@@ -875,7 +904,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                       </div>
                       <p className="text-[15px] text-gray-400 leading-relaxed">Select a star in the constellation to explore its orbit and discover the perks that await.</p>
                     </motion.div>
-                  )()}
+                  )}
                 </AnimatePresence>
               </div>
             </div>
@@ -886,7 +915,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           6. WAYS TO GIVE — Icon Grid
           ══════════════════════════════════════════ */}
-      <section id="ways" className="scroll-mt-[110px] py-24 lg:py-36">
+      <section id="ways" className="scroll-mt-[110px] py-16 sm:py-24 lg:py-36">
         <div ref={waysAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <motion.h2 {...clipReveal(waysAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-8 sm:mb-12">
             Ways to give
@@ -899,15 +928,16 @@ export default function FundraisingCampaign({ goToPage }: Props) {
                 <motion.div
                   key={i}
                   {...fadeUp(waysAnim.visible, i * 0.06)}
-                  className={`p-5 sm:p-8 lg:p-10 hover:bg-gray-50 transition-colors group ${i % 2 === 1 ? 'border-l border-gray-200' : ''} ${i < WAYS_TO_GIVE.length - 2 ? 'border-b border-gray-200' : ''} ${i >= WAYS_TO_GIVE.length - 2 && i % 2 === 1 ? 'border-l border-gray-200' : ''}`}
+                  className={`p-5 sm:p-8 lg:p-10 hover:bg-gray-50 transition-colors group border-b border-gray-200 last:border-b-0 md:border-b-0 ${i % 2 === 1 ? 'md:border-l md:border-gray-200' : ''} ${i < WAYS_TO_GIVE.length - 2 ? 'md:border-b md:border-gray-200' : ''} ${i >= WAYS_TO_GIVE.length - 2 && i % 2 === 1 ? 'md:border-l md:border-gray-200' : ''}`}
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 flex items-center justify-center bg-[#8A0000]/10 shrink-0">
-                      <Icon size={22} className="text-[#8A0000]" />
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-[#8A0000]/10 shrink-0">
+                      <Icon size={18} className="sm:hidden text-[#8A0000]" />
+                      <Icon size={22} className="hidden sm:block text-[#8A0000]" />
                     </div>
                     <div>
-                      <h4 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors">{w.title}</h4>
-                      <p className="text-[14px] text-gray-500 leading-relaxed">{w.desc}</p>
+                      <h4 className="text-[16px] sm:text-[18px] font-bold text-[#141414] mb-1 sm:mb-2 group-hover:text-[#8A0000] transition-colors">{w.title}</h4>
+                      <p className="text-[13px] sm:text-[14px] text-gray-500 leading-relaxed">{w.desc}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -916,10 +946,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </div>
 
           {/* Contact CTA band */}
-          <motion.div {...fadeUp(waysAnim.visible, 0.5)} className="mt-12 p-6 flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-50 border border-gray-100">
-            <div className="flex items-center gap-3">
-              <Phone size={16} className="text-[#8A0000]" />
-              <span className="text-[14px] text-gray-600">Questions about giving? Our advancement team is here to help.</span>
+          <motion.div {...fadeUp(waysAnim.visible, 0.5)} className="mt-8 sm:mt-12 p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-50 border border-gray-100">
+            <div className="flex items-center gap-3 text-center md:text-left">
+              <Phone size={16} className="text-[#8A0000] shrink-0" />
+              <span className="text-[13px] sm:text-[14px] text-gray-600">Questions about giving? Our advancement team is here to help.</span>
             </div>
             <a href="mailto:donate@artemis.edu" className="flex items-center space-x-3 px-6 py-2.5 border-2 border-[#8A0000] text-[#8A0000] text-[10px] font-bold uppercase tracking-widest hover:bg-[#8A0000] hover:text-white transition-colors group shrink-0">
               <span>donate@artemis.edu</span>
@@ -932,12 +962,12 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           7. GIVE NOW — The Donation Form
           ══════════════════════════════════════════ */}
-      <section id="give" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
+      <section id="give" className="scroll-mt-[110px] bg-gray-50 py-16 sm:py-24 lg:py-36">
         <div ref={giveAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <motion.h2 {...clipReveal(giveAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Give now
           </motion.h2>
-          <motion.p {...fadeUp(giveAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-12">Choose your amount, select your payment method, and join the founding. For major gifts and naming opportunities, contact <a href="mailto:donate@artemis.edu" className="text-[#8A0000] font-bold hover:underline">donate@artemis.edu</a>.</motion.p>
+          <motion.p {...fadeUp(giveAnim.visible, 0.1)} className="text-[14px] sm:text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-8 sm:mb-12">Choose your amount, select your payment method, and join the founding. For major gifts and naming opportunities, contact <a href="mailto:donate@artemis.edu" className="text-[#8A0000] font-bold hover:underline">donate@artemis.edu</a>.</motion.p>
 
           {/* AMOUNT section — Full-width */}
           <motion.div {...fadeUp(giveAnim.visible, 0.15)} className="bg-white border border-gray-200 p-5 sm:p-8 lg:p-10 mb-6">
@@ -1074,15 +1104,15 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           {/* Summary at bottom */}
           <motion.div {...fadeUp(giveAnim.visible, 0.35)} className="bg-white border-2 border-gray-200 p-5 sm:p-8 lg:p-10 mt-6 shadow-sm">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-              <div className="flex items-center gap-6">
-                <div className="w-14 h-14 flex items-center justify-center bg-[#8A0000]/10"><Heart size={24} className="text-[#8A0000]" /></div>
+              <div className="flex items-center gap-4 sm:gap-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-[#8A0000]/10"><Heart size={20} className="sm:hidden text-[#8A0000]" /><Heart size={24} className="hidden sm:block text-[#8A0000]" /></div>
                 <div>
-                  <div className="text-[28px] sm:text-[36px] font-black text-[#141414] leading-none">{sym}{fmtShort(effectiveAmount || 0)}</div>
+                  <div className="text-[24px] sm:text-[36px] font-black text-[#141414] leading-none">{sym}{fmtShort(effectiveAmount || 0)}</div>
                   {isRecurring && <div className="text-[12px] text-[#8A0000] font-bold mt-1">{recurringFreq} &middot; {sym}{fmtShort(effectiveAmount * (recurringFreq === 'monthly' ? 12 : recurringFreq === 'quarterly' ? 4 : 1))}/yr</div>}
                 </div>
               </div>
               {selectedPerk && (() => { const c = CONSTELLATIONS.find(x => x.id === selectedPerk); if (!c) return null; const Icon = c.icon; return (<div className="p-4 bg-[#8A0000]/5 border border-[#8A0000]/20"><span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">Your Constellation</span><div className="flex items-center gap-2 mt-1"><Icon size={14} className="text-[#8A0000]" /><span className="text-[14px] font-bold text-[#141414]">{c.title}</span></div></div>); })()}
-              <button onClick={handleDonate} disabled={submitting || !donorEmail || effectiveAmount <= 0} className={`px-12 py-4 text-[12px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all ${submitting || !donorEmail || effectiveAmount <= 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[#8A0000] text-white hover:bg-[#6B0000]'}`}>
+              <button onClick={handleDonate} disabled={submitting || !donorEmail || effectiveAmount <= 0} className={`w-full lg:w-auto px-8 sm:px-12 py-4 text-[12px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${submitting || !donorEmail || effectiveAmount <= 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[#8A0000] text-white hover:bg-[#6B0000]'}`}>
                 {submitting ? 'Processing...' : 'Complete Donation'} {!submitting && <ArrowRight size={14} />}
               </button>
             </div>
@@ -1104,10 +1134,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           8. THE FOUNDERS — Donor Wall + Events
           ══════════════════════════════════════════ */}
-      <section id="founders" className="scroll-mt-[110px] py-24 lg:py-36">
+      <section id="founders" className="scroll-mt-[110px] py-16 sm:py-24 lg:py-36">
         <div ref={foundersAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Tier legend horizontal bar */}
-          <motion.div {...clipReveal(foundersAnim.visible)} className="mb-16">
+          <motion.div {...clipReveal(foundersAnim.visible)} className="mb-10 sm:mb-16">
             <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-6 sm:mb-8">The founders</h2>
             <div className="flex flex-wrap gap-6 lg:gap-12 pb-8 border-b border-gray-200">
               {[
@@ -1202,15 +1232,15 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           9. BEYOND THE FOUNDING + CONTACT
           ══════════════════════════════════════════ */}
-      <section id="beyond" className="scroll-mt-[110px] bg-gray-50 py-24 lg:py-36">
+      <section id="beyond" className="scroll-mt-[110px] bg-gray-50 py-16 sm:py-24 lg:py-36">
         <div ref={beyondAnim.ref} className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Four phase cards with images */}
           <motion.h2 {...clipReveal(beyondAnim.visible)} className="text-[32px] sm:text-[44px] md:text-[56px] font-black leading-[0.92] tracking-tighter text-[#141414] mb-4">
             Beyond the founding
           </motion.h2>
-          <motion.p {...fadeUp(beyondAnim.visible, 0.1)} className="text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues &mdash; not as an ending, but as a beginning. Four phases to build a university that spans the world.</motion.p>
+          <motion.p {...fadeUp(beyondAnim.visible, 0.1)} className="text-[15px] sm:text-[16px] text-gray-600 max-w-2xl leading-relaxed mb-10 sm:mb-16">When the founding goal is reached, the campaign evolves. The constellation endures. The community deepens. The mission continues &mdash; not as an ending, but as a beginning. Four phases to build a university that spans the world.</motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-24">
             {[
               { phase: 'Phase I', title: 'The Founding', period: '2025 \u2014 2028', goal: sym + '15M', desc: 'Raise the capital. Build the first residential hub. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries \u2014 and your name is inscribed in its first chapter.', icon: Rocket, img: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600' },
               { phase: 'Phase II', title: 'The Expansion', period: '2028 \u2014 2033', goal: sym + '50M', desc: 'Scale to 15 nodes on 5 continents. Triple the student body. Launch the next generation of research institutes and residential colleges. The giving community becomes permanent philanthropic infrastructure \u2014 an engine that accelerates rather than a campaign that ends.', icon: Globe, img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600' },
@@ -1220,7 +1250,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
               const Icon = p.icon;
               return (
                 <motion.div key={i} {...scaleIn(beyondAnim.visible, i * 0.12)} className="bg-white border border-gray-200 overflow-hidden hover:border-[#8A0000]/30 transition-colors group">
-                  <div className="relative h-[200px] overflow-hidden">
+                  <div className="relative h-[160px] sm:h-[200px] overflow-hidden">
                     <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-6 sm:right-6 flex items-end justify-between">
@@ -1244,20 +1274,20 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </div>
 
           {/* Parallax image card with future stats */}
-          <motion.div {...scaleIn(beyondAnim.visible, 0.3)} className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden mb-24">
+          <motion.div {...scaleIn(beyondAnim.visible, 0.3)} className="relative w-full min-h-[320px] sm:min-h-[380px] md:min-h-[460px] overflow-hidden mb-12 sm:mb-24">
             <img src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1400" alt="The Future of Artemis" className="absolute inset-0 w-full h-full object-cover grayscale" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
-              <div className="bg-white max-w-sm sm:max-w-lg p-5 sm:p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[320px] sm:min-h-[380px] md:min-h-[460px] p-4 sm:p-8 md:p-14">
+              <div className="bg-white w-full sm:max-w-sm md:max-w-lg p-4 sm:p-6 md:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">By the Numbers</div>
-                <h3 className="text-[24px] font-bold text-[#141414] mb-6 leading-tight">A university built to span the world</h3>
-                <div className="grid grid-cols-2 gap-6">
+                <h3 className="text-[20px] sm:text-[24px] font-bold text-[#141414] mb-4 sm:mb-6 leading-tight">A university built to span the world</h3>
+                <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   {[{ value: '50+', label: 'Global Nodes', detail: 'Residential hubs across every continent' },{ value: '10,000', label: 'Students', detail: 'Full capacity across the network' },{ value: '100', label: 'Institutes', detail: 'Permanently endowed, independent' },{ value: sym+'150M', label: 'Endowment', detail: 'Self-sustaining by Phase III' }].map((s, i) => (
                     <div key={i} className="relative pl-4">
                       <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]"></div>
-                      <div className="text-[24px] font-black text-[#141414] leading-none mb-1">{s.value}</div>
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-0.5">{s.label}</div>
-                      <div className="text-[10px] text-gray-500 leading-snug">{s.detail}</div>
+                      <div className="text-[18px] sm:text-[24px] font-black text-[#141414] leading-none mb-1">{s.value}</div>
+                      <div className="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-0.5">{s.label}</div>
+                      <div className="text-[9px] sm:text-[10px] text-gray-500 leading-snug">{s.detail}</div>
                     </div>
                   ))}
                 </div>
@@ -1266,22 +1296,22 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           </motion.div>
 
           {/* Voices from the Future */}
-          <div className="mb-24">
-            <div className="relative flex items-center mb-14">
+          <div className="mb-12 sm:mb-24">
+            <div className="relative flex items-center mb-8 sm:mb-14">
               <div className="flex-grow border-t border-gray-200"></div>
-              <span className="mx-4 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">Voices from the Future</span>
+              <span className="mx-4 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">Voices from the Future</span>
               <div className="flex-grow border-t border-gray-200"></div>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
               {[
                 { quote: "I was the first in my village to attend university \u2014 and the first to attend one that didn't care about my village's wealth. Artemis saw my mind, not my postcode. The scholarship that brought me here was funded by someone I will never meet, but whose name I carry in my thesis dedication.", name: 'Amara Osei', role: 'Inaugural Cohort, Weavers Commons', loc: 'Accra \u2192 Geneva' },
                 { quote: "I donated because I remember being seventeen and brilliant and broke. I remember the university that let me in anyway \u2014 and how that changed everything. Artemis is that chance, scaled to the planet. I couldn't not give.", name: 'Dr. Elena Vasquez', role: "Chancellor's Circle, Founding Donor", loc: 'Mexico City' },
               ].map((v, i) => (
                 <motion.div key={i} {...fadeUp(beyondAnim.visible, i * 0.15)}>
-                  <svg className="w-8 h-8 text-[#8A0000] opacity-20 mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-                  <p className="text-[17px] md:text-[19px] text-gray-700 leading-relaxed mb-8 font-light italic">{v.quote}</p>
-                  <div className="text-[14px] font-bold text-[#141414]">{v.name}</div>
-                  <div className="text-[12px] text-gray-500">{v.role} &mdash; {v.loc}</div>
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#8A0000] opacity-20 mb-4 sm:mb-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+                  <p className="text-[15px] sm:text-[17px] md:text-[19px] text-gray-700 leading-relaxed mb-5 sm:mb-8 font-light italic">{v.quote}</p>
+                  <div className="text-[13px] sm:text-[14px] font-bold text-[#141414]">{v.name}</div>
+                  <div className="text-[11px] sm:text-[12px] text-gray-500">{v.role} &mdash; {v.loc}</div>
                 </motion.div>
               ))}
             </div>
@@ -1291,10 +1321,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
           <motion.div {...fadeUp(beyondAnim.visible, 0.3)}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               <div className="lg:col-span-5">
-                <h3 className="text-[28px] font-bold text-[#141414] mb-4">Talk to our advancement team</h3>
-                <p className="text-[15px] text-gray-600 leading-relaxed mb-8">Whether you are considering a major gift, exploring naming opportunities, or want to discuss how your contribution can have the greatest impact &mdash; our advancement team is here to help.</p>
+                <h3 className="text-[22px] sm:text-[28px] font-bold text-[#141414] mb-3 sm:mb-4">Talk to our advancement team</h3>
+                <p className="text-[14px] sm:text-[15px] text-gray-600 leading-relaxed mb-6 sm:mb-8">Whether you are considering a major gift, exploring naming opportunities, or want to discuss how your contribution can have the greatest impact &mdash; our advancement team is here to help.</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div>
                     <div className="text-[9px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">Email</div>
                     <a href="mailto:donate@artemis.edu" className="text-[14px] font-bold text-[#141414] hover:text-[#8A0000] transition-colors">donate@artemis.edu</a>
@@ -1354,15 +1384,15 @@ export default function FundraisingCampaign({ goToPage }: Props) {
       {/* ══════════════════════════════════════════
           Final CTA — Crimson Bar
           ══════════════════════════════════════════ */}
-      <section className="bg-[#8A0000] py-16">
+      <section className="bg-[#8A0000] py-10 sm:py-16">
         <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
-          <div>
-            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
+          <div className="text-center md:text-left">
+            <h2 className="text-[20px] sm:text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Every great university began<br />with someone who believed.
             </h2>
-            <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">This is your moment to place a star in a constellation that will guide scholars for centuries. The next chapter starts with you.</p>
+            <p className="text-[14px] sm:text-[16px] text-white/70 leading-relaxed max-w-lg mx-auto md:mx-0">This is your moment to place a star in a constellation that will guide scholars for centuries. The next chapter starts with you.</p>
           </div>
-          <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 bg-white text-[#8A0000] px-10 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors shrink-0 group">
+          <button onClick={() => document.getElementById('give')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center space-x-3 bg-white text-[#8A0000] px-8 sm:px-10 py-3 sm:py-4 text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors shrink-0 group">
             <span>Give Now</span>
             <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
           </button>
