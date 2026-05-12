@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface InnovationProps {
   goToPage: (page: string) => void;
@@ -86,6 +87,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
   const statsAnim = useInView();
   const techTransferAnim = useInView();
   const resourcesAnim = useInView();
+  const activeSection = useActiveSection(['incubators', 'tech', 'ventures', 'impact']);
 
   // Auto-cycle gallery
   useEffect(() => {
@@ -95,27 +97,6 @@ export default function Innovation({ goToPage }: InnovationProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Innovation at Artemis
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#incubators" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Incubators</a>
-                <a href="#tech" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Tech Transfer</a>
-                <a href="#ventures" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Ventures</a>
-                <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -141,6 +122,16 @@ export default function Innovation({ goToPage }: InnovationProps) {
           </div>
         </div>
       </section>
+
+      <OnThisPageNav
+        sections={[
+          { id: 'incubators', label: 'Incubators' },
+          { id: 'tech', label: 'Tech Transfer' },
+          { id: 'ventures', label: 'Ventures' },
+          { id: 'impact', label: 'Impact' },
+        ]}
+        activeSection={activeSection}
+      />
 
       {/* ── 2. OUR APPROACH ── */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
@@ -210,7 +201,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
       </section>
 
       {/* ── 3. VENTURE HUBS ── */}
-      <section id="incubators" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="incubators" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           {/* Section divider */}
           <div className="relative flex items-center mb-16">
@@ -260,7 +251,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
       </section>
 
       {/* ── 4. STATS ROW ── */}
-      <section id="ventures" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="ventures" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -317,7 +308,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
       </section>
 
       {/* ── 5. TECH TRANSFER ── */}
-      <section id="tech" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="tech" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={techTransferAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${techTransferAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -351,7 +342,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
       </section>
 
       {/* ── 6. ENTREPRENEURSHIP RESOURCES ── */}
-      <section id="impact" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="impact" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
           ref={resourcesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${resourcesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

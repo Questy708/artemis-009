@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface Props {
   goToPage: (page: string) => void;
@@ -76,28 +77,11 @@ export default function OurPeople({ goToPage }: Props) {
   const spotlightAnim = useInView();
   const statsAnim = useInView();
   const workingAnim = useInView();
+  const activeSection = useActiveSection(['faculty', 'staff', 'leadership']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Our People
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#faculty" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Faculty</a>
-                <a href="#staff" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Staff</a>
-                <a href="#leadership" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Leadership</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
+
 
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
@@ -126,6 +110,15 @@ export default function OurPeople({ goToPage }: Props) {
           </div>
         </div>
       </section>
+
+      <OnThisPageNav
+        sections={[
+          { id: 'faculty', label: 'Faculty' },
+          { id: 'staff', label: 'Staff' },
+          { id: 'leadership', label: 'Leadership' },
+        ]}
+        activeSection={activeSection}
+      />
 
       {/* ── 2. EXPLORE ── */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
@@ -170,7 +163,7 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 3. LEADERSHIP ── */}
-      <section id="leadership" className="bg-gray-50 py-16 lg:py-24">
+      <section id="leadership" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={leadershipAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${leadershipAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -224,7 +217,7 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 4. FACULTY SPOTLIGHT ── */}
-      <section id="faculty" className="py-16 lg:py-24">
+      <section id="faculty" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={spotlightAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${spotlightAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -311,7 +304,7 @@ export default function OurPeople({ goToPage }: Props) {
       </section>
 
       {/* ── 6. WORKING AT ARTEMIS ── */}
-      <section id="staff" className="py-16 lg:py-24">
+      <section id="staff" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={workingAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${workingAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

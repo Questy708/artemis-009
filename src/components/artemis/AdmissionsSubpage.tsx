@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface Props {
   goToPage: (page: string) => void;
@@ -95,7 +96,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="annual-costs" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Annual Costs" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -131,7 +132,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="financial-aid" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Financial Aid" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -182,7 +183,7 @@ function TuitionContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="how-aid-works" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="How Aid Works" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Applying for financial aid</h2>
@@ -230,7 +231,7 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
 
   return (
     <>
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="global-admissions" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Global Admissions" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -268,7 +269,7 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="english-proficiency" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="English Proficiency" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -310,7 +311,7 @@ function InternationalContent({ goToPage }: { goToPage: (page: string) => void }
         </div>
       </section>
 
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="visa-records" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Visa & Records" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -354,7 +355,7 @@ function TransferContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="transfer-admissions" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Transfer Admissions" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -392,7 +393,7 @@ function TransferContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="apply-now" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Apply Now" />
           <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-8">Ready to transfer?</h2>
@@ -426,7 +427,7 @@ function DeadlinesContent({ goToPage }: { goToPage: (page: string) => void }) {
 
   return (
     <>
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="key-dates" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <SectionDivider label="Key Dates" />
           <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
@@ -465,7 +466,7 @@ function DeadlinesContent({ goToPage }: { goToPage: (page: string) => void }) {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="important-notes" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <RedLabel text="Important Notes" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -561,9 +562,33 @@ function GraduateComingSoonContent() {
   );
 }
 
+/* ─── Nav sections per page ─── */
+const navSectionsMap: Record<string, { id: string; label: string }[]> = {
+  'tuition-expenses': [
+    { id: 'annual-costs', label: 'Annual Costs' },
+    { id: 'financial-aid', label: 'Financial Aid' },
+    { id: 'how-aid-works', label: 'How Aid Works' },
+  ],
+  'international-students': [
+    { id: 'global-admissions', label: 'Global Admissions' },
+    { id: 'english-proficiency', label: 'English Proficiency' },
+    { id: 'visa-records', label: 'Visa & Records' },
+  ],
+  'transfer-students': [
+    { id: 'transfer-admissions', label: 'Transfer Admissions' },
+    { id: 'apply-now', label: 'Apply Now' },
+  ],
+  'application-deadlines': [
+    { id: 'key-dates', label: 'Key Dates' },
+    { id: 'important-notes', label: 'Important Notes' },
+  ],
+};
+
 /* ─── MAIN COMPONENT ─── */
 export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
   const config = pageConfigs[pageId];
+  const navSections = navSectionsMap[pageId] || [];
+  const activeSection = useActiveSection(navSections.map(s => s.id));
   if (!config) {
     return (
       <div className="flex-1 flex flex-col bg-white">
@@ -596,20 +621,6 @@ export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('admissions')}>
-            Admissions + Aid
-            </h2>
-            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-            <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{config.title}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -635,6 +646,11 @@ export default function AdmissionsSubpage({ goToPage, pageId }: Props) {
           </div>
         </div>
       </section>
+
+      {/* On This Page Nav */}
+      {navSections.length > 0 && (
+        <OnThisPageNav sections={navSections} activeSection={activeSection} />
+      )}
 
       {/* Page content */}
       {renderContent()}

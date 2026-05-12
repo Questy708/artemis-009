@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface AboutProps {
   goToPage: (page: string) => void;
@@ -80,31 +81,11 @@ export default function About({ goToPage }: AboutProps) {
   const pagesAnim = useInView();
   const cardsAnim = useInView();
   const peopleAnim = useInView();
+  const activeSection = useActiveSection(['university', 'people', 'visit', 'contact']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── 1. Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                About Artemis
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#university" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">The University</a>
-                <a href="#people" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">People</a>
-                <a href="#visit" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Visit</a>
-                <a href="#contact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Contact</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-      {/* ── 2. Hero ── */}
+      {/* ── 1. Hero ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
@@ -130,7 +111,17 @@ export default function About({ goToPage }: AboutProps) {
         </div>
       </section>
 
-      {/* ── 3. Our Story ── */}
+      <OnThisPageNav
+        sections={[
+          { id: 'university', label: 'The University' },
+          { id: 'people', label: 'People' },
+          { id: 'visit', label: 'Visit' },
+          { id: 'contact', label: 'Contact' },
+        ]}
+        activeSection={activeSection}
+      />
+
+      {/* ── 2. Our Story ── */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div
           ref={storyAnim.ref}
@@ -188,7 +179,7 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 4. Pages in This Section ── */}
-      <section id="university" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="university" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
           ref={pagesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pagesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -257,7 +248,7 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 6. Our People — Card-and-Image Parallax ── */}
-      <section id="people" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
+      <section id="people" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
         <div
           ref={peopleAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${peopleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -294,7 +285,7 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 7. Crimson CTA Bar ── */}
-      <section id="visit" className="scroll-mt-24 bg-[#8A0000] py-16">
+      <section id="visit" className="scroll-mt-[110px] bg-[#8A0000] py-16">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
@@ -315,7 +306,7 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 8. Contact Anchor ── */}
-      <section id="contact" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="contact" className="scroll-mt-[110px] py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>

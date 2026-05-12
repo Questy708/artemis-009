@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface AdmissionsProps {
   goToPage: (page: string) => void;
@@ -113,31 +114,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
   const aidAnim = useInView();
   const applyAnim = useInView();
   const infoAnim = useInView();
+  const activeSection = useActiveSection(['paths', 'cycles', 'aid', 'apply', 'info']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Admissions + Aid
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#paths" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Paths</a>
-                <a href="#cycles" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Cycles</a>
-                <a href="#aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Aid</a>
-                <a href="#apply" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Apply</a>
-                <a href="#info" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Info</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -164,8 +144,19 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
         </div>
       </section>
 
+      <OnThisPageNav
+        sections={[
+          { id: 'paths', label: 'Paths' },
+          { id: 'cycles', label: 'Cycles' },
+          { id: 'aid', label: 'Aid' },
+          { id: 'apply', label: 'Apply' },
+          { id: 'info', label: 'Info' },
+        ]}
+        activeSection={activeSection}
+      />
+
       {/* ── 2. YOUR PATH — 3-card grid ── */}
-      <section id="paths" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="paths" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={pathsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pathsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -242,7 +233,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 4. APPLICATION CYCLES (Minerva-style) ── */}
-      <section id="cycles" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
+      <section id="cycles" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
         <div
           ref={cyclesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -322,7 +313,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 5. FINANCIAL AID ── */}
-      <section id="aid" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="aid" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={aidAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${aidAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -357,7 +348,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 6. START YOUR APPLICATION ── */}
-      <section id="apply" className="scroll-mt-24 bg-[#8A0000] py-16 lg:py-24">
+      <section id="apply" className="scroll-mt-[110px] bg-[#8A0000] py-16 lg:py-24">
         <div
           ref={applyAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${applyAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -388,7 +379,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
       </section>
 
       {/* ── 7. MORE INFORMATION — link grid ── */}
-      <section id="info" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="info" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
           ref={infoAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${infoAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

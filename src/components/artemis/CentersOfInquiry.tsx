@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface Props {
   goToPage: (page: string, centerSlug?: string) => void;
@@ -268,24 +269,10 @@ export default function CentersOfInquiry({ goToPage }: Props) {
   const guildAnim = useInView();
   const cyclesAnim = useInView();
 
+  const activeSection = useActiveSection(['pillars', 'centers']);
+
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-              Research at Artemis
-            </h2>
-            <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-              <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
-              <a href="#projects" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Projects</a>
-              <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -304,6 +291,14 @@ export default function CentersOfInquiry({ goToPage }: Props) {
         </div>
       </section>
 
+      <OnThisPageNav
+        sections={[
+          { id: 'pillars', label: 'Five Pillars' },
+          { id: 'centers', label: 'Centers' },
+        ]}
+        activeSection={activeSection}
+      />
+
       {/* Introduction */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={introAnim.ref} className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -320,7 +315,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Pillar Tabs */}
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="pillars" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={pillarsAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pillarsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -346,7 +341,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* All Centers Grid */}
-      <section id="centers" className="py-16 lg:py-24">
+      <section id="centers" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={centersAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${centersAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>

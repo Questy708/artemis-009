@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface ResearchProps {
   goToPage: (page: string, centerSlug?: string) => void;
@@ -226,6 +227,8 @@ export default function Research({ goToPage }: ResearchProps) {
   const cardsAnim = useInView();
   const facilitiesAnim = useInView();
 
+  const activeSection = useActiveSection(['join', 'growth', 'highlights', 'centers', 'learn']);
+
   // Auto-cycle gallery
   useEffect(() => {
     const timer = setInterval(() => setActiveGallery(i => (i + 1) % galleryImages.length), 5000);
@@ -262,28 +265,6 @@ export default function Research({ goToPage }: ResearchProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header — Artemis style ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Research at Artemis
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#join" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Join Us</a>
-                <a href="#growth" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Growth &amp; Impact</a>
-                <a href="#highlights" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Highlights</a>
-                <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
-                <a href="#learn" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Learn More</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -309,6 +290,17 @@ export default function Research({ goToPage }: ResearchProps) {
           </div>
         </div>
       </section>
+
+      <OnThisPageNav
+        sections={[
+          { id: 'join', label: 'Join Us' },
+          { id: 'growth', label: 'Growth & Impact' },
+          { id: 'highlights', label: 'Highlights' },
+          { id: 'centers', label: 'Centers' },
+          { id: 'learn', label: 'Learn More' },
+        ]}
+        activeSection={activeSection}
+      />
 
       {/* ── 2. REVOLUTIONIZING THE RESEARCH ENTERPRISE ── */}
       <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
@@ -378,7 +370,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 3. BE A PART OF ARTEMIS RESEARCH ── */}
-      <section id="join" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="join" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
           ref={joinAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${joinAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -467,7 +459,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 5. RESEARCH GROWTH & IMPACT ── */}
-      <section id="growth" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="growth" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -524,7 +516,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 6. HIGHLIGHTS ── */}
-      <section id="highlights" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
+      <section id="highlights" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
         <div
           ref={highlightsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -623,7 +615,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 8. CENTERS OF INQUIRY ── */}
-      <section id="centers" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="centers" className="scroll-mt-[110px] py-16 lg:py-24">
         {/* Intro — constrained width */}
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="relative flex items-center mb-16">
@@ -724,7 +716,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 9. LEARN MORE ── */}
-      <section id="learn" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
+      <section id="learn" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>

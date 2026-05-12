@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface Props {
   goToPage: (page: string, centerSlug?: string) => void;
@@ -474,6 +475,14 @@ const allCenters: Record<string, {
   },
 };
 
+const centerNavSections = [
+  { id: 'center-overview', label: 'Overview' },
+  { id: 'center-focus', label: 'Research Focus' },
+  { id: 'center-structure', label: 'Structure' },
+  { id: 'center-projects', label: 'Projects' },
+  { id: 'center-explore', label: 'Explore More' },
+];
+
 export default function CenterDetail({ goToPage, centerSlug }: Props) {
   const center = allCenters[centerSlug];
   const anim1 = useInView();
@@ -481,6 +490,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
   const anim3 = useInView();
   const anim4 = useInView();
   const anim5 = useInView();
+  const activeSection = useActiveSection(centerNavSections.map(s => s.id));
 
   if (!center) {
     return (
@@ -495,20 +505,6 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('research')}>
-              Research at Artemis
-            </h2>
-            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-              <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{center.name}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="relative w-full overflow-hidden group">
         <div className="max-w-[1600px] mx-auto">
@@ -542,8 +538,11 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
         </div>
       </section>
 
+      {/* On This Page Nav */}
+      <OnThisPageNav sections={centerNavSections} activeSection={activeSection} />
+
       {/* Overview */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="center-overview" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-12">
             <hr className="flex-grow border-t border-gray-200" />
@@ -557,7 +556,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Focus Areas */}
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="center-focus" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim2.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim2.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -580,7 +579,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Four Pillars Detail */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="center-structure" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
         <div ref={anim3.ref} className={`transition-all duration-700 ${anim3.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-12">
             <hr className="flex-grow border-t border-gray-200" />
@@ -615,7 +614,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Featured Projects */}
-      <section className="bg-gray-50 py-16 lg:py-24">
+      <section id="center-projects" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div ref={anim4.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim4.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -635,7 +634,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       </section>
 
       {/* Other Centers */}
-      <section className="py-16 lg:py-24">
+      <section id="center-explore" className="scroll-mt-[110px] py-16 lg:py-24">
         <div ref={anim5.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${anim5.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>

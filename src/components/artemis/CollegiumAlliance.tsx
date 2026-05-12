@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { MapPin } from 'lucide-react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface Props {
   goToPage: (page: string) => void;
@@ -101,29 +102,10 @@ export default function CollegiumAlliance({ goToPage }: Props) {
   const howAnim = useInView();
   const statsAnim = useInView();
   const parallaxAnim = useInView();
+  const activeSection = useActiveSection(['network', 'partnerships', 'nodes']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Global Alliance
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#network" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Network</a>
-                <a href="#partnerships" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Partnerships</a>
-                <a href="#nodes" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Nodes</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
       {/* ── 2. Hero Section ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -150,8 +132,17 @@ export default function CollegiumAlliance({ goToPage }: Props) {
         </div>
       </section>
 
+      <OnThisPageNav
+        sections={[
+          { id: 'network', label: 'Network' },
+          { id: 'partnerships', label: 'Partnerships' },
+          { id: 'nodes', label: 'Nodes' },
+        ]}
+        activeSection={activeSection}
+      />
+
       {/* ── 3. Overview Section ── */}
-      <section id="network" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
+      <section id="network" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={overviewAnim.ref}
           className={`transition-all duration-700 ${overviewAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -196,7 +187,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 4. Founding Members Grid ── */}
-      <section id="partnerships" className="bg-gray-50 py-16 lg:py-24">
+      <section id="partnerships" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
           <div
             ref={membersAnim.ref}
@@ -323,7 +314,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
       </section>
 
       {/* ── 6. Stats Section ── */}
-      <section id="nodes" className="bg-gray-50 py-16 lg:py-24 px-8 lg:px-20">
+      <section id="nodes" className="bg-gray-50 py-16 lg:py-24 px-8 lg:px-20 scroll-mt-[110px]">
         <div className="max-w-[1400px] mx-auto">
           <div
             ref={statsAnim.ref}

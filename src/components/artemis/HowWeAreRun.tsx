@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { ChevronRight } from 'lucide-react';
 
 interface Props {
@@ -127,28 +128,11 @@ export default function HowWeAreRun({ goToPage }: Props) {
   const pressAnim = useInView();
   const lifelongAnim = useInView();
   const teaserAnim = useInView();
+  const activeSection = useActiveSection(['governance', 'finance', 'policies']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                How We Are Run
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#governance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Governance</a>
-                <a href="#finance" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Finance</a>
-                <a href="#policies" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Policies</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
+
 
       {/* ── Hero Section ── */}
       <section className="relative w-full overflow-hidden">
@@ -175,6 +159,15 @@ export default function HowWeAreRun({ goToPage }: Props) {
           </div>
         </div>
       </section>
+
+      <OnThisPageNav
+        sections={[
+          { id: 'governance', label: 'Governance' },
+          { id: 'finance', label: 'Finance' },
+          { id: 'policies', label: 'Policies' },
+        ]}
+        activeSection={activeSection}
+      />
 
       {/* ── Pages in This Section ── */}
       <section className="py-16 lg:py-24">
@@ -206,7 +199,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── The Governance Model ── */}
-      <section id="governance" className="py-16 lg:py-24 bg-gray-50">
+      <section id="governance" className="py-16 lg:py-24 bg-gray-50 scroll-mt-[110px]">
         <div
           ref={governanceAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${governanceAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -312,7 +305,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Artemis University Press ── */}
-      <section id="finance" className="py-16 lg:py-24 bg-gray-50">
+      <section id="finance" className="py-16 lg:py-24 bg-gray-50 scroll-mt-[110px]">
         <div
           ref={pressAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pressAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -351,7 +344,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       </section>
 
       {/* ── Lifelong Learning ── */}
-      <section id="policies" className="py-16 lg:py-24">
+      <section id="policies" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div
           ref={lifelongAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${lifelongAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

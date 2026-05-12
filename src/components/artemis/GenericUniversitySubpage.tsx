@@ -666,10 +666,8 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
 
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
+      {/* Sub-header breadcrumb */}
+      <div className="bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
             <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('the-university')}>
@@ -681,8 +679,6 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
           </div>
         </div>
       </div>
-          </div>
-        </div>
 
       {/* Hero Image */}
       {heroConfig && (

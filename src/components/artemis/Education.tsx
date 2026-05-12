@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
 interface EducationProps {
   goToPage: (page: string) => void;
@@ -136,25 +137,8 @@ export default function Education({ goToPage }: EducationProps) {
   const globalAnim = useInView();
   const statsAnim = useInView();
 
-  /* Active section tracker for "On This Page" nav */
-  const [activeSection, setActiveSection] = useState('approach');
-  useEffect(() => {
-    const sectionIds = ['approach', 'programs', 'curriculum', 'global', 'by-the-numbers'];
-    const handleScroll = () => {
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 160 && rect.bottom > 160) {
-            setActiveSection(id);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const sectionIds = ['approach', 'programs', 'curriculum', 'global', 'by-the-numbers'];
+  const activeSection = useActiveSection(sectionIds);
 
   return (
     <div className="flex flex-col bg-white w-full">
@@ -193,42 +177,16 @@ export default function Education({ goToPage }: EducationProps) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          ON THIS PAGE — sticky section navigation
-          Background spans full width, content centered.
-          ═══════════════════════════════════════════ */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <span className="text-[13px] font-bold text-[#8A0000] whitespace-nowrap shrink-0">
-              On This Page:
-            </span>
-            {[
-              { id: 'approach', label: 'Our Approach' },
-              { id: 'programs', label: 'Programs' },
-              { id: 'curriculum', label: 'Curriculum' },
-              { id: 'global', label: 'Global Learning' },
-              { id: 'by-the-numbers', label: 'By the Numbers' },
-            ].map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
-                className={`text-[13px] font-semibold whitespace-nowrap shrink-0 transition-colors border-b-2 pb-1 ${
-                  activeSection === s.id
-                    ? 'text-[#8A0000] border-[#8A0000]'
-                    : 'text-gray-500 border-transparent hover:text-[#8A0000] hover:border-[#8A0000]'
-                }`}
-              >
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <OnThisPageNav
+        sections={[
+          { id: 'approach', label: 'Our Approach' },
+          { id: 'programs', label: 'Programs' },
+          { id: 'curriculum', label: 'Curriculum' },
+          { id: 'global', label: 'Global Learning' },
+          { id: 'by-the-numbers', label: 'By the Numbers' },
+        ]}
+        activeSection={activeSection}
+      />
 
       {/* ═══════════════════════════════════════════
           2. OUR APPROACH — 6-6 two-column (ASU pattern)

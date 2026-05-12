@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { motion, useScroll, useSpring } from 'motion/react';
 
 interface Props {
@@ -44,23 +45,11 @@ export default function OurHistory({ goToPage }: Props) {
     restDelta: 0.001
   });
 
+  const activeSection = useActiveSection(['timeline', 'founding', 'milestones']);
+
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Our History
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#timeline" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Timeline</a>
-                <a href="#founding" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Founding</a>
-                <a href="#milestones" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Milestones</a>
-              </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Hero Section */}
       <div className="bg-white pt-16 pb-8">
@@ -90,8 +79,17 @@ export default function OurHistory({ goToPage }: Props) {
         </div>
       </div>
 
+      <OnThisPageNav
+        sections={[
+          { id: 'timeline', label: 'Timeline' },
+          { id: 'founding', label: 'Founding' },
+          { id: 'milestones', label: 'Milestones' },
+        ]}
+        activeSection={activeSection}
+      />
+
       {/* Content Section */}
-      <div id="timeline" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20" ref={containerRef}>
+      <div id="timeline" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 scroll-mt-[110px]" ref={containerRef}>
         <div className="relative pt-6 pb-20">
           {/* Animated Background Line */}
           <div className="absolute top-[50px] lg:top-[80px] bottom-0 left-[5px] md:left-[21px] lg:left-[calc(33.333333%+1.5rem)] w-[2px] bg-gray-100 transform -translate-x-1/2 z-0" />
@@ -130,7 +128,7 @@ export default function OurHistory({ goToPage }: Props) {
             </TimelineSection>
 
             <TimelineSection period="2020" title="The Genesis Drafts">
-              <div id="founding" />
+              <div id="founding" className="scroll-mt-[110px]" />
               <figure className="my-2 sm:w-[45%] float-left mr-8 mb-6">
                  <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&q=80&w=1000" className="w-full object-cover rounded-lg grayscale brightness-95 shadow-sm" alt="Drafting concepts" />
                  <figcaption className="text-[13px] mt-3 px-4 border-l-2 border-[#8A0000] text-gray-500 italic">Early structural outlines for the Artemis network.</figcaption>
@@ -145,7 +143,7 @@ export default function OurHistory({ goToPage }: Props) {
             </TimelineSection>
 
             <TimelineSection period="Today" title="A Global Network" isLast>
-              <div id="milestones" />
+              <div id="milestones" className="scroll-mt-[110px]" />
               <p>What began as a conceptual draft by Abraham Kyeyune has rapidly evolved into a prestige network. Today, Artemis operates as a federation of colleges, research divisions, and academic societies spread across international boundaries.</p>
               <figure className="my-8">
                  <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-[21/9] object-cover rounded-lg grayscale brightness-95 shadow-sm" alt="Global network" />

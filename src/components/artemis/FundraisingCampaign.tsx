@@ -2,6 +2,7 @@
 
 import React from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { motion } from 'motion/react';
 import { ArrowRight, Target, Users, BookOpen, Cpu, Award, Milestone, BookOpenText } from 'lucide-react';
 
@@ -10,24 +11,9 @@ interface Props {
 }
 
 export default function FundraisingCampaign({ goToPage }: Props) {
+  const activeSection = useActiveSection(['campaign', 'giving', 'impact']);
   return (
     <div className="flex flex-col bg-white">
-      {/* Sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Support Artemis
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#campaign" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Campaign</a>
-                <a href="#giving" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Giving</a>
-                <a href="#impact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Impact</a>
-              </div>
-          </div>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <div className="bg-[#141414] text-white pt-24 pb-24">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
@@ -50,10 +36,19 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </div>
       </div>
 
+      <OnThisPageNav
+        sections={[
+          { id: 'campaign', label: 'Campaign' },
+          { id: 'giving', label: 'Giving' },
+          { id: 'impact', label: 'Impact' },
+        ]}
+        activeSection={activeSection}
+      />
+
       <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-24">
         
         {/* Case for Support */}
-        <section id="campaign" className="mb-24">
+        <section id="campaign" className="mb-24 scroll-mt-[110px]">
             <h2 className="text-[14px] font-bold text-[#8A0000] tracking-widest uppercase mb-4">Our Commitment</h2>
             <h3 className="text-[40px] font-extrabold tracking-tight text-gray-900 mb-8">Why Artemis? Why Now?</h3>
             <div className="prose prose-lg text-gray-600 leading-relaxed">
@@ -104,7 +99,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </section>
 
         {/* Outcomes */}
-        <section id="impact" className="mb-24 py-16 border-t border-gray-100">
+        <section id="impact" className="mb-24 py-16 border-t border-gray-100 scroll-mt-[110px]">
             <h2 className="text-[32px] font-extrabold text-gray-900 tracking-tight mb-16 uppercase">Tangible Outcomes</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
@@ -171,7 +166,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         </section>
 
         {/* Giving Societies */}
-        <section id="giving" className="bg-gray-900 rounded-2xl p-16 text-white mb-24">
+        <section id="giving" className="bg-gray-900 rounded-2xl p-16 text-white mb-24 scroll-mt-[110px]">
             <div className="flex flex-col lg:flex-row items-center gap-12">
                 <div className="lg:w-1/2">
                     <h3 className="text-4xl font-bold mb-6 flex items-center gap-4"><Award className="text-[#8A0000]" /> Recognized Impact</h3>

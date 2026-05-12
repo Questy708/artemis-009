@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import { ArrowRight, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface Props {
@@ -96,6 +97,8 @@ export default function Apply({ goToPage }: Props) {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeCertification, setAgreeCertification] = useState(false);
 
+  const activeSection = useActiveSection(['application', 'deadlines', 'financial-aid']);
+
   const addAccomplishment = () => {
     if (accomplishments.length < 6) {
       setAccomplishments([...accomplishments, { title: '', description: '', role: '', impact: '' }]);
@@ -119,23 +122,16 @@ export default function Apply({ goToPage }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* Sticky sub-header */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-              Admissions + Aid
-            </h2>
-            <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-              <a href="#application" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Application</a>
-              <a href="#deadlines" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Deadlines</a>
-              <a href="#financial-aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Financial Aid</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <OnThisPageNav
+        sections={[
+          { id: 'application', label: 'Application' },
+          { id: 'deadlines', label: 'Deadlines' },
+          { id: 'financial-aid', label: 'Financial Aid' },
+        ]}
+        activeSection={activeSection}
+      />
 
-      <div id="application" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24">
+      <div id="application" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24 scroll-mt-[110px]">
         <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-4 uppercase">
           Application for Admission
         </h1>
@@ -166,7 +162,7 @@ export default function Apply({ goToPage }: Props) {
 
             {/* ═══ PART 1: PERSONAL INFORMATION ═══ */}
             {currentStep === 1 && (
-              <div id="deadlines" className="space-y-8">
+              <div id="deadlines" className="space-y-8 scroll-mt-[110px]">
                 <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
                   <div className="mb-8 flex items-center space-x-3">
                     <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -499,7 +495,7 @@ export default function Apply({ goToPage }: Props) {
 
             {/* ═══ PART 4: FINANCIAL AID & AGREEMENTS ═══ */}
             {currentStep === 4 && (
-              <div id="financial-aid" className="space-y-8">
+              <div id="financial-aid" className="space-y-8 scroll-mt-[110px]">
                 <div className="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
                   <div className="mb-8 flex items-center space-x-3">
                     <span className="w-8 h-[1px] bg-[#8A0000]"></span>

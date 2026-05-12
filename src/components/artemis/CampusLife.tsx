@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 
 interface CampusLifeProps {
@@ -73,31 +74,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
   const traditionsAnim = useInView();
   const statsAnim = useInView();
   const studentLifeAnim = useInView();
+  const activeSection = useActiveSection(['living', 'traditions', 'community', 'explore']);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── 1. Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Campus Life
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#living" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Living</a>
-                <a href="#traditions" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Traditions</a>
-                <a href="#community" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Community</a>
-                <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-      {/* ── 2. Hero ── */}
+      {/* ── 1. Hero ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
@@ -123,8 +104,18 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 3. Living Commons — section divider with two-column ── */}
-      <section id="living" className="scroll-mt-24 py-16 lg:py-24">
+      <OnThisPageNav
+        sections={[
+          { id: 'living', label: 'Living' },
+          { id: 'traditions', label: 'Traditions' },
+          { id: 'community', label: 'Community' },
+          { id: 'explore', label: 'Explore' },
+        ]}
+        activeSection={activeSection}
+      />
+
+      {/* ── 2. Living Commons — section divider with two-column ── */}
+      <section id="living" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={heroAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -217,7 +208,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 5. Traditions & Rituals — card-and-image parallax ── */}
-      <section id="traditions" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="traditions" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={traditionsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${traditionsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -283,7 +274,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 6. Stats row ── */}
-      <section id="community" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">
+      <section id="community" className="scroll-mt-[110px] py-16 lg:py-24 bg-gray-50">
         <div
           ref={statsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -311,7 +302,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 7. Student Life link grid ── */}
-      <section id="explore" className="scroll-mt-24 py-16 lg:py-24">
+      <section id="explore" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
           ref={studentLifeAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${studentLifeAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
