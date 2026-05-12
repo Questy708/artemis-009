@@ -141,7 +141,6 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
         </div>
           </div>
-      </section>
 
       {/* ── 6. Stats row ── */}
       <section id="community" className="scroll-mt-24 py-16 lg:py-24 bg-gray-50">

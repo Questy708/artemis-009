@@ -129,8 +129,6 @@ export default function About({ goToPage }: AboutProps) {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
       {/* ── 4. Pages in This Section ── */}
       <section id="university" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">

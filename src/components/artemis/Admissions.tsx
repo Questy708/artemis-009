@@ -155,8 +155,6 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
       {/* ── 3. ADMISSIONS BY THE NUMBERS ── */}
       <section className="py-16 lg:py-24">

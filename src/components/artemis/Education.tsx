@@ -186,7 +186,6 @@ export default function Education({ goToPage }: EducationProps) {
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Global Learning</span>
             </div>
           </div>
-        </div>
 
         {/* Full-bleed image — breaks OUT of the content container */}
         <div className="max-w-[1600px] mx-auto">

@@ -208,7 +208,6 @@ export default function Colleges({ goToPage }: CollegesProps) {
             ))}
           </div>
         </div>
-      </section>
 
       {/* ── 5. CARD-AND-IMAGE PARALLAX ── */}
       <section className="py-16 lg:py-24 bg-gray-50">

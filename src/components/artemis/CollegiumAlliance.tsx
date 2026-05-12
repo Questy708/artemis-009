@@ -141,7 +141,6 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             ))}
           </div>
         </div>
-      </section>
 
       {/* ── 6. Stats Section ── */}
       <section id="nodes" className="bg-gray-50 py-16 lg:py-24 px-8 lg:px-20">
