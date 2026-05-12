@@ -166,17 +166,19 @@ export default function ArtemisApp() {
       />
 
       {isHome ? (
-        /* ─── Homepage: sidebar + content side-by-side ─── */
-        <div className="flex flex-1">
-          <Sidebar 
-            isOpen={isSidebarOpen}
-            onClose={() => setSidebarOpen(false)}
-            goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
-            goToPage={goToPage}
-          />
-          <main className="flex-1 flex flex-col min-w-0">
-            {renderPage()}
-          </main>
+        /* ─── Homepage: sidebar + content side-by-side, centered with max-width ─── */
+        <div className="flex flex-1 justify-center relative">
+          <div className="flex w-full max-w-[1440px]">
+            <Sidebar 
+              isOpen={isSidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+              goHome={() => { setCurrentPage('home'); setSidebarOpen(false); }}
+              goToPage={goToPage}
+            />
+            <main className="flex-1 flex flex-col min-w-0">
+              {renderPage()}
+            </main>
+          </div>
         </div>
       ) : (
         /* ─── Subpages: full-viewport-width content, no sidebar in flow ─── */
