@@ -477,6 +477,7 @@ const allCenters: Record<string, {
 
 const centerNavSections = [
   { id: 'center-overview', label: 'Overview' },
+  { id: 'people', label: 'People' },
   { id: 'center-focus', label: 'Research Focus' },
   { id: 'center-structure', label: 'Structure' },
   { id: 'center-projects', label: 'Projects' },
@@ -490,6 +491,7 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
   const anim3 = useInView();
   const anim4 = useInView();
   const anim5 = useInView();
+  const anim6 = useInView();
   const activeSection = useActiveSection(centerNavSections.map(s => s.id));
 
   if (!center) {
@@ -542,17 +544,40 @@ export default function CenterDetail({ goToPage, centerSlug }: Props) {
       <OnThisPageNav sections={centerNavSections} activeSection={activeSection} />
 
       {/* Overview */}
-      <section id="center-overview" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Overview
-              </span>
+      <section id="center-overview" className="scroll-mt-[110px] py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20">
+          <div ref={anim1.ref} className={`transition-all duration-700 ${anim1.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="mb-6 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                  Overview
+                </span>
+              </div>
+            {center.overview.map((para, i) => (
+              <p key={i} className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">{para}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* People */}
+      <section id="people" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
+        <div ref={anim6.ref} className={`max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 transition-all duration-700 ${anim6.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="mb-8 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">People</span>
+          </div>
+          <h2 className="text-[28px] font-extrabold tracking-tighter text-[#141414] mb-10">The people behind this Center</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <div className="bg-white p-8 border border-gray-100">
+              <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Core Investigators</div>
+              <p className="text-[15px] text-gray-600 leading-relaxed">{center.coreInvestigators}</p>
             </div>
-          {center.overview.map((para, i) => (
-            <p key={i} className="text-[16px] text-gray-600 leading-relaxed mb-4 max-w-2xl">{para}</p>
-          ))}
+            <div className="bg-white p-8 border border-gray-100">
+              <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Junior Fellows</div>
+              <p className="text-[15px] text-gray-600 leading-relaxed">{center.juniorFellows}</p>
+            </div>
+          </div>
         </div>
       </section>
 
