@@ -233,154 +233,16 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-            <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap cursor-pointer hover:opacity-80" onClick={() => goToPage('colleges')}>
-              Our Colleges
-            </h2>
-            <div className="hidden md:flex space-x-6 text-[12px] font-bold uppercase tracking-widest text-gray-400 overflow-x-auto hide-scrollbar">
-              <span className="text-black whitespace-nowrap border-b-2 border-[#8A0000]">{schoolName}</span>
+      <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">About the School</span>
             </div>
-          </div>
-        </div>
-      </div>
-          </div>
-        </div>
-
-      {/* ── 1. HERO ── */}
-      <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
-        <img
-          src={data.image}
-          alt={schoolName}
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              Our Colleges
-            </span>
-          </div>
-          <h1 className="text-[40px] md:text-[52px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-            {schoolName}
-          </h1>
-          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-            {data.description}
-          </p>
-        </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. ABOUT THE SCHOOL ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        {/* Section divider */}
-        <div className="relative flex items-center mb-16">
-          <div className="flex-grow border-t border-gray-200"></div>
-          <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">About the School</span>
-          <div className="flex-grow border-t border-gray-200"></div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left — Text */}
-          <div>
-            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-              Where depth meets<br />discovery
-            </h2>
-            <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-              {data.longDescription}
-            </p>
-          </div>
-
-          {/* Right — Dean Quote + Stats */}
-          <div>
-            <div className="border-l-4 border-[#8A0000] pl-6 py-2 mb-10">
-              <p className="text-[20px] font-bold text-[#141414] leading-tight mb-3 italic">
-                &ldquo;{data.deanQuote}&rdquo;
-              </p>
-              <p className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000]">
-                {data.deanName}
-              </p>
-              <p className="text-[12px] text-gray-500">{data.deanTitle}</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8">
-              <div className="relative pl-5 border-l-2 border-[#8A0000]">
-                <div className="text-[28px] font-black text-[#141414] leading-none tabular-nums">{data.stats.faculty}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mt-1">Faculty</div>
-              </div>
-              <div className="relative pl-5 border-l-2 border-[#8A0000]">
-                <div className="text-[28px] font-black text-[#141414] leading-none tabular-nums">{data.stats.programs}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mt-1">Programs</div>
-              </div>
-              <div className="relative pl-5 border-l-2 border-[#8A0000]">
-                <div className="text-[28px] font-black text-[#141414] leading-none tabular-nums">{data.stats.research}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mt-1">Research</div>
-              </div>
-              <div className="relative pl-5 border-l-2 border-[#8A0000]">
-                <div className="text-[28px] font-black text-[#141414] leading-none tabular-nums">{data.stats.students}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mt-1">Students</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. HIGHLIGHTS ── */}
-      <section className="bg-gray-50 py-16 lg:py-24">
-        <div
-          ref={highlightsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
           <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Highlights</span>
-          </div>
-
-          <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Signature programmes &amp; facilities
-          </h2>
-          <p className="text-[16px] text-gray-600 leading-relaxed max-w-2xl mb-12">
-            Each school within Artemis houses world-class facilities and flagship programmes that define its contribution to the university's research and teaching mission.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {data.highlights.map((highlight, i) => (
-              <div key={i} className="bg-white p-8 border border-gray-200 hover:border-[#8A0000] transition-all shadow-sm hover:shadow-md">
-                <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-4 uppercase">
-                  0{i + 1}
-                </div>
-                <h3 className="text-[20px] font-bold text-[#141414] mb-4 leading-tight">
-                  {highlight.title}
-                </h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed">
-                  {highlight.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. PROGRAMS OF STUDY ── */}
-      <section className="py-16 lg:py-24">
-        <div
-          ref={programsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${programsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Programs of Study</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Programs of Study</span>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
             <div>

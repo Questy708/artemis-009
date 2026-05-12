@@ -262,169 +262,16 @@ export default function Research({ goToPage }: ResearchProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header — Artemis style ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Research at Artemis
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#join" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Join Us</a>
-                <a href="#growth" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Growth &amp; Impact</a>
-                <a href="#highlights" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Highlights</a>
-                <a href="#centers" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Centers</a>
-                <a href="#learn" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Learn More</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-      {/* ── 1. HERO ── */}
-      <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-          alt="Research at Artemis"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Knowledge Enterprise</span>
-          </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-            Advancing the<br />boundaries of<br />human knowledge
-          </h1>
-          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-            At Artemis, research is not a siloed activity but a collective endeavor. We prioritize high-impact projects that address the core existential challenges of our time.
-          </p>
-        </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. REVOLUTIONIZING THE RESEARCH ENTERPRISE ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        <div
-          ref={heroAnim.ref}
-          className={`transition-all duration-700 ${heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Approach</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+      <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Approach</span>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left — Text */}
-            <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                Revolutionizing the research enterprise
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                The challenges that humanity faces — from health care to cybersecurity to affordable energy — are complex and interconnected. Solving them demands the creativity of many minds from many fields. Artemis connects those minds in an ecosystem where ideas thrive.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
-                We have reshaped the very structure of the university, centering our academic units and research institutes around grand challenges. Academic silos no longer serve. We build the right teams to accomplish our goals, regardless of disciplinary or organizational boundaries.
-              </p>
-              <button
-                onClick={() => goToPage('innovation')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
-              >
-                <span>Explore Our Model</span>
-                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </button>
+            <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Featured Projects</span>
             </div>
-
-            {/* Right — Gallery */}
-            <div>
-              <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
-                {galleryImages.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img.src}
-                    alt={img.alt}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === activeGallery ? 'opacity-100' : 'opacity-0'}`}
-                  />
-                ))}
-              </div>
-              {/* Thumbnail strip */}
-              <div className="flex gap-2 mt-3">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveGallery(i)}
-                    className={`flex-1 aspect-[4/3] overflow-hidden border-2 transition-all ${i === activeGallery ? 'border-[#8A0000]' : 'border-transparent opacity-50 hover:opacity-80'}`}
-                  >
-                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-              {/* Caption */}
-              <p className="text-[13px] text-gray-500 leading-relaxed mt-3 min-h-[48px]">
-                {galleryImages[activeGallery].caption}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. BE A PART OF ARTEMIS RESEARCH ── */}
-      <section id="join" className="scroll-mt-24 bg-gray-50 py-16 lg:py-24">
-        <div
-          ref={joinAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${joinAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left */}
-            <div>
-              <div className="mb-8 flex items-center space-x-3">
-                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Get Involved</span>
-              </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
-                Be a part of<br />Artemis research
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed">
-                We invite students, faculty, staff, alumni, businesses and community members to join us in advancing discovery and innovation. Whatever your role, there is a place for you here.
-              </p>
-            </div>
-            {/* Right — Link grid */}
-            <div className="space-y-0">
-              {joinLinks.map((link, i) => (
-                <button
-                  key={i}
-                  onClick={() => goToPage(link.page)}
-                  className="group flex justify-between items-center py-4 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
-                >
-                  <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
-                    {link.label}
-                  </span>
-                  <svg className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. FEATURED PROJECTS ── */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Featured Projects</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
 
           <div className="flex flex-col md:flex-row gap-4">
             {featuredProjects.map((project, i) => (
@@ -529,11 +376,10 @@ export default function Research({ goToPage }: ResearchProps) {
           ref={highlightsAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${highlightsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Highlights</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Highlights</span>
+            </div>
 
           {/* Card-and-image parallax section */}
           <div className="max-w-[1600px] mx-auto">
@@ -626,11 +472,10 @@ export default function Research({ goToPage }: ResearchProps) {
       <section id="centers" className="scroll-mt-24 py-16 lg:py-24">
         {/* Intro — constrained width */}
         <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Centers of Inquiry</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+          <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Centers of Inquiry</span>
+            </div>
 
           <div className="mb-12">
             <div className="mb-8 flex items-center space-x-3">

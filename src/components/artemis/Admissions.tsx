@@ -116,66 +116,10 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Admissions + Aid
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#paths" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Paths</a>
-                <a href="#cycles" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Cycles</a>
-                <a href="#aid" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Aid</a>
-                <a href="#apply" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Apply</a>
-                <a href="#info" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Info</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-      {/* ── 1. HERO ── */}
-      <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-          alt="Applying to Artemis"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Begin Here</span>
-          </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-            Applying to<br />Artemis
-          </h1>
-          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-            We seek the boldest minds — those who look at the horizon and see not a limit, but a challenge they are ready to meet. Your journey starts with a single step.
-          </p>
-        </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. YOUR PATH — 3-card grid ── */}
-      <section id="paths" className="scroll-mt-24 py-16 lg:py-24">
-        <div
-          ref={pathsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${pathsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Your Path</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+      <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Your Path</span>
+            </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {pathCards.map((card, i) => (

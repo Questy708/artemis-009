@@ -121,146 +121,16 @@ export default function Colleges({ goToPage }: CollegesProps) {
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── Sticky Sub-header ── */}
-      <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-              <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
-                Our Colleges
-              </h2>
-              <div className="flex space-x-6 shrink-0 text-[12px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#overview" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Overview</a>
-                <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
-                <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-              </div>
-      </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-      {/* ── 1. HERO ── */}
-      <section className="relative w-full overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-          alt="Our Colleges"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Academic Structure</span>
-          </div>
-          <h1 className="text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-            Specialized<br />Excellence
-          </h1>
-          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-            Each school within Artemis represents a pillar of human achievement, dedicated to deep expertise and cross-collegiate collaboration. We break the barriers between science and humanities.
-          </p>
-        </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. OVERVIEW ── */}
-      <section id="overview" className="scroll-mt-24 max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        <div
-          ref={introAnim.ref}
-          className={`transition-all duration-700 ${introAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Approach</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
+      <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Approach</span>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left — Text */}
-            <div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                Seven schools,<br />one mission
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                The University of Artemis is organized into seven academic schools, each a semi-autonomous unit with its own Dean, Faculty Council, and research agenda. Together they span the full breadth of human inquiry — from the subatomic to the societal, from the ancient text to the algorithmic frontier.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                Unlike the rigid departmental silos of traditional universities, Artemis schools are porous by design. Faculty hold joint appointments across schools, students design interdisciplinary pathways that cross boundaries, and research challenges are tackled by teams assembled from wherever the relevant expertise resides. The school structure provides depth; the network provides breadth.
-              </p>
-              <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
-                Each school sets its own research priorities, manages laboratory and digital infrastructure, and coordinates cross-college academic programming — ensuring that the intellectual output of the network exceeds the sum of its parts.
-              </p>
-              <button
-                onClick={() => goToPage('education')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
-              >
-                <span>Explore Education at Artemis</span>
-                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </button>
+            <div className="mb-8 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Our Schools</span>
             </div>
-
-            {/* Right — Quote + Image */}
-            <div>
-              <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
-                <img
-                  src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
-                  alt="Students collaborating across disciplines"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              <div className="border-l-4 border-[#8A0000] pl-6 py-2">
-                <p className="text-[22px] font-bold text-[#141414] leading-tight mb-2">
-                  &ldquo;The borders between disciplines are where the most interesting discoveries live.&rdquo;
-                </p>
-                <p className="text-[12px] font-bold uppercase tracking-widest text-[#8A0000]">
-                  Artemis Founding Principle
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. STATS ROW ── */}
-      <section className="bg-gray-50 py-16 lg:py-24">
-        <div
-          ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">By the Numbers</span>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
-            {collegesStats.map((stat, i) => (
-              <div key={i} className="relative pl-6 border-l-2 border-[#8A0000]">
-                <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{stat.label}</div>
-                <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. SCHOOLS GRID ── */}
-      <section id="schools" className="scroll-mt-24 py-16 lg:py-24">
-        <div
-          ref={schoolsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${schoolsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Our Schools</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
 
           <div className="mb-12">
             <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
