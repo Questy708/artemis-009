@@ -115,7 +115,7 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
     <div className="w-full shrink-0">
       {/* ── Photo Mosaic on Crimson ── */}
       <section className="bg-[#8A0000] py-12 px-6 lg:px-16 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           {/* Section label */}
           <div className="flex items-center space-x-3 mb-6">
             <span className="w-6 h-[1px] bg-white/40"></span>
@@ -156,7 +156,7 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
 
       {/* ── Main Footer Section ── */}
       <footer className="bg-white border-t border-gray-100 pt-16 pb-20 px-6 lg:px-16 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 flex flex-col md:flex-row gap-12 md:gap-20">
 
           {/* Logo & Address */}
           <div className="flex flex-col gap-6 md:w-1/3">
