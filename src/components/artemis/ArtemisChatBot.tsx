@@ -5,9 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   ArrowUp,
-  ChevronDown,
   Maximize2,
-  PanelRightOpen,
   Sparkles,
 } from 'lucide-react';
 
@@ -16,8 +14,7 @@ interface Message {
   content: string;
 }
 
-type ViewMode = 'expanded' | 'side-panel';
-type ChatState = 'compact' | 'ask-btn' | 'chat';
+type ChatState = 'pill' | 'compact' | 'expanded' | 'side-panel';
 
 const SUGGESTED_QUESTIONS = [
   'What programs of study does Artemis offer?',
@@ -25,15 +22,12 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 export default function ArtemisChatBot() {
-  const [chatState, setChatState] = useState<ChatState>('compact');
-  const [viewMode, setViewMode] = useState<ViewMode>('expanded');
-  const [showModeDropdown, setShowModeDropdown] = useState(false);
+  const [chatState, setChatState] = useState<ChatState>('pill');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -44,34 +38,14 @@ export default function ArtemisChatBot() {
   }, [messages, scrollToBottom]);
 
   useEffect(() => {
-    if (chatState === 'chat') {
-      setTimeout(() => inputRef.current?.focus(), 300);
+    if (chatState === 'compact' || chatState === 'expanded' || chatState === 'side-panel') {
+      setTimeout(() => inputRef.current?.focus(), 200);
     }
   }, [chatState]);
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setShowModeDropdown(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
+  const closeToPill = () => setChatState('pill');
 
-  const closeChat = () => {
-    // If user has chatted before, show "Ask a question" pill; otherwise show compact widget
-    setChatState(messages.length > 0 ? 'ask-btn' : 'compact');
-    setShowModeDropdown(false);
-  };
-
-  const switchMode = (mode: ViewMode) => {
-    setViewMode(mode);
-    setShowModeDropdown(false);
-  };
-
-  const sendMessage = async (text?: string, fromCompact?: boolean) => {
+  const sendMessage = async (text?: string) => {
     const trimmed = (text || input).trim();
     if (!trimmed || isLoading) return;
 
@@ -81,9 +55,9 @@ export default function ArtemisChatBot() {
     setInput('');
     setIsLoading(true);
 
-    // Auto-advance from compact to full chat
-    if (fromCompact || chatState === 'compact') {
-      setChatState('chat');
+    // If in compact, auto-advance to expanded
+    if (chatState === 'compact') {
+      setChatState('expanded');
     }
 
     try {
@@ -101,10 +75,7 @@ export default function ArtemisChatBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        {
-          role: 'assistant',
-          content: "I'm sorry, I encountered an error. Please try again in a moment.",
-        },
+        { role: 'assistant', content: "I'm sorry, I encountered an error. Please try again." },
       ]);
     } finally {
       setIsLoading(false);
@@ -112,14 +83,12 @@ export default function ArtemisChatBot() {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, fromCompact?: boolean) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      sendMessage(undefined, fromCompact);
+      sendMessage();
     }
   };
-
-  const modeLabel = viewMode === 'expanded' ? 'Expanded View' : 'Side Panel';
 
   // ─── Shared: Question Button ───
   const QuestionBtn = ({ text, onClick }: { text: string; onClick: () => void }) => (
@@ -133,86 +102,55 @@ export default function ArtemisChatBot() {
   );
 
   // ─── Shared: Input Bar ───
-  const InputBar = ({ refArg, fromCompact }: { refArg?: React.RefObject<HTMLInputElement | null>; fromCompact?: boolean }) => (
+  const InputBar = () => (
     <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
       <Sparkles className="h-3.5 w-3.5 text-gray-400 shrink-0" />
       <input
-        ref={refArg || inputRef}
+        ref={inputRef}
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => handleKeyDown(e, fromCompact)}
+        onKeyDown={handleKeyDown}
         placeholder="Ask anything about Artemis"
         disabled={isLoading}
         className="flex-1 bg-transparent text-[13px] text-gray-800 placeholder-gray-400 outline-none disabled:opacity-50"
       />
       <button
-        onClick={() => sendMessage(undefined, fromCompact)}
+        onClick={() => sendMessage()}
         disabled={!input.trim() || isLoading}
-        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-gray-500 transition-all hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
-        aria-label="Send message"
+        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-gray-500 transition-colors hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="Send"
       >
         <ArrowUp className="h-3 w-3" />
       </button>
     </div>
   );
 
-  // ─── Chat Content (expanded + side panel) ───
-  const chatContent = (
+  // ─── Full Chat Content (shared by expanded + side panel) ───
+  const fullChatContent = (
     <div className="flex flex-col h-full bg-[#f7f7f7]">
-      {/* Top bar */}
+      {/* Top bar: arrow to switch mode + X to close */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
-        <div className="relative" ref={dropdownRef}>
-          <button
-            onClick={() => setShowModeDropdown(!showModeDropdown)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-md border border-gray-200 bg-white text-[12px] font-medium text-gray-600 hover:bg-gray-50 transition-colors"
-          >
-            <span>{modeLabel}</span>
-            <ChevronDown className="h-3 w-3" />
-          </button>
-
-          <AnimatePresence>
-            {showModeDropdown && (
-              <motion.div
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.12 }}
-                className="absolute top-full left-0 mt-1 w-40 bg-white rounded-lg border border-gray-200 shadow-lg overflow-hidden z-50"
-              >
-                <button
-                  onClick={() => switchMode('expanded')}
-                  className={`flex items-center gap-2 w-full px-3 py-2 text-[12px] text-left hover:bg-gray-50 transition-colors ${
-                    viewMode === 'expanded' ? 'bg-gray-50 text-gray-900 font-medium' : 'text-gray-600'
-                  }`}
-                >
-                  <Maximize2 className="h-3.5 w-3.5" />
-                  Expanded View
-                </button>
-                <button
-                  onClick={() => switchMode('side-panel')}
-                  className={`flex items-center gap-2 w-full px-3 py-2 text-[12px] text-left hover:bg-gray-50 transition-colors ${
-                    viewMode === 'side-panel' ? 'bg-gray-50 text-gray-900 font-medium' : 'text-gray-600'
-                  }`}
-                >
-                  <PanelRightOpen className="h-3.5 w-3.5" />
-                  Side Panel
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
         <button
-          onClick={closeChat}
-          className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
-          aria-label="Close chat"
+          onClick={() => {
+            if (chatState === 'expanded') setChatState('side-panel');
+            else if (chatState === 'side-panel') setChatState('expanded');
+          }}
+          className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"
+          title={chatState === 'expanded' ? 'Switch to side panel' : 'Switch to expanded view'}
         >
-          <X className="h-3 w-3" />
+          <Maximize2 className="h-3.5 w-3.5" />
+        </button>
+        <button
+          onClick={closeToPill}
+          className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors"
+          aria-label="Close"
+        >
+          <X className="h-3.5 w-3.5" />
         </button>
       </div>
 
-      {/* Messages area */}
+      {/* Messages */}
       <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4" style={{ scrollbarWidth: 'thin' }}>
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
@@ -243,12 +181,12 @@ export default function ArtemisChatBot() {
         ))}
 
         {isLoading && (
-          <div className="flex justify-start text-gray-400 text-[13px]">Generating...</div>
+          <div className="text-gray-400 text-[13px]">Generating...</div>
         )}
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input area */}
+      {/* Input */}
       <div className="bg-white border-t border-gray-100 px-4 py-3">
         <InputBar />
         <p className="text-[10px] text-gray-400 text-center mt-2">
@@ -260,41 +198,20 @@ export default function ArtemisChatBot() {
 
   return (
     <>
-      {/* ─── COMPACT — Auto-shown widget at bottom center ─── */}
+      {/* ─── PILL — "Ask a question" (default state) ─── */}
       <AnimatePresence>
-        {chatState === 'compact' && (
+        {chatState === 'pill' && (
           <motion.div
-            key="compact"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-[520px]"
-          >
-            <div className="bg-[#f0f0f0] rounded-xl p-3 shadow-lg space-y-2">
-              {SUGGESTED_QUESTIONS.map((q, i) => (
-                <QuestionBtn key={i} text={q} onClick={() => sendMessage(q, true)} />
-              ))}
-              <InputBar fromCompact />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ─── ASK-BTN — "Ask a question" pill after close ─── */}
-      <AnimatePresence>
-        {chatState === 'ask-btn' && (
-          <motion.div
-            key="ask-btn"
+            key="pill"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40"
           >
             <button
-              onClick={() => setChatState('chat')}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white text-[13px] text-gray-600 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm"
+              onClick={() => setChatState('compact')}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 bg-white text-[13px] text-gray-600 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm"
             >
               <ArrowUp className="h-3 w-3" />
               <span>Ask a question</span>
@@ -303,50 +220,67 @@ export default function ArtemisChatBot() {
         )}
       </AnimatePresence>
 
-      {/* ─── CHAT — Expanded or Side Panel ─── */}
+      {/* ─── COMPACT — Centered rectangle with questions + input ─── */}
       <AnimatePresence>
-        {chatState === 'chat' && (
-          <>
-            {/* Backdrop only for expanded */}
-            {viewMode === 'expanded' && (
-              <motion.div
-                key="backdrop"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-black/20"
-              />
-            )}
+        {chatState === 'compact' && (
+          <motion.div
+            key="compact"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-[500px]"
+          >
+            <div className="bg-[#f0f0f0] rounded-xl p-3 shadow-lg space-y-2">
+              {SUGGESTED_QUESTIONS.map((q, i) => (
+                <QuestionBtn key={i} text={q} onClick={() => sendMessage(q)} />
+              ))}
+              <InputBar />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            {/* Chat container */}
+      {/* ─── EXPANDED — Centered modal chat ─── */}
+      <AnimatePresence>
+        {chatState === 'expanded' && (
+          <>
             <motion.div
-              key={`chat-${viewMode}`}
-              initial={
-                viewMode === 'side-panel'
-                  ? { opacity: 0, x: 60 }
-                  : { opacity: 0, scale: 0.97 }
-              }
-              animate={
-                viewMode === 'side-panel'
-                  ? { opacity: 1, x: 0 }
-                  : { opacity: 1, scale: 1 }
-              }
-              exit={
-                viewMode === 'side-panel'
-                  ? { opacity: 0, x: 60 }
-                  : { opacity: 0, scale: 0.97 }
-              }
+              key="expanded-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/20"
+              onClick={closeToPill}
+            />
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`fixed z-50 bg-white shadow-2xl overflow-hidden ${
-                viewMode === 'side-panel'
-                  ? 'top-0 right-0 h-full w-[28vw] min-w-[360px] max-w-[460px]'
-                  : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[580px] h-[80vh] rounded-2xl'
-              }`}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90vw] max-w-[580px] h-[80vh] bg-white shadow-2xl rounded-2xl overflow-hidden"
             >
-              {chatContent}
+              {fullChatContent}
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* ─── SIDE PANEL — Full height right side, no X ─── */}
+      <AnimatePresence>
+        {chatState === 'side-panel' && (
+          <motion.div
+            key="side-panel"
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 80 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed top-0 right-0 h-full w-[28vw] min-w-[360px] max-w-[460px] z-50 bg-white shadow-2xl overflow-hidden"
+          >
+            {fullChatContent}
+          </motion.div>
         )}
       </AnimatePresence>
     </>
