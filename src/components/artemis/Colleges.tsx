@@ -125,8 +125,6 @@ export default function Colleges({ goToPage }: CollegesProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 Our Colleges
               </h2>
@@ -134,12 +132,10 @@ export default function Colleges({ goToPage }: CollegesProps) {
                 <a href="#overview" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Overview</a>
                 <a href="#schools" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Schools</a>
                 <a href="#explore" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Explore</a>
-              </div>
+          </div>
+          </div>
+        </div>
       </div>
-          </div>
-        </div>
-          </div>
-        </div>
 
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">

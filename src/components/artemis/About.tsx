@@ -87,8 +87,6 @@ export default function About({ goToPage }: AboutProps) {
       <div className="sticky top-[50px] z-40 bg-white border-b border-gray-200 w-full">
         <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
           <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
-          <div className="flex items-center h-[52px] gap-8 overflow-x-auto hide-scrollbar">
               <h2 className="text-[14px] font-bold tracking-tight text-[#8A0000] mr-10 whitespace-nowrap">
                 About Artemis
               </h2>
@@ -97,12 +95,10 @@ export default function About({ goToPage }: AboutProps) {
                 <a href="#people" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">People</a>
                 <a href="#visit" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Visit</a>
                 <a href="#contact" className="hover:text-[#8A0000] transition-colors whitespace-nowrap">Contact</a>
-              </div>
+          </div>
+          </div>
+        </div>
       </div>
-          </div>
-        </div>
-          </div>
-        </div>
 
       {/* ── 2. Hero ── */}
       <section className="relative w-full overflow-hidden">
