@@ -16,67 +16,57 @@ const campusStats = [
   { value: '24h', label: 'Initiation immersion', detail: 'Co-design experience for all newcomers' },
 ];
 
-/* ─── Living Moments: editorial atlas data ─── */
-const livingMoments = [
+/* ─── The Chronicle: dispatch data ─── */
+const dispatches = [
   {
-    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1000',
-    location: 'Valletta',
     time: '06:00',
-    caption: 'Dawn over the Mediterranean — the Weavers gather for morning reflection on the terrace',
+    location: 'Valletta, Malta',
     tag: 'Weavers Commons',
-    span: 'col-span-1 md:col-span-2 row-span-2', // hero cell
+    headline: 'Dawn reflections on the Mediterranean terrace',
+    body: 'Before the city stirs, the Weavers are already awake — gathered on the limestone terrace above the Grand Harbour, watching the first light spill across the water. This is not a scheduled event. It is a habit that formed organically in the first year of the Valletta hub and has become the quietest and most enduring ritual in the Artemis network. No faculty, no agenda — just a shared understanding that some thoughts only surface at the edge of daybreak.',
+    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1200',
+    gradientFrom: 'rgba(138,0,0,0.9)',
+    gradientTo: 'rgba(90,0,0,0.8)',
   },
   {
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
-    location: 'Tokyo',
-    time: '14:00',
-    caption: 'An afternoon of molecular prototyping at the Catalyst lab',
-    tag: 'Catalyst Commons',
-    span: 'col-span-1 row-span-1',
-  },
-  {
-    // Text-only cell — student quote
-    type: 'quote',
-    quote: '"The Commons doesn\'t just house you — it reshapes how you think about belonging."',
-    attribution: 'Yuki Tanaka, Explorers Commons, Class of 2027',
-    span: 'col-span-1 row-span-1',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=800',
-    location: 'Reykjavik',
-    time: '22:00',
-    caption: 'Stargazing from the Explorers rooftop observatory — where the sky becomes a syllabus',
-    tag: 'Explorers Commons',
-    span: 'col-span-1 row-span-1',
-  },
-  {
-    // Network map cell
-    type: 'network',
-    span: 'col-span-1 md:col-span-2 row-span-1',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
-    location: 'San Francisco',
     time: '10:00',
-    caption: 'The Builders workshop — where infrastructure meets imagination on the Pacific coast',
+    location: 'San Francisco, USA',
     tag: 'Builders Commons',
-    span: 'col-span-1 row-span-1',
+    headline: 'Prototyping the future before lunch',
+    body: 'By mid-morning the Builders workshop is already humming — laser cutters singing, 3D printers layering, and a team of second-years stress-testing a biodegradable structural joint they designed overnight. The Pacific light pours through the warehouse skylights. The air smells of cedar shavings and solder. A whiteboard in the corner reads, in red marker: "If it works, break it again. If it breaks, understand why."',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200',
+    gradientFrom: 'rgba(26,26,46,0.9)',
+    gradientTo: 'rgba(10,10,26,0.8)',
   },
   {
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
-    location: 'Geneva',
+    time: '14:00',
+    location: 'Tokyo, Japan',
+    tag: 'Catalyst Commons',
+    headline: 'Where molecules meet imagination',
+    body: 'The Catalyst lab in the Shibuya hub is an intersection of precision and play. This afternoon, a junior fellow is running a molecular simulation on one screen while sketching a children\'s book about synthetic biology on another. The Commons philosophy is that breakthrough discovery rarely happens inside a single discipline — so the space is designed to invite productive collisions between fields that would never share a corridor in a traditional university.',
+    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200',
+    gradientFrom: 'rgba(13,27,42,0.9)',
+    gradientTo: 'rgba(27,38,59,0.8)',
+  },
+  {
     time: '18:00',
-    caption: 'Evening seminar in the Weavers salon — ideas tested against the fire of conversation',
+    location: 'Geneva, Switzerland',
     tag: 'Weavers Commons',
-    span: 'col-span-1 row-span-1',
+    headline: 'The evening salon — where ideas meet their match',
+    body: 'Every evening at the Geneva hub, the Weavers salon opens its doors to an informal gathering that blurs the line between seminar and dinner party. Tonight\'s question, pinned to the door in chalk: "Should a civilization have a right to be forgotten?" A philosopher, a data scientist, and a first-year student from Nairobi take three completely different approaches — and by the end of the evening, all three have changed their minds at least once.',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200',
+    gradientFrom: 'rgba(45,27,0,0.9)',
+    gradientTo: 'rgba(26,16,0,0.8)',
   },
   {
-    // Stats/typography cell
-    type: 'stat',
-    statValue: '12',
-    statLabel: 'Living Commons across 3 continents',
-    statDetail: 'Each one a world. Together, a universe.',
-    span: 'col-span-1 row-span-1',
+    time: '22:00',
+    location: 'Reykjavik, Iceland',
+    tag: 'Explorers Commons',
+    headline: 'Under the aurora, the sky becomes a syllabus',
+    body: 'The Explorers rooftop observatory in Reykjavik is the northernmost point in the Artemis network. On clear nights, students gather with thermal blankets and hot coffee to watch the aurora borealis ripple across the sky — not as tourists, but as researchers calibrating atmospheric sensors and photographing spectral emissions. The aurora is not just beautiful here; it is data. And the data tells a story about solar wind, magnetospheric dynamics, and the thin veil that protects everything living beneath it.',
+    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1200',
+    gradientFrom: 'rgba(10,22,40,0.9)',
+    gradientTo: 'rgba(6,16,32,0.8)',
   },
 ];
 
@@ -206,115 +196,90 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 4. The Artemis Atlas — Living Moments editorial grid ── */}
-      <section className="py-16 lg:py-24">
-        <div
-          ref={commonsCardsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          <div className="flex items-start justify-between mb-12">
-            <div>
-              <div className="mb-4 flex items-center space-x-3">
-                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Artemis Atlas</span>
-              </div>
-              <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414]">
-                Living moments<br />across the network
-              </h2>
+      {/* ── 4. The Chronicle — cinematic dispatch timeline ── */}
+      <section className="py-0">
+        {/* Section header — outside the strips */}
+        <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 lg:pt-24 pb-0">
+          <div
+            ref={commonsCardsAnim.ref}
+            className={`transition-all duration-700 ${commonsCardsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <div className="mb-4 flex items-center space-x-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">The Chronicle</span>
             </div>
-            <p className="hidden md:block text-[14px] text-gray-500 max-w-xs text-right leading-relaxed">
-              A single day spans three continents. These are the moments that make the Artemis network alive.
+            <h2 className="text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-3">
+              One day. Five hubs.<br />A living network.
+            </h2>
+            <p className="text-[16px] text-gray-500 max-w-xl leading-relaxed">
+              From the first light over Valletta to the aurora above Reykjavik — a single day in the Artemis network told through the moments that make it real.
             </p>
           </div>
+        </div>
 
-          {/* Bento Grid — asymmetric editorial layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[220px] md:auto-rows-[200px]">
-            {livingMoments.map((moment, i) => {
-              /* ── Quote cell ── */
-              if (moment.type === 'quote') {
-                return (
-                  <div key={i} className={`${moment.span} bg-[#141414] p-8 flex flex-col justify-between`}>
-                    <svg className="w-8 h-8 text-[#8A0000] opacity-40" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-                    <div>
-                      <p className="text-[16px] md:text-[18px] text-white/90 leading-snug font-light mb-4">{moment.quote}</p>
-                      <p className="text-[11px] text-white/40 uppercase tracking-widest">{moment.attribution}</p>
+        {/* Dispatch strips — full-bleed cinematic panels */}
+        <div className="mt-12">
+          {dispatches.map((d, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <div key={i} className="group relative w-full overflow-hidden" style={{ minHeight: '420px' }}>
+                {/* Background image — full bleed */}
+                <img
+                  src={d.image}
+                  alt={d.headline}
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[1200ms]"
+                />
+                {/* Color overlay — directional gradient via inline style */}
+                <div
+                  className={`absolute inset-0 ${isEven ? 'bg-gradient-to-r' : 'bg-gradient-to-l'} from-black/50 to-transparent`}
+                  style={{
+                    background: isEven
+                      ? `linear-gradient(to right, ${d.gradientFrom}, rgba(0,0,0,0.5), transparent)`
+                      : `linear-gradient(to left, ${d.gradientTo}, rgba(0,0,0,0.5), transparent)`,
+                  }}
+                />
+                {/* Subtle texture */}
+                <div className="absolute inset-0 bg-black/10" />
+
+                {/* Content */}
+                <div className={`relative z-10 max-w-[1400px] mx-auto w-full px-8 lg:px-20 flex items-center h-full`} style={{ minHeight: '420px' }}>
+                  <div className={`max-w-lg py-16 ${isEven ? 'mr-auto' : 'ml-auto text-right'}`}>
+                    {/* Time badge */}
+                    <div className={`flex items-center gap-3 mb-5 ${isEven ? '' : 'justify-end'}`}>
+                      <span className="w-2 h-2 rounded-full bg-[#8A0000] animate-pulse"></span>
+                      <span className="text-[11px] font-bold text-white/60 uppercase tracking-[0.3em]">{d.time} — {d.location}</span>
                     </div>
-                  </div>
-                );
-              }
-
-              /* ── Network map cell ── */
-              if (moment.type === 'network') {
-                return (
-                  <div key={i} className={`${moment.span} bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center`}>
-                    {/* Animated dots + lines constellation */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice">
-                      {/* Connecting lines */}
-                      <line x1="100" y1="60" x2="250" y2="140" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
-                      <line x1="250" y1="140" x2="400" y2="50" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
-                      <line x1="400" y1="50" x2="520" y2="130" stroke="#8A0000" strokeWidth="0.5" opacity="0.3" />
-                      <line x1="100" y1="60" x2="400" y2="50" stroke="#8A0000" strokeWidth="0.3" opacity="0.15" />
-                      <line x1="250" y1="140" x2="520" y2="130" stroke="#8A0000" strokeWidth="0.3" opacity="0.15" />
-                      {/* Pulsing dots — hub nodes */}
-                      <circle cx="100" cy="60" r="4" fill="#8A0000"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite" /></circle>
-                      <circle cx="250" cy="140" r="5" fill="#8A0000"><animate attributeName="r" values="4;6;4" dur="4s" repeatCount="indefinite" /></circle>
-                      <circle cx="400" cy="50" r="4" fill="#8A0000"><animate attributeName="r" values="3;5;3" dur="3.5s" repeatCount="indefinite" /></circle>
-                      <circle cx="520" cy="130" r="3" fill="#8A0000"><animate attributeName="r" values="2;4;2" dur="2.8s" repeatCount="indefinite" /></circle>
-                      {/* Secondary dots */}
-                      <circle cx="170" cy="90" r="1.5" fill="#8A0000" opacity="0.5" />
-                      <circle cx="330" cy="100" r="1.5" fill="#8A0000" opacity="0.5" />
-                      <circle cx="460" cy="80" r="1.5" fill="#8A0000" opacity="0.5" />
-                      <circle cx="560" cy="60" r="1" fill="#8A0000" opacity="0.3" />
-                      {/* Location labels */}
-                      <text x="100" y="42" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">VALLETTA</text>
-                      <text x="250" y="162" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">GENEVA</text>
-                      <text x="400" y="35" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">TOKYO</text>
-                      <text x="520" y="152" fill="white" opacity="0.6" fontSize="8" fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.1em">SAN FRANCISCO</text>
-                    </svg>
-                    <div className="relative z-10 text-center">
-                      <p className="text-[11px] text-white/50 uppercase tracking-[0.3em]">The network is always on</p>
+                    {/* Tag */}
+                    <div className={`text-[10px] font-bold text-[#8A0000] tracking-[0.25em] uppercase mb-4 ${isEven ? '' : 'text-right'}`}>
+                      {d.tag}
                     </div>
-                  </div>
-                );
-              }
-
-              /* ── Stat cell ── */
-              if (moment.type === 'stat') {
-                return (
-                  <div key={i} className={`${moment.span} bg-[#8A0000] p-8 flex flex-col justify-center`}>
-                    <div className="text-[64px] font-black text-white leading-none mb-2">{moment.statValue}</div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 mb-3">{moment.statLabel}</div>
-                    <div className="w-12 h-[1px] bg-white/40 mb-3"></div>
-                    <div className="text-[13px] text-white/60 leading-relaxed font-light italic">{moment.statDetail}</div>
-                  </div>
-                );
-              }
-
-              /* ── Photo cell (default) ── */
-              return (
-                <div key={i} className={`${moment.span} group relative overflow-hidden cursor-pointer`}>
-                  <img
-                    src={moment.image}
-                    alt={moment.caption}
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  />
-                  {/* Gradient overlay — always visible at bottom, expands on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:via-black/30 transition-all duration-500" />
-                  {/* Floating time label — top left */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 border border-white/10">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#8A0000] animate-pulse"></span>
-                      <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest">{moment.time} — {moment.location}</span>
-                    </span>
-                  </div>
-                  {/* Caption — bottom, always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                    <div className="text-[9px] font-bold text-[#8A0000] tracking-[0.2em] uppercase mb-1.5">{moment.tag}</div>
-                    <p className="text-[13px] text-white/80 leading-snug font-light">{moment.caption}</p>
+                    {/* Headline */}
+                    <h3 className="text-[28px] md:text-[34px] font-extrabold leading-[1.1] tracking-tight text-white mb-5">
+                      {d.headline}
+                    </h3>
+                    {/* Body text */}
+                    <p className="text-[14px] md:text-[15px] text-white/70 leading-relaxed mb-6">
+                      {d.body}
+                    </p>
+                    {/* Divider line */}
+                    <div className={`w-16 h-[1px] bg-white/30 ${isEven ? '' : 'ml-auto'}`}></div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Interlude — student quote between dispatches and next section */}
+        <div className="bg-[#141414] py-20 lg:py-28">
+          <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20">
+            <div className="max-w-2xl mx-auto text-center">
+              <svg className="w-10 h-10 text-[#8A0000] opacity-30 mx-auto mb-8" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+              <p className="text-[22px] md:text-[28px] text-white/90 leading-snug font-light mb-8">
+                "The Commons doesn't just house you — it reshapes how you think about belonging."
+              </p>
+              <p className="text-[11px] text-white/30 uppercase tracking-[0.3em]">Yuki Tanaka — Explorers Commons, Class of 2027</p>
+            </div>
           </div>
         </div>
       </section>
