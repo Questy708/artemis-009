@@ -9,7 +9,7 @@ interface CampusLifeProps {
   goToPage: (page: string) => void;
 }
 
-/* ─── Hostel Data ─── */
+/* ─── Hostel Data (for map) ─── */
 type HostelData = {
   id: string;
   name: string;
@@ -289,32 +289,106 @@ const hostels: HostelData[] = [
   },
 ];
 
-/* ─── Updated Stats ─── */
-const campusStats = [
-  { value: '16+', label: 'Cities', detail: 'Global hub presence across every continent' },
-  { value: '24', label: 'Hostels', detail: 'Distinct residential communities worldwide' },
-  { value: '6', label: 'Continents', detail: 'From Reykjavik to Cape Town to Sydney' },
-  { value: '4', label: 'Year Rotation', detail: 'A new city, a new perspective each semester' },
+/* ─── Day in the Life ─── */
+const dayMoments = [
+  {
+    time: '07:00',
+    title: 'Morning Run or Meditation',
+    desc: 'The harbour in Valletta, the river trail in Seoul, the volcanic path in Edinburgh — every city offers a different way to wake up. Some hostels hold group meditation; others, a quiet kitchen with coffee already brewing from the early risers.',
+    image: 'https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    time: '10:00',
+    title: 'Seminar or Studio',
+    desc: 'Small-group tutorials in the Oxford tradition, or hands-on prototyping in the Forge Lodge workshop. Morning is for the deepest work — the kind that changes how you see the world.',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    time: '13:00',
+    title: 'Lunch with the World',
+    desc: 'The communal kitchen is where cultures collide deliciously. Your hostel-mate from Mumbai teaches you to make dal while the Berliner argues about the perfect pretzel. Every meal is a geography lesson.',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    time: '16:00',
+    title: 'Guild Sessions & Club Meetings',
+    desc: 'Robotics practice, debate society, climate action planning, open-mic rehearsal, or just reading in the garden. This is when the hostel becomes a village — everyone doing their thing, together.',
+    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    time: '19:00',
+    title: 'The Common Table',
+    desc: 'Friday evening, every hostel sets one long table. No devices, no agendas — only food and conversation that ranges from philosophy to gossip to plans for the weekend. This is the ritual that holds the network together.',
+    image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    time: '23:00',
+    title: 'Late-Night Common Room',
+    desc: 'The best conversations happen when the work is done. A physicist and a poet arguing about time. A group planning a weekend hike up Table Mountain. Someone playing guitar. The common room never really closes.',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600',
+  },
+];
+
+/* ─── Clubs & Societies ─── */
+const societies = [
+  { name: 'The Debating Union', desc: 'Weekly motions that range from the philosophical to the political. Chapters at every hostel compete in an annual Grand Tournament held each spring in Oxford.', members: '320+' },
+  { name: 'Artemis Makers Guild', desc: 'From 3D-printed prosthetics to hand-bound books. The Makers Guild shares designs across the network — a prototype born in Berlin can be iterated in Nairobi by the next morning.', members: '180+' },
+  { name: 'Climate Action Collective', desc: 'Student-led sustainability initiatives across every hub: urban farming in Kigali, carbon auditing in Stockholm, reef monitoring in Sydney. Action, not just discussion.', members: '250+' },
+  { name: 'The Open Mic Society', desc: 'Poetry, comedy, music, and the occasional chaotic experiment. Every hostel has a night — and the best acts are streamed live to the entire network on Saturday evenings.', members: '400+' },
+  { name: 'Intramural Athletics', desc: 'Friendly competition is the point: football in São Paulo, bouldering in Reykjavik, cricket in Mumbai, swimming in Sydney. The annual Artemis Games rotate between hubs.', members: '600+' },
+  { name: 'Global Cookbook Society', desc: 'Students document and share recipes from their hostels and cities. The Artemis Cookbook, published annually, is part travelogue, part kitchen manual, part love letter to home.', members: '150+' },
+];
+
+/* ─── Student Voices ─── */
+const studentVoices = [
+  {
+    quote: 'I arrived at the Weavers Hall thinking I\'d be homesick within a week. By the third night, I was teaching my hostel-mates how to make chapati and learning to salsa from a girl from Buenos Aires. Home isn\'t a place — it\'s the people who stay up late arguing with you.',
+    name: 'Amara Osei',
+    detail: 'Third year · Accra → Valletta → Berlin → Tokyo',
+  },
+  {
+    quote: 'The Common Table changed my life. Every Friday, you sit down with people you might never have spoken to, and by dessert you\'ve discovered something about the world — and about yourself — that no lecture could teach.',
+    name: 'Lukas Richter',
+    detail: 'Second year · Berlin → Kigali → Oxford',
+  },
+  {
+    quote: 'When I rotated to São Paulo, I was terrified. Three weeks later, I was leading a climate workshop in the Atlantic Forest with students from six countries. Artemis doesn\'t just move you — it expands what you think you\'re capable of.',
+    name: 'Mei-Lin Chen',
+    detail: 'Fourth year · Singapore → San Francisco → São Paulo → Seoul',
+  },
+  {
+    quote: 'The hostel becomes your world. The common room is where the physicist and the painter become best friends. The kitchen is where revolutions are planned over burnt toast. It\'s messy, it\'s beautiful, it\'s the most alive I\'ve ever felt.',
+    name: 'Tomás Rivera',
+    detail: 'First year · Buenos Aires → Valletta',
+  },
 ];
 
 /* ─── Traditions ─── */
 const traditions = [
   {
     name: 'The Crossing',
-    desc: 'When students arrive at a new hostel for the first time, they cross its threshold carrying a single object from their previous hostel — a tradition that transforms arrival into continuity.',
+    desc: 'When students arrive at a new hostel for the first time, they cross its threshold carrying a single object from their previous hostel — a tradition that transforms arrival into continuity. The object might be a handwritten note, a small carving, a pressed flower — something that says "I was there, and it mattered."',
   },
   {
     name: 'The Common Table',
-    desc: 'Every hostel sets one long table on Friday evenings. No devices, no agendas — only food and conversation. The ritual travels with students from city to city, creating a shared rhythm across the globe.',
+    desc: 'Every hostel sets one long table on Friday evenings. No devices, no agendas — only food and conversation. The ritual travels with students from city to city, creating a shared rhythm that makes every new place feel like home by the end of the first week.',
   },
   {
     name: 'The Send-Off',
-    desc: 'Before rotating to their next hub, students present a fragment of what they\'ve learned to their hostel community. It is part celebration, part transmission — ensuring knowledge doesn\'t stay in one place.',
+    desc: 'Before rotating to their next hub, students present a fragment of what they\'ve learned to their hostel community — a song, a sketch, a piece of code, a story. It is part celebration, part transmission, ensuring knowledge doesn\'t stay in one place.',
   },
   {
     name: 'The Co-Design Immersion',
-    desc: 'In their first week, every student enters a 24-hour co-design challenge with their hostel peers. Together they prototype solutions to a real community challenge, planting a learning contract at their new hub.',
+    desc: 'In their first week at any hostel, every student enters a 24-hour co-design challenge with their new peers. Together they prototype solutions to a real community challenge, planting a learning contract at their new hub — a living symbol that they belong here now.',
   },
+];
+
+/* ─── Stats ─── */
+const campusStats = [
+  { value: '24', label: 'Hostels', detail: 'Each one a home' },
+  { value: '50+', label: 'Clubs & Societies', detail: 'Founded and run by students' },
+  { value: '6', label: 'Continents', detail: 'Where your stories unfold' },
+  { value: '1', label: 'Common Table', detail: 'Every Friday, everywhere' },
 ];
 
 /* ─── Hook: animate on scroll ─── */
@@ -344,30 +418,29 @@ function useInView(threshold = 0.15) {
 /* ─── Component ─── */
 export default function CampusLife({ goToPage }: CampusLifeProps) {
   const heroAnim = useInView();
-  const mapIntroAnim = useInView();
-  const rotationAnim = useInView();
+  const hostelAnim = useInView();
+  const dayAnim = useInView();
+  const clubsAnim = useInView();
+  const mapAnim = useInView();
+  const voicesAnim = useInView();
   const traditionsAnim = useInView();
   const statsAnim = useInView();
 
   const [activeHostelId, setActiveHostelId] = useState<string | null>(null);
-
-  const activeHostel = useMemo(
-    () => hostels.find((h) => h.id === activeHostelId),
-    [activeHostelId]
-  );
+  const activeHostel = useMemo(() => hostels.find((h) => h.id === activeHostelId), [activeHostelId]);
 
   return (
     <div className="flex flex-col bg-white">
-      {/* ── 1. Hero ── */}
+      {/* ── 1. Hero — warm, inviting, about belonging ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[50vh] min-h-[420px] overflow-hidden">
+          <div className="relative w-full h-[55vh] min-h-[440px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
               className="absolute inset-0 w-full h-full object-cover grayscale"
-              alt="Global rotation at Artemis"
+              alt="Students at Artemis"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
             <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
               <div className="mb-8 flex items-center space-x-3">
                 <span className="w-8 h-[1px] bg-[#8A0000]" />
@@ -375,89 +448,245 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                   Life at Artemis
                 </span>
               </div>
-              <h1 className="text-[32px] sm:text-[44px] md:text-[60px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-                Global<br />Rotation
+              <h1 className="text-[32px] sm:text-[44px] md:text-[60px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
+                Where living<br />is the curriculum
               </h1>
-              <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-                Artemis students don&rsquo;t stay in one place. Over four years, they rotate through
-                global hubs — living and learning across continents, each semester a new city,
-                a new hostel, a new perspective that reshapes everything they thought they knew.
+              <p className="text-[18px] text-white/80 max-w-xl leading-relaxed font-light">
+                Artemis students don&rsquo;t just study the world — they live in it. Over four years,
+                you&rsquo;ll call multiple cities home, share meals with people who reshape your thinking,
+                and discover that the most important lessons happen far from any classroom.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. Map Intro ── */}
+      {/* ── 2. Your Hostel, Your Home ── */}
       <section className="py-16 lg:py-24">
         <div
-          ref={heroAnim.ref}
+          ref={hostelAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            heroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            hostelAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]" />
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              The Hostel Network
+              Your Hostel, Your Home
             </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                24 hostels,<br />one world
+                Not a dorm.<br />A micro-college.
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                Each hostel is a micro-college — a residential community with its own culture,
-                traditions, and identity. Inspired by Oxford&rsquo;s collegiate system and Minerva&rsquo;s
-                rotation model, Artemis hostels are not just places to sleep. They are where
-                living becomes the curriculum.
+                Inspired by Oxford&rsquo;s collegiate system and Minerva&rsquo;s global rotation, Artemis
+                hostels are residential communities with their own culture, traditions, and identity.
+                Each one is a world unto itself — common rooms where debates run past midnight,
+                shared kitchens where five cuisines cook simultaneously, and gardens where you can
+                think in peace.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                You don&rsquo;t just live in a hostel — you belong to it. And when you rotate to the next
+                city, you carry that belonging with you. The hostel you leave behind stays in your
+                story forever; the one you arrive at becomes home within days.
               </p>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
                 From the Aurora Lodge in Reykjavik to the Southern Cross in Sydney, every hostel
-                carries the DNA of its city while remaining connected to the global network.
-                Click any pin to explore.
+                has its own character — but they all share the same heartbeat: the conviction that
+                how you live matters as much as what you learn.
               </p>
+              <button
+                onClick={() => goToPage('campus')}
+                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+              >
+                <span>Explore all 24 hostels</span>
+                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
             </div>
-            <div className="group">
-              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1000"
-                  alt="Hostel community gathering"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                />
+
+            <div className="space-y-6">
+              <div className="group">
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1000"
+                    alt="Students in a hostel common room"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+                <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
+                  The common room at Weavers Hall, Valletta — where the physicist and the painter
+                  become best friends.
+                </p>
               </div>
-              <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
-                The Weavers Hall courtyard, Valletta — where the global rotation begins for every
-                incoming cohort.
-              </p>
+              <div className="group">
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1000"
+                    alt="Students cooking together"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+                <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
+                  The shared kitchen at Botanica House, São Paulo — where every meal is a geography lesson.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3. Interactive World Map ── */}
+      {/* ── 3. A Day in Your Life ── */}
       <section className="bg-gray-50 py-16 lg:py-24">
         <div
-          ref={mapIntroAnim.ref}
+          ref={dayAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            mapIntroAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            dayAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="mb-10 flex items-center space-x-3">
+          <div className="mb-6 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]" />
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-              Interactive Map
+              A Day in Your Life
             </span>
           </div>
+
           <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
-            Where will you live next?
+            Same rhythm,<br />different skyline
           </h2>
-          <p className="text-[16px] text-gray-500 max-w-lg leading-relaxed font-light mb-10">
-            Explore the 24 hostels of the Artemis network. Each pin represents a living
-            community — click to discover its character.
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
+            Whether you wake up in Valletta or Tokyo, the rhythm of Artemis life has a familiar
+            pulse — morning reflection, deep work, communal meals, and the kind of conversations
+            that don&rsquo;t happen in lecture halls.
           </p>
+
+          <div className="space-y-8">
+            {dayMoments.map((moment, i) => (
+              <div key={i} className="grid grid-cols-1 lg:grid-cols-[160px_1fr_280px] gap-6 lg:gap-12 items-start">
+                <div className="flex lg:flex-col items-baseline lg:items-start gap-3 lg:gap-1">
+                  <span className="text-[28px] font-black text-[#8A0000] leading-none tabular-nums">{moment.time}</span>
+                </div>
+                <div>
+                  <h3 className="text-[20px] font-bold text-[#141414] mb-2 leading-tight">{moment.title}</h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">{moment.desc}</p>
+                </div>
+                <div className="aspect-[3/2] bg-gray-200 overflow-hidden shrink-0 hidden lg:block">
+                  <img
+                    src={moment.image}
+                    alt={moment.title}
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Clubs, Guilds & Societies ── */}
+      <section className="py-16 lg:py-24">
+        <div
+          ref={clubsAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
+            clubsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Clubs, Guilds & Societies
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-12">
+            <div>
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
+                Find your people,<br />build your thing
+              </h2>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                With over fifty student-run organisations spanning every hostel, there&rsquo;s a club for
+                every passion — and if there isn&rsquo;t, you can start one. The Debating Union argues
+                across time zones. The Makers Guild shares prototypes between continents by morning.
+                The Global Cookbook Society documents the recipes that make each hostel smell like home.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed">
+                These aren&rsquo;t resume-padding activities. They&rsquo;re where lifelong friendships form,
+                where you discover talents you didn&rsquo;t know you had, and where the line between play
+                and purpose disappears entirely.
+              </p>
+            </div>
+            <div className="group">
+              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1000"
+                  alt="Students in club activities"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                />
+              </div>
+              <p className="text-[12px] text-gray-500 mt-3 leading-relaxed">
+                Open Mic Night at Sakura House, Tokyo — streamed live to every hostel on Saturday evenings.
+              </p>
+            </div>
+          </div>
+
+          {/* Society cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {societies.map((soc, i) => (
+              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold text-[#8A0000] tracking-widest uppercase">{soc.members} members</span>
+                </div>
+                <h4 className="text-[18px] font-bold text-[#141414] mb-2 group-hover:text-[#8A0000] transition-colors leading-tight">
+                  {soc.name}
+                </h4>
+                <p className="text-[14px] text-gray-600 leading-relaxed">{soc.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. The Map — your world expands ── */}
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div
+          ref={mapAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
+            mapAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Your World Expands
+            </span>
+          </div>
+
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            Every semester,<br />a new home
+          </h2>
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-10">
+            Over four years, you&rsquo;ll rotate through global hubs — each one a different city, a
+            different hostel, a different perspective. The map below shows all 24 hostels in the
+            network. Click any pin to discover what living there is like.
+          </p>
+
+          {/* 4-year rotation at a glance */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
+            {[
+              { year: 'Year 1', title: 'Foundation', cities: 'Valletta · Berlin' },
+              { year: 'Year 2', title: 'Expansion', cities: 'Kigali · São Paulo · Accra' },
+              { year: 'Year 3', title: 'Deepening', cities: 'Tokyo · Oxford · Sydney' },
+              { year: 'Year 4', title: 'Integration', cities: 'Your choice · Global' },
+            ].map((step, i) => (
+              <div key={i} className="relative pl-5 border-l-2 border-[#8A0000]/30">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-1">{step.year}</div>
+                <h3 className="text-[16px] font-bold text-[#141414] mb-1 leading-tight">{step.title}</h3>
+                <p className="text-[12px] font-mono text-gray-400 tracking-wider">{step.cities}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Map */}
@@ -465,9 +694,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           <div
             className="relative w-full overflow-hidden bg-white border border-gray-200"
             onClick={(e) => {
-              if (e.target === e.currentTarget) {
-                setActiveHostelId(null);
-              }
+              if (e.target === e.currentTarget) setActiveHostelId(null);
             }}
           >
             <img
@@ -488,19 +715,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 350,
-                    damping: 25,
-                    delay: index * 0.04,
-                  }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 25, delay: index * 0.04 }}
                   className="relative flex items-center justify-center"
                 >
-                  {/* Crimson Marker */}
                   <button
-                    onClick={() =>
-                      setActiveHostelId(activeHostelId === hostel.id ? null : hostel.id)
-                    }
+                    onClick={() => setActiveHostelId(activeHostelId === hostel.id ? null : hostel.id)}
                     className={`relative rounded-full shrink-0 cursor-pointer transition-all duration-200 ${
                       activeHostelId === hostel.id
                         ? 'w-5 h-5 md:w-6 md:h-6 bg-[#8A0000] ring-4 ring-[#8A0000]/20'
@@ -508,16 +727,10 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                     }`}
                     aria-label={`View ${hostel.name} in ${hostel.city}`}
                   />
-
-                  {/* Label */}
                   <div
                     className={`absolute whitespace-nowrap top-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-200 ${
                       activeHostelId === hostel.id ? 'opacity-0' : 'opacity-100'
-                    } ${
-                      hostel.labelPos === 'left'
-                        ? 'right-full mr-2 md:mr-3'
-                        : 'left-full ml-2 md:ml-3'
-                    }`}
+                    } ${hostel.labelPos === 'left' ? 'right-full mr-2 md:mr-3' : 'left-full ml-2 md:ml-3'}`}
                   >
                     <span className="bg-black text-white font-mono text-[9px] md:text-[11px] font-bold tracking-[0.12em] px-2 py-1">
                       {hostel.name}
@@ -537,76 +750,30 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute top-3 bottom-3 right-3 md:w-80 lg:w-96 bg-white border border-gray-200 shadow-2xl p-6 md:p-8 flex flex-col z-50 overflow-y-auto"
                 >
-                  <button
-                    onClick={() => setActiveHostelId(null)}
-                    className="absolute top-4 right-4 p-2 text-gray-400 hover:text-black transition-colors"
-                    aria-label="Close panel"
-                  >
+                  <button onClick={() => setActiveHostelId(null)} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-black transition-colors" aria-label="Close panel">
                     <X className="w-5 h-5" />
                   </button>
-
-                  {/* Hostel type badge */}
                   <div className="mb-3 mt-4">
                     <span className="bg-[#8A0000]/10 text-[#8A0000] text-[10px] font-bold uppercase tracking-widest px-3 py-1">
                       {activeHostel.type}
                     </span>
                   </div>
-
-                  <h3 className="text-2xl font-extrabold uppercase tracking-tight text-[#141414] mb-1">
-                    {activeHostel.name}
-                  </h3>
-                  <p className="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-6">
-                    {activeHostel.city}
-                  </p>
-
+                  <h3 className="text-2xl font-extrabold uppercase tracking-tight text-[#141414] mb-1">{activeHostel.name}</h3>
+                  <p className="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-6">{activeHostel.city}</p>
                   <div className="space-y-5 flex-1">
                     <div>
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#8A0000] mb-2">
-                        About
-                      </h4>
-                      <p className="text-gray-600 text-[14px] leading-relaxed">
-                        {activeHostel.description}
-                      </p>
+                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#8A0000] mb-2">About</h4>
+                      <p className="text-gray-600 text-[14px] leading-relaxed">{activeHostel.description}</p>
                     </div>
-
                     <div>
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#8A0000] mb-2">
-                        Character
-                      </h4>
-                      <p className="text-gray-800 text-[14px] leading-relaxed font-medium">
-                        {activeHostel.character}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-gray-100">
-                      <button
-                        onClick={() => goToPage('visit-us')}
-                        className="flex items-center space-x-3 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8A0000] hover:text-black transition-colors group"
-                      >
-                        <span>Visit this hostel</span>
-                        <svg
-                          className="group-hover:translate-x-2 transition-transform"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </button>
+                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#8A0000] mb-2">Character</h4>
+                      <p className="text-gray-800 text-[14px] leading-relaxed font-medium">{activeHostel.character}</p>
                     </div>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-
-          {/* Hostel type legend */}
           <div className="mt-6 flex flex-wrap gap-6 items-center text-[11px] text-gray-500">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-[#8A0000] inline-block" />
@@ -624,84 +791,42 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 4. Global Rotation Narrative ── */}
+      {/* ── 6. Student Voices ── */}
       <section className="py-16 lg:py-24">
         <div
-          ref={rotationAnim.ref}
+          ref={voicesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
-            rotationAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            voicesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200" />
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">
-              How Rotation Works
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Student Voices
             </span>
-            <div className="flex-grow border-t border-gray-200" />
           </div>
 
-          {/* Large statement */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-              No student stays in one place.
-              <br />
-              <span className="text-[#8A0000]">Every semester, a new city.</span>
-            </h2>
-            <p className="text-[17px] text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Inspired by Minerva University&rsquo;s rotation model and Oxford&rsquo;s collegiate traditions,
-              Artemis divides the globe into learning hubs. Students spend each semester at a
-              different hostel — building fluency in cultures, contexts, and challenges that no
-              single campus could provide.
-            </p>
-          </div>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
+            Don&rsquo;t take our word for it
+          </h2>
 
-          {/* Rotation steps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {[
-              {
-                year: 'Year 1',
-                title: 'Foundation',
-                desc: 'Begin at The Weavers Hall in Valletta — the network\'s heart. Learn the rhythms of communal living, the language of the Collegium, and the foundational skills of cross-cultural inquiry.',
-                cities: 'Valletta · Berlin',
-              },
-              {
-                year: 'Year 2',
-                title: 'Expansion',
-                desc: 'Rotate to hubs in Africa and the Americas. Confront entirely different systems of thought, from Kigali\'s innovation corridors to São Paulo\'s social movements.',
-                cities: 'Kigali · São Paulo · Accra',
-              },
-              {
-                year: 'Year 3',
-                title: 'Deepening',
-                desc: 'Choose a specialisation and embed in the hostel that serves it best. Whether that\'s AI ethics in Montreal or marine science in Sydney, this is where expertise takes root.',
-                cities: 'Tokyo · Seoul · Oxford · Sydney',
-              },
-              {
-                year: 'Year 4',
-                title: 'Integration',
-                desc: 'Return to a hub with fresh eyes. Complete a capstone that draws on every city you\'ve lived in, every community you\'ve been part of, every perspective you\'ve adopted.',
-                cities: 'Your choice · Global network',
-              },
-            ].map((step, i) => (
-              <div key={i} className="relative pl-6">
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]" />
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">
-                  {step.year}
-                </div>
-                <h3 className="text-[20px] font-bold text-[#141414] mb-3 leading-tight">
-                  {step.title}
-                </h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed mb-3">{step.desc}</p>
-                <p className="text-[11px] font-mono text-gray-400 tracking-wider">
-                  {step.cities}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {studentVoices.map((voice, i) => (
+              <div key={i} className="border-l-2 border-[#8A0000] pl-6 py-2">
+                <p className="text-[16px] text-gray-700 leading-relaxed mb-6 italic">
+                  &ldquo;{voice.quote}&rdquo;
                 </p>
+                <div>
+                  <p className="text-[14px] font-bold text-[#141414]">{voice.name}</p>
+                  <p className="text-[12px] text-gray-500 font-mono tracking-wider">{voice.detail}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 5. Traditions that Travel ── */}
+      {/* ── 7. Traditions that Travel ── */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={traditionsAnim.ref}
@@ -724,7 +849,8 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
                 In the Oxford tradition, every college has its rituals. At Artemis, those rituals
                 don&rsquo;t belong to a building — they belong to the community. Wherever students rotate,
-                the traditions travel with them, creating continuity across continents.
+                the traditions travel with them, creating continuity across continents and turning
+                every new city into home by the end of the first week.
               </p>
               <p className="text-[16px] text-gray-600 leading-relaxed">
                 From the Crossing to the Common Table, these practices bind the network together
@@ -732,8 +858,6 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
                 and the belief that how you live matters as much as what you learn.
               </p>
             </div>
-
-            {/* Full-width image */}
             <div className="group">
               <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
                 <img
@@ -752,10 +876,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           {/* Tradition cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {traditions.map((trad, i) => (
-              <div
-                key={i}
-                className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group"
-              >
+              <div key={i} className="border border-gray-200 bg-white p-6 hover:border-[#8A0000] transition-colors group">
                 <div className="flex items-start gap-4">
                   <span className="text-[10px] font-bold text-[#8A0000] tracking-widest mt-1 shrink-0">
                     {String(i + 1).padStart(2, '0')}
@@ -773,7 +894,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 6. Stats ── */}
+      {/* ── 8. Stats — warm framing ── */}
       <section className="py-16 lg:py-24">
         <div
           ref={statsAnim.ref}
@@ -789,19 +910,15 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
           </div>
 
           <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
-            A world-scale<br />university
+            Life at scale
           </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
             {campusStats.map((stat, i) => (
               <div key={i} className="relative pl-6">
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#8A0000]" />
-                <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">
-                  {stat.value}
-                </div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">
-                  {stat.label}
-                </div>
+                <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{stat.label}</div>
                 <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
               </div>
             ))}
@@ -809,16 +926,16 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         </div>
       </section>
 
-      {/* ── 7. Crimson CTA bar ── */}
+      {/* ── 9. Crimson CTA bar ── */}
       <section className="bg-[#8A0000] py-16 px-5 sm:px-8 lg:px-20">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[28px] md:text-[36px] font-extrabold leading-tight tracking-tighter text-white mb-2">
-              Begin your global rotation
+              Come see it for yourself
             </h2>
             <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">
-              Walk the hostels, share a Common Table with future peers, feel the pulse of a city
-              that will reshape your thinking. There is no substitute for being here.
+              Walk the common rooms, share a Common Table with future peers, feel the pulse of a
+              city that will reshape your thinking. There is no substitute for being here.
             </p>
           </div>
           <button
@@ -826,25 +943,12 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             className="flex items-center space-x-3 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors shrink-0 group"
           >
             <span>Visit Campus</span>
-            <svg
-              className="group-hover:translate-x-2 transition-transform"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
+            <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
       </section>
 
-      {/* ── 8. Footer ── */}
+      {/* ── 10. Footer ── */}
       <SubPageFooter goToPage={goToPage} />
     </div>
   );
