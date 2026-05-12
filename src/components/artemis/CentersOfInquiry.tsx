@@ -269,7 +269,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
   const guildAnim = useInView();
   const cyclesAnim = useInView();
 
-  const activeSection = useActiveSection(['pillars', 'centers']);
+  const activeSection = useActiveSection(['pillars', 'centers', 'guilds', 'cycles']);
 
   return (
     <div className="flex flex-col bg-white">
@@ -295,6 +295,8 @@ export default function CentersOfInquiry({ goToPage }: Props) {
         sections={[
           { id: 'pillars', label: 'Five Pillars' },
           { id: 'centers', label: 'Centers' },
+          { id: 'guilds', label: 'Guilds' },
+          { id: 'cycles', label: 'Cycles' },
         ]}
         activeSection={activeSection}
       />
@@ -374,7 +376,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Guilds Section */}
-      <section id="projects" className="bg-gray-50 py-16 lg:py-24">
+      <section id="guilds" className="bg-gray-50 py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={guildAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${guildAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 flex items-center space-x-3">
             <span className="w-8 h-[1px] bg-[#8A0000]"></span>
@@ -432,7 +434,7 @@ export default function CentersOfInquiry({ goToPage }: Props) {
       </section>
 
       {/* Cycles of Activity */}
-      <section id="impact" className="py-16 lg:py-24">
+      <section id="cycles" className="py-16 lg:py-24 scroll-mt-[110px]">
         <div ref={cyclesAnim.ref} className={`max-w-[1400px] mx-auto w-full px-8 lg:px-20 transition-all duration-700 ${cyclesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative flex items-center mb-16">
             <div className="flex-grow border-t border-gray-200"></div>

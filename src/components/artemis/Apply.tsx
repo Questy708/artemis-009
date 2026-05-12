@@ -122,6 +122,32 @@ export default function Apply({ goToPage }: Props) {
 
   return (
     <div className="flex flex-col bg-white">
+      {/* Hero */}
+      <section className="relative w-full overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="relative w-full h-[35vh] min-h-[280px] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
+              alt="Apply to Artemis"
+              className="absolute inset-0 w-full h-full object-cover grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-8 lg:px-20 pb-16">
+              <div className="mb-6 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Join Artemis</span>
+              </div>
+              <h1 className="text-[48px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-4 uppercase">
+                Application for<br />Admission
+              </h1>
+              <p className="text-[17px] text-white/70 max-w-xl leading-relaxed font-light">
+                Join the next generation of scholars, innovators, and leaders at the University of Artemis. No application fee. Standardised tests are optional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <OnThisPageNav
         sections={[
           { id: 'application', label: 'Application' },
@@ -131,13 +157,7 @@ export default function Apply({ goToPage }: Props) {
         activeSection={activeSection}
       />
 
-      <div id="application" className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24 scroll-mt-[110px]">
-        <h1 className="text-[52px] font-extrabold leading-[1.05] tracking-tighter text-gray-900 mb-4 uppercase">
-          Application for Admission
-        </h1>
-        <p className="text-[18px] font-light text-gray-600 leading-relaxed mb-2">
-          Join the next generation of scholars, innovators, and leaders at the University of Artemis.
-        </p>
+      <div id="application" className="max-w-[1000px] mx-auto w-full px-8 lg:px-20 pt-16 mb-24 scroll-mt-[110px]">
         <p className="text-[14px] text-gray-500 leading-relaxed mb-10">
           Our application assesses who you are, how you think, and what you have done. There is no application fee. Standardised tests (SAT/ACT) are optional. Take your time — you can navigate between sections using the step indicators above.
         </p>

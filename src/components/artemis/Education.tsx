@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
 
