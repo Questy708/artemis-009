@@ -252,3 +252,27 @@ Stage Summary:
 - 9 pathways total (was 7): added K-12 Education and Dual-Degree Pathway (P-TECH)
 - Carousel features: requestAnimationFrame auto-scroll, pause-on-hover, pause-on-touch, seamless loop, hidden scrollbar, responsive card widths, mobile touch scrolling
 - Build passes, changes pushed to GitHub
+---
+Task ID: 1
+Agent: Main Agent
+Task: Create individual blog article pages with detailed content, photos, and proper routing
+
+Work Log:
+- Extended BlogArticle interface in artemis-data.ts with new fields: readTime, heroAlt, tags, sections (BlogArticleSection[])
+- Added rich detailed content for all 10 blog articles including multiple sections with headings, body text, images, captions, and pullquotes
+- Created BlogArticlePage.tsx component with hero, article body, related articles, share bar, and subscribe section
+- Registered blog_article route in ArtemisApp.tsx using currentProgram as article slug
+- Updated Blog.tsx to navigate to individual article pages (goToPage('blog_article', article.slug)) instead of category-based routing
+- Updated Home.tsx to navigate to individual article pages for both featured and grid articles
+- Added readTime display to both Blog.tsx and Home.tsx article cards
+- Cleaned up unused categoryRoute map in Blog.tsx
+- Fixed Research.tsx "Explore All Centers" carousel width issue by adding overflow-hidden to both the section and main container
+- Investigated "Ready to join the vanguard?" in Admissions.tsx — confirmed it does not exist in the current codebase
+
+Stage Summary:
+- 10 detailed blog article pages now accessible via blog_article route
+- Each article has 4-7 rich content sections with images, pullquotes, and detailed writing
+- All blog cards on Home page and Blog page now navigate to individual article pages
+- Related articles shown at bottom of each article page
+- Research page carousel overflow issue fixed
+- "Ready to join the vanguard?" section was not found — may have been removed previously

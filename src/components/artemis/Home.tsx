@@ -124,7 +124,7 @@ export default function Home({ goToPage }: HomeProps) {
             {/* Featured story — full width */}
             <div
               className="group cursor-pointer mb-12"
-              onClick={() => goToPage('fundraising')}
+              onClick={() => goToPage('blog_article', blogArticles[0].slug)}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div className="aspect-[16/10] bg-gray-100 overflow-hidden shadow-sm">
@@ -140,6 +140,9 @@ export default function Home({ goToPage }: HomeProps) {
                       {blogArticles[0].category}
                     </span>
                     <span className="text-[11px] text-gray-400">{blogArticles[0].date}</span>
+                    {blogArticles[0].readTime && (
+                      <span className="text-[11px] text-gray-400">| {blogArticles[0].readTime}</span>
+                    )}
                   </div>
                   <h3 className="text-[24px] md:text-[28px] font-extrabold mb-3 group-hover:text-[#8A0000] text-gray-900 leading-tight transition-colors">
                     {blogArticles[0].title}
@@ -157,13 +160,7 @@ export default function Home({ goToPage }: HomeProps) {
                 <article
                   key={article.id}
                   className="cursor-pointer group"
-                  onClick={() => goToPage(
-                    article.category === 'Campaign' ? 'fundraising' :
-                    article.category === 'Research' ? 'research' :
-                    article.category === 'Innovation' ? 'innovation' :
-                    article.category === 'Campus Life' ? 'campus' :
-                    'blog'
-                  )}
+                  onClick={() => goToPage('blog_article', article.slug)}
                 >
                   <div className="w-full mb-5 overflow-hidden bg-gray-100 shadow-sm aspect-[16/10]">
                     <img
@@ -182,6 +179,9 @@ export default function Home({ goToPage }: HomeProps) {
                       {article.category}
                     </span>
                     <span className="text-[11px] text-gray-400">{article.date}</span>
+                    {article.readTime && (
+                      <span className="text-[11px] text-gray-400">| {article.readTime}</span>
+                    )}
                   </div>
                   <h3 className="text-[20px] font-bold mb-2 group-hover:text-[#8A0000] text-gray-900 leading-tight transition-colors">
                     {article.title}

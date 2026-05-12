@@ -264,7 +264,7 @@ export default function Research({ goToPage }: ResearchProps) {
   };
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-white overflow-hidden">
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
@@ -616,7 +616,7 @@ export default function Research({ goToPage }: ResearchProps) {
       </section>
 
       {/* ── 8. CENTERS OF INQUIRY ── */}
-      <section id="centers" className="scroll-mt-[110px] py-16 lg:py-24">
+      <section id="centers" className="scroll-mt-[110px] py-16 lg:py-24 overflow-hidden">
         {/* Intro — constrained width */}
         <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
           <div className="relative flex items-center mb-16">

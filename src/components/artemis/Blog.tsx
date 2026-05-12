@@ -30,12 +30,6 @@ const categoryColors: Record<string, string> = {
   'Campus Life': 'bg-[#8A0000]/10 text-[#8A0000]',
 };
 
-const categoryRoute: Record<string, string> = {
-  Campaign: 'fundraising',
-  Research: 'research',
-  Innovation: 'innovation',
-  'Campus Life': 'campus',
-};
 
 export default function Blog({ goToPage }: BlogProps) {
   const heroAnim = useInView();
@@ -92,7 +86,7 @@ export default function Blog({ goToPage }: BlogProps) {
 
           <div
             className="group cursor-pointer"
-            onClick={() => goToPage(categoryRoute[featured.category] || 'research')}
+            onClick={() => goToPage('blog_article', featured.slug)}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
               <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
@@ -108,6 +102,9 @@ export default function Blog({ goToPage }: BlogProps) {
                     {featured.category}
                   </span>
                   <span className="text-[12px] text-gray-400">{featured.date}</span>
+                  {featured.readTime && (
+                    <span className="text-[12px] text-gray-400">| {featured.readTime}</span>
+                  )}
                 </div>
                 <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-extrabold leading-[1.1] tracking-tighter text-[#141414] mb-4 group-hover:text-[#8A0000] transition-colors">
                   {featured.title}
@@ -161,7 +158,7 @@ export default function Blog({ goToPage }: BlogProps) {
               <article
                 key={article.id}
                 className="group cursor-pointer bg-white border border-gray-100 hover:border-[#8A0000] transition-all overflow-hidden shadow-sm hover:shadow-lg"
-                onClick={() => goToPage(categoryRoute[article.category] || 'research')}
+                onClick={() => goToPage('blog_article', article.slug)}
               >
                 <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
                   <img
@@ -176,6 +173,9 @@ export default function Blog({ goToPage }: BlogProps) {
                       {article.category}
                     </span>
                     <span className="text-[11px] text-gray-400">{article.date}</span>
+                    {article.readTime && (
+                      <span className="text-[11px] text-gray-400">| {article.readTime}</span>
+                    )}
                   </div>
                   <h3 className="text-[18px] font-bold text-[#141414] mb-3 leading-tight group-hover:text-[#8A0000] transition-colors line-clamp-3">
                     {article.title}
