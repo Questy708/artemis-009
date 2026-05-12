@@ -127,3 +127,23 @@ Stage Summary:
 - Site was returning 500 error because broken JSX in any imported component crashes the entire app
 - Dev server confirmed working at localhost:3000 with HTTP 200
 - CentersOfInquiry page has full content after Five Pillars: Centers Grid (15 centers), Guilds section, Cycles of Activity - the "empty" appearance was likely due to the rendering crash from the broken sub-header
+---
+Task ID: 1
+Agent: Main
+Task: Rebuild FundraisingCampaign.tsx to be consistent with site design language (light theme, crimson accents)
+
+Work Log:
+- Read existing FundraisingCampaign.tsx (1012 lines, entirely dark-themed with bg-[#050505])
+- Read Home.tsx, About.tsx, Apply.tsx to understand site design language
+- Identified design system: white bg, #8A0000 crimson, gray-50 sections, red-line labels, left-border stats, grayscale images, card-and-image parallax, crimson CTA bars
+- Completely rewrote FundraisingCampaign.tsx with consistent light-theme design
+- All 9 sections rebuilt: Hero (image + gradient), Case for Support, Ascent (milestones), Constellations (giving tiers), Gatherings (events), Give (donation engine), Foundry (donor wall), Horizon (post-founding vision), CTA bar
+- Kept all data (MILESTONES, CONSTELLATIONS, EVENTS, DONORS, CRYPTO, PRESETS)
+- Kept backend integration (handleDonate, API routes)
+- Used site-consistent patterns: bg-white, bg-gray-50, border-l-2 border-[#8A0000], bg-[#F9F8F6] forms, centered dividers, date-block events
+- Build verified successfully
+
+Stage Summary:
+- FundraisingCampaign.tsx fully rebuilt from dark theme to light theme consistent with entire Artemis site
+- Build passes with no errors
+- All functionality preserved (payment methods, crypto, recurring donations, donor wall, etc.)
