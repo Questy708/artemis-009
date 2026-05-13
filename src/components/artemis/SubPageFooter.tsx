@@ -160,11 +160,22 @@ export default function SubPageFooter({ goToPage }: FooterProps) {
 
           {/* Logo & Address */}
           <div className="flex flex-col gap-6 md:w-1/3">
-            <div className="font-black text-3xl tracking-tighter text-[#141414]">
-              ARTEMIS
+            <div className="flex items-center gap-3">
+              <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3L4 9V19.5C4 28.5 11 35.5 20 37.5C29 35.5 36 28.5 36 19.5V9L20 3Z" stroke="#8A0000" strokeWidth="1.8" fill="none"/>
+                <path d="M20 5.5L6.5 10.8V19.5C6.5 27.2 12.4 33.2 20 35C27.6 33.2 33.5 27.2 33.5 19.5V10.8L20 5.5Z" fill="rgba(138,0,0,0.06)"/>
+                <path d="M20 11L14 24H16.5L17.8 20.8H22.2L23.5 24H26L20 11ZM18.6 18.8L20 14.8L21.4 18.8H18.6Z" fill="#8A0000"/>
+                <line x1="12" y1="28" x2="28" y2="28" stroke="rgba(138,0,0,0.25)" strokeWidth="0.8"/>
+                <circle cx="15" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+                <circle cx="20" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+                <circle cx="25" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+              </svg>
+              <div className="leading-[1.1]">
+                <div className="text-[13px] font-semibold tracking-tight text-[#141414]">University of</div>
+                <div className="text-[15px] font-bold tracking-tight text-[#141414]">Artemis</div>
+              </div>
             </div>
             <div>
-              <p className="font-bold text-[13px] text-gray-900 mb-1">University of Artemis</p>
               <p className="text-[13px] text-gray-600 mb-4 leading-tight">123 Innovative Way, Knowledge City, Global Hub</p>
               <div className="flex flex-wrap gap-x-3 gap-y-1 text-[12px] font-medium border-b border-gray-100 pb-4 mb-4">
                 <button onClick={() => goToPage('visit-us')} className="text-gray-600 hover:text-[#8A0000] transition-colors">Visit</button>

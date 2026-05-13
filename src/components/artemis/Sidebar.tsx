@@ -102,7 +102,21 @@ export default function Sidebar({ isOpen, onClose, goHome, goToPage, hideDesktop
 
       {/* SIDEBAR FOOTER */}
       <div className="pb-10 border-t border-gray-100 pt-8 px-8 lg:px-10">
-        <p className="font-bold text-[13px] mb-1">University of Artemis</p>
+        <div className="flex items-center gap-2.5 mb-1">
+          <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 3L4 9V19.5C4 28.5 11 35.5 20 37.5C29 35.5 36 28.5 36 19.5V9L20 3Z" stroke="#8A0000" strokeWidth="1.8" fill="none"/>
+            <path d="M20 5.5L6.5 10.8V19.5C6.5 27.2 12.4 33.2 20 35C27.6 33.2 33.5 27.2 33.5 19.5V10.8L20 5.5Z" fill="rgba(138,0,0,0.06)"/>
+            <path d="M20 11L14 24H16.5L17.8 20.8H22.2L23.5 24H26L20 11ZM18.6 18.8L20 14.8L21.4 18.8H18.6Z" fill="#8A0000"/>
+            <line x1="12" y1="28" x2="28" y2="28" stroke="rgba(138,0,0,0.25)" strokeWidth="0.8"/>
+            <circle cx="15" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+            <circle cx="20" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+            <circle cx="25" cy="30.5" r="0.8" fill="rgba(138,0,0,0.4)"/>
+          </svg>
+          <div className="leading-[1.1]">
+            <span className="text-[11px] font-semibold tracking-tight text-gray-800">University of </span>
+            <span className="text-[12px] font-bold tracking-tight text-gray-800">Artemis</span>
+          </div>
+        </div>
         <p className="text-[12px] text-gray-600 mb-4 leading-tight">A global collegiate model for the collective future of humanity.</p>
         
         <div className="text-[12px] space-x-2 mb-2 font-medium">

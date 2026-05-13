@@ -3,6 +3,37 @@
 import { Search, Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+/* ─── Artemis Shield Logo ─── */
+function ArtemisLogo({ size = 28 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Shield shape */}
+      <path
+        d="M20 3L4 9V19.5C4 28.5 11 35.5 20 37.5C29 35.5 36 28.5 36 19.5V9L20 3Z"
+        stroke="white"
+        strokeWidth="1.8"
+        fill="none"
+      />
+      {/* Inner shield fill accent */}
+      <path
+        d="M20 5.5L6.5 10.8V19.5C6.5 27.2 12.4 33.2 20 35C27.6 33.2 33.5 27.2 33.5 19.5V10.8L20 5.5Z"
+        fill="rgba(255,255,255,0.08)"
+      />
+      {/* Letter A */}
+      <path
+        d="M20 11L14 24H16.5L17.8 20.8H22.2L23.5 24H26L20 11ZM18.6 18.8L20 14.8L21.4 18.8H18.6Z"
+        fill="white"
+      />
+      {/* Horizontal bar at bottom of shield */}
+      <line x1="12" y1="28" x2="28" y2="28" stroke="rgba(255,255,255,0.3)" strokeWidth="0.8" />
+      {/* Three stars above the bar */}
+      <circle cx="15" cy="30.5" r="0.8" fill="rgba(255,255,255,0.5)" />
+      <circle cx="20" cy="30.5" r="0.8" fill="rgba(255,255,255,0.5)" />
+      <circle cx="25" cy="30.5" r="0.8" fill="rgba(255,255,255,0.5)" />
+    </svg>
+  );
+}
+
 interface HeaderProps {
   onMenuClick: () => void;
   goHome: () => void;
@@ -31,9 +62,11 @@ export default function Header({ onMenuClick, goHome, goToPage, onSearchClick }:
         >
           <Menu size={20} />
         </button>
-        <div className="flex items-center cursor-pointer group" onClick={goHome}>
-          <div className="font-extrabold uppercase leading-[1.1] text-[11px] tracking-tight group-hover:opacity-80 transition-opacity">
-            University of<br />Artemis
+        <div className="flex items-center gap-2.5 cursor-pointer group" onClick={goHome}>
+          <ArtemisLogo size={30} />
+          <div className="leading-[1.15] group-hover:opacity-80 transition-opacity">
+            <div className="text-[12px] font-semibold tracking-tight">University of</div>
+            <div className="text-[13px] font-bold tracking-tight">Artemis</div>
           </div>
         </div>
       </div>
