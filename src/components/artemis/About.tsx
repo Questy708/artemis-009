@@ -286,8 +286,9 @@ export default function About({ goToPage }: AboutProps) {
       </section>
 
       {/* ── 7. Crimson CTA Bar ── */}
-      <section id="visit" className="scroll-mt-[110px] bg-[#8A0000] py-16">
-        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
+      <section id="visit" className="scroll-mt-[110px] py-16">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div className="bg-[#8A0000] px-8 py-16 md:px-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-[24px] sm:text-[32px] md:text-[40px] font-extrabold leading-tight tracking-tighter text-white mb-2">
               Discover more about Artemis
@@ -303,6 +304,7 @@ export default function About({ goToPage }: AboutProps) {
             <span>Explore</span>
             <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
+          </div>
         </div>
       </section>
 

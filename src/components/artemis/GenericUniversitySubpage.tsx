@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { X } from 'lucide-react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 import { ChevronRight, Download, ExternalLink, MapPin, Globe, Building2, Server } from 'lucide-react';
 
@@ -327,38 +329,169 @@ function GlossaryEntry({ term, full, def, isCore }: { term: string; full: string
    OUR ESTATE PAGE
    ═══════════════════════════════════════════════════════ */
 function OurEstate({ goToPage }: { goToPage: (page: string) => void }) {
-  const hubs = [
-    { name: 'Valletta Hub', location: 'Malta', desc: 'Global headquarters and primary governance centre. Houses the Central Council chambers and the Nexus convening hall.', img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&q=80&w=600' },
-    { name: 'Geneva Hub', location: 'Switzerland', desc: 'Centre for International Relations and Diplomatic Studies. Adjacent to UN and WTO institutions.', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600' },
-    { name: 'Berlin Hub', location: 'Germany', desc: 'Innovation and Venture hub, home to The Forge incubator and the School of Creative Industries.', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=600' },
-    { name: 'Kigali Hub', location: 'Rwanda', desc: 'Centre for Sustainable Development and African Studies. A living laboratory for urban innovation.', img: 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&q=80&w=600' },
-    { name: 'Singapore Hub', location: 'Singapore', desc: 'Asia-Pacific gateway. Focuses on computational sciences, fintech, and cross-cultural research.', img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=600' },
-    { name: 'São Paulo Hub', location: 'Brazil', desc: 'Latin American centre for biodiversity research, social innovation, and the Civic Guild training grounds.', img: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80&w=600' },
+  const [activeHostelId, setActiveHostelId] = useState<string | null>(null);
+
+  const estateHostels = [
+    { id: 'valletta-estate', name: 'The Weavers Hall', city: 'Valletta', x: 52, y: 39, labelPos: 'right' as const, type: 'Commons Residence', desc: 'The heart of the Artemis Collegium. Weavers Hall anchors students in the art of community-building — where every corridor is a loom and every conversation a thread in something larger.' },
+    { id: 'kigali-estate', name: 'Kepler House', city: 'Kigali', x: 57, y: 57, labelPos: 'right' as const, type: 'Scholar House', desc: 'Named for the astronomer who saw patterns in chaos. Kepler House is a haven for systems thinkers and sustainable innovators, overlooking the hills of Rwanda\'s innovation corridor.' },
+    { id: 'berlin-estate', name: 'The Forge Lodge', city: 'Berlin', x: 52, y: 30, labelPos: 'right' as const, type: 'Guild Hall', desc: 'Where ideas are hammered into form. The Forge Lodge channels Berlin\'s creative raw energy into a guild of makers, artists, and provocateurs who believe the future is built, not predicted.' },
+    { id: 'sf-estate', name: 'The Frontier Residence', city: 'San Francisco', x: 15, y: 37, labelPos: 'right' as const, type: 'Commons Residence', desc: 'Perched at the edge of the Pacific and the frontier of technology. Frontier residents are builders and dreamers who treat uncertainty as fuel and the unknown as home.' },
+    { id: 'tokyo-estate', name: 'Sakura House', city: 'Tokyo', x: 85, y: 37, labelPos: 'left' as const, type: 'Scholar House', desc: 'A place of precision and contemplation. Sakura House bridges ancient craft and bleeding-edge technology, reflecting Tokyo\'s own duality — where temple gardens neighbour robotics labs.' },
+    { id: 'reykjavik-estate', name: 'The Aurora Lodge', city: 'Reykjavik', x: 42, y: 17, labelPos: 'right' as const, type: 'Guild Hall', desc: 'The northernmost hostel in the network. Aurora Lodge is for those drawn to extremes — geothermal research, Arctic ecology, and the kind of clarity that only comes at the edge of the world.' },
+    { id: 'singapore-estate', name: 'The Meridian Hall', city: 'Singapore', x: 77, y: 55, labelPos: 'left' as const, type: 'Commons Residence', desc: 'Where East meets West meets future. Meridian Hall is a crossroads — students here navigate cultural complexity with the same ease they navigate smart city infrastructure and digital governance.' },
+    { id: 'saopaulo-estate', name: 'The Botanica House', city: 'São Paulo', x: 31, y: 66, labelPos: 'right' as const, type: 'Scholar House', desc: 'Rooted in the Atlantic Forest and the pulse of Latin America. Botanica House is for those who study life in all its forms — from biodiversity to social movements to the rhythms of the city.' },
+    { id: 'oxford-estate', name: 'Bodley House', city: 'Oxford', x: 47, y: 27, labelPos: 'right' as const, type: 'Scholar House', desc: 'Inspired by Oxford\'s collegiate tradition, Bodley House is a micro-college within the Artemis network — a place of tutorials, common rooms, and the conviction that rigorous thought changes the world.' },
+    { id: 'geneva-estate', name: 'The Calaton', city: 'Geneva', x: 49, y: 33, labelPos: 'right' as const, type: 'Guild Hall', desc: 'Overlooking Lake Geneva and the corridors of international power. The Calaton trains students in diplomacy, humanitarian policy, and the art of building institutions that outlast their founders.' },
+    { id: 'nairobi-estate', name: 'The Rift Lodge', city: 'Nairobi', x: 56, y: 54, labelPos: 'right' as const, type: 'Commons Residence', desc: 'Built on the edge of the Great Rift Valley — a fitting metaphor. Rift Lodge is where students confront the deep fractures in global systems and learn to bridge them with technology and empathy.' },
+    { id: 'mumbai-estate', name: 'The Gateway House', city: 'Mumbai', x: 68, y: 44, labelPos: 'left' as const, type: 'Guild Hall', desc: 'Named for the arch that welcomes travellers to India\'s greatest port city. Gateway House is a guild of entrepreneurs and social innovators who see opportunity where others see complexity.' },
+    { id: 'seoul-estate', name: 'The Han Residence', city: 'Seoul', x: 82, y: 35, labelPos: 'left' as const, type: 'Scholar House', desc: 'Along the banks of the Han River, this hostel embodies Korea\'s blend of deep heritage and hyper-modernity. Han residents move between K-culture analysis and semiconductor design with equal fluency.' },
+    { id: 'sydney-estate', name: 'The Southern Cross Lodge', city: 'Sydney', x: 87, y: 69, labelPos: 'left' as const, type: 'Commons Residence', desc: 'Guided by the constellation for which it\'s named. Southern Cross Lodge is the network\'s gateway to Oceania — a community of marine scientists, Indigenous knowledge holders, and adventurers.' },
+    { id: 'capetown-estate', name: 'The Table Hall', city: 'Cape Town', x: 52, y: 71, labelPos: 'right' as const, type: 'Guild Hall', desc: 'In the shadow of Table Mountain, this guild hall brings together artists, activists, and architects. Table Hall is where the struggle for justice meets the craft of beautiful, lasting design.' },
+    { id: 'buenosaires-estate', name: 'The Tango House', city: 'Buenos Aires', x: 28, y: 73, labelPos: 'right' as const, type: 'Scholar House', desc: 'A hostel that moves. Tango House takes its name from the dance — two partners, unpredictable, perfectly attuned. Students here study urban transformation, literature, and the politics of movement.' },
+    { id: 'stockholm-estate', name: 'The Nordic Hall', city: 'Stockholm', x: 51, y: 22, labelPos: 'right' as const, type: 'Commons Residence', desc: 'Clean lines, clear thinking. Nordic Hall is a study in Scandinavian design principles applied to education — minimal waste, maximum wellbeing, and the quiet conviction that good systems produce good lives.' },
+    { id: 'dubai-estate', name: 'The Oasis Lodge', city: 'Dubai', x: 61, y: 41, labelPos: 'left' as const, type: 'Guild Hall', desc: 'Rising from the desert, Oasis Lodge is a guild of futurists and financiers. Students here engage with global capital flows, urban megaprojects, and the ethics of building cities from nothing.' },
+    { id: 'shanghai-estate', name: 'The Dragon Gate', city: 'Shanghai', x: 79, y: 39, labelPos: 'left' as const, type: 'Commons Residence', desc: 'At the mouth of the Yangtze, where tradition and velocity collide. Dragon Gate residents study manufacturing ecosystems, AI ethics, and the art of operating at unprecedented scale.' },
+    { id: 'accra-estate', name: 'The Gold Coast House', city: 'Accra', x: 47, y: 51, labelPos: 'right' as const, type: 'Scholar House', desc: 'Reclaiming a colonial name with post-colonial ambition. Gold Coast House is a centre for Pan-African thought, digital sovereignty, and the creative industries reshaping West Africa\'s narrative.' },
+    { id: 'lima-estate', name: 'The Andes Lodge', city: 'Lima', x: 22, y: 62, labelPos: 'right' as const, type: 'Guild Hall', desc: 'Where the Andes meet the Pacific. Andes Lodge is a guild of earth scientists, culinary innovators, and indigenous knowledge keepers — studying the deep time of landscapes and cultures.' },
+    { id: 'montreal-estate', name: 'The Cartier House', city: 'Montreal', x: 24, y: 30, labelPos: 'right' as const, type: 'Scholar House', desc: 'A bilingual micro-college in the Francophone heart of North America. Cartier House bridges French and English intellectual traditions, with particular strength in AI research and philosophy of mind.' },
+    { id: 'edinburgh-estate', name: 'The Arthur Seat Lodge', city: 'Edinburgh', x: 46, y: 25, labelPos: 'right' as const, type: 'Commons Residence', desc: 'Named for the ancient volcano at the city\'s heart. Arthur Seat Lodge is a community of storytellers, data scientists, and those who believe narrative and numbers are equally valid ways of knowing.' },
+    { id: 'zagreb-estate', name: 'The Adriatic House', city: 'Zagreb', x: 52, y: 34, labelPos: 'left' as const, type: 'Guild Hall', desc: 'At the crossroads of Central Europe and the Mediterranean. Adriatic House is a guild of bridge-builders — students who navigate between cultures, systems, and histories with ease and intention.' },
   ];
+
+  const activeHostel = useMemo(() => estateHostels.find(h => h.id === activeHostelId), [activeHostelId, estateHostels]);
 
   return (
     <>
+      {/* ── Your World Expands ── */}
+      <div className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Your World Expands
+            </span>
+          </div>
+
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            Every semester,<br />a new home
+          </h2>
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-10">
+            Over four years, you&rsquo;ll rotate through global hubs — each one a different city, a
+            different hostel, a different perspective. The map below shows all 24 hostels in the
+            network. Click any pin to discover what living there is like.
+          </p>
+
+          {/* 4-year rotation at a glance */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
+            {[
+              { year: 'Year 1', title: 'Foundation', cities: 'Valletta · Berlin' },
+              { year: 'Year 2', title: 'Expansion', cities: 'Kigali · São Paulo · Accra' },
+              { year: 'Year 3', title: 'Deepening', cities: 'Tokyo · Oxford · Sydney' },
+              { year: 'Year 4', title: 'Integration', cities: 'Your choice · Global' },
+            ].map((step, i) => (
+              <div key={i} className="relative pl-5 border-l-2 border-[#8A0000]/30">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-1">{step.year}</div>
+                <h3 className="text-[16px] font-bold text-[#141414] mb-1 leading-tight">{step.title}</h3>
+                <p className="text-[12px] font-mono text-gray-400 tracking-wider">{step.cities}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div
+            className="relative w-full overflow-hidden bg-white border border-gray-200"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setActiveHostelId(null);
+            }}
+          >
+            <img
+              src="https://cdn.prod.website-files.com/677376e1e97650585235ab96/677e1de06571eae8d537fc47_map.avif"
+              alt="World Map — Artemis Estate Network"
+              className="w-full h-auto pointer-events-none select-none opacity-80"
+            />
+
+            {/* Hostel Markers */}
+            {estateHostels.map((hostel, index) => (
+              <div
+                key={hostel.id}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center ${
+                  activeHostelId === hostel.id ? 'z-40' : 'z-10'
+                }`}
+                style={{ left: `${hostel.x}%`, top: `${hostel.y}%` }}
+              >
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 25, delay: index * 0.03 }}
+                  className="relative flex items-center justify-center"
+                >
+                  <button
+                    onClick={() => setActiveHostelId(activeHostelId === hostel.id ? null : hostel.id)}
+                    className={`relative rounded-full shrink-0 cursor-pointer transition-all duration-200 ${
+                      activeHostelId === hostel.id
+                        ? 'w-5 h-5 md:w-6 md:h-6 bg-[#8A0000] ring-4 ring-[#8A0000]/20'
+                        : 'w-3.5 h-3.5 md:w-4 md:h-4 bg-[#8A0000] hover:bg-red-800 hover:ring-4 hover:ring-[#8A0000]/10 border-2 border-transparent hover:border-black'
+                    }`}
+                    aria-label={`View ${hostel.name} in ${hostel.city}`}
+                  />
+                  <div
+                    className={`absolute whitespace-nowrap top-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-200 ${
+                      activeHostelId === hostel.id ? 'opacity-0' : 'opacity-100'
+                    } ${hostel.labelPos === 'left' ? 'right-full mr-2 md:mr-3' : 'left-full ml-2 md:ml-3'}`}
+                  >
+                    <span className="bg-black text-white font-mono text-[9px] md:text-[11px] font-bold tracking-[0.12em] px-2 py-1">
+                      {hostel.name}
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+
+            {/* Info Panel */}
+            <AnimatePresence>
+              {activeHostel && (
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50, transition: { duration: 0.2 } }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute top-3 bottom-3 right-3 md:w-80 lg:w-96 bg-white border border-gray-200 shadow-2xl p-6 md:p-8 flex flex-col z-50 overflow-y-auto"
+                >
+                  <button onClick={() => setActiveHostelId(null)} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-black transition-colors" aria-label="Close panel">
+                    <X className="w-5 h-5" />
+                  </button>
+                  <div className="mb-3 mt-4">
+                    <span className="bg-[#8A0000]/10 text-[#8A0000] text-[10px] font-bold uppercase tracking-widest px-3 py-1">
+                      {activeHostel.type}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-extrabold uppercase tracking-tight text-[#141414] mb-1">{activeHostel.name}</h3>
+                  <p className="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-6">{activeHostel.city}</p>
+                  <div className="space-y-5 flex-1">
+                    <div>
+                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#8A0000] mb-2">About</h4>
+                      <p className="text-gray-600 text-[14px] leading-relaxed">{activeHostel.desc}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Estate at a Glance ── */}
       <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-20 py-16 lg:py-24">
-        {/* Estate at a Glance */}
         <SectionDivider label="At a Glance" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
           <StatBlock number="25,000" label="Sq Ft Research Space" detail="Across all physical hubs" />
-          <StatBlock number="12" label="Residential Commons" detail="Purpose-built living-learning communities" />
+          <StatBlock number="24" label="Residential Hostels" detail="Purpose-built living-learning communities across 6 continents" />
           <StatBlock number="8" label="Global Hubs" detail="Physical presence on every major continent" />
           <StatBlock number="99.9%" label="Uptime" detail="Digital platform availability, 2024" />
         </div>
-
-        {/* Physical Hubs */}
-        <SectionDivider label="Physical Hubs" />
-
-        <RevealSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {hubs.map((hub) => (
-              <HubCard key={hub.name} hub={hub} />
-            ))}
-          </div>
-        </RevealSection>
 
         {/* Digital Estate */}
         <SectionDivider label="Digital Estate" />

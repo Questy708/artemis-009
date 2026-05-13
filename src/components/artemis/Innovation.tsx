@@ -1,68 +1,137 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import SubPageFooter from '@/components/artemis/SubPageFooter';
 import OnThisPageNav, { useActiveSection } from '@/components/artemis/OnThisPageNav';
+import { ArrowRight, Lightbulb, FlaskConical, Users, Rocket, Building2, ChevronRight, ExternalLink } from 'lucide-react';
 
 interface InnovationProps {
   goToPage: (page: string) => void;
 }
 
 /* ─── Data ─── */
-const galleryImages = [
+
+const portfolioCompanies = [
   {
-    src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
-    alt: 'Venture demonstration',
-    caption: 'Student entrepreneurs pitch at the Forge Demo Day, raising through the Forge Demo Day since the program\'s founding.',
+    name: 'Helix Diagnostics',
+    channel: 'AI + Health',
+    desc: 'AI-powered molecular diagnostics platform that reduces testing turnaround from days to hours. Built on Artemis research in synthetic biology and machine learning, Helix enables point-of-care clinicians to identify pathogens and recommend treatment in under thirty minutes.',
+    status: 'Launched',
+    founded: '2025',
+    img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600',
   },
   {
-    src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
-    alt: 'Rapid prototyping lab',
-    caption: 'Inside the Artemis Forge, engineers iterate on hardware prototypes using state-of-the-art CNC machining, 3D printing, and electronics fabrication — from concept to working prototype in days, not months.',
+    name: 'FerroGrid',
+    channel: 'Clean Energy',
+    desc: 'Next-generation wide-bandgap semiconductor power supply units for AI data centres and high-density computing. FerroGrid\'s GaN transistor technology, derived from Artemis fusion energy research, delivers 40% greater energy efficiency than conventional silicon-based systems.',
+    status: 'In Development',
+    founded: '2025',
+    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
   },
   {
-    src: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
-    alt: 'Digital ecosystem',
-    caption: 'The Nexus connects over 50 developers, designers, and domain experts across Artemis campuses, fostering cross-disciplinary software solutions that bridge research and real-world deployment.',
+    name: 'Aether Propulsion',
+    channel: 'Clean Energy',
+    desc: 'Satellite propulsion systems leveraging superconducting magnet technology originally developed for Artemis fusion research. Aether\'s thrusters deliver higher specific impulse at lower power draw, enabling longer satellite missions and deeper-space capability.',
+    status: 'In Development',
+    founded: '2026',
+    img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600',
   },
   {
-    src: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
-    alt: 'Interdisciplinary collaboration',
-    caption: 'Teams from the Forge and the Nexus collaborate on integrated hardware-software ventures, supported by SkyBridge\'s corporate partnership network spanning three continents.',
+    name: 'Meridian Health',
+    channel: 'AI + Health',
+    desc: 'Patient-centred health records platform that uses AI to personalise and humanise clinical data. Meridian transforms raw EHR inputs into narratives that patients understand and trust, closing the communication gap between providers and the people they serve.',
+    status: 'Launched',
+    founded: '2025',
+    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600',
+  },
+  {
+    name: 'CarbonLock',
+    channel: 'Climate',
+    desc: 'Permanent carbon capture materials derived from Artemis geothermal and materials science research. CarbonLock\'s mineralisation process sequesters CO2 into stable rock forms at ambient temperature, offering a scalable pathway to negative emissions without energy-intensive compression.',
+    status: 'Proto',
+    founded: '2026',
+    img: 'https://images.unsplash.com/photo-1569163139394-de4e5f43e5ca?auto=format&fit=crop&q=80&w=600',
   },
 ];
 
-const ventureHubs = [
+const modelPhases = [
   {
-    title: 'Artemis Forge',
-    desc: 'A physical and digital space for rapid prototyping and hardware innovation. Equipped with state-of-the-art labs, CNC machining, additive manufacturing, and expert technicians — the Forge transforms concepts into working prototypes in days, not months, spinning up hardware prototypes for future ventures.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400',
-    tag: '01 — FORGE',
+    number: '01',
+    name: 'Define',
+    desc: 'A venture channel is defined through sponsorship and strategic alignment. Artemis works with partners to identify urgent problem spaces and map the technology landscape — creating a focused hunting ground for new ventures.',
+    icon: Lightbulb,
   },
   {
-    title: 'The Nexus',
-    desc: 'Our digital ecosystem connecting developers, designers, and domain experts to build the next generation of software solutions. The Nexus provides cloud infrastructure, AI tooling, design systems, and a curated mentorship network — software ventures in development, targeting launch within the first three years.',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1400',
-    tag: '02 — NEXUS',
+    number: '02',
+    name: 'Discover',
+    desc: 'A Venture Builder is recruited and embedded deep within Artemis research labs. Over approximately six months, they systematically scout technologies, interview faculty, assess intellectual property, and identify market needs — building a living map of opportunity.',
+    icon: FlaskConical,
   },
   {
-    title: 'SkyBridge',
-    desc: 'Artemis\'s technology transfer engine — bridging academic discovery and industry application through licensing, spin-off formation, and corporate partnerships. SkyBridge is building a portfolio of intellectual property and facilitating pathways from lab to market.',
-    image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1400',
-    tag: '03 — SKYBRIDGE',
+    number: '03',
+    name: 'Explore',
+    desc: 'Venture Builders form teams with Venture Fellows, faculty advisors, and industry collaborators. Together they rapidly prototype low-fidelity technical and market solutions to the most promising problems, advancing the best fits through a rigorous stage-gate process.',
+    icon: Users,
+  },
+  {
+    number: '04',
+    name: 'Build',
+    desc: 'Selected ventures receive dedicated prototyping funding, hands-on mentorship, and access to Artemis labs and infrastructure. Venture Fellows join full-time to de-risk technical assumptions and validate commercial viability — iterating from concept to working prototype.',
+    icon: Building2,
+  },
+  {
+    number: '05',
+    name: 'Launch',
+    desc: 'The strongest Proto Ventures become independent companies launched from Artemis. Founders receive continued advisory support, access to the Artemis investor network, and pathways to follow-on funding — achieving escape velocity as world-changing ventures.',
+    icon: Rocket,
   },
 ];
 
-const innovationStats = [
-  { value: '0', label: 'Spin-offs', detail: 'In development from foundational research' },
-  { value: '$0', label: 'Venture funding', detail: 'First ventures in incubation' },
-  { value: '8+', label: 'Industry partners', detail: 'Founding industry partnerships' },
-  { value: '3', label: 'Continents', detail: 'Global innovation footprint' },
+const teamMembers = [
+  {
+    name: 'Dr. Elena Vasquez',
+    role: 'Managing Director',
+    desc: 'Former partner at a leading deep-tech venture firm. Oversees all studio operations, channel strategy, and venture formation. Lectures on venture design at the Artemis Collegium.',
+    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300',
+  },
+  {
+    name: 'Dr. Kwame Asante',
+    role: 'Venture Builder, AI + Health',
+    desc: 'Physician-scientist and serial entrepreneur. Embedded within the Artemis Center for Computational Biology, scouting breakthroughs at the intersection of machine learning and clinical medicine.',
+    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300',
+  },
+  {
+    name: 'Dr. Yuki Tanaka',
+    role: 'Venture Builder, Clean Energy',
+    desc: 'Nuclear engineer and former CTO of a fusion energy startup. Based at the Artemis Energy Systems Lab, identifying commercial pathways from fusion and advanced energy research.',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
+  },
+  {
+    name: 'Prof. Mariam Osei',
+    role: 'Faculty Director',
+    desc: 'Chair of Innovation and Entrepreneurship at the Artemis Collegium. Former Director of Technology Transfer at a leading research university. Guides venture selection and stage-gate reviews.',
+    img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300',
+  },
+  {
+    name: 'James Chen',
+    role: 'Venture Builder, Climate',
+    desc: 'Climate scientist turned venture builder with a decade of experience in carbon capture and geothermal energy. Embedded in the Artemis Earth Systems Programme, seeking ventures that accelerate the energy transition.',
+    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300',
+  },
+  {
+    name: 'Dr. Amina Khalil',
+    role: 'Head of Fellows Programme',
+    desc: 'Bioengineer and former startup founder. Recruits and mentors the Venture Fellows who form the founding teams of Proto Ventures, ensuring every team combines deep technical expertise with entrepreneurial drive.',
+    img: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&q=80&w=300',
+  },
 ];
 
-const resourceLinks = [
-  { heading: 'Entrepreneurship', links: ['Support for entrepreneurs', 'Startup incubation programs', 'Venture funding opportunities', 'Mentorship network', 'Founder residency'] },
-  { heading: 'Innovation', links: ['Corporate partnerships', 'Technology licensing', 'Economic development', 'International development', 'Intellectual property'] },
+const ventureStats = [
+  { value: '3', label: 'Active Channels', detail: 'AI + Health, Clean Energy, Climate' },
+  { value: '5', label: 'Portfolio Companies', detail: 'Two launched, three in development' },
+  { value: '12+', label: 'Venture Fellows', detail: 'Recruited per semester across all channels' },
+  { value: '$0', label: 'Equity Taken', detail: 'We don\'t take equity from our ventures' },
 ];
 
 /* ─── Hook: animate on scroll ─── */
@@ -72,7 +141,15 @@ function useInView(threshold = 0.15) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.unobserve(el); } }, { threshold });
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.unobserve(el);
+        }
+      },
+      { threshold }
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
@@ -81,168 +158,198 @@ function useInView(threshold = 0.15) {
 
 /* ─── Component ─── */
 export default function Innovation({ goToPage }: InnovationProps) {
-  const [activeGallery, setActiveGallery] = useState(0);
-  const [expandedHub, setExpandedHub] = useState<number | null>(null);
-  const approachAnim = useInView();
+  const aboutAnim = useInView();
+  const portfolioAnim = useInView();
+  const modelAnim = useInView();
+  const peopleAnim = useInView();
   const statsAnim = useInView();
-  const techTransferAnim = useInView();
-  const resourcesAnim = useInView();
-  const activeSection = useActiveSection(['incubators', 'tech', 'ventures', 'impact']);
+  const [activePhase, setActivePhase] = useState(0);
 
-  // Auto-cycle gallery
-  useEffect(() => {
-    const timer = setInterval(() => setActiveGallery(i => (i + 1) % galleryImages.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
+  const activeSection = useActiveSection(['about', 'portfolio', 'model', 'people']);
 
   return (
     <div className="flex flex-col bg-white">
       {/* ── 1. HERO ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1800"
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-          alt="Innovation at Artemis"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Innovation Enterprise</span>
-          </div>
-          <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6 uppercase">
-            Incubating the<br />future of humanity
-          </h1>
-          <p className="text-[18px] text-white/70 max-w-xl leading-relaxed font-light">
-            Artemis Innovation is a catalyst for world-changing ideas. We provide the resources, mentorship, and network needed to turn theoretical breakthroughs into practical solutions that reshape industries and improve lives.
-          </p>
-        </div>
+          <div className="relative w-full h-[50vh] min-h-[420px] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1800"
+              className="absolute inset-0 w-full h-full object-cover"
+              alt="Artemis Venture Studio"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0505]/90 via-[#1a0505]/50 to-[#1a0505]/20" />
+            <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
+              <div className="mb-8 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#D97706]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D97706]">
+                  Artemis Venture Studio
+                </span>
+              </div>
+              <h1 className="text-[32px] sm:text-[44px] md:text-[60px] font-extrabold leading-[1.05] tracking-tighter text-white mb-6">
+                Translating ideas<br />into impactful ventures
+              </h1>
+              <p className="text-[18px] text-white/85 max-w-xl leading-relaxed font-light">
+                The first venture studio of its kind within a university. We combine translation
+                expertise and deep research access to identify, build, and launch startups from
+                Artemis technology — deliberately, not by chance.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <OnThisPageNav
         sections={[
-          { id: 'incubators', label: 'Incubators' },
-          { id: 'tech', label: 'Tech Transfer' },
-          { id: 'ventures', label: 'Ventures' },
-          { id: 'impact', label: 'Impact' },
+          { id: 'about', label: 'About' },
+          { id: 'portfolio', label: 'Portfolio' },
+          { id: 'model', label: 'Our Model' },
+          { id: 'people', label: 'People' },
         ]}
         activeSection={activeSection}
       />
 
-      {/* ── 2. OUR APPROACH ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
+      {/* ── 2. ABOUT ── */}
+      <section id="about" className="scroll-mt-[110px] max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
         <div
-          ref={approachAnim.ref}
-          className={`transition-all duration-700 ${approachAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          ref={aboutAnim.ref}
+          className={`transition-all duration-700 ${aboutAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          {/* Section divider */}
           <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
-                Our Approach
-              </span>
-            </div>
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              About the Studio
+            </span>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left — Text */}
             <div>
               <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-8">
-                Catalyzing ideas<br />into impact
+                Problems first,<br />not technology push
               </h2>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
-                Great ideas don&apos;t change the world on their own — they need infrastructure, capital, and guidance to reach their potential. At Artemis, we&apos;ve built an innovation ecosystem that surrounds every promising idea with the support it needs to grow.
+                Many potentially world-changing inventions remain on the lab room floor. Artemis
+                Venture Studio exists to change that. We seek out the world&apos;s hardest problems
+                and deliberately build ventures to solve them — replacing serendipity with a
+                repeatable, rigorous process.
+              </p>
+              <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                Unlike traditional accelerators or incubators, we do not wait for founders to walk
+                through the door. Our Venture Builders are embedded inside Artemis research labs,
+                scouting breakthroughs at the source. They combine deep technical expertise with
+                market knowledge to identify opportunities that would otherwise go unrecognised.
               </p>
               <p className="text-[16px] text-gray-600 leading-relaxed mb-6">
-                From dedicated prototyping labs to venture funding, from corporate partnerships to global licensing networks, our approach ensures that breakthroughs born in Artemis labs reach the people and markets that need them most.
+                Critically, we do not take equity from the ventures we create. Our mission is to
+                maximise the translation of Artemis research into real-world impact — not to capture
+                financial upside. This alignment with founders, not against them, is what makes the
+                studio model uniquely powerful within a university setting.
               </p>
-              <button
-                onClick={() => goToPage('research')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
-              >
-                <span>Explore Our Model</span>
-                <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </button>
+
+              {/* Key differentiators */}
+              <div className="space-y-4">
+                {[
+                  { label: 'Problem-first', detail: 'We start with urgent problems, not technology looking for a market.' },
+                  { label: 'Embedded in labs', detail: 'Venture Builders work alongside researchers, not from the outside.' },
+                  { label: 'No equity taken', detail: 'Our incentive is impact, not ownership.' },
+                  { label: 'Deliberate process', detail: 'Repeatable, stage-gated methodology replaces chance.' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="w-2 h-2 rounded-full bg-[#8A0000] mt-2 shrink-0" />
+                    <div>
+                      <span className="text-[14px] font-bold text-[#141414]">{item.label}</span>
+                      <span className="text-[14px] text-gray-500"> — {item.detail}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Right — Gallery */}
-            <div>
-              <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
-                {galleryImages.map((img, i) => (
+            {/* Right — image + stats */}
+            <div className="space-y-8">
+              <div className="group">
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
                   <img
-                    key={i}
-                    src={img.src}
-                    alt={img.alt}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === activeGallery ? 'opacity-100' : 'opacity-0'}`}
+                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=1000"
+                    alt="Venture Studio collaboration"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+                </div>
+              </div>
+
+              <div
+                ref={statsAnim.ref}
+                className={`grid grid-cols-2 gap-6 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              >
+                {ventureStats.map((stat, i) => (
+                  <div key={i} className="border-l-2 border-[#8A0000] pl-5">
+                    <div className="text-[36px] font-black text-[#141414] leading-none mb-1 tabular-nums">{stat.value}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{stat.label}</div>
+                    <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
+                  </div>
                 ))}
               </div>
-              {/* Thumbnail strip */}
-              <div className="flex gap-2 mt-3">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveGallery(i)}
-                    className={`flex-1 aspect-[4/3] overflow-hidden border-2 transition-all ${i === activeGallery ? 'border-[#8A0000]' : 'border-transparent opacity-50 hover:opacity-80'}`}
-                  >
-                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-              {/* Caption */}
-              <p className="text-[13px] text-gray-500 leading-relaxed mt-3 min-h-[48px]">
-                {galleryImages[activeGallery].caption}
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3. VENTURE HUBS ── */}
-      <section id="incubators" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
-        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
-          {/* Section divider */}
-          <div className="relative flex items-center mb-16">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="mx-4 text-[12px] font-bold uppercase tracking-[0.2em] text-gray-500">Venture Hubs</span>
-            <div className="flex-grow border-t border-gray-200"></div>
+      {/* ── 3. PORTFOLIO ── */}
+      <section id="portfolio" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
+        <div
+          ref={portfolioAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${portfolioAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Portfolio
+            </span>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4">
-            {ventureHubs.map((hub, i) => (
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            Ventures launched<br />from Artemis research
+          </h2>
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
+            Each portfolio company began as a research insight that the Venture Studio identified,
+            shaped, and accelerated toward independence. We measure success not just by funding
+            raised, but by the additionality we provide — would this venture exist without us?
+          </p>
+
+          <div className="space-y-8">
+            {portfolioCompanies.map((company, i) => (
               <div
-                key={i}
-                className="relative flex-1 min-h-[280px] md:min-h-[380px] overflow-hidden cursor-pointer group"
-                onMouseEnter={() => setExpandedHub(i)}
-                onMouseLeave={() => setExpandedHub(null)}
+                key={company.name}
+                className="bg-white border border-gray-200 hover:border-[#8A0000] transition-colors group"
               >
-                <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url(${hub.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/75 transition-colors duration-500" />
-                <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
-                  <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-2 uppercase">{hub.tag}</div>
-                  <h3 className="text-[22px] md:text-[26px] font-bold text-white mb-2 leading-tight">
-                    {hub.title}
-                  </h3>
-                  <div className={`overflow-hidden transition-all duration-500 ${expandedHub === i ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-[14px] text-white/80 leading-relaxed mb-5">
-                      {hub.desc}
-                    </p>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); goToPage('research'); }}
-                      className="text-[11px] font-bold uppercase tracking-widest border border-white text-white px-5 py-2 hover:bg-white hover:text-[#8A0000] transition-colors"
-                    >
-                      Explore Hub →
-                    </button>
+                <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-0">
+                  <div className="aspect-[4/3] lg:aspect-auto overflow-hidden bg-gray-100">
+                    <img
+                      src={company.img}
+                      alt={company.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  <div className="p-6 lg:p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 ${
+                        company.status === 'Launched'
+                          ? 'bg-green-50 text-green-700'
+                          : company.status === 'In Development'
+                          ? 'bg-amber-50 text-amber-700'
+                          : 'bg-gray-100 text-gray-600'
+                      }`}>
+                        {company.status}
+                      </span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">
+                        {company.channel}
+                      </span>
+                      <span className="text-[10px] font-mono text-gray-400">Est. {company.founded}</span>
+                    </div>
+                    <h3 className="text-[22px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                      {company.name}
+                    </h3>
+                    <p className="text-[15px] text-gray-600 leading-relaxed">{company.desc}</p>
                   </div>
                 </div>
               </div>
@@ -251,152 +358,276 @@ export default function Innovation({ goToPage }: InnovationProps) {
         </div>
       </section>
 
-      {/* ── 4. STATS ROW ── */}
-      <section id="ventures" className="scroll-mt-[110px] py-16 lg:py-24">
+      {/* ── 4. OUR MODEL ── */}
+      <section id="model" className="scroll-mt-[110px] py-16 lg:py-24">
         <div
-          ref={statsAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${statsAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          ref={modelAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${modelAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">By the Numbers</span>
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              Our Model
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
-            {/* Main — 8 cols */}
-            <div className="lg:col-span-8">
-              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-6">
-                Innovation at<br />scale
-              </h2>
-              <p className="text-[16px] text-gray-600 leading-relaxed max-w-xl">
-                With ventures in incubation, foundational industry partnerships spanning 8+ organizations across three continents, Artemis translates discovery into impact faster than any peer institution.
-              </p>
-            </div>
-            {/* Sidebar — 4 cols */}
-            <div className="lg:col-span-4 border-l border-gray-200 pl-8">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-4">Related links</div>
-              <div className="space-y-3">
-                {[
-                  { label: 'Artemis spin-off portfolio', page: 'about' },
-                  { label: 'Venture funding programs', page: 'fundraising' },
-                  { label: 'Corporate partnership inquiries', page: 'innovation' },
-                  { label: 'Innovation facts & figures', page: 'about' },
-                ].map((link, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goToPage(link.page)}
-                    className="block w-full text-left text-[14px] text-[#8A0000] hover:underline leading-snug"
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            From problem to venture,<br />deliberately
+          </h2>
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
+            Our five-phase framework ensures that every venture we launch is built on a real need,
+            grounded in world-class research, and de-risked through disciplined iteration. Click
+            each phase to learn more.
+          </p>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
-            {innovationStats.map((stat, i) => (
-              <div key={i} className="relative">
-                <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
-                <div className="text-[36px] font-black text-[#141414] leading-none mb-2 tabular-nums">{stat.value}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] leading-tight mb-1">{stat.label}</div>
-                <div className="text-[12px] text-gray-500 leading-snug">{stat.detail}</div>
-              </div>
+          {/* Phase selector */}
+          <div className="flex flex-wrap gap-2 mb-10">
+            {modelPhases.map((phase, i) => (
+              <button
+                key={phase.name}
+                onClick={() => setActivePhase(i)}
+                className={`px-5 py-3 text-[12px] font-bold uppercase tracking-widest transition-all ${
+                  activePhase === i
+                    ? 'bg-[#8A0000] text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {phase.number} — {phase.name}
+              </button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── 5. TECH TRANSFER ── */}
-      <section id="tech" className="scroll-mt-[110px] py-16 lg:py-24">
-        <div
-          ref={techTransferAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${techTransferAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
-          <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1400"
-              alt="Technology Transfer"
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
-                <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Tech Transfer</div>
-                <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">From lab to market</h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
-                  SkyBridge, Artemis&apos;s technology transfer engine, bridges academic discovery and industry application through licensing, spin-off formation, and corporate partnerships — building a portfolio of intellectual property and facilitating pathways from lab to market.
+          {/* Phase content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePhase}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
+            >
+              <div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 bg-[#8A0000]/10 flex items-center justify-center">
+                    {(() => {
+                      const Icon = modelPhases[activePhase].icon;
+                      return <Icon size={28} className="text-[#8A0000]" />;
+                    })()}
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">Phase {modelPhases[activePhase].number}</div>
+                    <h3 className="text-[28px] font-extrabold text-[#141414] tracking-tight leading-none">
+                      {modelPhases[activePhase].name}
+                    </h3>
+                  </div>
+                </div>
+                <p className="text-[16px] text-gray-600 leading-relaxed mb-8">
+                  {modelPhases[activePhase].desc}
                 </p>
-                <button
-                  onClick={() => goToPage('research')}
-                  className="text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors"
-                >
-                  Explore SkyBridge →
-                </button>
+
+                {/* Visual progress line */}
+                <div className="flex items-center gap-2">
+                  {modelPhases.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 flex-1 transition-colors duration-300 ${
+                        i <= activePhase ? 'bg-[#8A0000]' : 'bg-gray-200'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2">
+                  {modelPhases.map((p, i) => (
+                    <span
+                      key={i}
+                      className={`text-[9px] font-bold uppercase tracking-wider ${
+                        i <= activePhase ? 'text-[#8A0000]' : 'text-gray-300'
+                      }`}
+                    >
+                      {p.name}
+                    </span>
+                  ))}
+                </div>
               </div>
+
+              {/* Right — illustration */}
+              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <img
+                  src={
+                    activePhase === 0
+                      ? 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800'
+                      : activePhase === 1
+                      ? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'
+                      : activePhase === 2
+                      ? 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800'
+                      : activePhase === 3
+                      ? 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800'
+                      : 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800'
+                  }
+                  alt={`Phase ${modelPhases[activePhase].name}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Additionality callout */}
+          <div className="mt-16 bg-gray-50 p-8 lg:p-12 border-l-4 border-[#8A0000]">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-[#8A0000]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                Our North Star Metric
+              </span>
             </div>
+            <h3 className="text-[24px] font-extrabold text-[#141414] mb-3 tracking-tight">Additionality</h3>
+            <p className="text-[16px] text-gray-600 leading-relaxed max-w-3xl">
+              The single most important question we ask at every stage gate: <em>Would this venture
+              exist without the Venture Studio?</em> If the answer is yes — if the founders and the
+              technology would have found each other regardless — then we have not added value. Our
+              goal is to create ventures that would not otherwise exist, translating research into
+              impact that the market alone would leave behind.
+            </p>
           </div>
         </div>
-          </div>
       </section>
 
-      {/* ── 6. ENTREPRENEURSHIP RESOURCES ── */}
-      <section id="impact" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
+      {/* ── 5. PEOPLE ── */}
+      <section id="people" className="scroll-mt-[110px] bg-gray-50 py-16 lg:py-24">
         <div
-          ref={resourcesAnim.ref}
-          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${resourcesAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          ref={peopleAnim.ref}
+          className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${peopleAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-8 flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">Resources</span>
+          <div className="mb-6 flex items-center space-x-3">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+              People
+            </span>
           </div>
-          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
-            Entrepreneurship<br />resources
+
+          <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-4">
+            The team behind<br />the ventures
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {resourceLinks.map((col, i) => (
-              <div key={i}>
-                <h3 className="text-[13px] font-bold uppercase tracking-widest text-gray-900 mb-4 border-b border-gray-200 pb-2">{col.heading}</h3>
-                <div className="space-y-0">
-                  {col.links.map((link, j) => (
-                    <button
-                      key={j}
-                      onClick={() => goToPage('fundraising')}
-                      className="group flex justify-between items-center py-3 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
-                    >
-                      <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
-                        {link}
-                      </span>
-                      <svg className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-                  ))}
+          <p className="text-[16px] text-gray-500 max-w-2xl leading-relaxed font-light mb-12">
+            Our Venture Builders are the engine of the studio. They combine the technical depth of a
+            postdoc, the hustle of a startup founder, and the market intuition of a venture
+            investor. They are embedded in labs, not offices — and they build companies, not
+            presentations.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, i) => (
+              <div
+                key={member.name}
+                className="bg-white border border-gray-200 hover:border-[#8A0000] transition-colors group overflow-hidden"
+              >
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-2">
+                    {member.role}
+                  </div>
+                  <h3 className="text-[20px] font-bold text-[#141414] mb-3 group-hover:text-[#8A0000] transition-colors leading-tight">
+                    {member.name}
+                  </h3>
+                  <p className="text-[14px] text-gray-600 leading-relaxed">{member.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Roles summary */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-[20px] font-bold text-[#141414] mb-6 tracking-tight">How the team works</h3>
+              <div className="space-y-6">
+                {[
+                  { role: 'Venture Builder', desc: 'Full-time, funded position. Deep technical expertise plus market knowledge. Embedded in research labs for 1-2 years. Drives new venture formation, leads team building, and oversees Fellows. Expected to join a resulting venture as senior leadership.' },
+                  { role: 'Venture Fellow', desc: 'Postdocs and graduate students with deep-tech backgrounds and the passion to change the world. 5-7 recruited per semester. Many join Proto Ventures full-time as co-founders. Unpaid fellowship with unmatched access to Artemis research and mentorship.' },
+                  { role: 'Faculty Advisors', desc: 'Source of big ideas and technologies. Most act as technical advisors and consultants to Proto Ventures, providing domain expertise and access to lab infrastructure that no outside startup could replicate.' },
+                  { role: 'Advisory Board', desc: 'Per-channel group of industry experts and senior faculty. Defines focus areas, approves ideas moving through each stage gate, and selects projects for dedicated prototyping funding.' },
+                ].map((item, i) => (
+                  <div key={i} className="border-l-2 border-[#8A0000] pl-5">
+                    <h4 className="text-[15px] font-bold text-[#141414] mb-1">{item.role}</h4>
+                    <p className="text-[14px] text-gray-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white border border-gray-200 p-8 lg:p-10">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-3">
+                The Ideal Venture Builder
+              </div>
+              <h3 className="text-[20px] font-bold text-[#141414] mb-6 tracking-tight">
+                One-third postdoc, one-third founder, one-third investor
+              </h3>
+              <p className="text-[15px] text-gray-600 leading-relaxed mb-6">
+                The best Venture Builders are not career academics, nor are they pure business
+                operators. They sit at the intersection of deep technical knowledge, entrepreneurial
+                instinct, and market sophistication — rare individuals who can read a research paper
+                and a term sheet with equal fluency.
+              </p>
+              <div className="space-y-3">
+                {[
+                  'Compensated like a VC associate, autonomy like a PI',
+                  'IP rights like a postdoc, leadership like a founder',
+                  'Dedicated budget to create teams and run projects',
+                  'Expected to join a resulting venture as senior management',
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#8A0000] mt-2 shrink-0" />
+                    <span className="text-[14px] text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => goToPage('about')}
+                className="mt-8 flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest border-b-2 border-[#8A0000] text-[#8A0000] pb-1 hover:text-black hover:border-black transition-colors group"
+              >
+                <span>Join the Studio</span>
+                <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── 7. CRIMSON CTA BAR ── */}
-      <section className="bg-[#8A0000] py-16">
-        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-white mb-2">
-              Ready to build?
-            </h2>
-            <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">
-              Whether you&apos;re an entrepreneur with a bold idea, a researcher ready to commercialize, or a corporation seeking partnership — Artemis Innovation is your launchpad.
-            </p>
+      {/* ── 6. CRIMSON CTA BAR ── */}
+      <section className="py-16">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div className="bg-[#8A0000] px-8 py-16 md:px-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+              <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-white mb-2">
+                Ready to build?
+              </h2>
+              <p className="text-[16px] text-white/70 leading-relaxed max-w-lg">
+                Whether you&apos;re a researcher with a breakthrough, an entrepreneur seeking
+                deep-tech opportunity, or a corporation wanting to sponsor a channel — Artemis
+                Venture Studio is your launchpad.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <button
+                onClick={() => goToPage('fundraising')}
+                className="flex items-center space-x-3 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors group"
+              >
+                <span>Sponsor a Channel</span>
+                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+              </button>
+              <button
+                onClick={() => goToPage('about')}
+                className="flex items-center space-x-3 border border-white text-white px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-[#8A0000] transition-colors group"
+              >
+                <span>Join as a Builder</span>
+                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+              </button>
+            </div>
           </div>
-          <button
-            onClick={() => goToPage('fundraising')}
-            className="shrink-0 flex items-center space-x-3 bg-white text-[#8A0000] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors group"
-          >
-            <span>Get Started</span>
-            <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
         </div>
       </section>
 
