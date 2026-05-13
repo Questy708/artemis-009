@@ -146,7 +146,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Collegium Alliance"
         />
@@ -459,7 +459,7 @@ export default function CollegiumAlliance({ goToPage }: Props) {
             <div className="max-w-[1600px] mx-auto">
             <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1400"
+                src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1400"
                 alt="Join the Alliance"
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />

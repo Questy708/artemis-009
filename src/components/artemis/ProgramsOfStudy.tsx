@@ -176,7 +176,7 @@ export default function ProgramsOfStudy({ goToPage }: ProgramsOfStudyProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800"
               alt="Programs of Study"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

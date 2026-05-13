@@ -13,7 +13,7 @@ const pathCards = [
   {
     title: 'Undergraduate',
     desc: 'For high school students and transfers seeking their first degree in a paradigm-shifting environment — where every discipline is a gateway, not a boundary.',
-    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800',
     tag: '01 — UNDERGRADUATE',
     cta: 'Learn More',
     page: 'undergraduate',
@@ -21,7 +21,7 @@ const pathCards = [
   {
     title: 'Graduate',
     desc: 'Advanced research and professional programmes are under development. Graduate study at Artemis will push past the edge of known knowledge — stay tuned.',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800',
     tag: '02 — GRADUATE',
     cta: 'Coming Soon',
     page: 'graduate-coming-soon',
@@ -30,7 +30,7 @@ const pathCards = [
   {
     title: 'Financial Aid',
     desc: 'Artemis is committed to meeting 100% of demonstrated need for all admitted students — because talent is universal, but opportunity should be too.',
-    image: 'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800',
     tag: '03 — FINANCIAL AID',
     cta: 'Calculate Aid',
     page: 'tuition-expenses',
@@ -122,7 +122,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Applying to Artemis"
         />
@@ -320,7 +320,7 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&q=80&w=1400"
+              src="https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=1400"
               alt="Financial Aid at Artemis"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

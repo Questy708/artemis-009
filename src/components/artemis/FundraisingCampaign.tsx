@@ -245,7 +245,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[40vh] sm:h-[45vh] min-h-[300px] sm:min-h-[360px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1800"
               alt="Igniting the Light — The Founders Campaign"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
@@ -1243,10 +1243,10 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-24">
             {[
-              { phase: 'Phase I', title: 'The Founding', period: '2025 \u2014 2028', goal: sym + '25M', desc: 'Raise the capital. Build the first residential hub. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries \u2014 and your name is inscribed in its first chapter.', icon: Rocket, img: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase I', title: 'The Founding', period: '2025 \u2014 2028', goal: sym + '25M', desc: 'Raise the capital. Build the first residential hub. Enrol the inaugural cohort. Establish the endowment. Create the digital estate. Everything from nothing. Your donation builds the physical and intellectual foundations of a university that will endure for centuries \u2014 and your name is inscribed in its first chapter.', icon: Rocket, img: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=600' },
               { phase: 'Phase II', title: 'The Expansion', period: '2028 \u2014 2033', goal: sym + '50M', desc: 'Scale to 15 nodes on 5 continents. Triple the student body. Launch the next generation of research institutes and residential colleges. The giving community becomes permanent philanthropic infrastructure \u2014 an engine that accelerates rather than a campaign that ends.', icon: Globe, img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600' },
-              { phase: 'Phase III', title: 'The Network', period: '2033 \u2014 2040', goal: sym + '150M', desc: 'Expand to 50 nodes across every inhabited continent. 10,000 students. 100 permanently endowed institutes. A fully realised planetary university where knowledge flows without borders and every scholar has a home. The endowment becomes self-sustaining.', icon: Landmark, img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600' },
-              { phase: 'Phase IV', title: 'The Perpetuity', period: '2040 \u2014 Beyond', goal: 'Perpetual', desc: 'Artemis operates in perpetuity, independent of tuition dependency, government funding, or commercial pressure. 100+ nodes. A global scholarly commons that renews itself with each generation. The Founding Campaign becomes the Artemis Foundation \u2014 a permanent charitable trust stewarding the mission for centuries.', icon: Building2, img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase III', title: 'The Network', period: '2033 \u2014 2040', goal: sym + '150M', desc: 'Expand to 50 nodes across every inhabited continent. 10,000 students. 100 permanently endowed institutes. A fully realised planetary university where knowledge flows without borders and every scholar has a home. The endowment becomes self-sustaining.', icon: Landmark, img: 'https://images.unsplash.com/photo-1739298061766-e2751d92e9db?auto=format&fit=crop&q=80&w=600' },
+              { phase: 'Phase IV', title: 'The Perpetuity', period: '2040 \u2014 Beyond', goal: 'Perpetual', desc: 'Artemis operates in perpetuity, independent of tuition dependency, government funding, or commercial pressure. 100+ nodes. A global scholarly commons that renews itself with each generation. The Founding Campaign becomes the Artemis Foundation \u2014 a permanent charitable trust stewarding the mission for centuries.', icon: Building2, img: 'https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=600' },
             ].map((p, i) => {
               const Icon = p.icon;
               return (
@@ -1276,7 +1276,7 @@ export default function FundraisingCampaign({ goToPage }: Props) {
 
           {/* Parallax image card with future stats */}
           <motion.div {...scaleIn(beyondAnim.visible, 0.3)} className="relative w-full min-h-[320px] sm:min-h-[380px] md:min-h-[460px] overflow-hidden mb-12 sm:mb-24">
-            <img src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1400" alt="The Future of Artemis" className="absolute inset-0 w-full h-full object-cover grayscale" />
+            <img src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1400" alt="The Future of Artemis" className="absolute inset-0 w-full h-full object-cover grayscale" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
             <div className="relative z-10 flex items-end h-full min-h-[320px] sm:min-h-[380px] md:min-h-[460px] p-4 sm:p-8 md:p-14">
               <div className="bg-white w-full sm:max-w-sm md:max-w-lg p-4 sm:p-6 md:p-8 shadow-xl">

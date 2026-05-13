@@ -103,7 +103,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=2560"
+              src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=2560"
               className="absolute inset-0 w-full h-full object-cover grayscale"
               alt="Undergraduate Study at Artemis"
             />
@@ -203,7 +203,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
               <div>
                 <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-8">
                   <img
-                    src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
+                    src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800"
                     alt="Students collaborating at Artemis College"
                     className="w-full h-full object-cover grayscale"
                   />
@@ -314,7 +314,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
           <div className="max-w-[1600px] mx-auto">
             <div className="relative w-full min-h-[420px] md:min-h-[500px] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=2560"
+                src="https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=2560"
                 alt="Meta-competencies at Artemis"
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />

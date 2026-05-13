@@ -24,25 +24,25 @@ const teasers = [
   {
     title: 'Our History',
     desc: 'Artemis is a unique and historic institution. As a pioneer in decentralized education, it can lay claim to years of continuous innovation since its founding in 2024.',
-    img: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800',
+    img: 'https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=800',
     link: 'history',
   },
   {
     title: 'Institutional Nodes',
     desc: 'List of Artemis Collegium academic hubs and specialized research nodes across the globe.',
-    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800',
+    img: 'https://images.unsplash.com/photo-1679653226697-2b0fbf7c17f7?auto=format&fit=crop&q=80&w=800',
     link: 'nodes',
   },
   {
     title: 'Facts and Figures',
     desc: 'There are more than 350 founding scholars at Artemis, building the inaugural cohort of a new kind of university.',
-    img: 'https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=800',
+    img: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800',
     link: 'facts',
   },
   {
     title: 'Visiting the Colleges',
     desc: 'Information on opening times and admission protocols for our physical colleges and permanent residency halls.',
-    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800',
+    img: 'https://images.unsplash.com/photo-1679653226697-2b0fbf7c17f7?auto=format&fit=crop&q=80&w=800',
     link: 'visiting',
   },
 ];
@@ -90,7 +90,7 @@ export default function About({ goToPage }: AboutProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523240715630-34360e206004?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="About Artemis"
         />
@@ -192,17 +192,23 @@ export default function About({ goToPage }: AboutProps) {
           <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold leading-[1.05] tracking-tighter text-[#141414] mb-12">
             Pages in this section
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {sectionLinks.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {sectionLinks.map((item, i) => (
               <button
                 key={item.title}
                 onClick={() => goToPage(item.link)}
-                className="group flex justify-between items-center py-4 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
+                className="group bg-white border border-gray-200 hover:border-[#8A0000] p-6 text-left transition-all duration-300"
               >
-                <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <h3 className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight mb-3">
                   {item.title}
-                </span>
-                <svg className="w-4 h-4 text-gray-400 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </h3>
+                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#8A0000] transition-colors">
+                  <span>Visit</span>
+                  <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
               </button>
             ))}
           </div>
@@ -257,7 +263,7 @@ export default function About({ goToPage }: AboutProps) {
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1400"
+              src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1400"
               alt="Our People at Artemis"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

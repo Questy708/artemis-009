@@ -167,7 +167,7 @@ export default function Apply({ goToPage }: Props) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[40vh] min-h-[320px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=1800"
               alt="Apply to Artemis"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

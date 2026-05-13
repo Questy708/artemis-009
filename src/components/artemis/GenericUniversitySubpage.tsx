@@ -792,7 +792,7 @@ export default function GenericUniversitySubpage({ goToPage, title, parentTitle,
   const heroImages: Record<string, { image: string; label: string }> = {
     'Facts and figures': { image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1800', label: 'By the Numbers' },
     'Artemis Glossary': { image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1800', label: 'Definitions' },
-    'Our estate': { image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1800', label: 'Infrastructure' },
+    'Our estate': { image: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=1800', label: 'Infrastructure' },
     'Brand': { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=1800', label: 'Visual Identity' },
   };
   const heroConfig = heroImages[title];

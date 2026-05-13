@@ -19,7 +19,7 @@ const portfolioCompanies = [
     desc: 'AI-powered molecular diagnostics platform that reduces testing turnaround from days to hours. Built on Artemis research in synthetic biology and machine learning, Helix enables point-of-care clinicians to identify pathogens and recommend treatment in under thirty minutes.',
     status: 'Launched',
     founded: '2025',
-    img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1514416205405-075ab2f15964?auto=format&fit=crop&q=80&w=600',
   },
   {
     name: 'FerroGrid',
@@ -27,7 +27,7 @@ const portfolioCompanies = [
     desc: 'Next-generation wide-bandgap semiconductor power supply units for AI data centres and high-density computing. FerroGrid\'s GaN transistor technology, derived from Artemis fusion energy research, delivers 40% greater energy efficiency than conventional silicon-based systems.',
     status: 'In Development',
     founded: '2025',
-    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=600',
   },
   {
     name: 'Aether Propulsion',
@@ -35,7 +35,7 @@ const portfolioCompanies = [
     desc: 'Satellite propulsion systems leveraging superconducting magnet technology originally developed for Artemis fusion research. Aether\'s thrusters deliver higher specific impulse at lower power draw, enabling longer satellite missions and deeper-space capability.',
     status: 'In Development',
     founded: '2026',
-    img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1708738793054-32b71e3fc822?auto=format&fit=crop&q=80&w=600',
   },
   {
     name: 'Meridian Health',
@@ -43,7 +43,7 @@ const portfolioCompanies = [
     desc: 'Patient-centred health records platform that uses AI to personalise and humanise clinical data. Meridian transforms raw EHR inputs into narratives that patients understand and trust, closing the communication gap between providers and the people they serve.',
     status: 'Launched',
     founded: '2025',
-    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1666886573681-a8fbe983a3fd?auto=format&fit=crop&q=80&w=600',
   },
   {
     name: 'CarbonLock',
@@ -51,7 +51,7 @@ const portfolioCompanies = [
     desc: 'Permanent carbon capture materials derived from Artemis geothermal and materials science research. CarbonLock\'s mineralisation process sequesters CO2 into stable rock forms at ambient temperature, offering a scalable pathway to negative emissions without energy-intensive compression.',
     status: 'Proto',
     founded: '2026',
-    img: 'https://images.unsplash.com/photo-1569163139394-de4e5f43e5ca?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1622050701194-fb04fcf65867?auto=format&fit=crop&q=80&w=600',
   },
 ];
 
@@ -156,7 +156,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[50vh] min-h-[420px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1555066931-bf19f8fd1085?auto=format&fit=crop&q=80&w=1800"
               className="absolute inset-0 w-full h-full object-cover"
               alt="Artemis Venture Studio"
             />
@@ -252,7 +252,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
               <div className="group">
                 <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=1000"
+                    src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1000"
                     alt="Venture Studio collaboration"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

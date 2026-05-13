@@ -313,7 +313,7 @@ export default function Home({ goToPage }: HomeProps) {
           >
             <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
+                src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1400"
                 alt="Artemis Global Campus"
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />

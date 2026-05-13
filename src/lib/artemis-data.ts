@@ -4,21 +4,21 @@ export const articles = [
     title: "The Infinite Learning Continuum",
     summary: "In 2100, we reflect on the era when Artemis revolutionized global education by introducing the Infinite Learning Continuum (ILC), transforming learning into a lifelong journey without boundaries. This radical shift decoupled knowledge acquisition from chronological age, allowing students to weave academic rigor into the fabric of their entire lives, supported by a synchronous network of global mentors.",
     category: "Education",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 2,
     title: "Centers of Inquiry",
     summary: "Unlike the siloed departmental model of the past, the Centers of Inquiry were designed as interdisciplinary hubs of innovation and discovery. Building new ecosystems of research.",
     category: "Research",
-    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 3,
     title: "Adaptive Paced Learning",
     summary: "Breaking free from rigid timelines and embracing personalized learning journeys. Education that adapts to the rhythm of every student's learning cycles.",
     category: "Innovation",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const articles = [
 export const heroContent = {
   title: "The Artemis Project",
   subtitle: "Welcome to the University Of Artemis: Re-engineering humanity's approach to learning in an accelerating world.",
-  image: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&q=80&w=2400"
+  image: "https://images.unsplash.com/photo-1762766910426-6452a4c75734?auto=format&fit=crop&q=80&w=2400"
 };
 
 export interface BlogArticleSection {
@@ -71,7 +71,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Announcing the Founding Campaign: A Billion-Dollar Vision for the Future of Learning",
     summary: "The University of Artemis has officially launched its founding campaign, seeking to raise one billion dollars to endow the first truly global university. With pledges already exceeding three hundred million from founding partners across four continents, the campaign represents the largest philanthropic effort in higher education since the establishment of the Gates Millennium Scholars Program. Every dollar funds a seat at a table where disciplines converge and horizons expand.",
     category: "Campaign",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800",
     date: "May 12, 2026",
     author: "Office of the President",
     slug: "announcing-the-founding-campaign",
@@ -117,7 +117,7 @@ export const blogArticles: BlogArticle[] = [
     title: "The Synthetic Humanity Project: When Machines Learn to Think With Us",
     summary: "A cross-center initiative spanning twelve faculty and four micro-colleges, the Synthetic Humanity Project is exploring what happens when artificial intelligence becomes a genuine cognitive partner rather than a mere tool. Early findings suggest that symbiotic human-AI reasoning can double creative output while preserving moral agency — a result that challenges the prevailing narrative of automation as displacement.",
     category: "Research",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800",
     date: "May 5, 2026",
     author: "Center for Synthetic Intelligence",
     slug: "synthetic-humanity-project",
@@ -159,7 +159,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Bio-Regenerative Systems: Growing the Infrastructure of Tomorrow",
     summary: "Researchers at the Center for Bio-Regenerative Arts have achieved a breakthrough in self-healing building materials, demonstrating concrete-like composites that repair micro-fractures using embedded bacterial colonies. The technology, originally developed for deep-sea habitats, is now being adapted for earthquake-prone urban zones — bringing science fiction construction methods into real-world application within the decade.",
     category: "Research",
-    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800",
     date: "Apr 28, 2026",
     author: "Center for Bio-Regenerative Arts",
     slug: "bio-regenerative-systems-breakthrough",
@@ -201,7 +201,7 @@ export const blogArticles: BlogArticle[] = [
     title: "First Cohort Arrives: 120 Students from 34 Countries Begin Their Artemis Journey",
     summary: "The inaugural class of the University of Artemis has arrived, bringing together 120 students from 34 countries in what admissions officers are calling the most globally diverse founding cohort in modern higher education. Students will rotate through six hostel cities over four years, studying in small seminar groups while contributing to real research from day one. Their first week features a convocation address streamed live from Valletta, Malta.",
     category: "Campus Life",
-    image: "https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800",
     date: "Apr 20, 2026",
     author: "Office of Admissions",
     slug: "first-cohort-arrives",
@@ -214,7 +214,7 @@ export const blogArticles: BlogArticle[] = [
         body: "On April 14, 2026, one hundred and twenty students from thirty-four countries streamed into the Grand Atrium of the Malta Central Node for the University of Artemis's inaugural convocation. The ceremony was streamed live to all twenty micro-college nodes, where local faculty and community members gathered to welcome the founding class. President Eleanor Voss delivered the convocation address — a forty-minute meditation on the responsibilities of founders — noting that 'every institution is shaped most profoundly by its first students, who must build the culture they will themselves inhabit.' The speech was interrupted by standing ovations three times, most notably when Voss announced that the founding cohort would have permanent representation on the University Senate for as long as any member remained enrolled.",
       },
       {
-        image: "https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1200",
         imageCaption: "The founding cohort gathers in the Grand Atrium of the Malta Central Node for the inaugural convocation.",
       },
       {
@@ -229,7 +229,7 @@ export const blogArticles: BlogArticle[] = [
         body: "The orientation programme, designed by the Office of Student Affairs in consultation with sociologists and community-builders from around the world, lasted seven days and was structured around three themes: knowing, making, and belonging. 'Knowing' sessions introduced students to the academic philosophy of Artemis — the Centers of Inquiry model, the global rotation system, the Purpose Learning framework. 'Making' sessions paired students in cross-disciplinary teams to tackle a design challenge posed by a real community partner, forcing collaboration from day one. 'Belonging' sessions were deliberately unstructured — shared meals, walking tours of Valletta, late-night conversations in the hostel common rooms — because the designers understood that community cannot be programmed; it must be allowed to emerge. By the end of the week, students had already formed the first student organisations: the Artemis Debate Society, the Global Kitchen Collective, and the Late Night Philosophy Club.",
       },
       {
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1200",
         imageCaption: "Founding cohort students collaborate during a 'Making' session in the Malta design studio.",
       },
       {
@@ -243,7 +243,7 @@ export const blogArticles: BlogArticle[] = [
     title: "The Forge Incubator: From Dissertation to Deployment in Twelve Months",
     summary: "The Artemis Forge incubator has announced its inaugural portfolio of eight ventures, each spun directly from ongoing Center research. From a climate-adaptation analytics platform to a neurotechnology interface for accessibility, these ventures represent a new model for university entrepreneurship — one where commercialization is embedded in the research process from the start, not bolted on as an afterthought.",
     category: "Innovation",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800",
     date: "Apr 14, 2026",
     author: "The Forge",
     slug: "forge-incubator-inaugural-portfolio",
@@ -327,7 +327,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Founding Partners: Why Three Continents Bet on a New Kind of University",
     summary: "From a family foundation in Lagos to a sovereign wealth fund in Singapore, the founding partners of the University of Artemis share a conviction that the existing model of higher education is not merely incomplete — it is fundamentally misaligned with the challenges of the twenty-first century. This piece profiles five of the earliest backers and explores the philosophical and strategic reasoning behind their investment.",
     category: "Campaign",
-    image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=800",
     date: "Mar 30, 2026",
     author: "Office of Advancement",
     slug: "founding-partners-three-continents",
@@ -340,7 +340,7 @@ export const blogArticles: BlogArticle[] = [
         body: "When Chief Adewale Adesanya first read the Artemis prospectus, he reportedly closed the document, looked at his daughter, and said: 'This is the university I wish had existed when I was your age.' The Adesanya Family Foundation's fifty-million-dollar commitment — the largest single gift from an African philanthropic organisation to a global educational initiative — established the Adesanya Fellowship for African Scholars, which provides full funding for twenty African students per year, along with a dedicated research fund for projects addressing challenges specific to the African continent. Chief Adesanya, who built a telecommunications empire from a single radio tower in Ibadan, has long argued that Africa's most significant resource is not its minerals or its land but its young people — and that the continent's future depends on connecting those young people to global networks of knowledge and opportunity. The Artemis model, with its global rotation system and its commitment to need-blind admission, offered precisely that connection.",
       },
       {
-        image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=1200",
         imageCaption: "Chief Adewale Adesanya at the campaign announcement in Valletta, May 2026.",
       },
       {
@@ -415,7 +415,7 @@ export const blogArticles: BlogArticle[] = [
     title: "The Global Hackathon: 72 Hours, 20 Micro-Colleges, One Problem",
     summary: "Over one thousand students across all twenty Artemis micro-colleges participated in the inaugural Global Hackathon, a seventy-two-hour cross-node challenge to prototype solutions for equitable access to clean water. The winning team — a collaboration between nodes in Nairobi, Valletta, and Sao Paulo — developed a low-cost filtration monitoring system that is now being piloted in three communities across sub-Saharan Africa.",
     category: "Campus Life",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=800",
     date: "Mar 15, 2026",
     author: "Student Affairs",
     slug: "global-hackathon-72-hours",
@@ -428,7 +428,7 @@ export const blogArticles: BlogArticle[] = [
         body: "At precisely 18:00 CET on March 12, 2026, screens flickered to life across all twenty Artemis micro-colleges as the prompt for the inaugural Global Hackathon was revealed: 'Design and prototype a solution that expands equitable access to clean water for a community of at least one thousand people, using materials and methods that can be sustained within a budget of five hundred dollars per year.' The prompt was deliberately ambitious. Clean water access remains one of the most persistent global challenges, affecting over two billion people worldwide, and the constraint of a five-hundred-dollar annual budget forced teams to think beyond conventional infrastructure solutions. Over one thousand students — roughly half the total Artemis student body — registered to participate, forming self-organising teams of three to five members across micro-college boundaries.",
       },
       {
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+        image: "https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1200",
         imageCaption: "Students at the Nairobi node collaborating with teammates in Valletta via the Artemis synchronous learning platform.",
       },
       {

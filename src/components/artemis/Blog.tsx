@@ -52,7 +52,7 @@ export default function Blog({ goToPage }: BlogProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1578402027070-0f5ebd84ec9b?auto=format&fit=crop&q=80&w=1800"
               className="absolute inset-0 w-full h-full object-cover grayscale"
               alt="Artemis Blog"
             />

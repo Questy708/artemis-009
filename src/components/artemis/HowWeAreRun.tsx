@@ -85,13 +85,13 @@ const governanceStats = [
 const teaserCards = [
   {
     title: "Governance and finance",
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=600",
+    img: "https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=600",
     desc: "How the internal systems of the university maintain operational excellence and financial transparency.",
     link: "governance-finance",
   },
   {
     title: "University Officers",
-    img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600",
+    img: "https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&q=80&w=600",
     desc: "The roles and responsibilities of senior Artemis personnel who steward the institution's mission.",
     link: "our-people",
   },
@@ -139,7 +139,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="How Artemis is run"
         />
@@ -170,7 +170,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
       />
 
       {/* ── Pages in This Section ── */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={linksAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -182,17 +182,23 @@ export default function HowWeAreRun({ goToPage }: Props) {
               </span>
             </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            {sectionLinks.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {sectionLinks.map((item, i) => (
               <button
                 key={item.title}
                 onClick={() => goToPage(item.link)}
-                className="group flex justify-between items-center py-4 border-b border-gray-100 hover:border-[#8A0000] transition-colors w-full text-left"
+                className="group bg-white border border-gray-200 hover:border-[#8A0000] p-6 text-left transition-all duration-300"
               >
-                <span className="text-[14px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <h3 className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight mb-3">
                   {item.title}
-                </span>
-                <ChevronRight size={16} className="text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" />
+                </h3>
+                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#8A0000] transition-colors">
+                  <span>Visit</span>
+                  <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
               </button>
             ))}
           </div>
@@ -335,7 +341,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
             </div>
             <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1578402027070-0f5ebd84ec9b?auto=format&fit=crop&q=80&w=800"
                 alt="Artemis University Press"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -353,7 +359,7 @@ export default function HowWeAreRun({ goToPage }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1 aspect-[4/3] bg-gray-200 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=800"
                 alt="Artemis Lifelong Learning"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />

@@ -124,29 +124,34 @@ export default function TheUniversity({ goToPage }: Props) {
       />
 
       {/* ── Pages in This Section ── */}
-      <section className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 py-16 lg:py-24">
-        <div className="mb-6 flex items-center space-x-3">
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20">
+          <div className="mb-6 flex items-center space-x-3">
               <span className="w-8 h-[1px] bg-[#8A0000]"></span>
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
                 Pages in this section
               </span>
             </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sectionLinks.map((item) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {sectionLinks.map((item, i) => (
             <button
               key={item.title}
               onClick={() => goToPage(item.link)}
-              className="group flex justify-between items-center py-4 border-b border-gray-100 hover:border-[#8A0000] transition-colors w-full text-left"
+              className="group bg-white border border-gray-200 hover:border-[#8A0000] p-6 text-left transition-all duration-300"
             >
-              <span className="text-[15px] font-bold text-gray-700 group-hover:text-[#8A0000] transition-colors">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight mb-3">
                 {item.title}
-              </span>
-              <ChevronRight
-                size={18}
-                className="text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all"
-              />
+              </h3>
+              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#8A0000] transition-colors">
+                <span>Visit</span>
+                <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
             </button>
           ))}
+        </div>
         </div>
       </section>
 
@@ -398,7 +403,7 @@ export default function TheUniversity({ goToPage }: Props) {
             <div className="md:col-span-5">
               <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800"
+                  src="https://images.unsplash.com/photo-1578402027070-0f5ebd84ec9b?auto=format&fit=crop&q=80&w=800"
                   className="w-full h-full object-cover grayscale brightness-90 hover:brightness-100 hover:grayscale-0 transition-all duration-500"
                   alt="Artemis University Press"
                 />

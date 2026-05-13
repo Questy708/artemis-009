@@ -11,12 +11,12 @@ interface ResearchProps {
 /* ─── Data ─── */
 const galleryImages = [
   {
-    src: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
+    src: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800',
     alt: 'Laboratory research',
     caption: 'A postdoctoral researcher in the Center for Synthetic Intelligence calibrates a neural mapping array — part of the Symbiotic Cognition Initiative that unifies neuroscience, philosophy, and computational engineering.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800',
+    src: 'https://images.unsplash.com/photo-1514416205405-075ab2f15964?auto=format&fit=crop&q=80&w=800',
     alt: 'Biomedical research',
     caption: 'Bio-Regenerative Arts researchers cultivate engineered tissue scaffolds designed to accelerate wound healing in extreme environments, from deep-sea habitats to off-world colonies.',
   },
@@ -26,12 +26,12 @@ const galleryImages = [
     caption: 'Graduate researchers test an autonomous rover platform at the Artemis Proving Grounds — a cross-center initiative between Cosmological Humanities and Neo-Economics.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
+    src: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800',
     alt: 'Venture demonstration',
     caption: 'Student entrepreneurs pitch at the Forge Demo Day, where Artemis spin-offs have collectively raised founding ventures through the Forge incubator since the program\'s inception.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
+    src: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=800',
     alt: 'Interdisciplinary collaboration',
     caption: 'Teams from the Neo-Economics Center and the Center for Synthetic Intelligence collaborate on post-automation governance models — research that informs policy across three continents.',
   },
@@ -79,19 +79,19 @@ const highlightCards = [
     tag: '01 — INFRASTRUCTURE',
     title: 'Space to innovate',
     desc: 'Over 25,000 sq ft of dedicated research space across three continents — from wet labs to quantum computing cleanrooms — designed to let ideas breathe and grow without constraint. Every Artemis researcher, regardless of rank or department, has access.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=800',
   },
   {
     tag: '02 — CHALLENGE',
     title: 'Solving wicked problems',
     desc: 'Artemis researchers tackle problems that refuse to stay within disciplinary borders: climate adaptation, pandemic preparedness, autonomous governance, and the ethics of cognitive enhancement. We build the right teams — regardless of organizational boundaries.',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800',
   },
   {
     tag: '03 — VENTURE',
     title: 'Empowering entrepreneurs',
     desc: 'With ventures in incubation, building toward impact, Artemis translates discovery into impact faster than any peer institution. The Forge incubator and Nexus digital ecosystem connect developers, designers, and domain experts to build what comes next.',
-    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800',
   },
 ];
 
@@ -99,7 +99,7 @@ const centers = [
   {
     name: 'Frontiers of Artemis Research',
     desc: 'The coordinating hub that defines and stewards Artemis\'s research identity — setting cross-cutting priorities, seeding bold interdisciplinary inquiries, and ensuring that every center contributes to a coherent, mission-driven knowledge enterprise.',
-    img: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=600',
     slug: 'frontiers-of-artemis-research',
   },
   {
@@ -129,13 +129,13 @@ const centers = [
   {
     name: 'Next-Gen Education',
     desc: 'Reimagining how humans learn, teach, and create knowledge in an era of AI tutors, immersive environments, and lifelong learning continua — because the future of education is not a bigger classroom, it is a fundamentally different one.',
-    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=600',
     slug: 'next-gen-education',
   },
   {
     name: 'Materials, Matter & Manufacturing Futures',
     desc: 'From metamaterials and programmable matter to additive manufacturing at scale — designing the substances and processes that will build the infrastructure of the future.',
-    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=600',
     slug: 'materials-matter-manufacturing',
   },
   {
@@ -165,7 +165,7 @@ const centers = [
   {
     name: 'Health & Bioethics',
     desc: 'Advancing human health while rigorously examining the moral dimensions of biomedical innovation — because curing disease is not enough; we must ensure that the cures are just, accessible, and humane.',
-    img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=600',
+    img: 'https://images.unsplash.com/photo-1514416205405-075ab2f15964?auto=format&fit=crop&q=80&w=600',
     slug: 'health-bioethics',
   },
   {
@@ -286,7 +286,7 @@ export default function Research({ goToPage }: ResearchProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Research at Artemis"
         />
@@ -606,7 +606,7 @@ export default function Research({ goToPage }: ResearchProps) {
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[360px] md:min-h-[440px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400"
+              src="https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=1400"
               alt="Core Research Facilities"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

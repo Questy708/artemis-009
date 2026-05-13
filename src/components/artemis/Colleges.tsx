@@ -14,7 +14,7 @@ const schools = [
     name: 'School of Natural Sciences',
     shortDesc: 'Understanding the physical and biological foundations of the natural world.',
     fullDesc: 'Encompassing physics, chemistry, biology, mathematics, and environmental science, the School of Natural Sciences drives fundamental research into the laws governing the universe — from quantum mechanics to ecosystem dynamics. Students develop rigorous analytical frameworks and hands-on laboratory experience that prepare them for careers in research, medicine, and technology.',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=800',
     tag: '01 — NATURAL SCIENCES',
     stats: { faculty: '12', programs: '10', research: '$2M' },
     highlights: ['Quantum Computing Lab', 'Biodiversity Mapping Initiative', 'Planetary Science Observatory'],
@@ -23,7 +23,7 @@ const schools = [
     name: 'School of Engineering & Technology',
     shortDesc: 'Designing, building, and optimizing systems across software, data, machines, and materials.',
     fullDesc: 'Spanning computer science, electrical engineering, mechanical engineering, and materials science, this school pushes the frontier of what can be built — from sustainable infrastructure to artificial intelligence systems. The curriculum blends theoretical foundations with the practical imperative to solve real-world problems, and every student completes a capstone build project before graduation.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=800',
     tag: '02 — ENGINEERING & TECHNOLOGY',
     stats: { faculty: '15', programs: '11', research: '$3M' },
     highlights: ['Autonomous Systems Programme', 'Sustainable Materials Hub', 'Forge Prototyping Lab'],
@@ -41,7 +41,7 @@ const schools = [
     name: 'School of Social Sciences',
     shortDesc: 'Tackling global challenges through Anthropology, Political Science, Economics, and Urban Studies.',
     fullDesc: 'Bringing together economics, political science, sociology, anthropology, and psychology, the School of Social Sciences examines the structures, behaviors, and institutions that shape human societies — producing research that informs public policy, governance, and social innovation. Scholars here work at the intersection of theory and practice, often embedded in real communities grappling with real challenges.',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=800',
     tag: '04 — SOCIAL SCIENCES',
     stats: { faculty: '9', programs: '6', research: '$1M' },
     highlights: ['Urban Futures Initiative', 'Governance Innovation Lab', 'Global Inequality Research Cluster'],
@@ -50,7 +50,7 @@ const schools = [
     name: 'School of Health & Medicine',
     shortDesc: 'Advancing human wellness, biological systems, and healthcare technologies with a focus on bioethics.',
     fullDesc: 'Integrating biomedical science, clinical practice, public health, and bioethics, this school trains the next generation of physicians, researchers, and health-system leaders. From molecular biology to population-wide health interventions, scholars advance discoveries that improve lives across the globe — always guided by a deep commitment to ethical practice and equitable access.',
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1514416205405-075ab2f15964?auto=format&fit=crop&q=80&w=800',
     tag: '05 — HEALTH & MEDICINE',
     stats: { faculty: '11', programs: '8', research: '$2M' },
     highlights: ['Precision Medicine Programme', 'Global Health Equity Centre', 'Bio-Regenerative Tissue Lab'],
@@ -59,7 +59,7 @@ const schools = [
     name: 'School of Education & Human Development',
     shortDesc: 'Advancing learning science, educational ecosystems, and meta-learning strategies.',
     fullDesc: 'Focusing on pedagogy, cognitive science, educational leadership, and human development across the lifespan, the school studies how people learn and grow — preparing educators and policymakers to build more effective, equitable learning systems worldwide. Artemis itself serves as a living laboratory for educational innovation, making this school uniquely positioned to test and refine new models in real time.',
-    image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=800',
     tag: '06 — EDUCATION & HUMAN DEVELOPMENT',
     stats: { faculty: '7', programs: '6', research: '$0.5M' },
     highlights: ['Meta-Learning Research Unit', 'Cognitive Development Lab', 'Global Teacher Leadership Programme'],
@@ -68,7 +68,7 @@ const schools = [
     name: 'School of Business',
     shortDesc: 'Developing leadership in international commerce, finance, analytics, and entrepreneurial systems.',
     fullDesc: 'Encompassing finance, strategy, entrepreneurship, and organizational leadership, the School of Business cultivates principled, innovative leaders who can navigate complexity and drive value creation in an era of rapid technological and social change. The curriculum is anchored in ethical reasoning and global perspective, ensuring that Artemis business graduates lead with both competence and conscience.',
-    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=800',
     tag: '07 — BUSINESS',
     stats: { faculty: '8', programs: '6', research: '$1M' },
     highlights: ['Venture Studio Incubator', 'Sustainable Finance Initiative', 'Global Supply Chain Observatory'],
@@ -128,7 +128,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800"
+          src="https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1800"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Our Colleges"
         />
@@ -200,7 +200,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
             <div>
               <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
                 <img
-                  src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
+                  src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800"
                   alt="Students collaborating across disciplines"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
@@ -338,7 +338,7 @@ export default function Colleges({ goToPage }: CollegesProps) {
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
+              src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1400"
               alt="Interdisciplinary collaboration at Artemis"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

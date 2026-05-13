@@ -25,7 +25,7 @@ const schoolData: Record<string, {
   "School of Natural Sciences": {
     description: "Understanding the physical and biological foundations of the natural world.",
     longDescription: "The School of Natural Sciences is the intellectual engine room of Artemis — where the fundamental laws of the universe are probed, tested, and reimagined. From the behaviour of subatomic particles to the dynamics of entire ecosystems, our scholars pursue questions that have driven human curiosity for millennia, armed with the most advanced experimental and computational tools ever built. The school's culture prizes precision, skepticism, and the willingness to follow evidence wherever it leads — even when the destination overturns centuries of assumption.",
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "The universe does not reveal its secrets to the comfortable — only to those willing to look harder, think deeper, and accept that yesterday's certainties may be tomorrow's footnotes.",
     deanName: 'Prof. Elena Marchetti',
     deanTitle: 'Dean, School of Natural Sciences',
@@ -45,7 +45,7 @@ const schoolData: Record<string, {
   "School of Engineering & Technology": {
     description: "Designing, building, and optimizing systems across software, data, machines, and materials.",
     longDescription: "The School of Engineering & Technology is where ambition meets execution. Our scholars do not simply study systems — they build them, break them, and rebuild them better. From sustainable infrastructure that withstands a changing climate to artificial intelligence systems that augment human capability, the school pushes the frontier of what can be built, tested, and deployed. Every student completes a capstone build project before graduation, ensuring that Artemis engineers leave with calloused hands and refined minds in equal measure.",
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "Engineering is not applied science — it is the discipline of making possible what was previously impossible. Our students learn to build the future, not just describe it.",
     deanName: 'Prof. Julian Sarkis',
     deanTitle: 'Dean, School of Engineering & Technology',
@@ -87,7 +87,7 @@ const schoolData: Record<string, {
   "School of Social Sciences": {
     description: "Tackling global challenges through Anthropology, Political Science, Economics, and Urban Studies.",
     longDescription: "The School of Social Sciences examines the structures, behaviours, and institutions that shape human societies — producing research that informs public policy, governance, and social innovation. Scholars here work at the intersection of theory and practice, often embedded in real communities grappling with real challenges. Whether analyzing the macroeconomic dynamics of post-automation economies or studying the micro-politics of urban neighbourhoods, the school brings the same empirical rigor and ethical clarity that defines every Artemis discipline.",
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "The social sciences do not merely describe the world as it is — they illuminate the world as it could be, and provide the evidence base for building it.",
     deanName: 'Prof. Kwame Asante',
     deanTitle: 'Dean, School of Social Sciences',
@@ -106,7 +106,7 @@ const schoolData: Record<string, {
   "School of Health & Medicine": {
     description: "Advancing human wellness, biological systems, and healthcare technologies with a focus on bioethics.",
     longDescription: "The School of Health & Medicine integrates biomedical science, clinical practice, public health, and bioethics into a single, cohesive programme. From molecular biology to population-wide health interventions, scholars advance discoveries that improve lives across the globe — always guided by a deep commitment to ethical practice and equitable access. The school trains physicians, researchers, and health-system leaders who understand that health is not merely the absence of disease but the presence of conditions that allow every human being to flourish.",
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1514416205405-075ab2f15964?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "Medicine without ethics is technology. Ethics without medicine is philosophy. We train practitioners who embody both — and who understand that health equity is the measure of a civilization.",
     deanName: 'Dr. Fatima Al-Rashid',
     deanTitle: 'Dean, School of Health & Medicine',
@@ -126,7 +126,7 @@ const schoolData: Record<string, {
   "School of Education & Human Development": {
     description: "Advancing learning science, educational ecosystems, and meta-learning strategies.",
     longDescription: "The School of Education & Human Development studies how people learn, grow, and adapt — and trains the next generation of educators and policymakers to build more effective, equitable learning systems worldwide. Artemis itself serves as a living laboratory for educational innovation, making this school uniquely positioned to test and refine new models in real time. The school's research spans cognitive neuroscience, curriculum design, educational technology, and the sociology of knowledge — always with an eye toward practical impact in real classrooms and communities.",
-    image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "If we cannot reinvent how we learn, we cannot reinvent anything else. Education is the meta-discipline — the one that shapes the capacity for all the others.",
     deanName: 'Prof. Lena Johansson',
     deanTitle: 'Dean, School of Education & Human Development',
@@ -145,7 +145,7 @@ const schoolData: Record<string, {
   "School of Business": {
     description: "Developing leadership in international commerce, finance, analytics, and entrepreneurial systems.",
     longDescription: "The School of Business cultivates principled, innovative leaders who can navigate complexity and drive value creation in an era of rapid technological and social change. The curriculum is anchored in ethical reasoning and global perspective, ensuring that Artemis business graduates lead with both competence and conscience. From sustainable finance to supply chain resilience, from startup incubation to corporate governance reform, the school produces scholarship and practitioners who understand that long-term value creation requires more than quarterly thinking.",
-    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1400',
+    image: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=1400',
     deanQuote: "The purpose of business education is not to produce maximizers of profit, but cultivators of value — leaders who understand that markets serve society, not the reverse.",
     deanName: 'Prof. David Chen',
     deanTitle: 'Dean, School of Business',
@@ -441,7 +441,7 @@ export default function SchoolDetail({ goToPage, schoolName }: Props) {
           <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full min-h-[380px] md:min-h-[460px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1400"
+              src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1400"
               alt="Cross-school collaboration"
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />

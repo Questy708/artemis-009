@@ -13,63 +13,63 @@ const academicPrograms = [
   {
     title: 'Undergraduate Study',
     description: 'Artemis provides a liberal arts education that fosters intellectual curiosity, independent thinking, and leadership skills — grounded in the Homo Eruditus philosophy of lifelong learning.',
-    image: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Undergraduate Programs',
     linkTarget: 'undergraduate',
   },
   {
     title: 'Graduate & Professional Study',
     description: 'Our advanced degree programs are close-knit communities with access to vast resources, designed for those who seek to push the boundaries of their discipline.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1675179190669-ef6bc809d8d7?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Graduate Programs',
     linkTarget: 'graduate-coming-soon',
   },
   {
     title: 'Departments & Programs',
     description: 'Artemis has well over 100 departments and programs spanning the humanities, sciences, social sciences, and emerging interdisciplinary fields.',
-    image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=600',
     linkText: 'Browse Departments',
     linkTarget: 'programs',
   },
   {
     title: 'Global Education',
     description: 'People come from afar to study here, and our students learn and grow through international travel, study abroad, and cross-cultural research partnerships.',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Global Programs',
     linkTarget: 'collegium-alliance',
   },
   {
     title: 'Summer Session',
     description: 'Artemis provides educational opportunities year-round. Our summer offerings allow students to accelerate their studies or explore entirely new fields.',
-    image: 'https://images.unsplash.com/photo-1606761568499-6d2451b08c66?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1611697047951-c7f9824a5636?auto=format&fit=crop&q=80&w=600',
     linkText: 'View Summer Offerings',
     linkTarget: 'undergraduate',
   },
   {
     title: 'Non-Degree Offerings',
     description: 'Explore the diverse programs available for non-matriculating students — from professional certificates to community learning initiatives.',
-    image: 'https://images.unsplash.com/photo-1510511459019-54bc7603c4fc?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&q=80&w=600',
     linkText: 'Discover Non-Degree Options',
     linkTarget: 'admissions',
   },
   {
     title: 'Online Learning',
     description: 'Step inside a virtual Artemis classroom and learn from some of our most renowned faculty members — accessible from anywhere in the world.',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=600',
     linkText: 'Start Learning Online',
     linkTarget: 'programs',
   },
   {
     title: 'K-12 Education',
     description: 'Artemis extends its educational philosophy to younger students through innovative K-12 programs that foster early intellectual development, cultivating curiosity and critical thinking from the earliest years of formal education.',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore K-12 Programs',
     linkTarget: 'admissions',
   },
   {
     title: 'Dual-Degree Pathway (P-TECH)',
     description: "Earn a university degree while still in high school. Modeled after the P-TECH initiative and inspired by Avenues: The World School, this pathway combines secondary and tertiary education into a seamless six-year program that awards both a high school diploma and an associate or bachelor's degree.",
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=600',
     linkText: 'Explore Dual-Degree',
     linkTarget: 'admissions',
   },
@@ -196,7 +196,7 @@ export default function Education({ goToPage }: EducationProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[45vh] min-h-[360px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=2560"
+          src="https://images.unsplash.com/photo-1686213011642-b25f94b95b96?auto=format&fit=crop&q=80&w=2560"
           className="absolute inset-0 w-full h-full object-cover grayscale"
           alt="Education at Artemis"
         />
@@ -297,7 +297,7 @@ export default function Education({ goToPage }: EducationProps) {
               <div>
                 <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-8">
                   <img
-                    src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
+                    src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800"
                     alt="Students collaborating"
                     className="w-full h-full object-cover grayscale"
                   />
@@ -555,7 +555,7 @@ export default function Education({ goToPage }: EducationProps) {
         <div className="max-w-[1600px] mx-auto">
         <div className="relative w-full min-h-[420px] md:min-h-[500px] overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2560"
+            src="https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=2560"
             alt="Global Learning at Artemis"
             className="absolute inset-0 w-full h-full object-cover grayscale"
           />

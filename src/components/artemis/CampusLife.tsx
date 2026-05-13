@@ -302,7 +302,7 @@ const dayMoments = [
     time: '10:00',
     title: 'Seminar or Studio',
     desc: 'Small-group tutorials in the Oxford tradition, or hands-on prototyping in the Forge Lodge workshop. Morning is for the deepest work — the kind that changes how you see the world.',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=600',
     icon: 'book',
   },
   {
@@ -316,7 +316,7 @@ const dayMoments = [
     time: '16:00',
     title: 'Guild Sessions & Club Meetings',
     desc: 'Robotics practice, debate society, climate action planning, open-mic rehearsal, or just reading in the garden. This is when the hostel becomes a village — everyone doing their thing, together.',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=600',
     icon: 'bolt',
   },
   {
@@ -330,7 +330,7 @@ const dayMoments = [
     time: '23:00',
     title: 'Late-Night Common Room',
     desc: 'The best conversations happen when the work is done. A physicist and a poet arguing about time. A group planning a weekend hike up Table Mountain. Someone playing guitar. The common room never really closes.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=600',
     icon: 'moon',
   },
 ];
@@ -400,15 +400,15 @@ const campusStats = [
 /* ─── Photo Strip Data ─── */
 const photoStripImages = [
   { src: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600', alt: 'Students cooking together in a hostel kitchen' },
-  { src: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600', alt: 'Friends gathered in a common room' },
-  { src: 'https://images.unsplash.com/photo-1461896836934-bd45ba8b2990?auto=format&fit=crop&q=80&w=600', alt: 'Students playing sports on campus' },
-  { src: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600', alt: 'Open mic night with students performing' },
-  { src: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=600', alt: 'Students exploring a European city' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600', alt: 'Studying outdoors in the sunshine' },
-  { src: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=600', alt: 'Graduation celebration with friends' },
-  { src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600', alt: 'Cultural festival on campus' },
-  { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600', alt: 'Coffee shop studying with friends' },
-  { src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600', alt: 'Group project collaboration' },
+  { src: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=600', alt: 'Friends gathered in a common room' },
+  { src: 'https://images.unsplash.com/photo-1654000689690-6b7005949b6f?auto=format&fit=crop&q=80&w=600', alt: 'Students playing sports on campus' },
+  { src: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=600', alt: 'Open mic night with students performing' },
+  { src: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=600', alt: 'Students exploring a European city' },
+  { src: 'https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=600', alt: 'Studying outdoors in the sunshine' },
+  { src: 'https://images.unsplash.com/photo-1686213011642-b25f94b95b96?auto=format&fit=crop&q=80&w=600', alt: 'Graduation celebration with friends' },
+  { src: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=600', alt: 'Cultural festival on campus' },
+  { src: 'https://images.unsplash.com/photo-1630480330188-1818487a2426?auto=format&fit=crop&q=80&w=600', alt: 'Coffee shop studying with friends' },
+  { src: 'https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=600', alt: 'Group project collaboration' },
 ];
 
 /* ─── Time Icon Components ─── */
@@ -500,7 +500,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
         <div className="max-w-[1600px] mx-auto">
           <div className="relative w-full h-[55vh] min-h-[440px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800"
+              src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800"
               className="absolute inset-0 w-full h-full object-cover"
               alt="Students at Artemis"
             />
@@ -526,19 +526,19 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 2. Life in Color — auto-scrolling photo strip ── */}
-      <section className="py-10 lg:py-14 overflow-hidden bg-[#FFF8F0]">
+      <section className="py-10 lg:py-14 bg-white">
         <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 mb-6">
           <div className="flex items-center space-x-3">
-            <span className="w-8 h-[1px] bg-[#D97706]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D97706]">
+            <span className="w-8 h-[1px] bg-[#8A0000]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
               Life in Color
             </span>
           </div>
         </div>
-        <div className="relative">
+        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 relative overflow-hidden">
           {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#FFF8F0] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#FFF8F0] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
           <style>{`
             @keyframes scrollStrip {
               0% { transform: translateX(0); }
@@ -555,7 +555,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             <div className="flex animate-scroll-strip" style={{ width: 'max-content' }}>
               {[...photoStripImages, ...photoStripImages].map((img, i) => (
                 <div key={i} className="flex-shrink-0 mx-2 md:mx-3">
-                  <div className="w-[240px] h-[160px] md:w-[300px] md:h-[200px] overflow-hidden rounded-sm">
+                  <div className="w-[240px] h-[160px] md:w-[300px] md:h-[200px] overflow-hidden">
                     <img
                       src={img.src}
                       alt={img.alt}
@@ -570,7 +570,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 3. A Day in Your Life ── */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="py-16 lg:py-24">
         <div
           ref={dayAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
@@ -620,7 +620,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       </section>
 
       {/* ── 4. Student Voices — prominent, warm ── */}
-      <section className="py-16 lg:py-24 bg-[#FDF2E9]">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div
           ref={voicesAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${
@@ -712,7 +712,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
               <div className="group">
                 <div className="aspect-[4/3] bg-gray-100 overflow-hidden rounded-sm">
                   <img
-                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1000"
+                    src="https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1000"
                     alt="Students in a hostel common room"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -774,7 +774,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             <div className="group">
               <div className="aspect-[4/3] bg-gray-100 overflow-hidden rounded-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=1000"
+                  src="https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1000"
                   alt="Students in club activities"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -837,7 +837,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             <div className="group">
               <div className="aspect-[4/3] bg-gray-200 overflow-hidden rounded-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000"
+                  src="https://images.unsplash.com/photo-1624555130296-e551faf8969b?auto=format&fit=crop&q=80&w=1000"
                   alt="Traditions at Artemis"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

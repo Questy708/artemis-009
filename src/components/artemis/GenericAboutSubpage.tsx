@@ -41,7 +41,7 @@ const pageData: Record<string, {
   links: { title: string; page: string }[];
 }> = {
   access: {
-    heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Equity & Inclusion',
     stats: [
       { value: '100%', label: 'Need Met', detail: 'Full financial need met for every admitted student across the Artemis network' },
@@ -74,7 +74,7 @@ const pageData: Record<string, {
     ],
   },
   visit: {
-    heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1675179190669-ef6bc809d8d7?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Come See Us',
     stats: [
       { value: '3', label: 'Public Hubs', detail: 'Central nodes open for guided tours and public engagement' },
@@ -90,7 +90,7 @@ const pageData: Record<string, {
     ],
   },
   jobs: {
-    heroImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Build the Future',
     stats: [
       { value: '120+', label: 'Staff', detail: 'Faculty, researchers, and professional staff across all nodes' },
@@ -121,7 +121,7 @@ const pageData: Record<string, {
     ],
   },
   governance: {
-    heroImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Governance & Finance',
     stats: [
       { value: '£18M', label: 'Annual Revenue', detail: 'From tuition, research grants, endowment returns, and partnerships' },
@@ -166,7 +166,7 @@ const pageData: Record<string, {
     ],
   },
   improvement: {
-    heroImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1634947101456-d40e5122b048?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Continuous Improvement',
     stats: [
       { value: '85%', label: 'Actioned Feedback', detail: 'Of scholar feedback results in concrete improvements' },
@@ -180,7 +180,7 @@ const pageData: Record<string, {
     ],
   },
   equality: {
-    heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Equality & Diversity',
     stats: [
       { value: '28+', label: 'Countries', detail: 'Scholars from every inhabited continent and cultural tradition' },
@@ -208,7 +208,7 @@ const pageData: Record<string, {
     ],
   },
   gazette: {
-    heroImage: 'https://images.unsplash.com/photo-1504711434969-e33886168d6c?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1578402027070-0f5ebd84ec9b?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'The Gazette',
     stats: [
       { value: 'Weekly', label: 'Publication', detail: 'Published every Monday during term time' },
@@ -222,7 +222,7 @@ const pageData: Record<string, {
     ],
   },
   catalog: {
-    heroImage: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Academic Catalog',
     stats: [
       { value: '61', label: 'Programs', detail: 'Spanning the liberal arts, sciences, and engineering' },
@@ -242,9 +242,9 @@ const worldHubs = [
   { city: 'Valletta', region: 'Malta', focus: 'Central Governance', desc: 'The administrative heart of the Artemis Collegium, housing the Senate Chamber and the Office of the Provost-General.', image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=600' },
   { city: 'Kigali', region: 'Rwanda', focus: 'Sustainable Tech', desc: 'Pioneering adaptive infrastructure and climate-resilient technology research in partnership with East African institutions.', image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600' },
   { city: 'Vancouver', region: 'Canada', focus: 'Network Theory', desc: 'Advancing the mathematical and computational foundations of decentralized systems and network science.', image: 'https://images.unsplash.com/photo-1496247749665-49cf5bf875d4?auto=format&fit=crop&q=80&w=600' },
-  { city: 'Cyberjaya', region: 'Malaysia', focus: 'Digital Governance', desc: 'Exploring the intersection of policy, law, and technology to shape the governance frameworks of tomorrow.', image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=600' },
-  { city: 'Reykjavik', region: 'Iceland', focus: 'Arctic Research', desc: 'Monitoring geophysical systems and conducting research on sustainable energy and polar ecosystem resilience.', image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600' },
-  { city: 'Tokyo', region: 'Japan', focus: 'Pacific Robotics', desc: 'Integrating synthetic intelligence with advanced robotics, human-machine interfaces, and next-generation manufacturing.', image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600' },
+  { city: 'Cyberjaya', region: 'Malaysia', focus: 'Digital Governance', desc: 'Exploring the intersection of policy, law, and technology to shape the governance frameworks of tomorrow.', image: 'https://images.unsplash.com/photo-1613592237001-84fb727ce569?auto=format&fit=crop&q=80&w=600' },
+  { city: 'Reykjavik', region: 'Iceland', focus: 'Arctic Research', desc: 'Monitoring geophysical systems and conducting research on sustainable energy and polar ecosystem resilience.', image: 'https://images.unsplash.com/photo-1570616969692-54d6ba3d0397?auto=format&fit=crop&q=80&w=600' },
+  { city: 'Tokyo', region: 'Japan', focus: 'Pacific Robotics', desc: 'Integrating synthetic intelligence with advanced robotics, human-machine interfaces, and next-generation manufacturing.', image: 'https://images.unsplash.com/photo-1579165466949-3180a3d056d5?auto=format&fit=crop&q=80&w=600' },
 ];
 
 /* ─── Jobs Listings Data ─── */
@@ -440,7 +440,7 @@ function AccessContent({ goToPage }: { goToPage: (page: string) => void }) {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=800"
                 alt="Scholars collaborating at Artemis"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -666,7 +666,7 @@ function VisitContent({ goToPage }: { goToPage: (page: string) => void }) {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1611697047951-c7f9824a5636?auto=format&fit=crop&q=80&w=800"
                 alt="Artemis campus grounds"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -904,7 +904,7 @@ function ContactContent({ goToPage }: { goToPage: (page: string) => void }) {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=800"
+                src="https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&q=80&w=800"
                 alt="Valletta, Malta — home of the Artemis Central Governance Node"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />

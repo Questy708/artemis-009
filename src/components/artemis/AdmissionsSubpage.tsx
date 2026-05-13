@@ -53,37 +53,37 @@ const pageConfigs: Record<string, {
   'tuition-expenses': {
     title: 'Tuition & Expenses',
     subtitle: 'Transparent costs for a world-class education',
-    heroImage: 'https://images.unsplash.com/photo-1525921429624-479b6a26d84d?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Investing in Your Future',
   },
   'international-students': {
     title: 'International Students',
     subtitle: 'A truly global university for scholars from every nation',
-    heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1687172140737-22c4c3371f3e?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Without Borders',
   },
   'transfer-students': {
     title: 'Transfer Students',
     subtitle: 'Continue your journey at Artemis',
-    heroImage: 'https://images.unsplash.com/photo-1523050335102-c3250d857224?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1686213011642-b25f94b95b96?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'A New Chapter',
   },
   'application-deadlines': {
     title: 'Application Deadlines',
     subtitle: 'Key dates for the 2026-2027 admissions cycle',
-    heroImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1611697047951-c7f9824a5636?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Mark Your Calendar',
   },
   'visit-campus': {
     title: 'Visit Campus',
     subtitle: 'Experience Artemis in person',
-    heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1675179190669-ef6bc809d8d7?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Coming Soon',
   },
   'graduate-coming-soon': {
     title: 'Graduate Programmes',
     subtitle: 'Advanced study at the frontier of knowledge',
-    heroImage: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1800',
+    heroImage: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?auto=format&fit=crop&q=80&w=1800',
     heroLabel: 'Coming Soon',
   },
 };
