@@ -175,32 +175,33 @@ export default function HowWeAreRun({ goToPage }: Props) {
           ref={linksAnim.ref}
           className={`max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 transition-all duration-700 ${linksAnim.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <div className="mb-6 flex items-center space-x-3">
-              <span className="w-8 h-[1px] bg-[#8A0000]"></span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20 items-start">
+            <div>
+              <div className="mb-6 flex items-center space-x-3">
+                <span className="w-8 h-[1px] bg-[#8A0000]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
+                  Explore
+                </span>
+              </div>
+              <h2 className="text-[28px] sm:text-[32px] font-extrabold leading-[1.05] tracking-tighter text-[#141414]">
                 Pages in this section
-              </span>
+              </h2>
             </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {sectionLinks.map((item, i) => (
-              <button
-                key={item.title}
-                onClick={() => goToPage(item.link)}
-                className="group bg-white border border-gray-200 hover:border-[#8A0000] p-6 text-left transition-all duration-300"
-              >
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors leading-tight mb-3">
-                  {item.title}
-                </h3>
-                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#8A0000] transition-colors">
-                  <span>Visit</span>
-                  <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </div>
-              </button>
-            ))}
+            <div className="flex flex-col">
+              {sectionLinks.map((item, i) => (
+                <button
+                  key={item.title}
+                  onClick={() => goToPage(item.link)}
+                  className="group flex items-center justify-between py-5 border-b border-gray-200 hover:border-[#8A0000] transition-colors w-full text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A0000]">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="text-[16px] font-bold text-[#141414] group-hover:text-[#8A0000] transition-colors">{item.title}</span>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-300 group-hover:text-[#8A0000] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>

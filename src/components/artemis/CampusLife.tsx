@@ -504,11 +504,11 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
               className="absolute inset-0 w-full h-full object-cover"
               alt="Students at Artemis"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0505]/90 via-[#1a0505]/50 to-[#1a0505]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="relative z-10 flex flex-col justify-end h-full max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 pb-16">
               <div className="mb-8 flex items-center space-x-3">
-                <span className="w-8 h-[1px] bg-[#D97706]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#D97706]">
+                <span className="w-8 h-[1px] bg-[#8A0000]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#8A0000]">
                   Life at Artemis
                 </span>
               </div>
@@ -535,7 +535,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             </span>
           </div>
         </div>
-        <div className="max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-20 relative overflow-hidden">
+        <div className="max-w-[1600px] mx-auto w-full relative overflow-hidden">
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
