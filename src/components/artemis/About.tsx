@@ -152,7 +152,7 @@ export default function About({ goToPage }: AboutProps) {
               </p>
               <button
                 onClick={() => goToPage('the-university')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#141414] hover:border-[#141414] transition-all group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#141414] hover:border-[#141414] transition-all group"
               >
                 <span>The University</span>
                 <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -226,7 +226,7 @@ export default function About({ goToPage }: AboutProps) {
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-16">
             {teasers.map((teaser, i) => (
               <div key={teaser.title} className="group cursor-pointer">
                 <div className="aspect-[3/2] bg-gray-100 overflow-hidden mb-6">
@@ -267,8 +267,8 @@ export default function About({ goToPage }: AboutProps) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+              <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Our People</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">
                   The minds that make Artemis
@@ -331,7 +331,7 @@ export default function About({ goToPage }: AboutProps) {
               </p>
               <button
                 onClick={() => goToPage('contact-us')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#141414] hover:border-[#141414] transition-all group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#141414] hover:border-[#141414] transition-all group"
               >
                 <span>Contact Us</span>
                 <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

@@ -325,8 +325,8 @@ export default function Admissions({ goToPage }: AdmissionsProps) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+              <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Our Commitment</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">Need-aware admissions</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-5">

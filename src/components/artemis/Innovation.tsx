@@ -368,7 +368,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
               <button
                 key={phase.name}
                 onClick={() => setActivePhase(i)}
-                className={`px-5 py-3 text-[12px] font-bold uppercase tracking-widest transition-all ${
+                className={`px-4 py-3 sm:px-5 text-[11px] sm:text-[12px] font-bold uppercase tracking-widest transition-all ${
                   activePhase === i
                     ? 'bg-[#8A0000] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -419,7 +419,7 @@ export default function Innovation({ goToPage }: InnovationProps) {
                     />
                   ))}
                 </div>
-                <div className="flex justify-between mt-2">
+                <div className="hidden sm:flex justify-between mt-2">
                   {modelPhases.map((p, i) => (
                     <span
                       key={i}
@@ -428,6 +428,18 @@ export default function Innovation({ goToPage }: InnovationProps) {
                       }`}
                     >
                       {p.name}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex sm:hidden justify-between mt-2">
+                  {modelPhases.map((p, i) => (
+                    <span
+                      key={i}
+                      className={`text-[9px] font-bold ${
+                        i <= activePhase ? 'text-[#8A0000]' : 'text-gray-300'
+                      }`}
+                    >
+                      {p.number}
                     </span>
                   ))}
                 </div>
@@ -452,7 +464,8 @@ export default function Innovation({ goToPage }: InnovationProps) {
 
                 {/* Stage-Gate visual — horizontal panels */}
                 <div className="border border-gray-200">
-                  <div className="flex">
+                  {/* Desktop: horizontal panels */}
+                  <div className="hidden sm:flex">
                     {modelPhases.map((phase, i) => (
                       <button
                         key={phase.name}
@@ -471,6 +484,29 @@ export default function Innovation({ goToPage }: InnovationProps) {
                         }`}>
                           {phase.name}
                         </div>
+                      </button>
+                    ))}
+                  </div>
+                  {/* Mobile: vertical list */}
+                  <div className="flex sm:hidden flex-col">
+                    {modelPhases.map((phase, i) => (
+                      <button
+                        key={phase.name}
+                        onClick={() => setActivePhase(i)}
+                        className={`flex items-center gap-3 py-3 px-4 border-b border-gray-100 last:border-b-0 transition-all duration-300 text-left ${
+                          activePhase === i ? 'bg-[#8A0000]/5' : 'hover:bg-gray-50'
+                        }`}
+                      >
+                        <span className={`text-[10px] font-bold uppercase tracking-widest ${
+                          activePhase === i ? 'text-[#8A0000]' : 'text-gray-400'
+                        }`}>
+                          {phase.number}
+                        </span>
+                        <span className={`text-[13px] font-bold tracking-tight ${
+                          activePhase === i ? 'text-[#8A0000]' : 'text-gray-600'
+                        }`}>
+                          {phase.name}
+                        </span>
                       </button>
                     ))}
                   </div>

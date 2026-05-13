@@ -273,7 +273,7 @@ export default function Education({ goToPage }: EducationProps) {
                 </p>
                 <button
                   onClick={() => goToPage('undergraduate')}
-                  className="flex items-center gap-3 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+                  className="flex items-center gap-3 py-3 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
                 >
                   <span>Explore Our Model</span>
                   <svg
@@ -404,7 +404,7 @@ export default function Education({ goToPage }: EducationProps) {
             onMouseEnter={() => { isPausedRef.current = true; }}
             onMouseLeave={() => { isPausedRef.current = false; }}
             onTouchStart={() => { isPausedRef.current = true; }}
-            onTouchEnd={() => { setTimeout(() => { isPausedRef.current = false; }, 2000); }}
+            onTouchEnd={() => { setTimeout(() => { isPausedRef.current = false; }, 6000); }}
           >
             <div className="flex gap-6 px-5 sm:px-8 lg:px-20" style={{ width: 'fit-content' }}>
               {[...academicPrograms, ...academicPrograms].map((program, i) => (
@@ -508,7 +508,7 @@ export default function Education({ goToPage }: EducationProps) {
 
             {/* Right — Sidebar navigation (4 cols) */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-gray-200 p-6 sticky top-[170px]">
+              <div className="bg-white border border-gray-200 p-6 lg:sticky lg:top-[170px]">
                 <h3 className="text-[14px] font-bold uppercase tracking-widest text-[#8A0000] mb-4">
                   Related Links
                 </h3>
@@ -560,8 +560,8 @@ export default function Education({ goToPage }: EducationProps) {
             className="absolute inset-0 w-full h-full object-cover grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 h-full flex items-end min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
-            <div className="bg-white max-w-md p-8 md:p-10 shadow-xl">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-20 h-full flex items-end min-h-[340px] sm:min-h-[420px] md:min-h-[500px] pb-10 md:pb-14">
+            <div className="bg-white max-w-md p-5 sm:p-8 md:p-10 shadow-xl">
               <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
                 Global Initiative
               </div>

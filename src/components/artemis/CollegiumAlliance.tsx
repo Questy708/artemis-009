@@ -464,8 +464,8 @@ export default function CollegiumAlliance({ goToPage }: Props) {
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-                <div className="bg-white max-w-sm p-8 shadow-xl">
+              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+                <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                   <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
                     Join the Alliance
                   </div>

@@ -179,7 +179,7 @@ export default function UndergraduateStudy({ goToPage }: UndergraduateStudyProps
                 </p>
                 <button
                   onClick={() => goToPage('colleges')}
-                  className="flex items-center gap-3 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+                  className="flex items-center gap-3 py-3 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
                 >
                   <span>Explore Artemis College</span>
                   <svg

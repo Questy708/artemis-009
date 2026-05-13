@@ -65,7 +65,7 @@ export default function Home({ goToPage }: HomeProps) {
           className="absolute inset-0 w-full h-full object-cover grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-16">
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-[1000px] mx-auto w-full px-6 lg:px-16 pb-10 sm:pb-16">
           <div
             ref={heroAnim}
             className="transition-all duration-700 artemis-out"
@@ -318,8 +318,8 @@ export default function Home({ goToPage }: HomeProps) {
                 className="absolute inset-0 w-full h-full object-cover grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-                <div className="bg-white max-w-sm p-8 shadow-xl">
+              <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+                <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                   <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">
                     Global Network
                   </div>
@@ -392,7 +392,7 @@ export default function Home({ goToPage }: HomeProps) {
               <div className="pt-8">
                 <button
                   onClick={() => goToPage('collegium-alliance')}
-                  className="flex items-center space-x-6 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[14px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+                  className="flex items-center space-x-6 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[14px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
                 >
                   <span>Build with the Alliance</span>
                   <svg
@@ -443,7 +443,7 @@ export default function Home({ goToPage }: HomeProps) {
               </p>
               <button
                 onClick={() => goToPage('campus')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
               >
                 <span>Full Events Calendar</span>
                 <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

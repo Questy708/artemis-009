@@ -383,7 +383,7 @@ export default function TheUniversity({ goToPage }: Props) {
               </p>
               <button
                 onClick={() => goToPage('about')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
               >
                 <span>Explore the Press</span>
                 <svg
@@ -450,7 +450,7 @@ export default function TheUniversity({ goToPage }: Props) {
                 </p>
                 <button
                   onClick={() => goToPage('education')}
-                  className="flex items-center space-x-4 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
+                  className="flex items-center space-x-4 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-colors group"
                 >
                   <span>Explore Programs</span>
                   <svg

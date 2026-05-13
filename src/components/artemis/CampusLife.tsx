@@ -498,7 +498,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
       {/* ── 1. Hero — warm, vibrant, alive ── */}
       <section className="relative w-full overflow-hidden">
         <div className="max-w-[1600px] mx-auto">
-          <div className="relative w-full h-[55vh] min-h-[440px] overflow-hidden">
+          <div className="relative w-full h-[55vh] min-h-[340px] sm:min-h-[440px] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1594750852563-5ed8e0421d40?auto=format&fit=crop&q=80&w=1800"
               className="absolute inset-0 w-full h-full object-cover"
@@ -546,6 +546,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
             }
             .animate-scroll-strip {
               animation: scrollStrip 40s linear infinite;
+              will-change: transform;
             }
             .animate-scroll-strip:hover {
               animation-play-state: paused;
@@ -701,7 +702,7 @@ export default function CampusLife({ goToPage }: CampusLifeProps) {
               </p>
               <button
                 onClick={() => goToPage('campus')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
               >
                 <span>Explore all 24 hostels</span>
                 <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

@@ -26,7 +26,7 @@ export default function Header({ onMenuClick, goHome, goToPage, onSearchClick }:
       <div className="flex items-center">
         <button
           onClick={onMenuClick}
-          className="lg:hidden mr-4 p-1 hover:bg-white/10 rounded transition-colors"
+          className="lg:hidden mr-4 p-2.5 hover:bg-white/10 rounded transition-colors"
           aria-label="Open menu"
         >
           <Menu size={20} />
@@ -51,7 +51,7 @@ export default function Header({ onMenuClick, goHome, goToPage, onSearchClick }:
       </div>
       <button
         onClick={onSearchClick}
-        className="flex items-center group cursor-pointer p-1 hover:bg-white/10 rounded transition-colors"
+        className="flex items-center group cursor-pointer p-2.5 hover:bg-white/10 rounded transition-colors"
         aria-label="Search"
       >
         <Search size={18} className="group-hover:opacity-80 transition-opacity" />

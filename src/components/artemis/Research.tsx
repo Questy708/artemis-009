@@ -346,7 +346,7 @@ export default function Research({ goToPage }: ResearchProps) {
               </p>
               <button
                 onClick={() => goToPage('innovation')}
-                className="flex items-center space-x-4 py-2 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
+                className="flex items-center space-x-4 py-3 border-b-2 border-[#141414] text-[#141414] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-[#8A0000] hover:border-[#8A0000] transition-all group"
               >
                 <span>Explore Our Model</span>
                 <svg className="group-hover:translate-x-2 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -442,6 +442,7 @@ export default function Research({ goToPage }: ResearchProps) {
                 className="relative flex-1 min-h-[280px] md:min-h-[380px] overflow-hidden cursor-pointer group"
                 onMouseEnter={() => setExpandedProject(i)}
                 onMouseLeave={() => setExpandedProject(null)}
+                onClick={() => setExpandedProject(expandedProject === i ? null : i)}
               >
                 <div
                   className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
@@ -497,7 +498,7 @@ export default function Research({ goToPage }: ResearchProps) {
               </p>
             </div>
             {/* Sidebar — 4 cols */}
-            <div className="lg:col-span-4 border-l border-gray-200 pl-8">
+            <div className="lg:col-span-4 lg:border-l lg:border-gray-200 lg:pl-8">
               <div className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-4">Related links</div>
               <div className="space-y-3">
                 {[
@@ -553,8 +554,8 @@ export default function Research({ goToPage }: ResearchProps) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[380px] md:min-h-[460px] p-5 sm:p-8 md:p-14">
+              <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Global Initiative</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">Shaping tomorrow, today</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
@@ -611,8 +612,8 @@ export default function Research({ goToPage }: ResearchProps) {
               className="absolute inset-0 w-full h-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-            <div className="relative z-10 flex items-end h-full min-h-[360px] md:min-h-[440px] p-8 md:p-14">
-              <div className="bg-white max-w-sm p-8 shadow-xl">
+            <div className="relative z-10 flex items-end h-full min-h-[360px] md:min-h-[440px] p-5 sm:p-8 md:p-14">
+              <div className="bg-white max-w-sm p-5 sm:p-8 shadow-xl">
                 <div className="text-[10px] font-bold text-[#8A0000] tracking-widest mb-3 uppercase">Infrastructure</div>
                 <h3 className="text-[24px] font-bold text-[#141414] mb-3 leading-tight">Core Research Facilities</h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed mb-5">
@@ -664,7 +665,7 @@ export default function Research({ goToPage }: ResearchProps) {
           <div className="mb-6 flex items-center justify-between">
             <button
               onClick={() => goToPage('centers-of-inquiry')}
-              className="flex items-center space-x-3 py-2 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
+              className="flex items-center space-x-3 py-3 border-b-2 border-[#8A0000] text-[#8A0000] text-[13px] font-bold uppercase tracking-[0.2em] hover:text-black hover:border-black transition-all group"
             >
               <span>Explore All Centers</span>
               <svg className="group-hover:translate-x-2 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -675,14 +676,14 @@ export default function Research({ goToPage }: ResearchProps) {
               </span>
               <button
                 onClick={() => scrollCenters('left')}
-                className="w-10 h-10 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
+                className="w-11 h-11 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
                 aria-label="Previous centers"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
               </button>
               <button
                 onClick={() => scrollCenters('right')}
-                className="w-10 h-10 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
+                className="w-11 h-11 border border-gray-300 hover:border-[#8A0000] hover:text-[#8A0000] flex items-center justify-center transition-colors"
                 aria-label="Next centers"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
